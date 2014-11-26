@@ -8,6 +8,7 @@ package com.jtk.pengelolaanujian.view.admin;
 import com.jtk.pengelolaanujian.controller.admin.RegistrasiUserController;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.facade.StafFacade;
+import java.awt.Color;
 import java.awt.Frame;
 
 /**
@@ -15,7 +16,7 @@ import java.awt.Frame;
  * @author pahlevi
  */
 public class SearchStafDialog extends javax.swing.JDialog {
-
+    boolean first = true;
     private Staf staf;
     RegistrasiUserController registrasiUserController = new RegistrasiUserController();
 
@@ -26,9 +27,11 @@ public class SearchStafDialog extends javax.swing.JDialog {
     public SearchStafDialog(Frame parent, boolean modal, Staf staf) {
         super(parent, modal);
         initComponents();
+        setFocusable(true);
         setLocationRelativeTo(null);
         setResizable(false);
         this.staf = staf;
+        registrasiUserController.searchUser("", tableStaf);
     }
 
     /**
@@ -46,8 +49,16 @@ public class SearchStafDialog extends javax.swing.JDialog {
         tableStaf = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Data Staff");
 
-        textSearch.setText("Search by Name or NIK");
+        textSearch.setForeground(new java.awt.Color(153, 153, 153));
+        textSearch.setText("Cari berdasarkan Nama atau NIP");
+        textSearch.setToolTipText("Cari berdasakan Nama atau NIK");
+        textSearch.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textSearchFocusGained(evt);
+            }
+        });
         textSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 textSearchKeyReleased(evt);
@@ -63,10 +74,7 @@ public class SearchStafDialog extends javax.swing.JDialog {
 
         tableStaf.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Nama", "NIK"
@@ -79,12 +87,19 @@ public class SearchStafDialog extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSelect)
-                    .addComponent(textSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(textSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 209, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSelect)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,10 +107,10 @@ public class SearchStafDialog extends javax.swing.JDialog {
                 .addGap(23, 23, 23)
                 .addComponent(textSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSelect)
-                .addGap(33, 33, 33))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -113,6 +128,13 @@ public class SearchStafDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         registrasiUserController.searchUser(textSearch.getText(), tableStaf);
     }//GEN-LAST:event_textSearchKeyReleased
+
+    private void textSearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textSearchFocusGained
+        if(first){
+            textSearch.setForeground(Color.black);
+            textSearch.setText("");
+        }
+    }//GEN-LAST:event_textSearchFocusGained
 
     /**
      * @param args the command line arguments
