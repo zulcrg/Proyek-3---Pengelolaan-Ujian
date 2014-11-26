@@ -14,8 +14,7 @@ import com.jtk.pengelolaanujian.util.EnumRole;
  *
  * @author Zulkhair Abdullah D
  */
-public class LoginPanel extends javax.swing.JPanel {
-    //da
+public class LoginPanel extends javax.swing.JPanel {    
     MainFrame mainFrame;
 
     /**
