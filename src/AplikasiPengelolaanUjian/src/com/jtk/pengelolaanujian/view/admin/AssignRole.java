@@ -5,7 +5,7 @@
  */
 package com.jtk.pengelolaanujian.view.admin;
 
-import com.jtk.pengelolaanujian.controller.admin.AdminController;
+import com.jtk.pengelolaanujian.controller.admin.AssignRoleController;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  */
 public class AssignRole extends javax.swing.JPanel {
 
-    AdminController adminController = new AdminController();
+    AssignRoleController assignRoleController = new AssignRoleController();
 
     /**
      * Creates new form RegistrasiUser
@@ -185,7 +185,7 @@ public class AssignRole extends javax.swing.JPanel {
             roleList[1] = chkDosen.isSelected();
             roleList[2] = chkVnv.isSelected();
             roleList[3] = chkPanitia.isSelected();
-            adminController.assignRole(textUsername.getText(), roleList);
+            assignRoleController.assignRole(textUsername.getText(), roleList);
         } else {
             JOptionPane.showMessageDialog(this, "Harap isi username terlebih dahulu");
         }
