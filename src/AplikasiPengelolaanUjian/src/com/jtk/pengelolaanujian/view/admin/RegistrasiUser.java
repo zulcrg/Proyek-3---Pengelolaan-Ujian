@@ -5,6 +5,7 @@
  */
 package com.jtk.pengelolaanujian.view.admin;
 
+import com.jtk.pengelolaanujian.view.util.SearchDialog;
 import com.jtk.pengelolaanujian.controller.admin.RegistrasiUserController;
 import com.jtk.pengelolaanujian.entity.Staf;
 import javax.swing.JOptionPane;
@@ -125,7 +126,7 @@ public class RegistrasiUser extends javax.swing.JPanel {
 
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
         staf = new Staf();
-        SearchStafDialog searchStafDialog = new SearchStafDialog(null, true, staf);
+        SearchDialog searchStafDialog = new SearchDialog(null, true, staf);
         searchStafDialog.show();
         textNama.setText(staf.getStafNama());
     }//GEN-LAST:event_btnBrowseActionPerformed

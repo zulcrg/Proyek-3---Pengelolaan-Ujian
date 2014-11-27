@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jtk.pengelolaanujian.view.admin;
+package com.jtk.pengelolaanujian.view.util;
 
 import com.jtk.pengelolaanujian.controller.admin.RegistrasiUserController;
 import com.jtk.pengelolaanujian.entity.Staf;
@@ -15,7 +15,7 @@ import java.awt.Frame;
  *
  * @author pahlevi
  */
-public class SearchStafDialog extends javax.swing.JDialog {
+public class SearchDialog extends javax.swing.JDialog {
     boolean first = true;
     private Staf staf;
     RegistrasiUserController registrasiUserController = new RegistrasiUserController();
@@ -24,7 +24,7 @@ public class SearchStafDialog extends javax.swing.JDialog {
      * Creates new form SearchStafDialog
      */
 
-    public SearchStafDialog(Frame parent, boolean modal, Staf staf) {
+    public SearchDialog(Frame parent, boolean modal, Staf staf) {
         super(parent, modal);
         initComponents();
         setFocusable(true);
