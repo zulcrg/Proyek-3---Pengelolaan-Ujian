@@ -5,6 +5,7 @@
  */
 package com.jtk.pengelolaanujian.facade;
 
+import com.jtk.pengelolaanujian.entity.Role;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
@@ -123,11 +124,32 @@ public class UserFacade {
     }
 
     public boolean editUser() {
-        
+
         return false;
     }
-    
+
     public boolean editUserRole(User user) {
+        try {
+            Statement stmt;
+            stmt = connection.createStatement();
+            boolean flag = stmt.execute("DELETE FROM user_to_role WHERE STAF_NIP = '" + user.getStafNIP() + "'");
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < user.getRoleList().size(); i++) {
+                Role role = user.getRoleList().get(i);
+                sb.append("('").append(user.getStafNIP()).append("', '").append(role.getRoleKode()).append("')");
+                if (i < user.getRoleList().size() - 1) {
+                    sb.append(",");
+                } else {
+                    sb.append(";");
+                }
+            }
+            if (flag) {
+                flag = stmt.execute("INSERT INTO user_to_role VALUES" + sb.toString());
+            }
+            return flag;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return false;
     }
 

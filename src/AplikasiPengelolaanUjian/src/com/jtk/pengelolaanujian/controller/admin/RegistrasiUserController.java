@@ -10,9 +10,7 @@ import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.facade.StafFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
 import java.util.List;
-import javax.swing.JPasswordField;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
