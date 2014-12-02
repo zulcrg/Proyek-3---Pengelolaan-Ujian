@@ -114,19 +114,6 @@ public class UserFacade {
         }
         return null;
     }
-
-    public boolean registrasiUser(User user) {
-
-        try {
-            Statement stmt;
-            stmt = connection.createStatement();
-            boolean flag = stmt.execute("INSERT INTO user(STAF_NIP,USER_USERNAME,USER_PASSWORD) VALUES('" + user.getStafNIP() + "','" + user.getUserUsername() + "','" + user.getUserPassword() + "')");
-            return flag;
-        } catch (SQLException ex) {
-            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
     
     public boolean editUser(User user) {
 
