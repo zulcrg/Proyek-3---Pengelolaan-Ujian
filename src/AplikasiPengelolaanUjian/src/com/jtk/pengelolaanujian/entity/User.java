@@ -17,7 +17,10 @@ public class User {
     private String stafNIP;
     private String userUsername;
     private String userPassword;
+    private String userActive;
     private List<Role> roleList;
+
+   
 
     public User() {
 
@@ -57,5 +60,12 @@ public class User {
     public void setRoleList(List<Role> roleList) {
         this.roleList = roleList;
     }
+    
+    public String getUserActive() {
+        return userActive;
+    }
 
+    public void setUserActive(String userActive) {
+        this.userActive = userActive;
+    }
 }

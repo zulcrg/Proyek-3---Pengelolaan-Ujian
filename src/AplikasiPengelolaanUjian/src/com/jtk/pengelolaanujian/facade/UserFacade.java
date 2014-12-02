@@ -127,6 +127,19 @@ public class UserFacade {
         }
         return false;
     }
+    
+    public boolean editUser(User user) {
+
+        try {
+            Statement stmt;
+            stmt = connection.createStatement();
+            boolean flag = stmt.execute("UPDATE USER SET USER_ACTIVE ='" + user.getUserActive() + "' where STAF_NIP ='" + user.getStafNIP() + "'");
+            return flag;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);            
+        }
+        return false;
+    }
 
     public boolean editUser() {
 
