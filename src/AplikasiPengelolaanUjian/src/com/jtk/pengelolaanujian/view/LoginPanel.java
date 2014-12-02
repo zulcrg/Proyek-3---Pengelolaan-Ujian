@@ -9,12 +9,14 @@ import com.jtk.pengelolaanujian.entity.Role;
 import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.facade.UserFacade;
 import com.jtk.pengelolaanujian.util.EnumRole;
+import java.awt.event.KeyEvent;
 
 /**
  *
  * @author Zulkhair Abdullah D
  */
-public class LoginPanel extends javax.swing.JPanel {    
+public class LoginPanel extends javax.swing.JPanel {
+
     MainFrame mainFrame;
 
     /**
@@ -25,6 +27,28 @@ public class LoginPanel extends javax.swing.JPanel {
     public LoginPanel(MainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
+    }
+
+    public void login() {
+        UserFacade userFacade = new UserFacade();
+        User user = userFacade.findByUsername(textUsername.getText());
+        if (user.getUserPassword().equals(textPassword.getText())) {
+            for (Role role : user.getRoleListQuery()) {
+                if (role.getRoleKode().equals(EnumRole.ADMIN.getKey())) {
+                    mainFrame.getBtnAdmin().setVisible(true);
+                }
+                if (role.getRoleKode().equals(EnumRole.DOSEN_PENGAMPU.getKey())) {
+                    mainFrame.getBtnDosen().setVisible(true);
+                }
+                if (role.getRoleKode().equals(EnumRole.PANITIA.getKey())) {
+                    mainFrame.getBtnPanitia().setVisible(true);
+                }
+                if (role.getRoleKode().equals(EnumRole.VNV.getKey())) {
+                    mainFrame.getBtnVnv().setVisible(true);
+                }
+            }
+        }
+        mainFrame.getCardLayout().show(mainFrame.getCardPanel(), "1");
     }
 
     /**
@@ -40,8 +64,8 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         textUsername = new javax.swing.JTextField();
-        textPassword = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
+        textPassword = new javax.swing.JPasswordField();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -49,10 +73,22 @@ public class LoginPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Password");
 
+        textUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textUsernameKeyPressed(evt);
+            }
+        });
+
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
+            }
+        });
+
+        textPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textPasswordKeyPressed(evt);
             }
         });
 
@@ -68,10 +104,10 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textUsername)
-                    .addComponent(textPassword)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 89, Short.MAX_VALUE)))
+                        .addGap(0, 89, Short.MAX_VALUE))
+                    .addComponent(textPassword))
                 .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,26 +145,20 @@ public class LoginPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-//        UserFacade userFacade = new UserFacade();
-//        User user = userFacade.findByUsername(textUsername.getText());
-//        if (user.getUserPassword().equals(textPassword.getText())) {
-//            for (Role role : user.getRoleList()) {
-//                if (role.getRoleKode().equals(EnumRole.ADMIN.getKey())) {
-                    mainFrame.getBtnAdmin().setVisible(true);
-//                }
-//                if (role.getRoleKode().equals(EnumRole.DOSEN_PENGAMPU.getKey())) {
-                    mainFrame.getBtnDosen().setVisible(true);
-//                }
-//                if (role.getRoleKode().equals(EnumRole.PANITIA.getKey())) {
-                    mainFrame.getBtnPanitia().setVisible(true);
-//                }
-//                if (role.getRoleKode().equals(EnumRole.VNV.getKey())) {
-                    mainFrame.getBtnVnv().setVisible(true);
-//                }
-//            }
-//        }
-        mainFrame.getCardLayout().show(mainFrame.getCardPanel(), "1");
+        login();
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void textPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPasswordKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
+        }
+    }//GEN-LAST:event_textPasswordKeyPressed
+
+    private void textUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textUsernameKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
+        }
+    }//GEN-LAST:event_textUsernameKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -136,7 +166,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField textPassword;
+    private javax.swing.JPasswordField textPassword;
     private javax.swing.JTextField textUsername;
     // End of variables declaration//GEN-END:variables
 }
