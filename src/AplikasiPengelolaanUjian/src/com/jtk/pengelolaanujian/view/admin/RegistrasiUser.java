@@ -135,12 +135,16 @@ public class RegistrasiUser extends javax.swing.JPanel {
         if(textNama.getText() != null && !textNama.getText().isEmpty()) {
             if (textUsername.getText() != null && !textUsername.getText().isEmpty()) {
                 if (textPassword.getText().equals(textPasswordRetype.getText())) {
-                    registrasiUserController.registrasiUser(staf, textUsername.getText(), textPassword.getText());
-                    JOptionPane.showMessageDialog(this, "User baru berhasil diinputkan, Nama ->"+staf.getStafNama());
-                    textNama.setText("");
-                    textPassword.setText("");
-                    textPasswordRetype.setText("");
-                    textUsername.setText("");
+                    if (textPassword.getText() != null && !textPassword.getText().isEmpty()) {
+                        registrasiUserController.registrasiUser(staf, textUsername.getText(), textPassword.getText());
+                        JOptionPane.showMessageDialog(this, "User baru berhasil diinputkan, Nama ->"+staf.getStafNama());
+                        textNama.setText("");
+                        textPassword.setText("");
+                        textPasswordRetype.setText("");
+                        textUsername.setText("");
+                    }else{
+                        JOptionPane.showMessageDialog(this, "harap isi password");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(this, "Password yg anda inputkan tidak sama");
                 }

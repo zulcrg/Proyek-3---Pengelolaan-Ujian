@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,6 +27,10 @@ public class UserFacade {
 
     private final Connection connection = ConnectionHelper.getConnection();
 
+    public UserFacade(){
+        
+    }
+    
     public List<User> findAll() {
         try {
             Statement stmt = connection.createStatement();
@@ -118,7 +123,7 @@ public class UserFacade {
             boolean flag = stmt.execute("INSERT INTO user(STAF_NIP,USER_USERNAME,USER_PASSWORD) VALUES('" + user.getStafNIP() + "','" + user.getUserUsername() + "','" + user.getUserPassword() + "')");
             return flag;
         } catch (SQLException ex) {
-            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);            
         }
         return false;
     }
