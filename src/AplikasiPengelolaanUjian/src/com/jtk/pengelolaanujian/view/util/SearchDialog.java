@@ -5,33 +5,53 @@
  */
 package com.jtk.pengelolaanujian.view.util;
 
+import com.jtk.pengelolaanujian.controller.admin.AssignRoleController;
 import com.jtk.pengelolaanujian.controller.admin.RegistrasiUserController;
 import com.jtk.pengelolaanujian.entity.Staf;
-import com.jtk.pengelolaanujian.facade.StafFacade;
+import com.jtk.pengelolaanujian.util.EnumPanel;
 import java.awt.Color;
 import java.awt.Frame;
+import java.util.List;
 
 /**
  *
  * @author pahlevi
  */
 public class SearchDialog extends javax.swing.JDialog {
+
     boolean first = true;
     private Staf staf;
-    RegistrasiUserController registrasiUserController = new RegistrasiUserController();
+    private List<Staf> stafList;
+    private final RegistrasiUserController registrasiUserController = new RegistrasiUserController();
+    private final AssignRoleController assignRoleController = new AssignRoleController();
+    private final EnumPanel enumPanel;
 
     /**
      * Creates new form SearchStafDialog
+     *
+     * @param parent
+     * @param modal
+     * @param staf
+     * @param enumPanel
      */
-
-    public SearchDialog(Frame parent, boolean modal, Staf staf) {
+    public SearchDialog(Frame parent, boolean modal, Staf staf, EnumPanel enumPanel) {
         super(parent, modal);
         initComponents();
         setFocusable(true);
         setLocationRelativeTo(null);
         setResizable(false);
         this.staf = staf;
-        registrasiUserController.searchUser("", tableStaf);
+        this.enumPanel = enumPanel;
+        switch (enumPanel) {
+            case REGISTER_USER:
+                registrasiUserController.searchUser("", tableStaf);
+                textSearch.setText("Cari berdasarkan NIP atau Nama");
+                break;
+            case ASSIGN_ROLE:
+                stafList = assignRoleController.searchUser("", tableStaf);
+                textSearch.setText("Cari berdasarkan Nama atau Username");
+                break;
+        }
     }
 
     /**
@@ -117,20 +137,32 @@ public class SearchDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
-        // TODO add your handling code here:
-        StafFacade stafFacade = new StafFacade();
-        staf.setStafNama(tableStaf.getValueAt(tableStaf.getSelectedRow(), 0).toString());
-        staf.setStafNIP(tableStaf.getValueAt(tableStaf.getSelectedRow(), 1).toString());
+        switch (enumPanel) {
+            case REGISTER_USER:
+                staf.setStafNama(tableStaf.getValueAt(tableStaf.getSelectedRow(), 0).toString());
+                staf.setStafNIP(tableStaf.getValueAt(tableStaf.getSelectedRow(), 1).toString());
+                break;
+            case ASSIGN_ROLE:
+                staf.setStafNama(stafList.get(tableStaf.getSelectedRow()).getStafNama());
+                staf.setStafNIP(stafList.get(tableStaf.getSelectedRow()).getStafNIP());
+                break;
+        }
         this.dispose();
     }//GEN-LAST:event_btnSelectActionPerformed
 
     private void textSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textSearchKeyReleased
-        // TODO add your handling code here:
-        registrasiUserController.searchUser(textSearch.getText(), tableStaf);
+        switch (enumPanel) {
+            case REGISTER_USER:
+                registrasiUserController.searchUser(textSearch.getText(), tableStaf);
+                break;
+            case ASSIGN_ROLE:
+                stafList =  assignRoleController.searchUser(textSearch.getText(), tableStaf);
+                break;
+        }
     }//GEN-LAST:event_textSearchKeyReleased
 
     private void textSearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textSearchFocusGained
-        if(first){
+        if (first) {
             textSearch.setForeground(Color.black);
             textSearch.setText("");
         }

@@ -58,9 +58,13 @@ public class Staf {
         this.stafKontak = stafKontak;
     }
 
-    public User getUser() {
+    public User getUserQuery() {
         UserFacade userFacade = new UserFacade();
         user = userFacade.findByKodeStafNip(stafNIP);
+        return user;
+    }
+
+    public User getUser() {
         return user;
     }
 

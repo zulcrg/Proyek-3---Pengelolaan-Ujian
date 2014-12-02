@@ -48,9 +48,13 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public List<Role> getRoleList() {
+    public List<Role> getRoleListQuery() {
         RoleFacade roleControler = new RoleFacade();
         roleList = roleControler.findByKodeStafNIP(this.getStafNIP());
+        return roleList;
+    }
+    
+    public List<Role> getRoleList() {
         return roleList;
     }
 

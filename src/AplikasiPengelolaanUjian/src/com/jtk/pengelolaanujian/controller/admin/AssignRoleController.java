@@ -6,10 +6,14 @@
 package com.jtk.pengelolaanujian.controller.admin;
 
 import com.jtk.pengelolaanujian.entity.Role;
+import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.facade.RoleFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -39,5 +43,26 @@ public class AssignRoleController {
             user.getRoleList().add(role);
         }
         userFacade.editUserRole(user);
+    }
+
+    public List<Staf> searchUser(String text, JTable tableStaf) {
+        List<Staf> stafList;
+
+        UserFacade userFacade = new UserFacade();
+        stafList = userFacade.searchNameUsername(text);
+
+        Object[] columnsName = {"Nama", "Username"};
+
+        DefaultTableModel dtm = new DefaultTableModel(null, columnsName);
+        for (Staf staf : stafList) {
+            Object[] o = new Object[2];
+            o[0] = staf.getStafNama();
+            o[1] = staf.getUser().getUserUsername();
+
+            dtm.addRow(o);
+        }
+        tableStaf.setModel(dtm);
+        
+        return stafList;
     }
 }

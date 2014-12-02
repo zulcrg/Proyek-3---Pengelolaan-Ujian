@@ -6,6 +6,11 @@
 package com.jtk.pengelolaanujian.view.admin;
 
 import com.jtk.pengelolaanujian.controller.admin.AssignRoleController;
+import com.jtk.pengelolaanujian.entity.Role;
+import com.jtk.pengelolaanujian.entity.Staf;
+import com.jtk.pengelolaanujian.util.EnumPanel;
+import com.jtk.pengelolaanujian.util.EnumRole;
+import com.jtk.pengelolaanujian.view.util.SearchDialog;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -16,7 +21,8 @@ import javax.swing.JTextField;
  */
 public class AssignRole extends javax.swing.JPanel {
 
-    AssignRoleController assignRoleController = new AssignRoleController();
+    private AssignRoleController assignRoleController = new AssignRoleController();
+    private Staf staf;
 
     /**
      * Creates new form RegistrasiUser
@@ -46,7 +52,7 @@ public class AssignRole extends javax.swing.JPanel {
 
         jLabel1.setText("Username");
 
-        textUsername.setText("mariah");
+        textUsername.setEditable(false);
 
         btnBrowse.setText("Browse");
         btnBrowse.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +198,24 @@ public class AssignRole extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
-        // TODO add your handling code here:
+        staf = new Staf();
+        SearchDialog searchStafDialog = new SearchDialog(null, true, staf, EnumPanel.ASSIGN_ROLE);
+        searchStafDialog.show();
+        textUsername.setText(staf.getUserQuery().getUserUsername());
+        for (Role role : staf.getUserQuery().getRoleListQuery()) {
+            if(role.getRoleKode().equals(EnumRole.ADMIN.getKey())){
+                chkAdmin.setSelected(true);
+            }
+            else if(role.getRoleKode().equals(EnumRole.DOSEN_PENGAMPU.getKey())){
+                chkDosen.setSelected(true);
+            }
+            else if(role.getRoleKode().equals(EnumRole.VNV.getKey())){
+                chkVnv.setSelected(true);
+            }
+            else if(role.getRoleKode().equals(EnumRole.PANITIA.getKey())){
+                chkPanitia.setSelected(true);
+            }
+        }
     }//GEN-LAST:event_btnBrowseActionPerformed
 
     private void chkAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAdminActionPerformed

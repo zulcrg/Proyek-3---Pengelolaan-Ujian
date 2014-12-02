@@ -27,10 +27,10 @@ public class UserFacade {
 
     private final Connection connection = ConnectionHelper.getConnection();
 
-    public UserFacade(){
-        
+    public UserFacade() {
+
     }
-    
+
     public List<User> findAll() {
         try {
             Statement stmt = connection.createStatement();
@@ -98,7 +98,7 @@ public class UserFacade {
     public User findByUsername(String username) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "SELECT user.* FROM user WHERE user.username = '" + username + "'";
+            String query = "SELECT user.* FROM user WHERE user.USER_USERNAME = '" + username + "'";
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
                 User user = new User();
@@ -123,7 +123,7 @@ public class UserFacade {
             boolean flag = stmt.execute("INSERT INTO user(STAF_NIP,USER_USERNAME,USER_PASSWORD) VALUES('" + user.getStafNIP() + "','" + user.getUserUsername() + "','" + user.getUserPassword() + "')");
             return flag;
         } catch (SQLException ex) {
-            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);            
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -137,7 +137,7 @@ public class UserFacade {
         try {
             Statement stmt;
             stmt = connection.createStatement();
-            boolean flag = stmt.execute("DELETE FROM user_to_role WHERE STAF_NIP = '" + user.getStafNIP() + "'");
+            stmt.execute("DELETE FROM user_to_role WHERE STAF_NIP = '" + user.getStafNIP() + "'");
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < user.getRoleList().size(); i++) {
                 Role role = user.getRoleList().get(i);
@@ -148,10 +148,8 @@ public class UserFacade {
                     sb.append(";");
                 }
             }
-            if (flag) {
-                flag = stmt.execute("INSERT INTO user_to_role VALUES" + sb.toString());
-            }
-            return flag;
+
+            return stmt.execute("INSERT INTO user_to_role VALUES" + sb.toString());
         } catch (SQLException ex) {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -168,5 +166,35 @@ public class UserFacade {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+
+    public List<Staf> searchNameUsername(String keyword) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT staf.*, user.USER_USERNAME, user.USER_PASSWORD FROM staf, user "
+                    + "WHERE user.USER_USERNAME like '%" + keyword + "%' OR staf.STAF_NAMA like '%" + keyword + "%' "
+                    + "AND staf.STAF_NIP = user.STAF_NIP ";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Staf> stafList = new ArrayList<>();
+            while (rs.next()) {
+                Staf staf = new Staf();
+                staf.setStafNIP(rs.getString(1));
+                staf.setStafNama(rs.getString(2));
+                staf.setStafEmail(rs.getString(3));
+                staf.setStafKontak(rs.getString(4));
+
+                User user = new User();
+                user.setStafNIP(rs.getString(1));
+                user.setUserUsername(rs.getString(5));
+                user.setUserPassword(rs.getString(6));
+                staf.setUser(user);
+
+                stafList.add(staf);
+            }
+            return stafList;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }
