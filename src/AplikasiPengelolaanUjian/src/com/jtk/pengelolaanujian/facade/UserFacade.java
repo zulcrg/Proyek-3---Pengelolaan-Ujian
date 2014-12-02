@@ -133,7 +133,7 @@ public class UserFacade {
         try {
             Statement stmt;
             stmt = connection.createStatement();
-            boolean flag = stmt.execute("UPDATE USER SET USER_ACTIVE ='" + user.getUserActive() + "' where STAF_NIP ='" + user.getStafNIP() + "'");
+            boolean flag = stmt.execute("UPDATE USER SET USER_ACTIVE ='" + user.isUserActive() + "' where STAF_NIP ='" + user.getStafNIP() + "'");
             return flag;
         } catch (SQLException ex) {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);            

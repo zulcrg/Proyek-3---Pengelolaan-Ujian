@@ -6,12 +6,17 @@
 
 package com.jtk.pengelolaanujian.view.admin;
 
+import com.jtk.pengelolaanujian.entity.Staf;
+import com.jtk.pengelolaanujian.entity.User;
+import com.jtk.pengelolaanujian.util.EnumPanel;
+import com.jtk.pengelolaanujian.view.util.SearchDialog;
+
 /**
  *
  * @author pahlevi
  */
 public class EditUser extends javax.swing.JPanel {
-
+    private User user;
     /**
      * Creates new form EditUser
      */
@@ -28,46 +33,54 @@ public class EditUser extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        textUsername = new javax.swing.JTextField();
+        btnBrowse = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        btnSimpan = new javax.swing.JButton();
+        radAktif = new javax.swing.JRadioButton();
+        radNonAktif = new javax.swing.JRadioButton();
 
         setPreferredSize(new java.awt.Dimension(609, 462));
 
         jLabel1.setText("Username");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        textUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                textUsernameActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Browse");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBrowse.setText("Browse");
+        btnBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBrowseActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Status");
 
-        jButton2.setText("Simpan");
-
-        jRadioButton1.setText("Aktif");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                btnSimpanActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Non-Aktif");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(radAktif);
+        radAktif.setText("Aktif");
+        radAktif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                radAktifActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(radNonAktif);
+        radNonAktif.setText("Non-Aktif");
+        radNonAktif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radNonAktifActionPerformed(evt);
             }
         });
 
@@ -82,15 +95,15 @@ public class EditUser extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
+                    .addComponent(btnSimpan)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(radAktif)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2)))
+                        .addComponent(radNonAktif))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBrowse)))
                 .addContainerGap(282, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,43 +112,61 @@ public class EditUser extends javax.swing.JPanel {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBrowse))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(radAktif)
+                    .addComponent(radNonAktif))
                 .addGap(34, 34, 34)
-                .addComponent(jButton2)
+                .addComponent(btnSimpan)
                 .addContainerGap(305, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        user = new User();
+        Staf staf = new Staf();
+        SearchDialog searchStafDialog = new SearchDialog(null, true, staf, EnumPanel.ASSIGN_ROLE);
+        searchStafDialog.show();
+        user = staf.getUserQuery();
+        textUsername.setText(user.getUserUsername());
+        if(user.isUserActive()){
+            radAktif.setSelected(true);
+        }else{
+            radNonAktif.setSelected(true);
+        }
+            
+              
+    }//GEN-LAST:event_btnBrowseActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void textUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_textUsernameActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void radAktifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radAktifActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_radAktifActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void radNonAktifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNonAktifActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_radNonAktifActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSimpanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnBrowse;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JRadioButton radAktif;
+    private javax.swing.JRadioButton radNonAktif;
+    private javax.swing.JTextField textUsername;
     // End of variables declaration//GEN-END:variables
 }
