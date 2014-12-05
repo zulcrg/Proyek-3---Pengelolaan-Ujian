@@ -29,6 +29,7 @@ public class Soal {
     private Vnv vnv;
 
     public Soal() {
+    
     }
 
     public Soal(String soalKode, String matkulKode, Boolean soalUploaded, Boolean soalVnved, Boolean soalPrinted, String soalSifat) {
@@ -37,9 +38,9 @@ public class Soal {
         this.soalUploaded = soalUploaded;
         this.soalVnved = soalVnved;
         this.soalPrinted = soalPrinted;
-        this.soalSifat = soalSifat;
+        this.soalSifat = soalSifat;        
     }
-
+       
     public String getSoalKode() {
         return soalKode;
     }
