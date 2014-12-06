@@ -273,6 +273,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
         cardLayout.show(cardPanel, EnumRole.ADMIN.toString());
+        adminPanel.preparation();
     }//GEN-LAST:event_btnAdminActionPerformed
 
     private void btnDosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDosenActionPerformed

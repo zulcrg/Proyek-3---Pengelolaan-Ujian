@@ -7,6 +7,7 @@ package com.jtk.pengelolaanujian.view.dosenpengampu;
 
 import com.jtk.pengelolaanujian.controller.dosenPengampu.UploadSoalController;
 import com.jtk.pengelolaanujian.entity.MataKuliah;
+import com.jtk.pengelolaanujian.entity.Soal;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
@@ -20,6 +21,7 @@ public class UploadSoal extends javax.swing.JPanel {
     private final UploadSoalController uploadSoalController = new UploadSoalController();
     private List<MataKuliah> mataKuliahList;
     private String url;
+    private Soal soal;
 
     /**
      * Creates new form RegistrasiUser
@@ -30,6 +32,8 @@ public class UploadSoal extends javax.swing.JPanel {
 
     public void preparation() {
         mataKuliahList = uploadSoalController.searchMatkul(cboMatkul);
+        url = "";
+        soal = new Soal();
     }
 
     /**
@@ -76,9 +80,21 @@ public class UploadSoal extends javax.swing.JPanel {
 
         jLabel3.setText("Sifat Ujian");
 
+        buttonGroup1.add(radTutupBuku);
         radTutupBuku.setText("Tutup Buku");
+        radTutupBuku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radTutupBukuActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(radBukaBuku);
         radBukaBuku.setText("Buka Buku");
+        radBukaBuku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBukaBukuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,6 +169,14 @@ public class UploadSoal extends javax.swing.JPanel {
             textUrl.setText(url);
         }
     }//GEN-LAST:event_btnBrowseActionPerformed
+
+    private void radTutupBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radTutupBukuActionPerformed
+        soal.setSoalSifat("TUTUP BUKU");
+    }//GEN-LAST:event_radTutupBukuActionPerformed
+
+    private void radBukaBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBukaBukuActionPerformed
+        soal.setSoalSifat("BUKA BUKU");
+    }//GEN-LAST:event_radBukaBukuActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -27,6 +27,12 @@ public class EditUser extends javax.swing.JPanel {
         initComponents();
         textUsername.setEditable(false);
     }
+    
+    public void preparation(){
+        textUsername.setText("");
+        radAktif.setSelected(false);
+        radNonAktif.setSelected(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

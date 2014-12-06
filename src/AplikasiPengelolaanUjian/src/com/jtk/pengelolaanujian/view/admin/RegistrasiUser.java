@@ -28,6 +28,13 @@ public class RegistrasiUser extends javax.swing.JPanel {
     public RegistrasiUser() {
         initComponents();
     }
+    
+    public void preparation(){
+        textNama.setText("");
+        textUsername.setText("");
+        textPassword.setText("");
+        textPasswordRetype.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

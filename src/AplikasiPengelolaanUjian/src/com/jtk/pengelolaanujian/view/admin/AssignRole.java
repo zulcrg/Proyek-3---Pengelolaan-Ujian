@@ -31,6 +31,14 @@ public class AssignRole extends javax.swing.JPanel {
         initComponents();
     }
 
+    public void preparation() {
+        textUsername.setText("");
+        chkAdmin.setSelected(false);
+        chkDosen.setSelected(false);
+        chkPanitia.setSelected(false);
+        chkVnv.setSelected(false);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -204,16 +212,13 @@ public class AssignRole extends javax.swing.JPanel {
         searchStafDialog.show();
         textUsername.setText(staf.getUserQuery().getUserUsername());
         for (Role role : staf.getUserQuery().getRoleListQuery()) {
-            if(role.getRoleKode().equals(EnumRole.ADMIN.getKey())){
+            if (role.getRoleKode().equals(EnumRole.ADMIN.getKey())) {
                 chkAdmin.setSelected(true);
-            }
-            else if(role.getRoleKode().equals(EnumRole.DOSEN_PENGAMPU.getKey())){
+            } else if (role.getRoleKode().equals(EnumRole.DOSEN_PENGAMPU.getKey())) {
                 chkDosen.setSelected(true);
-            }
-            else if(role.getRoleKode().equals(EnumRole.VNV.getKey())){
+            } else if (role.getRoleKode().equals(EnumRole.VNV.getKey())) {
                 chkVnv.setSelected(true);
-            }
-            else if(role.getRoleKode().equals(EnumRole.PANITIA.getKey())){
+            } else if (role.getRoleKode().equals(EnumRole.PANITIA.getKey())) {
                 chkPanitia.setSelected(true);
             }
         }
