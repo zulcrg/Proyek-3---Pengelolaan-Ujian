@@ -28,19 +28,49 @@ public class DosenPengampuPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        registrasiUser1 = new com.jtk.pengelolaanujian.view.admin.RegistrasiUser();
+        editUser1 = new com.jtk.pengelolaanujian.view.admin.EditUser();
+        assignRole1 = new com.jtk.pengelolaanujian.view.admin.AssignRole();
+        createUndangan1 = new com.jtk.pengelolaanujian.view.admin.CreateUndangan();
+
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTabbedPane1.addTab("Registrasi User", registrasiUser1);
+        jTabbedPane1.addTab("Edit User", editUser1);
+        jTabbedPane1.addTab("Assign Role", assignRole1);
+
+        javax.swing.GroupLayout createUndangan1Layout = new javax.swing.GroupLayout(createUndangan1);
+        createUndangan1.setLayout(createUndangan1Layout);
+        createUndangan1Layout.setHorizontalGroup(
+            createUndangan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 609, Short.MAX_VALUE)
+        );
+        createUndangan1Layout.setVerticalGroup(
+            createUndangan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 462, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Buat Undangan", createUndangan1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 649, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.jtk.pengelolaanujian.view.admin.AssignRole assignRole1;
+    private com.jtk.pengelolaanujian.view.admin.CreateUndangan createUndangan1;
+    private com.jtk.pengelolaanujian.view.admin.EditUser editUser1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private com.jtk.pengelolaanujian.view.admin.RegistrasiUser registrasiUser1;
     // End of variables declaration//GEN-END:variables
 }
