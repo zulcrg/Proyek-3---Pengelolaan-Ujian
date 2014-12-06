@@ -23,6 +23,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private CardLayout cardLayout = new CardLayout();
     private static boolean logedIn = false;
+    private final AdminPanel adminPanel = new AdminPanel();
+    private final DosenPengampuPanel dosenPengampuPanel = new DosenPengampuPanel();
+    private final PanitiaPanel panitiaPanel = new PanitiaPanel();
+    private final VnvPanel vnvPanel = new VnvPanel();
+    private final LoginPanel loginPanel = new LoginPanel(this);
+    private final WelcomePanel panel = new WelcomePanel(this);
 
     /**
      * Creates new form MainFrame
@@ -33,18 +39,12 @@ public class MainFrame extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Applikasi Pengelolaan Ujian - Development");
         cardPanel.setLayout(cardLayout);
-        AdminPanel adminPanel = new AdminPanel();
-        DosenPengampuPanel dosenPengampuPanel = new DosenPengampuPanel();
-        PanitiaPanel panitiaPanel = new PanitiaPanel();
-        VnvPanel vnvPanel = new VnvPanel();
-        LoginPanel loginPanel = new LoginPanel(this);
-        WelcomePanel panel = new WelcomePanel(this);
         cardPanel.add(loginPanel, "0");
         cardPanel.add(panel, "1");
         cardPanel.add(adminPanel, EnumRole.ADMIN.toString());
         cardPanel.add(dosenPengampuPanel, EnumRole.DOSEN_PENGAMPU.toString());
         cardPanel.add(panitiaPanel, EnumRole.PANITIA.toString());
-        cardPanel.add(vnvPanel, EnumRole.VNV.toString());  
+        cardPanel.add(vnvPanel, EnumRole.VNV.toString());
         setMenuFalse();
         setMenuLogout();
     }
@@ -56,8 +56,8 @@ public class MainFrame extends javax.swing.JFrame {
             menuLogout.setVisible(false);
         }
     }
-    
-    public final void setMenuFalse(){
+
+    public final void setMenuFalse() {
         btnAdmin.setVisible(false);
         btnDosen.setVisible(false);
         btnPanitia.setVisible(false);
@@ -277,6 +277,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnDosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDosenActionPerformed
         cardLayout.show(cardPanel, EnumRole.DOSEN_PENGAMPU.toString());
+        dosenPengampuPanel.preparation();
     }//GEN-LAST:event_btnDosenActionPerformed
 
     private void btnVnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVnvActionPerformed

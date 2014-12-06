@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.view.dosenpengampu;
 
 /**
@@ -17,6 +16,10 @@ public class DosenPengampuPanel extends javax.swing.JPanel {
      */
     public DosenPengampuPanel() {
         initComponents();
+    }
+
+    public void preparation() {
+        uploadSoal1.preparation();
     }
 
     /**

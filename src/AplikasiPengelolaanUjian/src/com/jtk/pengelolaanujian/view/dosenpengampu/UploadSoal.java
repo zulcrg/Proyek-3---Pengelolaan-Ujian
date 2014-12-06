@@ -5,6 +5,9 @@
  */
 package com.jtk.pengelolaanujian.view.dosenpengampu;
 
+import com.jtk.pengelolaanujian.controller.dosenPengampu.UploadSoalController;
+import com.jtk.pengelolaanujian.entity.MataKuliah;
+import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 
@@ -14,6 +17,8 @@ import javax.swing.JTextField;
  */
 public class UploadSoal extends javax.swing.JPanel {
 
+    private final UploadSoalController uploadSoalController = new UploadSoalController();
+    private List<MataKuliah> mataKuliahList;
     private String url;
 
     /**
@@ -21,6 +26,10 @@ public class UploadSoal extends javax.swing.JPanel {
      */
     public UploadSoal() {
         initComponents();
+    }
+
+    public void preparation() {
+        mataKuliahList = uploadSoalController.searchMatkul(cboMatkul);
     }
 
     /**
