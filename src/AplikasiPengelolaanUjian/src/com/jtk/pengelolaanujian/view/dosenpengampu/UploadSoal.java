@@ -32,10 +32,16 @@ public class UploadSoal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         textUrl = new javax.swing.JTextField();
         btnBrowse = new javax.swing.JButton();
         btnUpload = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        cboMatkul = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        radTutupBuku = new javax.swing.JRadioButton();
+        radBukaBuku = new javax.swing.JRadioButton();
 
         jLabel1.setText("Pilih File");
 
@@ -55,23 +61,45 @@ public class UploadSoal extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setText("Mata Kuliah");
+
+        cboMatkul.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setText("Sifat Ujian");
+
+        radTutupBuku.setText("Tutup Buku");
+
+        radBukaBuku.setText("Buka Buku");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(textUrl, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBrowse)
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 40, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(radTutupBuku)
+                                .addGap(18, 18, 18)
+                                .addComponent(radBukaBuku))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cboMatkul, 0, 284, Short.MAX_VALUE)
+                                    .addComponent(textUrl))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBrowse))
+                            .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(122, 122, 122))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,9 +109,18 @@ public class UploadSoal extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(textUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBrowse))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cboMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(radTutupBuku)
+                    .addComponent(radBukaBuku))
                 .addGap(18, 18, 18)
                 .addComponent(btnUpload)
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addContainerGap(299, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -112,7 +149,13 @@ public class UploadSoal extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowse;
     private javax.swing.JButton btnUpload;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox cboMatkul;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JRadioButton radBukaBuku;
+    private javax.swing.JRadioButton radTutupBuku;
     private javax.swing.JTextField textUrl;
     // End of variables declaration//GEN-END:variables
 }
