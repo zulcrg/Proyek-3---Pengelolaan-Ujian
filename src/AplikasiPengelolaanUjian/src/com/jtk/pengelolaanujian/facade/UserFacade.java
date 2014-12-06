@@ -9,6 +9,7 @@ import com.jtk.pengelolaanujian.entity.Role;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -86,6 +87,7 @@ public class UserFacade {
                 user.setStafNIP(rs.getString(1));
                 user.setUserUsername(rs.getString(2));
                 user.setUserPassword(rs.getString(3));
+                user.setUserActive(rs.getBoolean(4));
 
                 return user;
             }
@@ -114,16 +116,16 @@ public class UserFacade {
         }
         return null;
     }
-    
+
     public boolean editUser(User user) {
 
         try {
             Statement stmt;
             stmt = connection.createStatement();
-            boolean flag = stmt.execute("UPDATE USER SET USER_ACTIVE ='" + user.isUserActive() + "' where STAF_NIP ='" + user.getStafNIP() + "'");
-            return flag;
+            stmt.execute("UPDATE USER SET USER_ACTIVE = " + user.getUserActive() + " where STAF_NIP ='" + user.getStafNIP() + "'");
+            return true;
         } catch (SQLException ex) {
-            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);            
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -160,7 +162,7 @@ public class UserFacade {
         try {
             Statement stmt;
             stmt = connection.createStatement();
-            boolean flag = stmt.execute("INSERT INTO user(STAF_NIP,USER_USERNAME,USER_PASSWORD) VALUES('" + staf.getStafNIP() + "','" + textNama + "','" + textPassword + "')");
+            boolean flag = stmt.execute("INSERT INTO user(STAF_NIP,USER_USERNAME,USER_PASSWORD) VALUES('" + staf.getStafNIP() + "','" + textNama + "','" + textPassword + "', 1)");
             return flag;
         } catch (SQLException ex) {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
@@ -172,8 +174,38 @@ public class UserFacade {
         try {
             Statement stmt = connection.createStatement();
             String query = "SELECT staf.*, user.USER_USERNAME, user.USER_PASSWORD FROM staf, user "
-                    + "WHERE user.USER_USERNAME like '%" + keyword + "%' OR staf.STAF_NAMA like '%" + keyword + "%' "
+                    + "WHERE (user.USER_USERNAME like '%" + keyword + "%' OR staf.STAF_NAMA like '%" + keyword + "%' )"
                     + "AND staf.STAF_NIP = user.STAF_NIP ";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Staf> stafList = new ArrayList<>();
+            while (rs.next()) {
+                Staf staf = new Staf();
+                staf.setStafNIP(rs.getString(1));
+                staf.setStafNama(rs.getString(2));
+                staf.setStafEmail(rs.getString(3));
+                staf.setStafKontak(rs.getString(4));
+
+                User user = new User();
+                user.setStafNIP(rs.getString(1));
+                user.setUserUsername(rs.getString(5));
+                user.setUserPassword(rs.getString(6));
+                staf.setUser(user);
+
+                stafList.add(staf);
+            }
+            return stafList;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Staf> searchNameUsernameNotMe(String keyword) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT staf.*, user.USER_USERNAME, user.USER_PASSWORD FROM staf, user "
+                    + "WHERE (user.USER_USERNAME like '%" + keyword + "%' OR staf.STAF_NAMA like '%" + keyword + "%' )"
+                    + "AND staf.STAF_NIP = user.STAF_NIP AND user.USER_USERNAME <> '" + LoginPanel.getUsername() + "'";
             ResultSet rs = stmt.executeQuery(query);
             List<Staf> stafList = new ArrayList<>();
             while (rs.next()) {

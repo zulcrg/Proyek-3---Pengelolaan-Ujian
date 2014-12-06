@@ -10,12 +10,12 @@ package com.jtk.pengelolaanujian.view.util;
  *
  * @author pahlevi
  */
-public class ContactPerson extends javax.swing.JDialog {
+public class AboutAppsDialog extends javax.swing.JDialog {
 
     /**
-     * Creates new form ContactPerson
+     * Creates new form AboutApps
      */
-    public ContactPerson(java.awt.Frame parent, boolean modal) {
+    public AboutAppsDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -34,23 +34,23 @@ public class ContactPerson extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Contact Person");
+        jLabel1.setText("About Apps ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel1)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         pack();

@@ -3,25 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.view.admin;
 
+import com.jtk.pengelolaanujian.controller.admin.EditUserController;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.util.EnumPanel;
 import com.jtk.pengelolaanujian.view.util.SearchDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author pahlevi
  */
 public class EditUser extends javax.swing.JPanel {
+
     private User user;
+
     /**
      * Creates new form EditUser
      */
     public EditUser() {
         initComponents();
+        textUsername.setEditable(false);
     }
 
     /**
@@ -129,17 +133,19 @@ public class EditUser extends javax.swing.JPanel {
         // TODO add your handling code here:
         user = new User();
         Staf staf = new Staf();
-        SearchDialog searchStafDialog = new SearchDialog(null, true, staf, EnumPanel.ASSIGN_ROLE);
+        SearchDialog searchStafDialog = new SearchDialog(null, true, staf, EnumPanel.EDIT_USER);
         searchStafDialog.show();
         user = staf.getUserQuery();
-        textUsername.setText(user.getUserUsername());
-        if(user.isUserActive()){
-            radAktif.setSelected(true);
-        }else{
-            radNonAktif.setSelected(true);
+        if (user != null) {
+            textUsername.setText(user.getUserUsername());
+            if (user.isUserActive()) {
+                radAktif.setSelected(true);
+            } else {
+                radNonAktif.setSelected(true);
+            }
         }
-            
-              
+
+
     }//GEN-LAST:event_btnBrowseActionPerformed
 
     private void textUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUsernameActionPerformed
@@ -147,15 +153,21 @@ public class EditUser extends javax.swing.JPanel {
     }//GEN-LAST:event_textUsernameActionPerformed
 
     private void radAktifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radAktifActionPerformed
-        // TODO add your handling code here:
+        user.setUserActive(true);
     }//GEN-LAST:event_radAktifActionPerformed
 
     private void radNonAktifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNonAktifActionPerformed
-        // TODO add your handling code here:
+        user.setUserActive(false);
     }//GEN-LAST:event_radNonAktifActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        // TODO add your handling code here:
+        EditUserController editUserController = new EditUserController();
+        if (editUserController.editUser(user)) {
+            JOptionPane.showMessageDialog(this, "Edit user berhasil dilakukan");
+        } else {
+            JOptionPane.showMessageDialog(this, "Edit user gagal dilakukan", "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnSimpanActionPerformed
 
 

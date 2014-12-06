@@ -9,6 +9,7 @@ import com.jtk.pengelolaanujian.util.EnumRole;
 import com.jtk.pengelolaanujian.view.admin.AdminPanel;
 import com.jtk.pengelolaanujian.view.dosenpengampu.DosenPengampuPanel;
 import com.jtk.pengelolaanujian.view.panitia.PanitiaPanel;
+import com.jtk.pengelolaanujian.view.util.AboutAppsDialog;
 import com.jtk.pengelolaanujian.view.vnv.VnvPanel;
 import java.awt.CardLayout;
 import javax.swing.JButton;
@@ -21,6 +22,7 @@ import javax.swing.JPanel;
 public class MainFrame extends javax.swing.JFrame {
 
     private CardLayout cardLayout = new CardLayout();
+    private static boolean logedIn = false;
 
     /**
      * Creates new form MainFrame
@@ -36,17 +38,31 @@ public class MainFrame extends javax.swing.JFrame {
         PanitiaPanel panitiaPanel = new PanitiaPanel();
         VnvPanel vnvPanel = new VnvPanel();
         LoginPanel loginPanel = new LoginPanel(this);
-        JPanel panel = new JPanel();
+        WelcomePanel panel = new WelcomePanel(this);
         cardPanel.add(loginPanel, "0");
         cardPanel.add(panel, "1");
         cardPanel.add(adminPanel, EnumRole.ADMIN.toString());
         cardPanel.add(dosenPengampuPanel, EnumRole.DOSEN_PENGAMPU.toString());
         cardPanel.add(panitiaPanel, EnumRole.PANITIA.toString());
-        cardPanel.add(vnvPanel, EnumRole.VNV.toString());
+        cardPanel.add(vnvPanel, EnumRole.VNV.toString());  
+        setMenuFalse();
+        setMenuLogout();
+    }
+
+    public final void setMenuLogout() {
+        if (isLogedIn()) {
+            menuLogout.setVisible(true);
+        } else {
+            menuLogout.setVisible(false);
+        }
+    }
+    
+    public final void setMenuFalse(){
         btnAdmin.setVisible(false);
         btnDosen.setVisible(false);
         btnPanitia.setVisible(false);
         btnVnv.setVisible(false);
+        menuPanel.setVisible(false);
     }
 
     public CardLayout getCardLayout() {
@@ -97,6 +113,22 @@ public class MainFrame extends javax.swing.JFrame {
         this.cardPanel = cardPanel;
     }
 
+    public static boolean isLogedIn() {
+        return logedIn;
+    }
+
+    public static void setLogedIn(boolean logedIn) {
+        MainFrame.logedIn = logedIn;
+    }
+
+    public JPanel getMenuPanel() {
+        return menuPanel;
+    }
+
+    public void setMenuPanel(JPanel menuPanel) {
+        this.menuPanel = menuPanel;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,16 +138,29 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        menuPanel = new javax.swing.JPanel();
         btnAdmin = new javax.swing.JButton();
         btnDosen = new javax.swing.JButton();
         btnVnv = new javax.swing.JButton();
         btnPanitia = new javax.swing.JButton();
         cardPanel = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        menuLogout = new javax.swing.JMenuItem();
+        menuAbout = new javax.swing.JMenuItem();
+
+        jMenu3.setText("File");
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        jMenuBar2.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        menuPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnAdmin.setText("Admin");
         btnAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -145,11 +190,11 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
+        menuPanel.setLayout(menuPanelLayout);
+        menuPanelLayout.setHorizontalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanelLayout.createSequentialGroup()
                 .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,9 +204,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btnPanitia, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 110, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        menuPanelLayout.setVerticalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnAdmin)
                 .addComponent(btnDosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVnv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -179,18 +224,40 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 536, Short.MAX_VALUE)
         );
 
+        jMenu1.setText("File");
+
+        menuLogout.setText("Log out");
+        menuLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLogoutActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuLogout);
+
+        menuAbout.setText("About");
+        menuAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAboutActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuAbout);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -199,7 +266,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
-        cardLayout.show(cardPanel, EnumRole.ADMIN.toString());        
+        cardLayout.show(cardPanel, EnumRole.ADMIN.toString());
     }//GEN-LAST:event_btnAdminActionPerformed
 
     private void btnDosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDosenActionPerformed
@@ -214,12 +281,32 @@ public class MainFrame extends javax.swing.JFrame {
         cardLayout.show(cardPanel, EnumRole.PANITIA.toString());
     }//GEN-LAST:event_btnPanitiaActionPerformed
 
+    private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
+        cardLayout.show(cardPanel, "0");
+        logedIn = false;
+        setMenuLogout();
+        menuPanel.setVisible(false);
+        setMenuFalse();
+    }//GEN-LAST:event_menuLogoutActionPerformed
+
+    private void menuAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAboutActionPerformed
+        AboutAppsDialog aboutAppsDialog = new AboutAppsDialog(this, true);
+        aboutAppsDialog.show();
+    }//GEN-LAST:event_menuAboutActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnDosen;
     private javax.swing.JButton btnPanitia;
     private javax.swing.JButton btnVnv;
     private javax.swing.JPanel cardPanel;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem menuAbout;
+    private javax.swing.JMenuItem menuLogout;
+    private javax.swing.JPanel menuPanel;
     // End of variables declaration//GEN-END:variables
 }

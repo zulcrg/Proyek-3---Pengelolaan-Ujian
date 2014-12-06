@@ -20,8 +20,6 @@ public class User {
     private boolean userActive;
     private List<Role> roleList;
 
-   
-
     public User() {
 
     }
@@ -56,7 +54,7 @@ public class User {
         roleList = roleControler.findByKodeStafNIP(this.getStafNIP());
         return roleList;
     }
-    
+
     public List<Role> getRoleList() {
         return roleList;
     }
@@ -69,9 +67,16 @@ public class User {
         return userActive;
     }
 
+    public int getUserActive() {
+        if (userActive) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     public void setUserActive(boolean userActive) {
         this.userActive = userActive;
     }
-    
 
 }

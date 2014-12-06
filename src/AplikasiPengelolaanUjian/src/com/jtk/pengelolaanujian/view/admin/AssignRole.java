@@ -192,6 +192,7 @@ public class AssignRole extends javax.swing.JPanel {
             roleList[2] = chkVnv.isSelected();
             roleList[3] = chkPanitia.isSelected();
             assignRoleController.assignRole(textUsername.getText(), roleList);
+            JOptionPane.showMessageDialog(this, "Assign role berhasil");
         } else {
             JOptionPane.showMessageDialog(this, "Harap isi username terlebih dahulu");
         }

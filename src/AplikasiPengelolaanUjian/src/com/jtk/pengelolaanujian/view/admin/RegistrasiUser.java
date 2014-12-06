@@ -133,17 +133,21 @@ public class RegistrasiUser extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBrowseActionPerformed
 
     private void btnRegistrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrasiActionPerformed
-        if(textNama.getText() != null && !textNama.getText().isEmpty()) {
+        if (textNama.getText() != null && !textNama.getText().isEmpty()) {
             if (textUsername.getText() != null && !textUsername.getText().isEmpty()) {
                 if (textPassword.getText().equals(textPasswordRetype.getText())) {
                     if (textPassword.getText() != null && !textPassword.getText().isEmpty()) {
-                        registrasiUserController.registrasiUser(staf, textUsername.getText(), textPassword.getText());
-                        JOptionPane.showMessageDialog(this, "User baru berhasil diinputkan, Nama ->"+staf.getStafNama());
-                        textNama.setText("");
-                        textPassword.setText("");
-                        textPasswordRetype.setText("");
-                        textUsername.setText("");
-                    }else{
+                        if (registrasiUserController.isStrongPassword(textPassword.getText())) {
+                            registrasiUserController.registrasiUser(staf, textUsername.getText(), textPassword.getText());
+                            JOptionPane.showMessageDialog(this, "User baru berhasil diinputkan, Nama ->" + staf.getStafNama());
+                            textNama.setText("");
+                            textPassword.setText("");
+                            textPasswordRetype.setText("");
+                            textUsername.setText("");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Password minimal harus 8 karakter terdiri dari huruf besar, huruf kecil, dan angka");
+                        }
+                    } else {
                         JOptionPane.showMessageDialog(this, "harap isi password");
                     }
                 } else {
@@ -152,9 +156,9 @@ public class RegistrasiUser extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "Harap isi username dan atau password terlebih dahulu");
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Harap isi Nama");
-        }        
+        }
     }//GEN-LAST:event_btnRegistrasiActionPerformed
 
 
