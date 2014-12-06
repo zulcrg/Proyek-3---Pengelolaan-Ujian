@@ -108,6 +108,7 @@ public class UserFacade {
                 user.setStafNIP(rs.getString(1));
                 user.setUserUsername(rs.getString(2));
                 user.setUserPassword(rs.getString(3));
+                user.setUserActive(rs.getBoolean(4));
 
                 return user;
             }

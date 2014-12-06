@@ -60,19 +60,19 @@ public class LoginPanel extends javax.swing.JPanel {
                             username = textUsername.getText();
                         }
                     } else {
-                        JOptionPane.showMessageDialog(mainFrame, "User anda tidak aktif");
+                        JOptionPane.showMessageDialog(mainFrame, "User anda tidak aktif", "Perhatian", JOptionPane.WARNING_MESSAGE);
                         textUsername.requestFocus();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(mainFrame, "Kesalahan pada username atau password");
+                    JOptionPane.showMessageDialog(mainFrame, "Kesalahan pada username atau password", "Perhatian", JOptionPane.WARNING_MESSAGE);
                     textUsername.requestFocus();
                 }
             } else {
-                JOptionPane.showMessageDialog(mainFrame, "Harap isi password");
+                JOptionPane.showMessageDialog(mainFrame, "Harap isi password", "Perhatian", JOptionPane.WARNING_MESSAGE);
                 textPassword.requestFocus();
             }
         } else {
-            JOptionPane.showMessageDialog(mainFrame, "Harap isi username");
+            JOptionPane.showMessageDialog(mainFrame, "Harap isi username", "Perhatian", JOptionPane.WARNING_MESSAGE);
             textUsername.requestFocus();
         }
 
