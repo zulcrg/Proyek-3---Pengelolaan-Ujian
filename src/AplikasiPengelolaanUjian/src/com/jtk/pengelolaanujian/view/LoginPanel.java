@@ -38,25 +38,30 @@ public class LoginPanel extends javax.swing.JPanel {
                 User user = userFacade.findByUsername(textUsername.getText());
                 if (user != null) {
                     if (user.getUserPassword().equals(textPassword.getText())) {
-                        for (Role role : user.getRoleListQuery()) {
-                            if (role.getRoleKode().equals(EnumRole.ADMIN.getKey())) {
-                                mainFrame.getBtnAdmin().setVisible(true);
+                        if (user.isUserActive()) {
+                            for (Role role : user.getRoleListQuery()) {
+                                if (role.getRoleKode().equals(EnumRole.ADMIN.getKey())) {
+                                    mainFrame.getBtnAdmin().setVisible(true);
+                                }
+                                if (role.getRoleKode().equals(EnumRole.DOSEN_PENGAMPU.getKey())) {
+                                    mainFrame.getBtnDosen().setVisible(true);
+                                }
+                                if (role.getRoleKode().equals(EnumRole.PANITIA.getKey())) {
+                                    mainFrame.getBtnPanitia().setVisible(true);
+                                }
+                                if (role.getRoleKode().equals(EnumRole.VNV.getKey())) {
+                                    mainFrame.getBtnVnv().setVisible(true);
+                                }
                             }
-                            if (role.getRoleKode().equals(EnumRole.DOSEN_PENGAMPU.getKey())) {
-                                mainFrame.getBtnDosen().setVisible(true);
-                            }
-                            if (role.getRoleKode().equals(EnumRole.PANITIA.getKey())) {
-                                mainFrame.getBtnPanitia().setVisible(true);
-                            }
-                            if (role.getRoleKode().equals(EnumRole.VNV.getKey())) {
-                                mainFrame.getBtnVnv().setVisible(true);
-                            }
+                            mainFrame.getCardLayout().show(mainFrame.getCardPanel(), "1");
+                            MainFrame.setLogedIn(true);
+                            mainFrame.setMenuLogout();
+                            mainFrame.getMenuPanel().setVisible(true);
+                            username = textUsername.getText();
                         }
-                        mainFrame.getCardLayout().show(mainFrame.getCardPanel(), "1");
-                        MainFrame.setLogedIn(true);
-                        mainFrame.setMenuLogout();
-                        mainFrame.getMenuPanel().setVisible(true);
-                        username = textUsername.getText();
+                    } else {
+                        JOptionPane.showMessageDialog(mainFrame, "User anda tidak aktif");
+                        textUsername.requestFocus();
                     }
                 } else {
                     JOptionPane.showMessageDialog(mainFrame, "Kesalahan pada username atau password");
