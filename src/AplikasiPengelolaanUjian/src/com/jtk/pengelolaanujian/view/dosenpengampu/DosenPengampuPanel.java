@@ -20,6 +20,7 @@ public class DosenPengampuPanel extends javax.swing.JPanel {
 
     public void preparation() {
         uploadSoal1.preparation();
+        uploadNilai1.preparation();
     }
 
     /**
@@ -33,10 +34,12 @@ public class DosenPengampuPanel extends javax.swing.JPanel {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         uploadSoal1 = new com.jtk.pengelolaanujian.view.dosenpengampu.UploadSoal();
+        uploadNilai1 = new com.jtk.pengelolaanujian.view.dosenpengampu.UploadNilai();
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Upload Soal", uploadSoal1);
+        jTabbedPane1.addTab("Upload Nilai", uploadNilai1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -53,6 +56,7 @@ public class DosenPengampuPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane1;
+    private com.jtk.pengelolaanujian.view.dosenpengampu.UploadNilai uploadNilai1;
     private com.jtk.pengelolaanujian.view.dosenpengampu.UploadSoal uploadSoal1;
     // End of variables declaration//GEN-END:variables
 }
