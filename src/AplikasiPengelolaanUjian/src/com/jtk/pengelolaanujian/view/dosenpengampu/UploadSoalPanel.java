@@ -12,12 +12,12 @@ import javax.swing.JFileChooser;
  *
  * @author pahlevi
  */
-public class UploadSoal extends javax.swing.JFrame {
+public class UploadSoalPanel extends javax.swing.JFrame {
 
     /**
      * Creates new form UploadSoal
      */
-    public UploadSoal() {
+    public UploadSoalPanel() {
         initComponents();
     }
 
