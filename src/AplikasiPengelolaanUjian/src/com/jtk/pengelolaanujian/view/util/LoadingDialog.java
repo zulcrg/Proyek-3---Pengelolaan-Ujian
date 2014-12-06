@@ -72,7 +72,7 @@ public class LoadingDialog extends javax.swing.JDialog {
 
         jLabel2.setText("Loading .....");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sharereport/image/loading.gif"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/pengelolaanujian/image/loading.gif"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
