@@ -5,6 +5,7 @@
  */
 package com.jtk.pengelolaanujian.view.dosenpengampu;
 
+import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 
 /**
@@ -12,6 +13,8 @@ import javax.swing.JTextField;
  * @author Zulkhair Abdullah D
  */
 public class UploadSoal extends javax.swing.JPanel {
+
+    private String url;
 
     /**
      * Creates new form RegistrasiUser
@@ -30,13 +33,13 @@ public class UploadSoal extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        textUsername = new javax.swing.JTextField();
+        textUrl = new javax.swing.JTextField();
         btnBrowse = new javax.swing.JButton();
-        btnAssign = new javax.swing.JButton();
+        btnUpload = new javax.swing.JButton();
 
         jLabel1.setText("Pilih File");
 
-        textUsername.setEditable(false);
+        textUrl.setEditable(false);
 
         btnBrowse.setText("Browse");
         btnBrowse.addActionListener(new java.awt.event.ActionListener() {
@@ -45,10 +48,10 @@ public class UploadSoal extends javax.swing.JPanel {
             }
         });
 
-        btnAssign.setText("Upload");
-        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+        btnUpload.setText("Upload");
+        btnUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignActionPerformed(evt);
+                btnUploadActionPerformed(evt);
             }
         });
 
@@ -62,12 +65,12 @@ public class UploadSoal extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(textUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                        .addComponent(textUrl, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBrowse)
                         .addGap(122, 122, 122))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -76,35 +79,40 @@ public class UploadSoal extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBrowse))
                 .addGap(18, 18, 18)
-                .addComponent(btnAssign)
+                .addComponent(btnUpload)
                 .addContainerGap(365, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     public JTextField getTextUsername() {
-        return textUsername;
+        return textUrl;
     }
 
     public void setTextUsername(JTextField textUsername) {
-        this.textUsername = textUsername;
+        this.textUrl = textUsername;
     }
 
-    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
 
-    }//GEN-LAST:event_btnAssignActionPerformed
+    }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
-
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            url = fileChooser.getSelectedFile().getAbsolutePath();
+            textUrl.setText(url);
+        }
     }//GEN-LAST:event_btnBrowseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnBrowse;
+    private javax.swing.JButton btnUpload;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField textUsername;
+    private javax.swing.JTextField textUrl;
     // End of variables declaration//GEN-END:variables
 }
