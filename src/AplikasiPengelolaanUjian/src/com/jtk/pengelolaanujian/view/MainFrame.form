@@ -108,8 +108,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnPanitia" min="-2" pref="140" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="151" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jButton1" pref="151" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -117,8 +117,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnDosen" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnVnv" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnDosen" alignment="3" max="32767" attributes="0"/>
+                  <Component id="btnVnv" alignment="3" max="32767" attributes="0"/>
                   <Component id="btnPanitia" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>

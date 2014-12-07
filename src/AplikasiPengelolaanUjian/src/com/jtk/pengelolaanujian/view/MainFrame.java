@@ -206,15 +206,15 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPanitia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                .addGap(4, 4, 4))
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnAdmin)
-                .addComponent(btnDosen)
-                .addComponent(btnVnv)
+                .addComponent(btnDosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVnv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnPanitia)
                 .addComponent(jButton1))
         );
@@ -283,12 +283,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnVnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVnvActionPerformed
         cardLayout.show(cardPanel, EnumRole.VNV.toString());
-        vnvPanel.preparation();
     }//GEN-LAST:event_btnVnvActionPerformed
 
     private void btnPanitiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanitiaActionPerformed
         cardLayout.show(cardPanel, EnumRole.PANITIA.toString());
-        panitiaPanel.preparation();
     }//GEN-LAST:event_btnPanitiaActionPerformed
 
     private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
