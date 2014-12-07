@@ -18,7 +18,6 @@ public class DashboardPanel extends javax.swing.JFrame {
     /**
      * Creates new form DashboardPanel
      */
-
     private JPanel panel;
     private final ChartPanel1 piechart;
     private final ChartPanel2 barchart;
