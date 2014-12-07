@@ -63,4 +63,30 @@ public class MataKuliahFacade {
         }
         return null;
     }
+
+    public List<MataKuliah> findByUsername(String username) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT mata_kuliah.* FROM mata_kuliah "
+                    + "INNER JOIN mata_kuliah_to_dosen ON (mata_kuliah.MATKUL_KODE = mata_kuliah_to_dosen.MATKUL_KODE) "
+                    + "INNER JOIN dosen ON (mata_kuliah_to_dosen.DOSEN_KODE = dosen.DOSEN_KODE) "
+                    + "INNER JOIN staf ON (dosen.STAF_NIP = staf.STAF_NIP) "
+                    + "INNER JOIN user ON (user.STAF_NIP = staf.STAF_NIP) "
+                    + "WHERE user.USER_USERNAME = '" + username + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<MataKuliah> mataKuliahList = new ArrayList<>();
+            while (rs.next()) {
+                MataKuliah mataKuliah = new MataKuliah();
+                mataKuliah.setMatkulKode(rs.getString(1));
+                mataKuliah.setMatkulNama(rs.getString(2));
+                mataKuliah.setMatkulTipe(rs.getString(3));
+
+                mataKuliahList.add(mataKuliah);
+            }
+            return mataKuliahList;
+        } catch (SQLException ex) {
+            Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

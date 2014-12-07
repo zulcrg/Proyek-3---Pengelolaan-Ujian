@@ -6,6 +6,7 @@
 package com.jtk.pengelolaanujian.view.util;
 
 import com.jtk.pengelolaanujian.controller.admin.AssignRoleController;
+import com.jtk.pengelolaanujian.controller.admin.EditUserController;
 import com.jtk.pengelolaanujian.controller.admin.RegistrasiUserController;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.util.EnumPanel;
@@ -24,6 +25,7 @@ public class SearchDialog extends javax.swing.JDialog {
     private List<Staf> stafList;
     private final RegistrasiUserController registrasiUserController = new RegistrasiUserController();
     private final AssignRoleController assignRoleController = new AssignRoleController();
+    private final EditUserController editUserController = new EditUserController();
     private final EnumPanel enumPanel;
 
     /**
@@ -42,6 +44,10 @@ public class SearchDialog extends javax.swing.JDialog {
         setResizable(false);
         this.staf = staf;
         this.enumPanel = enumPanel;
+        switchPanel();
+    }
+
+    public final void switchPanel() {
         switch (enumPanel) {
             case REGISTER_USER:
                 registrasiUserController.searchUser("", tableStaf);
@@ -51,7 +57,26 @@ public class SearchDialog extends javax.swing.JDialog {
                 stafList = assignRoleController.searchUser("", tableStaf);
                 textSearch.setText("Cari berdasarkan Nama atau Username");
                 break;
+            case EDIT_USER:
+                stafList = editUserController.searchUserNotMe("", tableStaf);
+                textSearch.setText("Cari berdasarkan Nama atau Username");
+                break;
         }
+    }
+    
+    public void select(){
+        switch (enumPanel) {
+            case REGISTER_USER:
+                staf.setStafNama(tableStaf.getValueAt(tableStaf.getSelectedRow(), 0).toString());
+                staf.setStafNIP(tableStaf.getValueAt(tableStaf.getSelectedRow(), 1).toString());
+                break;
+            case ASSIGN_ROLE:
+            case EDIT_USER:
+                staf.setStafNama(stafList.get(tableStaf.getSelectedRow()).getStafNama());
+                staf.setStafNIP(stafList.get(tableStaf.getSelectedRow()).getStafNIP());
+                break;
+        }
+        this.dispose();
     }
 
     /**
@@ -100,6 +125,11 @@ public class SearchDialog extends javax.swing.JDialog {
                 "Nama", "NIK"
             }
         ));
+        tableStaf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableStafMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableStaf);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -107,19 +137,15 @@ public class SearchDialog extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(textSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 209, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSelect)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSelect))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,17 +163,7 @@ public class SearchDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
-        switch (enumPanel) {
-            case REGISTER_USER:
-                staf.setStafNama(tableStaf.getValueAt(tableStaf.getSelectedRow(), 0).toString());
-                staf.setStafNIP(tableStaf.getValueAt(tableStaf.getSelectedRow(), 1).toString());
-                break;
-            case ASSIGN_ROLE:
-                staf.setStafNama(stafList.get(tableStaf.getSelectedRow()).getStafNama());
-                staf.setStafNIP(stafList.get(tableStaf.getSelectedRow()).getStafNIP());
-                break;
-        }
-        this.dispose();
+        select();
     }//GEN-LAST:event_btnSelectActionPerformed
 
     private void textSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textSearchKeyReleased
@@ -156,7 +172,10 @@ public class SearchDialog extends javax.swing.JDialog {
                 registrasiUserController.searchUser(textSearch.getText(), tableStaf);
                 break;
             case ASSIGN_ROLE:
-                stafList =  assignRoleController.searchUser(textSearch.getText(), tableStaf);
+                stafList = assignRoleController.searchUser(textSearch.getText(), tableStaf);
+                break;
+            case EDIT_USER:
+                stafList = editUserController.searchUserNotMe(textSearch.getText(), tableStaf);
                 break;
         }
     }//GEN-LAST:event_textSearchKeyReleased
@@ -167,6 +186,12 @@ public class SearchDialog extends javax.swing.JDialog {
             textSearch.setText("");
         }
     }//GEN-LAST:event_textSearchFocusGained
+
+    private void tableStafMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableStafMouseClicked
+        if (evt.getClickCount() == 2) {
+            select();
+        }
+    }//GEN-LAST:event_tableStafMouseClicked
 
     /**
      * @param args the command line arguments

@@ -53,7 +53,12 @@ public class AssignRoleController {
 
         Object[] columnsName = {"Nama", "Username"};
 
-        DefaultTableModel dtm = new DefaultTableModel(null, columnsName);
+        DefaultTableModel dtm = new DefaultTableModel(null, columnsName){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         for (Staf staf : stafList) {
             Object[] o = new Object[2];
             o[0] = staf.getStafNama();

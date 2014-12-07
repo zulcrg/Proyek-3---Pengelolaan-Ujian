@@ -10,6 +10,7 @@ import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.facade.UserFacade;
 import com.jtk.pengelolaanujian.util.EnumRole;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +19,7 @@ import java.awt.event.KeyEvent;
 public class LoginPanel extends javax.swing.JPanel {
 
     MainFrame mainFrame;
+    private static String username;
 
     /**
      * Creates new form LoginPanel
@@ -31,24 +33,57 @@ public class LoginPanel extends javax.swing.JPanel {
 
     public void login() {
         UserFacade userFacade = new UserFacade();
-        User user = userFacade.findByUsername(textUsername.getText());
-        if (user.getUserPassword().equals(textPassword.getText())) {
-            for (Role role : user.getRoleListQuery()) {
-                if (role.getRoleKode().equals(EnumRole.ADMIN.getKey())) {
-                    mainFrame.getBtnAdmin().setVisible(true);
+        if (!textUsername.getText().isEmpty()) {
+            if (!textPassword.getText().isEmpty()) {
+                User user = userFacade.findByUsername(textUsername.getText());
+                if (user != null) {
+                    if (user.getUserPassword().equals(textPassword.getText())) {
+                        if (user.isUserActive()) {
+                            for (Role role : user.getRoleListQuery()) {
+                                if (role.getRoleKode().equals(EnumRole.ADMIN.getKey())) {
+                                    mainFrame.getBtnAdmin().setVisible(true);
+                                }
+                                if (role.getRoleKode().equals(EnumRole.DOSEN_PENGAMPU.getKey())) {
+                                    mainFrame.getBtnDosen().setVisible(true);
+                                }
+                                if (role.getRoleKode().equals(EnumRole.PANITIA.getKey())) {
+                                    mainFrame.getBtnPanitia().setVisible(true);
+                                }
+                                if (role.getRoleKode().equals(EnumRole.VNV.getKey())) {
+                                    mainFrame.getBtnVnv().setVisible(true);
+                                }
+                            }
+                            mainFrame.getCardLayout().show(mainFrame.getCardPanel(), "1");
+                            MainFrame.setLogedIn(true);
+                            mainFrame.setMenuLogout();
+                            mainFrame.getMenuPanel().setVisible(true);
+                            username = textUsername.getText();
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(mainFrame, "User anda tidak aktif", "Perhatian", JOptionPane.WARNING_MESSAGE);
+                        textUsername.requestFocus();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(mainFrame, "Kesalahan pada username atau password", "Perhatian", JOptionPane.WARNING_MESSAGE);
+                    textUsername.requestFocus();
                 }
-                if (role.getRoleKode().equals(EnumRole.DOSEN_PENGAMPU.getKey())) {
-                    mainFrame.getBtnDosen().setVisible(true);
-                }
-                if (role.getRoleKode().equals(EnumRole.PANITIA.getKey())) {
-                    mainFrame.getBtnPanitia().setVisible(true);
-                }
-                if (role.getRoleKode().equals(EnumRole.VNV.getKey())) {
-                    mainFrame.getBtnVnv().setVisible(true);
-                }
+            } else {
+                JOptionPane.showMessageDialog(mainFrame, "Harap isi password", "Perhatian", JOptionPane.WARNING_MESSAGE);
+                textPassword.requestFocus();
             }
+        } else {
+            JOptionPane.showMessageDialog(mainFrame, "Harap isi username", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            textUsername.requestFocus();
         }
-        mainFrame.getCardLayout().show(mainFrame.getCardPanel(), "1");
+
+    }
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static void setUsername(String username) {
+        LoginPanel.username = username;
     }
 
     /**

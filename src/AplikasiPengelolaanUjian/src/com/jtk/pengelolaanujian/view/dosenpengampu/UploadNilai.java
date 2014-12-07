@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+<<<<<<< HEAD
 
 package com.jtk.pengelolaanujian.view.dosenpengampu;
 
@@ -14,11 +15,52 @@ public class UploadNilai extends javax.swing.JFrame {
 
     /**
      * Creates new form UploadNilai
+=======
+package com.jtk.pengelolaanujian.view.dosenpengampu;
+
+import com.jtk.pengelolaanujian.controller.dosenPengampu.UploadNilaiController;
+import com.jtk.pengelolaanujian.entity.Nilai;
+import com.jtk.pengelolaanujian.entity.Ruangan;
+import com.jtk.pengelolaanujian.entity.Ujian;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author Zulkhair Abdullah D
+ */
+public class UploadNilai extends javax.swing.JPanel {
+
+    private final UploadNilaiController uploadNilaiController = new UploadNilaiController();
+    private List<Ujian> ujianList;
+    private List<Ruangan> ruanganList;
+    private String url;
+    private Nilai nilai;
+
+    /**
+     * Creates new form RegistrasiUser
+>>>>>>> origin/master
      */
     public UploadNilai() {
         initComponents();
     }
 
+<<<<<<< HEAD
+=======
+    public void preparation() {
+        ujianList = uploadNilaiController.searchUjian(cboUjian);
+        url = "";
+        nilai = new Nilai();
+        cboRuangan.setModel(new DefaultComboBoxModel());
+    }
+
+    public void searchRuangan() {
+        ruanganList = uploadNilaiController.searchRuangan(cboRuangan, ujianList.get(cboUjian.getSelectedIndex()).getUjianKode());
+    }
+
+>>>>>>> origin/master
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,6 +70,7 @@ public class UploadNilai extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -80,5 +123,130 @@ public class UploadNilai extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+=======
+        jLabel1 = new javax.swing.JLabel();
+        textUrl = new javax.swing.JTextField();
+        btnBrowse = new javax.swing.JButton();
+        btnUpload = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        cboUjian = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        cboRuangan = new javax.swing.JComboBox();
+
+        jLabel1.setText("Pilih File");
+
+        textUrl.setEditable(false);
+
+        btnBrowse.setText("Browse");
+        btnBrowse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrowseActionPerformed(evt);
+            }
+        });
+
+        btnUpload.setText("Upload");
+        btnUpload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUploadActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Ujian");
+
+        cboUjian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboUjian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboUjianActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Ruangan");
+
+        cboRuangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cboUjian, 0, 284, Short.MAX_VALUE)
+                                    .addComponent(textUrl))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBrowse))
+                            .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(122, Short.MAX_VALUE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(textUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBrowse))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cboUjian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cboRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnUpload)
+                .addContainerGap(301, Short.MAX_VALUE))
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+    public JTextField getTextUsername() {
+        return textUrl;
+    }
+
+    public void setTextUsername(JTextField textUsername) {
+        this.textUrl = textUsername;
+    }
+
+    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
+
+    }//GEN-LAST:event_btnUploadActionPerformed
+
+    private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            url = fileChooser.getSelectedFile().getAbsolutePath();
+            textUrl.setText(url);
+        }
+    }//GEN-LAST:event_btnBrowseActionPerformed
+
+    private void cboUjianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboUjianActionPerformed
+        searchRuangan();
+    }//GEN-LAST:event_cboUjianActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBrowse;
+    private javax.swing.JButton btnUpload;
+    private javax.swing.JComboBox cboRuangan;
+    private javax.swing.JComboBox cboUjian;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField textUrl;
+>>>>>>> origin/master
     // End of variables declaration//GEN-END:variables
 }

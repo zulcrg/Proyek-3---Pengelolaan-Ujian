@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.view.admin;
 
 /**
@@ -17,6 +16,13 @@ public class AdminPanel extends javax.swing.JPanel {
      */
     public AdminPanel() {
         initComponents();
+    }
+
+    public void preparation() {
+        registrasiUser1.preparation();
+        assignRole1.preparation();
+        createUndangan1.preparation();
+        editUser1.preparation();
     }
 
     /**

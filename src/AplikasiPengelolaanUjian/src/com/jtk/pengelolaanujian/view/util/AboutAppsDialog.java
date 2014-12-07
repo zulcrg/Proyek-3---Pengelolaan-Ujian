@@ -4,23 +4,20 @@
  * and open the template in the editor.
  */
 
-package com.jtk.pengelolaanujian.view.vnv;
+package com.jtk.pengelolaanujian.view.util;
 
 /**
  *
  * @author pahlevi
  */
-public class VnvPanel extends javax.swing.JPanel {
+public class AboutAppsDialog extends javax.swing.JDialog {
 
     /**
-     * Creates new form VnvPanel
+     * Creates new form AboutApps
      */
-    public VnvPanel() {
+    public AboutAppsDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-    }
-    
-    public void preparation(){
-        
     }
 
     /**
@@ -34,24 +31,29 @@ public class VnvPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Vnv");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("About Apps ");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel1)
-                .addContainerGap(662, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addContainerGap(412, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
 

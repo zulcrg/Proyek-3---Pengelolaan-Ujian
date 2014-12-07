@@ -10,12 +10,12 @@ package com.jtk.pengelolaanujian.view.util;
  *
  * @author pahlevi
  */
-public class ContactPerson extends javax.swing.JDialog {
+public class ContactPersonDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form ContactPerson
      */
-    public ContactPerson(java.awt.Frame parent, boolean modal) {
+    public ContactPersonDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }

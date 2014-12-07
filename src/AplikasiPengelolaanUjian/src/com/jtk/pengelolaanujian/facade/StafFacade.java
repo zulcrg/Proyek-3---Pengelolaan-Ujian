@@ -99,4 +99,26 @@ public class StafFacade {
         }
         return null;
     }
+    
+    public List<Staf> searchNameNIPNotHaveUser(String keyword){
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM staf where (staf_nip like '%"+keyword+"%' OR staf_nama like '%"+keyword+"%') AND staf_nip NOT IN (Select staf_nip from user)";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Staf> stafList = new ArrayList<>();
+            while (rs.next()) {
+                Staf staf = new Staf();
+                staf.setStafNIP(rs.getString(1));
+                staf.setStafNama(rs.getString(2));
+                staf.setStafEmail(rs.getString(3));
+                staf.setStafKontak(rs.getString(4));
+
+                stafList.add(staf);
+            }
+            return stafList;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }
