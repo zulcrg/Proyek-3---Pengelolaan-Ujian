@@ -47,7 +47,7 @@ public class RuanganFacade {
     public Ruangan findByKodeRuangan(String kodeRuangan) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "SELECT * FROM ruangan where RUANGAN_KODE = '"+kodeRuangan+"'";
+            String query = "SELECT * FROM ruangan where RUANGAN_KODE = '" + kodeRuangan + "'";
             ResultSet rs = stmt.executeQuery(query);
 
             if (rs.next()) {
@@ -57,6 +57,28 @@ public class RuanganFacade {
 
                 return ruangan;
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(RuanganFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Ruangan> findByKodeUjian(String kodeUjian) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT ruangan.* FROM ruangan "
+                    + "INNER JOIN ruangan_ujian ON (ruangan_ujian.RUANGAN_KODE = ruangan.RUANGAN_KODE) "
+                    + "WHERE ruangan_ujian.UJIAN_KODE = '" + kodeUjian + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Ruangan> ruanganList = new ArrayList<>();
+            while (rs.next()) {
+                Ruangan ruangan = new Ruangan();
+                ruangan.setRuanganKode(rs.getString(1));
+                ruangan.setRuanganNama(rs.getString(2));
+
+                ruanganList.add(ruangan);
+            }
+            return ruanganList;
         } catch (SQLException ex) {
             Logger.getLogger(RuanganFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
