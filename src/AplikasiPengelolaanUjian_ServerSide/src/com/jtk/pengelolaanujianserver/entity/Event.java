@@ -22,6 +22,15 @@ public class Event {
     private Date uploadSelesai;
     private Date vnvMulai;
     private Date vnvSelesai;
+    private int Delay;
+
+    public int getDelay() {
+        return Delay;
+    }
+
+    public void setDelay(int Delay) {
+        this.Delay = Delay;
+    }
     private List<Ujian> ujian;
 
     public Event() {
