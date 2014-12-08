@@ -12,10 +12,10 @@ import java.util.Date;
  *
  * @author pahlevi
  */
-public class Remainder2Controller {
+public class Remainder7DayMonitController {
     private Date date;
     
-    public Remainder2Controller(Date date) {
+    public Remainder7DayMonitController(Date date) {
         this.date = date;
     }
     

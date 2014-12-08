@@ -6,10 +6,12 @@
 
 package com.jtk.pengelolaanujianserver.facade;
 
+import com.jtk.pengelolaanujianserver.entity.Staf;
 import com.jtk.pengelolaanujianserver.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,15 +22,17 @@ import java.util.logging.Logger;
 public class GammuFacade {
     private final Connection connection = ConnectionHelper.getConnectionGammu();
     
-    public boolean SendSMS(String reciever, String text) {
+    public boolean sendSMS(List<Staf> listStaf, String text) {
         Statement statmentDB = null;
-        try {                                     
-            statmentDB = connection.createStatement();
-            statmentDB.execute("INSERT INTO outbox(DestinationNumber, TextDecoded, creatorID) VALUES('"+reciever+"','"+text+"','Gammu')");
+        try {                             
+            for(Staf staf : listStaf){
+                statmentDB = connection.createStatement();
+                statmentDB.execute("INSERT INTO outbox(DestinationNumber, TextDecoded, creatorID) VALUES('"+staf.getStafKontak()+"','"+text+"','Gammu')");                
+            }            
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        }
+        }        
     }
 }

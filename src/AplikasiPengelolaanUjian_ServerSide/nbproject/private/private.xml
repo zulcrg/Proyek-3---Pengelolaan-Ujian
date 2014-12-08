@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/proces/SendingSMSControlProcess.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/SoalFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/RoleFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/Role.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/BeritaAcara.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/MataKuliahFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/User.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/controller/Remainder2Controller.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/controller/Remainder6Controller.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/Kbk.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/RuanganFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/UserFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/controller/Remainder5Controller.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/controller/Remainder4Controller.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/StafFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/Ujian.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/StorageSoal.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/main/TimerSample.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/Event.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/Dosen.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/Staf.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/VnvFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/MataKuliah.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/KbkFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/RuanganUjian.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/controller/Remainder1Controller.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/Nilai.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/controller/Remainder3Controller.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/Vnv.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/util/ConnectionHelper.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/EventFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/GammuFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/NilaiFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/Soal.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/DosenFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/entity/Ruangan.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/StorageSoalFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/proces/ValidityActionControlProcess.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/RuanganUjianFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/UjianFacade.java</file>
+            <file>file:/D:/-%20Repositories/Proyek-3---Pengelolaan-Ujian/src/AplikasiPengelolaanUjian_ServerSide/src/com/jtk/pengelolaanujianserver/facade/BeritaAcaraFacade.java</file>
+        </group>
+    </open-files>
+</project-private>

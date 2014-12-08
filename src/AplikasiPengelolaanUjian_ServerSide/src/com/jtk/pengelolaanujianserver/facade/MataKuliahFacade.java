@@ -6,6 +6,7 @@
 package com.jtk.pengelolaanujianserver.facade;
 
 import com.jtk.pengelolaanujianserver.entity.MataKuliah;
+import com.jtk.pengelolaanujianserver.entity.Soal;
 import com.jtk.pengelolaanujianserver.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -84,6 +85,29 @@ public class MataKuliahFacade {
                 mataKuliahList.add(mataKuliah);
             }
             return mataKuliahList;
+        } catch (SQLException ex) {
+            Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<MataKuliah> findAllWhereListedIn(List<Soal> listSoal) {
+        try {
+            for (Soal soal : listSoal) {
+                Statement stmt = connection.createStatement();
+                String query = "SELECT * FROM mata_kuliah where mata_kuliah.MATKUL_KODE = soal." + soal.getMatkulKode() + "";
+                ResultSet rs = stmt.executeQuery(query);
+                List<MataKuliah> mataKuliahList = new ArrayList<>();
+                while (rs.next()) {
+                    MataKuliah mataKuliah = new MataKuliah();
+                    mataKuliah.setMatkulKode(rs.getString(1));
+                    mataKuliah.setMatkulNama(rs.getString(2));
+                    mataKuliah.setMatkulTipe(rs.getString(3));
+
+                    mataKuliahList.add(mataKuliah);
+                }
+                return mataKuliahList;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
         }

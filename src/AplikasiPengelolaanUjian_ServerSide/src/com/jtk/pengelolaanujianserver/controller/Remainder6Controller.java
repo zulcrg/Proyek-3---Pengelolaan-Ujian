@@ -6,6 +6,11 @@
 
 package com.jtk.pengelolaanujianserver.controller;
 
+import com.jtk.pengelolaanujianserver.entity.Dosen;
+import com.jtk.pengelolaanujianserver.entity.MataKuliah;
+import com.jtk.pengelolaanujianserver.entity.Soal;
+import com.jtk.pengelolaanujianserver.entity.Staf;
+import com.jtk.pengelolaanujianserver.facade.GammuFacade;
 import java.util.Date;
 
 /**
@@ -14,9 +19,17 @@ import java.util.Date;
  */
 public class Remainder6Controller {
     private Date date;
+    private GammuFacade gammuFacade = new GammuFacade();
+    private Soal soal = new Soal();
+    private MataKuliah mataKuliah = new MataKuliah();
+    private Dosen dosen = new Dosen();
     
+            
     public Remainder6Controller(Date date) {
         this.date = date;
     }
     
+    public void checkRule(){
+        gammuFacade.sendSMS(null, null);
+    }
 }

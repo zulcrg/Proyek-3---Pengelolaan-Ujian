@@ -6,6 +6,8 @@
 package com.jtk.pengelolaanujianserver.facade;
 
 import com.jtk.pengelolaanujianserver.entity.Dosen;
+import com.jtk.pengelolaanujianserver.entity.MataKuliah;
+import com.jtk.pengelolaanujianserver.entity.MataKuliahToDosen;
 import com.jtk.pengelolaanujianserver.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -88,6 +90,32 @@ public class DosenFacade {
                 dosenList.add(dosen);
             }
             return dosenList;
+        } catch (SQLException ex) {
+            Logger.getLogger(DosenFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Dosen> findAllWhereListedIn(List<MataKuliahToDosen> listMataKuliahToDosen) {
+        try {
+            for (MataKuliahToDosen mataKuliahToDosen : listMataKuliahToDosen) {
+                Statement stmt = connection.createStatement();
+                String query = "SELECT * FROM dosen WHERE DOSEN_KODE = " + mataKuliahToDosen.getDosenKode() + "";
+                ResultSet rs = stmt.executeQuery(query);
+                List<Dosen> dosenList = new ArrayList<>();
+                while (rs.next()) {
+                    Dosen dosen = new Dosen();
+                    dosen.setDosenKode(rs.getString(1));
+                    dosen.setKbkKode(rs.getString(2));
+                    dosen.setStafNIP(rs.getString(3));
+                    dosen.setStafNama(rs.getString(4));
+                    dosen.setStafEmail(rs.getString(5));
+                    dosen.setStafKontak(rs.getString(6));
+
+                    dosenList.add(dosen);
+                }
+                return dosenList;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(DosenFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
