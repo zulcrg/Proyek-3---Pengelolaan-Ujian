@@ -2,7 +2,7 @@
 package com.jtk.pengelolaanujianserver.main;
 
 
-import com.jtk.pengelolaanujianserver.proces.ActionControlProcess;
+import com.jtk.pengelolaanujianserver.proces.ValidityActionControlProcess;
 import java.util.Timer;
  
 public class TimerSample {
@@ -12,7 +12,7 @@ public class TimerSample {
         Timer timer = new Timer();
  
         //2- Taking an instance of class contains your repeated method.        
-        ActionControlProcess actionControl = new ActionControlProcess();
+        ValidityActionControlProcess actionControl = new ValidityActionControlProcess();
  
         //TimerTask is a class implements Runnable interface so
         //You have to override run method with your certain code black
