@@ -128,11 +128,6 @@ public class UserFacade {
         return false;
     }
 
-    public boolean editUser() {
-
-        return false;
-    }
-
     public boolean editUserRole(User user) {
         try {
             Statement stmt;
