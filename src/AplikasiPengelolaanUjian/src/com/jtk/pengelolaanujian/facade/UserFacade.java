@@ -163,7 +163,7 @@ public class UserFacade {
         try {
             Statement stmt;
             stmt = connection.createStatement();
-            boolean flag = stmt.execute("INSERT INTO user(STAF_NIP,USER_USERNAME,USER_PASSWORD) VALUES('" + staf.getStafNIP() + "','" + textNama + "','" + textPassword + "', 1)");
+            boolean flag = stmt.execute("INSERT INTO user(STAF_NIP,USER_USERNAME,USER_PASSWORD,USER_ACTIVE ) VALUES('" + staf.getStafNIP() + "','" + textNama + "','" + textPassword + "', 1)");
             return flag;
         } catch (SQLException ex) {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
