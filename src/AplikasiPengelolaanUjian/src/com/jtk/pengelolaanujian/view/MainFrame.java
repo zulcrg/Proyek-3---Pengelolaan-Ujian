@@ -30,7 +30,7 @@ public class MainFrame extends javax.swing.JFrame {
     private final VnvPanel vnvPanel = new VnvPanel();
     private final LoginPanel loginPanel = new LoginPanel(this);
     private final WelcomePanel panel = new WelcomePanel(this);
-    private final DashboardPanel dashboardPanel = new DashboardPanel();
+    private final DashboardPanel dashboardPanel = new DashboardPanel(this);
 
     /**
      * Creates new form MainFrame
@@ -42,11 +42,13 @@ public class MainFrame extends javax.swing.JFrame {
         setTitle("Applikasi Pengelolaan Ujian - Development");
         cardPanel.setLayout(cardLayout);
         cardPanel.add(loginPanel, "0");
-        cardPanel.add(panel, "1");
+        //cardPanel.add(dashboardPanel, "0");
+        cardPanel.add(panel, "1");        
         cardPanel.add(adminPanel, EnumRole.ADMIN.toString());
         cardPanel.add(dosenPengampuPanel, EnumRole.DOSEN_PENGAMPU.toString());
         cardPanel.add(panitiaPanel, EnumRole.PANITIA.toString());
         cardPanel.add(vnvPanel, EnumRole.VNV.toString());
+        
         setMenuFalse();
         setMenuLogout();
     }

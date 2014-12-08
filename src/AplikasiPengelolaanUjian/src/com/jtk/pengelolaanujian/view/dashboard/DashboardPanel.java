@@ -10,11 +10,14 @@ package com.jtk.pengelolaanujian.view.dashboard;
  *
  * @author pahlevi
  */
+import com.jtk.pengelolaanujian.view.MainFrame;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 public class DashboardPanel extends javax.swing.JFrame {
 
+    MainFrame mainFrame;
+    
     /**
      * Creates new form DashboardPanel
      */
@@ -22,7 +25,8 @@ public class DashboardPanel extends javax.swing.JFrame {
     private final ChartPanel1 piechart;
     private final ChartPanel2 barchart;
     
-    public DashboardPanel() {
+    public DashboardPanel(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
         setTitle("GRAFIK DENGAN JFREECHART");
         piechart = new ChartPanel1();
         barchart = new ChartPanel2();
@@ -30,7 +34,6 @@ public class DashboardPanel extends javax.swing.JFrame {
         getContentPane().add(piechart,BorderLayout.CENTER);
         initComponents();
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,19 +55,19 @@ public class DashboardPanel extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(chartPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(chartPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(chartPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(chartPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chartPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chartPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chartPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chartPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -73,4 +76,8 @@ public class DashboardPanel extends javax.swing.JFrame {
     private com.jtk.pengelolaanujian.view.dashboard.ChartPanel1 chartPanel11;
     private com.jtk.pengelolaanujian.view.dashboard.ChartPanel2 chartPanel21;
     // End of variables declaration//GEN-END:variables
+
+    public void preparation() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
