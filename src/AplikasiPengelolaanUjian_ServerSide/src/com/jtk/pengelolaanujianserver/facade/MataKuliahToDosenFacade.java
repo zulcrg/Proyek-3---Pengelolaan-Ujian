@@ -29,7 +29,7 @@ public class MataKuliahToDosenFacade {
         try {
             for (MataKuliah mataKuliah : listMataKuliah) {
                 Statement stmt = connection.createStatement();
-                String query = "SELECT * FROM mata_kuliah_to_dosen, staf WHERE MATKUL_KODE = " + mataKuliah.getMatkulKode() + "";
+                String query = "SELECT * FROM mata_kuliah_to_dosen, staf WHERE MATKUL_KODE = '" + mataKuliah.getMatkulKode() + "'";
                 ResultSet rs = stmt.executeQuery(query);
                 List<MataKuliahToDosen> mataKuliahTodosenList = new ArrayList<>();
                 while (rs.next()) {

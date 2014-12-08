@@ -86,7 +86,8 @@ public class EventFacade {
                 event.setUploadSelesai(rs.getDate(5));
                 event.setVnvMulai(rs.getDate(6));
                 event.setVnvSelesai(rs.getDate(7));
-                event.setDelay(rs.getInt(8));
+                event.setDelayUploadSoal(rs.getInt(8));
+                event.setDelayPengawas(rs.getInt(9));
                 return event;
             }
         } catch (SQLException ex) {

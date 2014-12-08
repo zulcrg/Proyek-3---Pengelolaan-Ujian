@@ -50,9 +50,9 @@ public class Remainder2DayMonitController {
 
     public void checkRule() {
         event = eventFacade.findLast();
-        if (date.getDate() + event.getDelay() == event.getUploadSelesai().getDate()) {
+        if (date.getDate() + event.getDelayUploadSoal() == event.getUploadSelesai().getDate()) {
             String smsReciever = null;
-            String smsString = "Sekarang sudah H-X batas akhir Upload Soal, Mohon segera Upload Soal Ujian Anda. Terima Kasih";
+            String smsString = "Sekarang sudah H-"+event.getDelayUploadSoal()+" batas akhir Upload Soal, Mohon segera Upload Soal Ujian Anda. Terima Kasih";
 
             listSoal = soalFacade.findAllWhereUploaded(false);
             listMataKuliah = mataKuliahFacade.findAllWhereListedIn(listSoal);
@@ -60,7 +60,7 @@ public class Remainder2DayMonitController {
             listDosen = dosenFacade.findAllWhereListedIn(listMataKuliahToDosens);
             listStaf = stafFacade.findAllWhereListedIn(listDosen);
 
-            gammuFacade.sendSMS(listStaf, smsString);
+            gammuFacade.sendRemainderUploadSoalSMS(listStaf, smsString);
         }
 
     }

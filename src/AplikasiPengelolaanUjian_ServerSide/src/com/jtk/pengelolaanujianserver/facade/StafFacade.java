@@ -6,6 +6,8 @@
 package com.jtk.pengelolaanujianserver.facade;
 
 import com.jtk.pengelolaanujianserver.entity.Dosen;
+import com.jtk.pengelolaanujianserver.entity.Ruangan;
+import com.jtk.pengelolaanujianserver.entity.RuanganUjian;
 import com.jtk.pengelolaanujianserver.entity.Staf;
 import com.jtk.pengelolaanujianserver.util.ConnectionHelper;
 import java.sql.Connection;
@@ -127,7 +129,7 @@ public class StafFacade {
         try {
             for (Dosen dosen : listDosen) {
                 Statement stmt = connection.createStatement();
-                String query = "SELECT * FROM staf where STAF_NIP = "+dosen.getStafNIP()+"";
+                String query = "SELECT * FROM staf where STAF_NIP = '" + dosen.getStafNIP() + "'";
                 ResultSet rs = stmt.executeQuery(query);
                 List<Staf> stafList = new ArrayList<>();
                 while (rs.next()) {
@@ -148,4 +150,28 @@ public class StafFacade {
         return null;
     }
 
+    public List<Staf> find1AllWhereListedIn(List<RuanganUjian> listRuangUjian) {
+        try {
+            for (RuanganUjian ruanganUjian : listRuangUjian) {
+                Statement stmt = connection.createStatement();
+                String query = "SELECT * FROM STAF where RUANGAN_UJIAN.STAF_NIP = '" + ruanganUjian.getStafNip() + "'";
+                ResultSet rs = stmt.executeQuery(query);
+                List<Staf> stafList = new ArrayList<>();
+                while (rs.next()) {
+                    Staf staf = new Staf();
+                    staf.setStafNIP(rs.getString(1));
+                    staf.setStafNama(rs.getString(2));
+                    staf.setStafEmail(rs.getString(3));
+                    staf.setStafKontak(rs.getString(4));
+
+                    stafList.add(staf);
+                }
+                return stafList;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

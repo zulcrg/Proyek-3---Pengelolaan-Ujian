@@ -6,6 +6,7 @@
 package com.jtk.pengelolaanujianserver.facade;
 
 import com.jtk.pengelolaanujianserver.entity.RuanganUjian;
+import com.jtk.pengelolaanujianserver.entity.Ujian;
 import com.jtk.pengelolaanujianserver.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -88,4 +89,50 @@ public class RuanganUjianFacade {
         }
         return null;
     }
+
+    public List<RuanganUjian> findAllWhereListedIn(List<Ujian> listUjian) {
+        try {
+            for (Ujian ujian : listUjian) {
+                Statement stmt = connection.createStatement();
+                String query = "SELECT * FROM ruangan_ujian where UJIAN_KODE = '"+ujian.getUjianKode()+"'";
+                ResultSet rs = stmt.executeQuery(query);
+                List<RuanganUjian> ruanganUjianList = new ArrayList<>();
+                while (rs.next()) {
+                    RuanganUjian ruanganUjian = new RuanganUjian();
+                    ruanganUjian.setRuanganKode(rs.getString(1));
+                    ruanganUjian.setUjianKode(rs.getString(2));
+                    ruanganUjian.setStafNip(rs.getString(3));
+                    ruanganUjian.setBeritaKode(rs.getString(4));
+
+                    ruanganUjianList.add(ruanganUjian);
+                }
+                return ruanganUjianList;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RuanganUjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<RuanganUjian> findAllWhereInsertedIn(Ujian ujian) {
+        try {            
+                Statement stmt = connection.createStatement();
+                String query = "SELECT * FROM ruangan_ujian where UJIAN_KODE = '"+ujian.getUjianKode()+"'";
+                ResultSet rs = stmt.executeQuery(query);
+                List<RuanganUjian> ruanganUjianList = new ArrayList<>();
+                while (rs.next()) {
+                    RuanganUjian ruanganUjian = new RuanganUjian();
+                    ruanganUjian.setRuanganKode(rs.getString(1));
+                    ruanganUjian.setUjianKode(rs.getString(2));
+                    ruanganUjian.setStafNip(rs.getString(3));
+                    ruanganUjian.setBeritaKode(rs.getString(4));
+
+                    ruanganUjianList.add(ruanganUjian);
+                }
+                return ruanganUjianList;            
+        } catch (SQLException ex) {
+            Logger.getLogger(RuanganUjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }   
 }

@@ -95,7 +95,7 @@ public class MataKuliahFacade {
         try {
             for (Soal soal : listSoal) {
                 Statement stmt = connection.createStatement();
-                String query = "SELECT * FROM mata_kuliah where mata_kuliah.MATKUL_KODE = soal." + soal.getMatkulKode() + "";
+                String query = "SELECT * FROM mata_kuliah where mata_kuliah.MATKUL_KODE = '" + soal.getMatkulKode() + "'";
                 ResultSet rs = stmt.executeQuery(query);
                 List<MataKuliah> mataKuliahList = new ArrayList<>();
                 while (rs.next()) {

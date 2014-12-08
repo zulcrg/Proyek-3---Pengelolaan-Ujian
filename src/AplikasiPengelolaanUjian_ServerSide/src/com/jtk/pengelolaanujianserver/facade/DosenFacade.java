@@ -100,7 +100,7 @@ public class DosenFacade {
         try {
             for (MataKuliahToDosen mataKuliahToDosen : listMataKuliahToDosen) {
                 Statement stmt = connection.createStatement();
-                String query = "SELECT * FROM dosen WHERE DOSEN_KODE = " + mataKuliahToDosen.getDosenKode() + "";
+                String query = "SELECT * FROM dosen WHERE DOSEN_KODE = '" + mataKuliahToDosen.getDosenKode() + "'";
                 ResultSet rs = stmt.executeQuery(query);
                 List<Dosen> dosenList = new ArrayList<>();
                 while (rs.next()) {

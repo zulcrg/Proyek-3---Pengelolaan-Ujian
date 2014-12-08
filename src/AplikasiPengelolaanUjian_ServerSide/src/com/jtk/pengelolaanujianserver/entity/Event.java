@@ -22,15 +22,25 @@ public class Event {
     private Date uploadSelesai;
     private Date vnvMulai;
     private Date vnvSelesai;
-    private int Delay;
+    private int DelayUploadSoal;
+    private int DelayPengawas;
 
-    public int getDelay() {
-        return Delay;
+    public int getDelayUploadSoal() {
+        return DelayUploadSoal;
     }
 
-    public void setDelay(int Delay) {
-        this.Delay = Delay;
+    public void setDelayUploadSoal(int DelayUploadSoal) {
+        this.DelayUploadSoal = DelayUploadSoal;
     }
+
+    public int getDelayPengawas() {
+        return DelayPengawas;
+    }
+
+    public void setDelayPengawas(int DelayPengawas) {
+        this.DelayPengawas = DelayPengawas;
+    }
+    
     private List<Ujian> ujian;
 
     public Event() {

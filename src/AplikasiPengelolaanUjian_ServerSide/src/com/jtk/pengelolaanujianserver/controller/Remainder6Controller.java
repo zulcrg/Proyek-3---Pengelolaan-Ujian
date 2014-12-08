@@ -30,6 +30,6 @@ public class Remainder6Controller {
     }
     
     public void checkRule(){
-        gammuFacade.sendSMS(null, null);
+       // gammuFacade.sendSMS(null, null);
     }
 }
