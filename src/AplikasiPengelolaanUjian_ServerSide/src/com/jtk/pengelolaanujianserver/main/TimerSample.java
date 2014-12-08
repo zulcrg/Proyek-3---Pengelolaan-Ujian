@@ -9,11 +9,10 @@ public class TimerSample {
  
     public static void main(String[] args) {
         //1- Taking an instance of Timer class.
-        Timer timer = new Timer("Printer");
+        Timer timer = new Timer();
  
         //2- Taking an instance of class contains your repeated method.        
         ActionControlProcess actionControl = new ActionControlProcess();
- 
  
         //TimerTask is a class implements Runnable interface so
         //You have to override run method with your certain code black
