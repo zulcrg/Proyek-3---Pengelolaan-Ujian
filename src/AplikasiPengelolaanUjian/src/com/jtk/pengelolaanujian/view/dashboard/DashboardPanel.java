@@ -3,36 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.view.dashboard;
+
+import com.jtk.pengelolaanujian.view.MainFrame;
 
 /**
  *
- * @author pahlevi
+ * @author Zulkhair Abdullah D
  */
-import com.jtk.pengelolaanujian.view.MainFrame;
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-
-public class DashboardPanel extends javax.swing.JFrame {
+public class DashboardPanel extends javax.swing.JPanel {
 
     MainFrame mainFrame;
-    
+
     /**
      * Creates new form DashboardPanel
+     * @param mainFrame
      */
-    private JPanel panel;
-    private final ChartPanel1 piechart;
-    private final ChartPanel2 barchart;
-    
     public DashboardPanel(MainFrame mainFrame) {
-        this.mainFrame = mainFrame;
-        setTitle("GRAFIK DENGAN JFREECHART");
-        piechart = new ChartPanel1();
-        barchart = new ChartPanel2();
-        setLayout(new BorderLayout());
-        getContentPane().add(piechart,BorderLayout.CENTER);
         initComponents();
+        this.mainFrame = mainFrame;
+    }
+    
+    public void preparation(){
+        
     }
 
     /**
@@ -44,40 +37,41 @@ public class DashboardPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         chartPanel11 = new com.jtk.pengelolaanujian.view.dashboard.ChartPanel1();
+        jScrollPane2 = new javax.swing.JScrollPane();
         chartPanel21 = new com.jtk.pengelolaanujian.view.dashboard.ChartPanel2();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        jScrollPane1.setViewportView(chartPanel11);
+
+        jTabbedPane1.addTab("Pie", jScrollPane1);
+
+        jScrollPane2.setViewportView(chartPanel21);
+
+        jTabbedPane1.addTab("Batang", jScrollPane2);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(chartPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chartPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chartPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chartPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(107, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.jtk.pengelolaanujian.view.dashboard.ChartPanel1 chartPanel11;
     private com.jtk.pengelolaanujian.view.dashboard.ChartPanel2 chartPanel21;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
-
-    public void preparation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

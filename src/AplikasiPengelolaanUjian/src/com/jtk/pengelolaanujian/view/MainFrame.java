@@ -8,6 +8,7 @@ package com.jtk.pengelolaanujian.view;
 import com.jtk.pengelolaanujian.util.EnumRole;
 import com.jtk.pengelolaanujian.view.admin.AdminPanel;
 import com.jtk.pengelolaanujian.view.dashboard.DashboardPanel;
+import com.jtk.pengelolaanujian.view.dashboard.DashboardPanel2;
 import com.jtk.pengelolaanujian.view.dosenpengampu.DosenPengampuPanel;
 import com.jtk.pengelolaanujian.view.panitia.PanitiaPanel;
 import com.jtk.pengelolaanujian.view.util.AboutAppsDialog;
@@ -30,6 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
     private final VnvPanel vnvPanel = new VnvPanel();
     private final LoginPanel loginPanel = new LoginPanel(this);
     private final WelcomePanel panel = new WelcomePanel(this);
+    private final DashboardPanel2 dashboardPanel2 = new DashboardPanel2(this);
     private final DashboardPanel dashboardPanel = new DashboardPanel(this);
 
     /**
@@ -48,6 +50,7 @@ public class MainFrame extends javax.swing.JFrame {
         cardPanel.add(dosenPengampuPanel, EnumRole.DOSEN_PENGAMPU.toString());
         cardPanel.add(panitiaPanel, EnumRole.PANITIA.toString());
         cardPanel.add(vnvPanel, EnumRole.VNV.toString());
+        cardPanel.add(dashboardPanel, EnumRole.DASHBOARD.toString());
         
         setMenuFalse();
         setMenuLogout();
@@ -213,7 +216,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVnv, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPanitia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPanitia, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDashBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -314,7 +317,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_menuAboutActionPerformed
 
     private void btnDashBoardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashBoardActionPerformed
-        dashboardPanel.show();
+        cardLayout.show(cardPanel, EnumRole.DASHBOARD.toString());
+        dashboardPanel.preparation();
     }//GEN-LAST:event_btnDashBoardActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
