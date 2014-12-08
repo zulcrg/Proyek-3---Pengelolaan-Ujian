@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jtk.pengelolaanujian.facade;
+package com.jtk.pengelolaanujianserver.facade;
 
-import com.jtk.pengelolaanujian.entity.Event;
-import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujianserver.entity.Event;
+import com.jtk.pengelolaanujianserver.util.ConnectionHelper;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.ResultSet;

@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.jtk.pengelolaanujian.entity;
+package com.jtk.pengelolaanujianserver.entity;
 
-import com.jtk.pengelolaanujian.facade.SoalFacade;
-import com.jtk.pengelolaanujian.facade.UserFacade;
+import com.jtk.pengelolaanujianserver.facade.SoalFacade;
+import com.jtk.pengelolaanujianserver.facade.UserFacade;
 import java.sql.Blob;
 import java.sql.Date;
 

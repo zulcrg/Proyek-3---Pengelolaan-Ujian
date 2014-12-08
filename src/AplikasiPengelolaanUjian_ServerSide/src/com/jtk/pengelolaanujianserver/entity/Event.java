@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.jtk.pengelolaanujian.entity;
+package com.jtk.pengelolaanujianserver.entity;
 
-import com.jtk.pengelolaanujian.facade.UjianFacade;
+import com.jtk.pengelolaanujianserver.facade.UjianFacade;
 import java.sql.Date;
 import java.util.List;
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.jtk.pengelolaanujian.entity;
+package com.jtk.pengelolaanujianserver.entity;
 
 import java.sql.Date;
 

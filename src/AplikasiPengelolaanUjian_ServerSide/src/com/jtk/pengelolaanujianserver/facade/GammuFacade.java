@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.jtk.pengelolaanujian.facade;
+package com.jtk.pengelolaanujianserver.facade;
 
-import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujianserver.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;

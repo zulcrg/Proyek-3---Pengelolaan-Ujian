@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.jtk.pengelolaanujian.facade;
+package com.jtk.pengelolaanujianserver.facade;
 
-import com.jtk.pengelolaanujian.entity.Nilai;
-import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujianserver.entity.Nilai;
+import com.jtk.pengelolaanujianserver.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

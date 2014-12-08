@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jtk.pengelolaanujian.facade;
+package com.jtk.pengelolaanujianserver.facade;
 
-import com.jtk.pengelolaanujian.entity.Role;
-import com.jtk.pengelolaanujian.entity.Staf;
-import com.jtk.pengelolaanujian.entity.User;
-import com.jtk.pengelolaanujian.util.ConnectionHelper;
-import com.jtk.pengelolaanujian.view.LoginPanel;
+import com.jtk.pengelolaanujianserver.entity.Role;
+import com.jtk.pengelolaanujianserver.entity.Staf;
+import com.jtk.pengelolaanujianserver.entity.User;
+import com.jtk.pengelolaanujianserver.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -201,33 +200,33 @@ public class UserFacade {
         return null;
     }
 
-    public List<Staf> searchNameUsernameNotMe(String keyword) {
-        try {
-            Statement stmt = connection.createStatement();
-            String query = "SELECT staf.*, user.USER_USERNAME, user.USER_PASSWORD FROM staf, user "
-                    + "WHERE (user.USER_USERNAME like '%" + keyword + "%' OR staf.STAF_NAMA like '%" + keyword + "%' )"
-                    + "AND staf.STAF_NIP = user.STAF_NIP AND user.USER_USERNAME <> '" + LoginPanel.getUsername() + "'";
-            ResultSet rs = stmt.executeQuery(query);
-            List<Staf> stafList = new ArrayList<>();
-            while (rs.next()) {
-                Staf staf = new Staf();
-                staf.setStafNIP(rs.getString(1));
-                staf.setStafNama(rs.getString(2));
-                staf.setStafEmail(rs.getString(3));
-                staf.setStafKontak(rs.getString(4));
-
-                User user = new User();
-                user.setStafNIP(rs.getString(1));
-                user.setUserUsername(rs.getString(5));
-                user.setUserPassword(rs.getString(6));
-                staf.setUser(user);
-
-                stafList.add(staf);
-            }
-            return stafList;
-        } catch (SQLException ex) {
-            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
+//    public List<Staf> searchNameUsernameNotMe(String keyword) {
+//        try {
+//            Statement stmt = connection.createStatement();
+//            String query = "SELECT staf.*, user.USER_USERNAME, user.USER_PASSWORD FROM staf, user "
+//                    + "WHERE (user.USER_USERNAME like '%" + keyword + "%' OR staf.STAF_NAMA like '%" + keyword + "%' )"
+//                    + "AND staf.STAF_NIP = user.STAF_NIP AND user.USER_USERNAME <> '" + LoginPanel.getUsername() + "'";
+//            ResultSet rs = stmt.executeQuery(query);
+//            List<Staf> stafList = new ArrayList<>();
+//            while (rs.next()) {
+//                Staf staf = new Staf();
+//                staf.setStafNIP(rs.getString(1));
+//                staf.setStafNama(rs.getString(2));
+//                staf.setStafEmail(rs.getString(3));
+//                staf.setStafKontak(rs.getString(4));
+//
+//                User user = new User();
+//                user.setStafNIP(rs.getString(1));
+//                user.setUserUsername(rs.getString(5));
+//                user.setUserPassword(rs.getString(6));
+//                staf.setUser(user);
+//
+//                stafList.add(staf);
+//            }
+//            return stafList;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return null;
+//    }
 }

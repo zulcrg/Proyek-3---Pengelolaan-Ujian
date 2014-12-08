@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jtk.pengelolaanujian.entity;
+package com.jtk.pengelolaanujianserver.entity;
 
-import com.jtk.pengelolaanujian.facade.MataKuliahFacade;
-import com.jtk.pengelolaanujian.facade.StorageSoalFacade;
-import com.jtk.pengelolaanujian.facade.UjianFacade;
-import com.jtk.pengelolaanujian.facade.VnvFacade;
+import com.jtk.pengelolaanujianserver.facade.MataKuliahFacade;
+import com.jtk.pengelolaanujianserver.facade.StorageSoalFacade;
+import com.jtk.pengelolaanujianserver.facade.UjianFacade;
+import com.jtk.pengelolaanujianserver.facade.VnvFacade;
 import java.util.List;
 
 /**

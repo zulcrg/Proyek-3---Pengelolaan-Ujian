@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jtk.pengelolaanujian.entity;
+package com.jtk.pengelolaanujianserver.entity;
 
-import com.jtk.pengelolaanujian.facade.RoleFacade;
+import com.jtk.pengelolaanujianserver.facade.RoleFacade;
 import java.util.List;
 
 /**

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jtk.pengelolaanujian.entity;
+package com.jtk.pengelolaanujianserver.entity;
 
-import com.jtk.pengelolaanujian.facade.EventFacade;
-import com.jtk.pengelolaanujian.facade.SoalFacade;
+import com.jtk.pengelolaanujianserver.facade.EventFacade;
+import com.jtk.pengelolaanujianserver.facade.SoalFacade;
 import java.sql.Date;
 
 /**
