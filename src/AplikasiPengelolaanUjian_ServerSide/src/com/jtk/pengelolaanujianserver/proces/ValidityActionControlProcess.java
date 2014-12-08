@@ -19,14 +19,14 @@ public class ValidityActionControlProcess extends TimerTask {
         Date date = new Date();
         System.out.println("Cek aturan main - action control setiap 10 detik 1x");
 
-        Remainder1Controller remainder1Controller = new Remainder1Controller(date);
-        Remainder2DayMonitController remainder2Controller = new Remainder2DayMonitController(date);
-        Remainder3Controller remainder3Controller = new Remainder3Controller(date);
-        Remainder4Controller remainder4Controller = new Remainder4Controller(date);
-        Remainder5Controller remainder5Controller = new Remainder5Controller(date);
-        Remainder6Controller remainder6Controller = new Remainder6Controller(date);
-        Remainder7DayMonitController remainder7Controller = new Remainder7DayMonitController(date);
-        Remainder8DayMonitController remainder8Controller = new Remainder8DayMonitController(date);
+        Reminder1Controller remainder1Controller = new Reminder1Controller(date);
+        ReminderDayMonit2Controller remainder2Controller = new ReminderDayMonit2Controller(date);
+        Reminder3Controller remainder3Controller = new Reminder3Controller(date);
+        Reminder4Controller remainder4Controller = new Reminder4Controller(date);
+        Reminder5Controller remainder5Controller = new Reminder5Controller(date);
+        Reminder6Controller remainder6Controller = new Reminder6Controller(date);
+        ReminderDayMonit7Controller remainder7Controller = new ReminderDayMonit7Controller(date);
+        ReminderDayMonit8Controller remainder8Controller = new ReminderDayMonit8Controller(date);
 
     }
     /* TODO:  

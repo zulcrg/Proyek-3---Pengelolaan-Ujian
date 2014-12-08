@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author pahlevi
  */
-public class Remainder7DayMonitController {
+public class ReminderDayMonit7Controller {
 
     private final Date date;
 
@@ -40,7 +40,7 @@ public class Remainder7DayMonitController {
     private final StafFacade stafFacade = new StafFacade();
     private List<RuanganUjian> listRuangUjian;
 
-    public Remainder7DayMonitController(Date date) {
+    public ReminderDayMonit7Controller(Date date) {
         this.date = date;
     }
 

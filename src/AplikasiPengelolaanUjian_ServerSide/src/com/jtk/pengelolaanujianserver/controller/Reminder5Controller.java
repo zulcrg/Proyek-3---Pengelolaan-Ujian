@@ -12,10 +12,10 @@ import java.util.Date;
  *
  * @author pahlevi
  */
-public class Remainder5Controller {
+public class Reminder5Controller {
     private Date date;
     
-    public Remainder5Controller(Date date) {
+    public Reminder5Controller(Date date) {
         this.date = date;
     }
     
