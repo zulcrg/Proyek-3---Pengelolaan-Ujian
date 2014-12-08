@@ -7,6 +7,7 @@ package com.jtk.pengelolaanujian.view;
 
 import com.jtk.pengelolaanujian.util.EnumRole;
 import com.jtk.pengelolaanujian.view.admin.AdminPanel;
+import com.jtk.pengelolaanujian.view.dashboard.DashboardPanel;
 import com.jtk.pengelolaanujian.view.dosenpengampu.DosenPengampuPanel;
 import com.jtk.pengelolaanujian.view.panitia.PanitiaPanel;
 import com.jtk.pengelolaanujian.view.util.AboutAppsDialog;
@@ -29,6 +30,7 @@ public class MainFrame extends javax.swing.JFrame {
     private final VnvPanel vnvPanel = new VnvPanel();
     private final LoginPanel loginPanel = new LoginPanel(this);
     private final WelcomePanel panel = new WelcomePanel(this);
+    private final DashboardPanel dashboardPanel = new DashboardPanel(this);
 
     /**
      * Creates new form MainFrame
@@ -40,11 +42,13 @@ public class MainFrame extends javax.swing.JFrame {
         setTitle("Applikasi Pengelolaan Ujian - Development");
         cardPanel.setLayout(cardLayout);
         cardPanel.add(loginPanel, "0");
-        cardPanel.add(panel, "1");
+        //cardPanel.add(dashboardPanel, "0");
+        cardPanel.add(panel, "1");        
         cardPanel.add(adminPanel, EnumRole.ADMIN.toString());
         cardPanel.add(dosenPengampuPanel, EnumRole.DOSEN_PENGAMPU.toString());
         cardPanel.add(panitiaPanel, EnumRole.PANITIA.toString());
         cardPanel.add(vnvPanel, EnumRole.VNV.toString());
+        
         setMenuFalse();
         setMenuLogout();
     }
@@ -146,7 +150,7 @@ public class MainFrame extends javax.swing.JFrame {
         btnDosen = new javax.swing.JButton();
         btnVnv = new javax.swing.JButton();
         btnPanitia = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnDashBoard = new javax.swing.JButton();
         cardPanel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -191,7 +195,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Dashboard");
+        btnDashBoard.setText("Dashboard");
+        btnDashBoard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDashBoardActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
@@ -206,7 +215,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPanitia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDashBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuPanelLayout.setVerticalGroup(
@@ -216,7 +225,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btnDosen)
                 .addComponent(btnVnv)
                 .addComponent(btnPanitia)
-                .addComponent(jButton1))
+                .addComponent(btnDashBoard))
         );
 
         javax.swing.GroupLayout cardPanelLayout = new javax.swing.GroupLayout(cardPanel);
@@ -304,13 +313,17 @@ public class MainFrame extends javax.swing.JFrame {
         aboutAppsDialog.show();
     }//GEN-LAST:event_menuAboutActionPerformed
 
+    private void btnDashBoardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashBoardActionPerformed
+        dashboardPanel.show();
+    }//GEN-LAST:event_btnDashBoardActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdmin;
+    private javax.swing.JButton btnDashBoard;
     private javax.swing.JButton btnDosen;
     private javax.swing.JButton btnPanitia;
     private javax.swing.JButton btnVnv;
     private javax.swing.JPanel cardPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
