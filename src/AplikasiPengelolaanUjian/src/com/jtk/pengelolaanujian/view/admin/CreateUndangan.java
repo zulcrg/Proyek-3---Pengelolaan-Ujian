@@ -18,6 +18,10 @@ public class CreateUndangan extends javax.swing.JPanel {
     public CreateUndangan() {
         initComponents();
     }
+    
+    public void preparation(){
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
