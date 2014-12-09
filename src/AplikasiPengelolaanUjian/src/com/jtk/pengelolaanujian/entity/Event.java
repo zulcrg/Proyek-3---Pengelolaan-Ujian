@@ -7,7 +7,7 @@
 package com.jtk.pengelolaanujian.entity;
 
 import com.jtk.pengelolaanujian.facade.UjianFacade;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**

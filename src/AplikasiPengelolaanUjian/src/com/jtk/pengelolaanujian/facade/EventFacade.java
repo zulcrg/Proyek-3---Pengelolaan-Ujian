@@ -9,6 +9,8 @@ import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.util.List;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -71,5 +73,27 @@ public class EventFacade {
             Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public boolean createEvent(Event event) {
+        try {
+            String query = "INSERT INTO event VALUES(?,?,?,?,?,?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, query);
+            preparedStatement.setDate(2, new Date(event.getTanggalMulai().getTime()));
+            preparedStatement.setDate(3, new Date(event.getTanggalSelesai().getTime()));
+            preparedStatement.setDate(4, new Date(event.getUploadMulai().getTime()));
+            preparedStatement.setDate(5, new Date(event.getUploadSelesai().getTime()));
+            preparedStatement.setDate(6, new Date(event.getVnvMulai().getTime()));
+            preparedStatement.setDate(7, new Date(event.getVnvSelesai().getTime()));
+            preparedStatement.setBoolean(8, true);
+            
+            preparedStatement.execute();
+            
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }
