@@ -2,6 +2,7 @@
 package com.jtk.pengelolaanujianserver.main;
 
 
+import com.jtk.pengelolaanujian.controller.admin.RegistrasiUserController;
 import com.jtk.pengelolaanujianserver.proces.ValidityActionControlProcess;
 import java.util.Timer;
  
@@ -22,6 +23,6 @@ public class TimerSample {
  
         //Third Parameter is the specified the Period between consecutive
         //calling for the method. 
-        timer.schedule(actionControl, 0, 10000);         
+        timer.schedule(actionControl, 0, 10000);            
     }
 }
