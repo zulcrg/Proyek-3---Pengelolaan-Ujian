@@ -6,11 +6,11 @@
 
 package com.jtk.pengelolaanujianserver.controller;
 
-import com.jtk.pengelolaanujianserver.entity.Dosen;
-import com.jtk.pengelolaanujianserver.entity.MataKuliah;
-import com.jtk.pengelolaanujianserver.entity.Soal;
-import com.jtk.pengelolaanujianserver.entity.Staf;
-import com.jtk.pengelolaanujianserver.facade.GammuFacade;
+
+import com.jtk.pengelolaanujian.entity.Dosen;
+import com.jtk.pengelolaanujian.entity.MataKuliah;
+import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.facade.GammuFacade;
 import java.util.Date;
 
 /**

@@ -6,6 +6,7 @@
 package com.jtk.pengelolaanujian.facade;
 
 import com.jtk.pengelolaanujian.entity.MataKuliah;
+import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -73,6 +74,38 @@ public class MataKuliahFacade {
                     + "INNER JOIN staf ON (dosen.STAF_NIP = staf.STAF_NIP) "
                     + "INNER JOIN user ON (user.STAF_NIP = staf.STAF_NIP) "
                     + "WHERE user.USER_USERNAME = '" + username + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<MataKuliah> mataKuliahList = new ArrayList<>();
+            while (rs.next()) {
+                MataKuliah mataKuliah = new MataKuliah();
+                mataKuliah.setMatkulKode(rs.getString(1));
+                mataKuliah.setMatkulNama(rs.getString(2));
+                mataKuliah.setMatkulTipe(rs.getString(3));
+
+                mataKuliahList.add(mataKuliah);
+            }
+            return mataKuliahList;
+        } catch (SQLException ex) {
+            Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<MataKuliah> findAllWhereListedIn(List<Soal> listSoal) {
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("(");
+
+            for (int i = 0; i < listSoal.size(); i++) {
+                sb.append("'").append(listSoal.get(i).getMatkulKode()).append("'");
+                if (i < listSoal.size() - 1) {
+                    sb.append(",");
+                }
+            }
+            sb.append(")");
+
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM mata_kuliah where mata_kuliah.MATKUL_KODE IN " + sb.toString() + "";
             ResultSet rs = stmt.executeQuery(query);
             List<MataKuliah> mataKuliahList = new ArrayList<>();
             while (rs.next()) {

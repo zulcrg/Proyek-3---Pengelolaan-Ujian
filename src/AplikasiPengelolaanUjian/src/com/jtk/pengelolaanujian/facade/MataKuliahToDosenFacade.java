@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jtk.pengelolaanujianserver.facade;
+package com.jtk.pengelolaanujian.facade;
 
-import com.jtk.pengelolaanujianserver.entity.MataKuliah;
-import com.jtk.pengelolaanujianserver.entity.MataKuliahToDosen;
-import com.jtk.pengelolaanujianserver.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.entity.MataKuliah;
+import com.jtk.pengelolaanujian.entity.MataKuliahToDosen;
+import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
