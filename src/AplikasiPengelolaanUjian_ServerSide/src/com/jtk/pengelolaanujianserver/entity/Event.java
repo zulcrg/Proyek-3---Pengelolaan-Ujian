@@ -17,13 +17,31 @@ import java.util.List;
 public class Event {
     private String kode;
     private Date tanggalMulai;
+
+    public Date getUploadNilaiSelesai() {
+        return uploadNilaiSelesai;
+    }
+
+    public void setUploadNilaiSelesai(Date uploadNilaiSelesai) {
+        this.uploadNilaiSelesai = uploadNilaiSelesai;
+    }
+
+    public int getDelayUploadNilai() {
+        return DelayUploadNilai;
+    }
+
+    public void setDelayUploadNilai(int DelayUploadNilai) {
+        this.DelayUploadNilai = DelayUploadNilai;
+    }
     private Date tanggalSelesai;
     private Date uploadMulai;
     private Date uploadSelesai;
     private Date vnvMulai;
     private Date vnvSelesai;
+    private Date uploadNilaiSelesai;
     private int DelayUploadSoal;
     private int DelayPengawas;
+    private int DelayUploadNilai;
 
     public int getDelayUploadSoal() {
         return DelayUploadSoal;

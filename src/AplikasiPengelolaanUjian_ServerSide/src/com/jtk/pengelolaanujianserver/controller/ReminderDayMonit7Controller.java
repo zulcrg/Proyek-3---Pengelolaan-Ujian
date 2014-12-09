@@ -23,23 +23,10 @@ import java.util.List;
  *
  * @author pahlevi
  */
-public class ReminderDayMonit7Controller {
+public class ReminderDayMonit7Controller extends Reminder {
 
     private final Date date;
-
-    private List<Ujian> listUjian;
-    private List<RuanganUjian> listRuanganUjian;
-    private List<Staf> listStaf;
-
-    private Event event;
-
-    private final EventFacade eventFacade = new EventFacade();
-    private final GammuFacade gammuFacade = new GammuFacade();
-    private final UjianFacade ujianFacade = new UjianFacade();
-    private final RuanganUjianFacade ruanganUjianFacade = new RuanganUjianFacade();
-    private final StafFacade stafFacade = new StafFacade();
-    private List<RuanganUjian> listRuangUjian;
-
+    
     public ReminderDayMonit7Controller(Date date) {
         this.date = date;
     }
@@ -50,10 +37,10 @@ public class ReminderDayMonit7Controller {
         listUjian = ujianFacade.findByKodeEvent(event.getKode());        
 
         for (Ujian ujian : listUjian) {
-            if (date.getDate()+event.getDelayPengawas()!=ujian.getUjianMulai().getDate()) {
+            if (date.getDate()+event.getDelayPengawas()==ujian.getUjianMulai().getDate()) {
                 listRuanganUjian = ruanganUjianFacade.findAllWhereInsertedIn(ujian);
-                listStaf = stafFacade.find1AllWhereListedIn(listRuangUjian);
-                gammuFacade.sendPengawasSMS(listStaf,ujian,listRuangUjian,event);
+                listStaf = stafFacade.find1AllWhereListedIn(listRuanganUjian);
+                gammuFacade.sendPengawasSMS(listStaf,ujian,listRuanganUjian,event);
             } else {            
                 //nothing
             }
