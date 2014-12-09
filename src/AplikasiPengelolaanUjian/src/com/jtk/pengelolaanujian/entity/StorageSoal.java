@@ -23,6 +23,8 @@ public class StorageSoal {
     private Blob stsoalFile;
     private Soal soal;
     private User user;
+    private String namaFile;
+    private String tipeFile;
     
     public StorageSoal() {
     }
@@ -97,7 +99,19 @@ public class StorageSoal {
         this.user = user;
     }
 
-   
-    
-    
+    public String getNamaFile() {
+        return namaFile;
+    }
+
+    public void setNamaFile(String namaFile) {
+        this.namaFile = namaFile;
+    }
+
+    public String getTipeFile() {
+        return tipeFile;
+    }
+
+    public void setTipeFile(String tipeFile) {
+        this.tipeFile = tipeFile;
+    }    
 }
