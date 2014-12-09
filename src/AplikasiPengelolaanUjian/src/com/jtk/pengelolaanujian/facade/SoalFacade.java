@@ -97,4 +97,30 @@ public class SoalFacade {
 
         return null;
     }
+    
+     public List<Soal> findAllWhereUploaded(boolean flag) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM soal where SOAL_UPLOADED = '" + flag + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Soal> soalList = new ArrayList<>();
+            while (rs.next()) {
+                Soal soal = new Soal();
+                soal.setMatkulKode(rs.getString(1));
+                soal.setSoalKode(rs.getString(2));
+                soal.setSoalPrinted(rs.getBoolean(3));
+                soal.setSoalVnved(rs.getBoolean(4));
+                soal.setSoalUploaded(rs.getBoolean(5));
+                soal.setSoalSifat(rs.getString(6));
+
+                soalList.add(soal);
+            }
+            return soalList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
 }

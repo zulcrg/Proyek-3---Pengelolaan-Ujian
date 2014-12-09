@@ -22,6 +22,15 @@ public class Ujian {
     private int ujianMenit;
     private Event event;
     private Soal soal;
+    private String ujianNama;
+
+    public String getUjianNama() {
+        return ujianNama;
+    }
+
+    public void setUjianNama(String ujianNama) {
+        this.ujianNama = ujianNama;
+    }
 
     public Ujian() {
 

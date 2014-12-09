@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.entity;
 
 import com.jtk.pengelolaanujian.facade.UjianFacade;
@@ -15,6 +14,7 @@ import java.util.List;
  * @author Rizki
  */
 public class Event {
+
     private String kode;
     private Date tanggalMulai;
     private Date tanggalSelesai;
@@ -22,7 +22,44 @@ public class Event {
     private Date uploadSelesai;
     private Date vnvMulai;
     private Date vnvSelesai;
+    private Date uploadNilaiSelesai;
+    private int DelayUploadSoal;
+    private int DelayPengawas;
+    private int DelayUploadNilai;
     private List<Ujian> ujian;
+   
+
+    public Date getUploadNilaiSelesai() {
+        return uploadNilaiSelesai;
+    }
+
+    public void setUploadNilaiSelesai(Date uploadNilaiSelesai) {
+        this.uploadNilaiSelesai = uploadNilaiSelesai;
+    }
+
+    public int getDelayUploadSoal() {
+        return DelayUploadSoal;
+    }
+
+    public void setDelayUploadSoal(int DelayUploadSoal) {
+        this.DelayUploadSoal = DelayUploadSoal;
+    }
+
+    public int getDelayPengawas() {
+        return DelayPengawas;
+    }
+
+    public void setDelayPengawas(int DelayPengawas) {
+        this.DelayPengawas = DelayPengawas;
+    }
+
+    public int getDelayUploadNilai() {
+        return DelayUploadNilai;
+    }
+
+    public void setDelayUploadNilai(int DelayUploadNilai) {
+        this.DelayUploadNilai = DelayUploadNilai;
+    }
 
     public Event() {
     }
@@ -102,5 +139,5 @@ public class Event {
     public void setUjian(List<Ujian> ujian) {
         this.ujian = ujian;
     }
-    
+
 }

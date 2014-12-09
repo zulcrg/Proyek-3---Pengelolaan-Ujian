@@ -5,9 +5,9 @@
  */
 package com.jtk.pengelolaanujianserver.controller;
 
-import com.jtk.pengelolaanujianserver.entity.Event;
-import com.jtk.pengelolaanujianserver.entity.Ujian;
-import com.jtk.pengelolaanujianserver.facade.EventFacade;
+import com.jtk.pengelolaanujian.entity.Event;
+import com.jtk.pengelolaanujian.entity.Ujian;
+import com.jtk.pengelolaanujian.facade.EventFacade;
 import java.sql.SQLException;
 import java.util.Date;
 

@@ -5,16 +5,16 @@
  */
 package com.jtk.pengelolaanujianserver.controller;
 
-import com.jtk.pengelolaanujianserver.entity.Dosen;
-import com.jtk.pengelolaanujianserver.entity.Event;
-import com.jtk.pengelolaanujianserver.entity.RuanganUjian;
-import com.jtk.pengelolaanujianserver.entity.Staf;
-import com.jtk.pengelolaanujianserver.entity.Ujian;
-import com.jtk.pengelolaanujianserver.facade.EventFacade;
-import com.jtk.pengelolaanujianserver.facade.GammuFacade;
-import com.jtk.pengelolaanujianserver.facade.RuanganUjianFacade;
-import com.jtk.pengelolaanujianserver.facade.StafFacade;
-import com.jtk.pengelolaanujianserver.facade.UjianFacade;
+import com.jtk.pengelolaanujian.entity.Dosen;
+import com.jtk.pengelolaanujian.entity.Event;
+import com.jtk.pengelolaanujian.entity.RuanganUjian;
+import com.jtk.pengelolaanujian.entity.Staf;
+import com.jtk.pengelolaanujian.entity.Ujian;
+import com.jtk.pengelolaanujian.facade.EventFacade;
+import com.jtk.pengelolaanujian.facade.GammuFacade;
+import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
+import com.jtk.pengelolaanujian.facade.StafFacade;
+import com.jtk.pengelolaanujian.facade.UjianFacade;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
