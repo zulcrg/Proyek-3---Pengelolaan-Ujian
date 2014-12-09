@@ -57,13 +57,13 @@ public class GammuFacade {
 
     public void sendPengawasSMS(List<Staf> listStaf, Ujian ujian, List<RuanganUjian> listRuangUjian, Event event) throws SQLException {
         String smsString;
-        
+
         StringBuilder sb = new StringBuilder();
         StringBuilder sb1 = new StringBuilder();
-        
+
         sb.append("(");
         sb1.append("(");
-        
+
         for (int i = 0; i < listStaf.size(); i++) {
             sb.append("'").append(listStaf.get(i).getStafNIP()).append("'");
             sb1.append("'").append(listStaf.get(i).getStafKontak()).append("'");
@@ -72,10 +72,10 @@ public class GammuFacade {
                 sb1.append(",");
             }
         }
-        
+
         sb.append(")");
         sb1.append(")");
-        
+
         String kodeRuangan = null;
         try {
             Statement stmt = connection.createStatement();
@@ -105,6 +105,47 @@ public class GammuFacade {
             Statement statementDB;
             statmentDB = connection.createStatement();
             statmentDB.execute("INSERT INTO outbox(DestinationNumber, TextDecoded, creatorID) VALUES(" + sb1.toString() + ",'" + smsString + "','Gammu')");
+        } catch (SQLException ex) {
+            Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void sendPengawasSMS(List<RuanganUjian> listRuanganUjian, Event event) {
+        String smsString;
+        StringBuilder sb = new StringBuilder();
+        
+        for (int i = 0; i < listRuanganUjian.size(); i++) {
+            RuanganUjian ruanganUjian = listRuanganUjian.get(i);
+            sb.append("(");            
+            sb.append("'").append(ruanganUjian.getStaf().getStafKontak()).append("'");
+            sb.append(",");
+            if (event.getDelayPengawas() == 1) {
+                smsString = "[REMINDER] Anda Harus mengawas besok, Ujian " + ruanganUjian.getUjian().getUjianNama() + ""
+                        + " di ruang "
+                        + "" + ruanganUjian.getRuanganKode() + ""
+                        + " pukul: "
+                        + "" + ruanganUjian.getUjian().getUjianMulai() + "";
+            } else {
+                smsString = "[REMINDER] " + event.getDelayPengawas() + "-Hari lagi Anda Harus mengawas , Ujian " + ruanganUjian.getUjian().getUjianNama() + ""
+                        + " di ruang "
+                        + "" + ruanganUjian.getRuanganKode() + ""
+                        + " pukul: "
+                        + "" + ruanganUjian.getUjian().getUjianMulai() + "";
+            }
+            sb.append("'").append(smsString).append("'");
+            sb.append(",");
+            sb.append("'Gammu'");
+            sb.append(")");
+             if (i < listRuanganUjian.size() - 1) {
+                sb.append(",");
+            }
+        }
+        
+        Statement statmentDB = null;
+        try {
+            Statement statementDB;
+            statmentDB = connection.createStatement();
+            statmentDB.execute("INSERT INTO outbox(DestinationNumber, TextDecoded, creatorID) VALUES"+sb.toString());
         } catch (SQLException ex) {
             Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
