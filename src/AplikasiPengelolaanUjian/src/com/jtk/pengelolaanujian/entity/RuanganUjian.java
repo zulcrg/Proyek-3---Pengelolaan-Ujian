@@ -67,12 +67,16 @@ public class RuanganUjian {
         this.beritaKode = beritaKode;
     }
 
-    public Ruangan getRuangan() {
+    public Ruangan getRuanganQuery() {
         RuanganFacade ruanganFacade = new RuanganFacade();
         ruangan = ruanganFacade.findByKodeRuangan(ruanganKode);
         return ruangan;
     }
 
+    public Ruangan getRuangan() {
+        return ruangan;
+    }
+    
     public void setRuangan(Ruangan ruangan) {
         this.ruangan = ruangan;
     }
@@ -87,9 +91,13 @@ public class RuanganUjian {
         this.beritaAcara = beritaAcara;
     }
 
-    public Ujian getUjian() {
+    public Ujian getUjianQuery() {
         UjianFacade ujianFacade = new UjianFacade();
         ujian = ujianFacade.findByKodeUjian(ujianKode);
+        return ujian;
+    }
+
+    public Ujian getUjian() {
         return ujian;
     }
 
@@ -97,9 +105,13 @@ public class RuanganUjian {
         this.ujian = ujian;
     }
 
-    public Staf getStaf() {
+    public Staf getStafQuery() {
         StafFacade stafFacade = new StafFacade();
         staf = stafFacade.findByStafNip(stafNip);
+        return staf;
+    }
+    
+    public Staf getStaf() {        
         return staf;
     }
 
