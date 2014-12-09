@@ -19,6 +19,8 @@ public class Nilai {
     private String ujianKode;
     private Blob nilaiFile;
     private RuanganUjian ruanganUjian;
+    private String namaFile;
+    private String tipeFile;
     
     public Nilai() {
     }
@@ -61,6 +63,22 @@ public class Nilai {
     
     public void setRuanganUjian(RuanganUjian ruanganUjian) {
         this.ruanganUjian = ruanganUjian;
+    }
+
+    public String getNamaFile() {
+        return namaFile;
+    }
+
+    public void setNamaFile(String namaFile) {
+        this.namaFile = namaFile;
+    }
+
+    public String getTipeFile() {
+        return tipeFile;
+    }
+
+    public void setTipeFile(String tipeFile) {
+        this.tipeFile = tipeFile;
     }
     
 }
