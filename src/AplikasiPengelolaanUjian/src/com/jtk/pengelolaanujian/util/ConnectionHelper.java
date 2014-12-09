@@ -22,7 +22,7 @@ public class ConnectionHelper {
 
     private static void createConnection() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pengelolaan_ujian", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pengelolaan_ujian", "root", "");
         } catch (SQLException ex) {
             Logger.getLogger(ConnectionHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -30,7 +30,7 @@ public class ConnectionHelper {
     
     private static void createConnectionGammu(){
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gammu", "root", "root");            
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gammu", "root", "");            
         } catch (SQLException ex) {
             Logger.getLogger(ConnectionHelper.class.getName()).log(Level.SEVERE, null, ex);                       
         }
