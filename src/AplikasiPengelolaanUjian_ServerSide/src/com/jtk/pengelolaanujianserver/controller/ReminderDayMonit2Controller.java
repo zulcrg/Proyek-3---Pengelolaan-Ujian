@@ -10,6 +10,8 @@ import java.util.Date;
 /**
  *
  * @author pahlevi
+ * reminder pengingat dosen pengampu untuk upload soal
+ * 
  */
 public class ReminderDayMonit2Controller extends Reminder{
     private final Date date;

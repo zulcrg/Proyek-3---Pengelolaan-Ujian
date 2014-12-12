@@ -14,6 +14,8 @@ import java.util.List;
 /**
  *
  * @author pahlevi
+ * reminder pengingat pengawas untuk ngawas di H-x
+ * 
  */
 public class ReminderDayMonit7Controller extends Reminder {
 
@@ -36,7 +38,6 @@ public class ReminderDayMonit7Controller extends Reminder {
         }
 
         listRuanganUjian = ruanganUjianFacade.findAllWhereInsertedIn(listUjian1);
-        // listStaf = stafFacade.find1AllWhereListedIn(listRuanganUjian);                
         gammuFacade.sendPengawasSMS(listRuanganUjian, event);
 
     }

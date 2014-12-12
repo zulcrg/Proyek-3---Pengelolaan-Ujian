@@ -8,6 +8,7 @@ package com.jtk.pengelolaanujianserver.proces;
 import com.jtk.pengelolaanujianserver.controller.*;
 import java.util.Date;
 import java.util.TimerTask;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -17,16 +18,17 @@ public class ValidityActionControlProcess extends TimerTask {
 
     public void run() {
         Date date = new Date();
-        System.out.println("Cek aturan main - action control setiap 10 detik 1x");
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+        System.out.println("Cek aturan main - action control setiap 10 detik 1x"+formatDate.format(date));
 
         //Reminder1Controller remainder1Controller = new Reminder1Controller(date);
-        ReminderDayMonit2Controller remainder2Controller = new ReminderDayMonit2Controller(date);
+        //ReminderDayMonit2Controller remainder2Controller = new ReminderDayMonit2Controller(date);
         //Reminder3Controller remainder3Controller = new Reminder3Controller(date);
         //Reminder4Controller remainder4Controller = new Reminder4Controller(date);
         //Reminder5Controller remainder5Controller = new Reminder5Controller(date);
         //Reminder6Controller remainder6Controller = new Reminder6Controller(date);
-        ReminderDayMonit7Controller remainder7Controller = new ReminderDayMonit7Controller(date);
-        ReminderDayMonit8Controller remainder8Controller = new ReminderDayMonit8Controller(date);
+        //ReminderDayMonit7Controller remainder7Controller = new ReminderDayMonit7Controller(date);
+        //ReminderDayMonit8Controller remainder8Controller = new ReminderDayMonit8Controller(date);
 
     }
     /* TODO:  

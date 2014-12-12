@@ -26,14 +26,9 @@ public class ReminderDayMonit8Controller extends Reminder {
 
         listUjian = ujianFacade.findByKodeEvent(event.getKode());
 
-        for (Ujian ujian : listUjian) {
-            if (date.getDate() + event.getDelayUploadNilai() == event.getUploadNilaiSelesai().getDate()) {
-//                listRuanganUjian = ruanganUjianFacade.findAllWhereInsertedIn(ujian);
-//                listStaf = stafFacade.find1AllWhereListedIn(listRuanganUjian);
-//                
-//           gammuFacade.sendRemainderUploadSoalSMS(listStaf, smsString);
-            }
+        if (date.getDate() + event.getDelayUploadNilai() == event.getUploadNilaiSelesai().getDate()) {
 
         }
+
     }
 }
