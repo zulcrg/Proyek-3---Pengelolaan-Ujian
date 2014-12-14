@@ -77,7 +77,7 @@ public class EventFacade {
 
     public boolean createEvent(Event event) {
         try {
-            String query = "INSERT INTO event VALUES(?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO event VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, query);
             preparedStatement.setDate(2, new Date(event.getTanggalMulai().getTime()));
@@ -86,8 +86,12 @@ public class EventFacade {
             preparedStatement.setDate(5, new Date(event.getUploadSelesai().getTime()));
             preparedStatement.setDate(6, new Date(event.getVnvMulai().getTime()));
             preparedStatement.setDate(7, new Date(event.getVnvSelesai().getTime()));
-            preparedStatement.setBoolean(8, true);
-            
+            preparedStatement.setDate(8, new Date(event.getDelayUploadSoal()));
+            preparedStatement.setDate(9, new Date(event.getDelayPengawas()));
+            preparedStatement.setDate(10, new Date(event.getDelayUploadNilai()));            
+            preparedStatement.setDate(11, new Date(event.getUploadNilaiSelesai().getTime()));            
+            preparedStatement.setBoolean(12, true);
+            preparedStatement.setDate(13, new Date(event.getTimeReminder()));                                    
             preparedStatement.execute();
             
             return true;
@@ -112,6 +116,9 @@ public class EventFacade {
                 event.setVnvSelesai(rs.getDate(7));
                 event.setDelayUploadSoal(rs.getInt(8));
                 event.setDelayPengawas(rs.getInt(9));
+                event.setDelayUploadNilai(rs.getInt(10));
+                event.setUploadNilaiSelesai(rs.getDate(11));
+                event.setTimeReminder(rs.getInt(12));
                 return event;
             }
         } catch (SQLException ex) {

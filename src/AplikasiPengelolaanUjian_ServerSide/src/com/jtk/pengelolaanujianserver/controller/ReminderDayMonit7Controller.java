@@ -14,7 +14,7 @@ import java.util.List;
 /**
  *
  * @author pahlevi
- * reminder pengingat pengawas untuk ngawas di H-x
+ * reminder pengingat_pengawas untuk ngawas di H-x
  * 
  */
 public class ReminderDayMonit7Controller extends Reminder {

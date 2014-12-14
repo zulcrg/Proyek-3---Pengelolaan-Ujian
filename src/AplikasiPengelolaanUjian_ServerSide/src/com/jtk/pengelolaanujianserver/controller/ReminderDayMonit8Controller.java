@@ -12,6 +12,7 @@ import java.util.Date;
 /**
  *
  * @author pahlevi
+ * reminder pemberitahuan dosen pengampu mgenenai H-X upload nilai
  */
 public class ReminderDayMonit8Controller extends Reminder {
 

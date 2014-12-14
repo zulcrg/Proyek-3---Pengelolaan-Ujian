@@ -21,11 +21,12 @@ public class Event {
     private Date uploadMulai;
     private Date uploadSelesai;
     private Date vnvMulai;
-    private Date vnvSelesai;
+    private Date vnvSelesai;    
     private Date uploadNilaiSelesai;
-    private int DelayUploadSoal;
-    private int DelayPengawas;
-    private int DelayUploadNilai;
+    private int delayUploadSoal;
+    private int delayPengawas;
+    private int delayUploadNilai;
+    private int timeReminder;
     private List<Ujian> ujian;
    
 
@@ -38,27 +39,27 @@ public class Event {
     }
 
     public int getDelayUploadSoal() {
-        return DelayUploadSoal;
+        return delayUploadSoal;
     }
 
     public void setDelayUploadSoal(int DelayUploadSoal) {
-        this.DelayUploadSoal = DelayUploadSoal;
+        this.delayUploadSoal = delayUploadSoal;
     }
 
     public int getDelayPengawas() {
-        return DelayPengawas;
+        return delayPengawas;
     }
 
     public void setDelayPengawas(int DelayPengawas) {
-        this.DelayPengawas = DelayPengawas;
+        this.delayPengawas = delayPengawas;
     }
 
     public int getDelayUploadNilai() {
-        return DelayUploadNilai;
+        return delayUploadNilai;
     }
 
     public void setDelayUploadNilai(int DelayUploadNilai) {
-        this.DelayUploadNilai = DelayUploadNilai;
+        this.delayUploadNilai = delayUploadNilai;
     }
 
     public Event() {
@@ -100,6 +101,14 @@ public class Event {
 
     public Date getUploadMulai() {
         return uploadMulai;
+    }
+
+    public int getTimeReminder() {
+        return timeReminder;
+    }
+
+    public void setTimeReminder(int timeReminder) {
+        this.timeReminder = timeReminder;
     }
 
     public void setUploadMulai(Date uploadMulai) {
