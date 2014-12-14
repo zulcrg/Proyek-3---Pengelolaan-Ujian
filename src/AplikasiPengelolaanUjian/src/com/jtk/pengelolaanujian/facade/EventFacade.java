@@ -7,14 +7,15 @@ package com.jtk.pengelolaanujian.facade;
 
 import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
-import java.util.List;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -77,21 +78,37 @@ public class EventFacade {
 
     public boolean createEvent(Event event) {
         try {
-            String query = "INSERT INTO event VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String s1,s2,s3,s4,s5,s6,s7;
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat ("yyyy-MM-dd");            
+            s1=simpleDateFormat.format(event.getTanggalMulai());
+            s2=simpleDateFormat.format(event.getTanggalSelesai());
+            s3=simpleDateFormat.format(event.getUploadMulai());
+            s4=simpleDateFormat.format(event.getUploadSelesai());
+            s5=simpleDateFormat.format(event.getVnvMulai());
+            s6=simpleDateFormat.format(event.getVnvSelesai());
+            s7=simpleDateFormat.format(event.getUploadNilaiSelesai());          
+            
+            String query = "INSERT INTO event VALUES('"+event.getKode()+
+                    "','"+s1+"','"+s2+
+                    "','"+s3+"','"+s4+
+                    "','"+s5+"','"+s6+
+                    "','"+event.getDelayUploadSoal()+"','"+event.getDelayPengawas()+"','"+event.getDelayUploadNilai()+
+                    "','"+s7+"','1','"+event.getTimeReminder()+"')";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, query);
-            preparedStatement.setDate(2, new Date(event.getTanggalMulai().getTime()));
-            preparedStatement.setDate(3, new Date(event.getTanggalSelesai().getTime()));
-            preparedStatement.setDate(4, new Date(event.getUploadMulai().getTime()));
-            preparedStatement.setDate(5, new Date(event.getUploadSelesai().getTime()));
-            preparedStatement.setDate(6, new Date(event.getVnvMulai().getTime()));
-            preparedStatement.setDate(7, new Date(event.getVnvSelesai().getTime()));
-            preparedStatement.setDate(8, new Date(event.getDelayUploadSoal()));
-            preparedStatement.setDate(9, new Date(event.getDelayPengawas()));
-            preparedStatement.setDate(10, new Date(event.getDelayUploadNilai()));            
-            preparedStatement.setDate(11, new Date(event.getUploadNilaiSelesai().getTime()));            
-            preparedStatement.setBoolean(12, true);
-            preparedStatement.setDate(13, new Date(event.getTimeReminder()));                                    
+//            preparedStatement.setString(1, query);
+//            preparedStatement.setString(1, event.getKode());
+//            preparedStatement.setDate(2, new Date(event.getTanggalMulai().getTime()));
+//            preparedStatement.setDate(3, new Date(event.getTanggalSelesai().getTime()));
+//            preparedStatement.setDate(4, new Date(event.getUploadMulai().getTime()));
+//            preparedStatement.setDate(5, new Date(event.getUploadSelesai().getTime()));
+//            preparedStatement.setDate(6, new Date(event.getVnvMulai().getTime()));
+//            preparedStatement.setDate(7, new Date(event.getVnvSelesai().getTime()));
+//            preparedStatement.setDate(8, new Date(event.getDelayUploadSoal()));
+//            preparedStatement.setDate(9, new Date(event.getDelayPengawas()));
+//            preparedStatement.setDate(10, new Date(event.getDelayUploadNilai()));            
+//            preparedStatement.setDate(11, new Date(event.getUploadNilaiSelesai().getTime()));            
+//            preparedStatement.setBoolean(12, true);
+//            preparedStatement.setDate(13, new Date(event.getTimeReminder()));                                    
             preparedStatement.execute();
             
             return true;

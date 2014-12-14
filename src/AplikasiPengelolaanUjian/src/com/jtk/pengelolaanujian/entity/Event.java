@@ -42,7 +42,7 @@ public class Event {
         return delayUploadSoal;
     }
 
-    public void setDelayUploadSoal(int DelayUploadSoal) {
+    public void setDelayUploadSoal(int delayUploadSoal) {
         this.delayUploadSoal = delayUploadSoal;
     }
 
@@ -50,7 +50,7 @@ public class Event {
         return delayPengawas;
     }
 
-    public void setDelayPengawas(int DelayPengawas) {
+    public void setDelayPengawas(int delayPengawas) {
         this.delayPengawas = delayPengawas;
     }
 
@@ -58,7 +58,7 @@ public class Event {
         return delayUploadNilai;
     }
 
-    public void setDelayUploadNilai(int DelayUploadNilai) {
+    public void setDelayUploadNilai(int delayUploadNilai) {
         this.delayUploadNilai = delayUploadNilai;
     }
 
