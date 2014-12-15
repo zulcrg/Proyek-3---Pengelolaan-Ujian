@@ -14,9 +14,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javax.swing.UIManager.getBoolean;
 
 /**
  *
@@ -158,7 +160,7 @@ public class RuanganUjianFacade {
                 }
             }
             sb.append(")");
-            
+
             Statement stmt = connection.createStatement();
             String query = "SELECT ruangan_ujian.*, staf.*, ujian.* FROM ruangan_ujian,staf,ujian where UJIAN_KODE IN " + sb.toString() + " "
                     + "AND ruangan_ujian.staf_nip = staf.staf_nip";
@@ -170,20 +172,20 @@ public class RuanganUjianFacade {
                 ruanganUjian.setUjianKode(rs.getString(2));
                 ruanganUjian.setStafNip(rs.getString(3));
                 ruanganUjian.setBeritaKode(rs.getString(4));
-                
+
                 Staf staf = new Staf();
                 staf.setStafNIP(rs.getString(5));
                 staf.setStafNama(rs.getString(6));
                 staf.setStafEmail(rs.getString(7));
                 staf.setStafKontak(rs.getString(8));
-                
+
                 Ujian ujian = new Ujian();
                 ujian.setUjianKode(rs.getString(9));
                 ujian.setEventKode(rs.getString(10));
                 ujian.setSoalKode(rs.getString(11));
                 ujian.setUjianMulai(rs.getDate(12));
                 ujian.setUjianMenit(rs.getInt(13));
-                
+
                 ruanganUjianList.add(ruanganUjian);
             }
             return ruanganUjianList;
@@ -193,4 +195,31 @@ public class RuanganUjianFacade {
         return null;
     }
 
+    public List<RuanganUjian> findAllWhereNilaiUploaded(boolean b) {        
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM RUANG_UJIAN WHERE RUANGUJIAN_NILAI_UPLOADED = '" + b + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<RuanganUjian> listRuanganUjian = new ArrayList<>();
+            while (rs.next()) {
+                RuanganUjian ruanganUjian = new RuanganUjian();
+                ruanganUjian.setRuanganKode(rs.getString(1));
+                ruanganUjian.setUjianKode(rs.getString(2));
+                ruanganUjian.setStafNip(rs.getString(3));
+                ruanganUjian.setBeritaKode(rs.getString(4));
+                ruanganUjian.setRuanganUjianTanggalUjian(getDate(5));
+                ruanganUjian.setRuanganUjianUploadNilaiStatus(getBoolean(6));
+
+                listRuanganUjian.add(ruanganUjian);
+            }
+            return listRuanganUjian;
+        } catch (SQLException ex) {
+            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;        
+    }
+
+    private Date getDate(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

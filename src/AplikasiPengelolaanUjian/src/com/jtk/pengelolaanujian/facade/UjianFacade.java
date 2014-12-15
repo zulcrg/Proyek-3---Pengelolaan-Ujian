@@ -5,6 +5,7 @@
  */
 package com.jtk.pengelolaanujian.facade;
 
+import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import com.jtk.pengelolaanujian.view.LoginPanel;
@@ -91,7 +92,7 @@ public class UjianFacade {
         }
         return null;
     }
-    
+
     public Ujian findByKodeUjian(String kodeUjian) {
         try {
             Statement stmt = connection.createStatement();
@@ -112,8 +113,8 @@ public class UjianFacade {
         }
         return null;
     }
-    
-    public List<Ujian> findByUsername(){
+
+    public List<Ujian> findByUsername() {
         try {
             Statement stmt = connection.createStatement();
             String query = "SELECT ujian.* FROM ujian "
@@ -141,6 +142,42 @@ public class UjianFacade {
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }   
+
+    public List<Ujian> findAllWhereListedIN(List<RuanganUjian> listRuanganUjian) {
+        List<Ujian> listUjian = null;
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("(");
+
+            for (int i = 0; i < listRuanganUjian.size(); i++) {
+                sb.append("'").append(listRuanganUjian.get(i).getUjianKode()).append("'");
+                if (i < listRuanganUjian.size() - 1) {
+                    sb.append(",");
+                }
+            }
+            sb.append(")");
+            
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM ujian WHERE UJIAN_KODE IN " + sb.toString() + "";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Ujian ujian = new Ujian();
+                ujian.setEventKode(rs.getString(1));
+                ujian.setSoalKode(rs.getString(2));
+                ujian.setUjianKode(rs.getString(3));
+                ujian.setUjianMenit(rs.getInt(4));
+                ujian.setUjianMulai(rs.getDate(5));                
+                ujian.setUjianNama(rs.getString(6)); 
+                
+                listUjian.add(ujian);
+            }
+            return listUjian;
+        } catch (SQLException ex) {
+            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
+
 
 }

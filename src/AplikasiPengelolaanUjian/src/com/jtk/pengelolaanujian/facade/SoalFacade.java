@@ -6,6 +6,7 @@
 package com.jtk.pengelolaanujian.facade;
 
 import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -97,8 +98,8 @@ public class SoalFacade {
 
         return null;
     }
-    
-     public List<Soal> findAllWhereUploaded(boolean flag) {
+
+    public List<Soal> findAllWhereUploaded(boolean flag) {
         try {
             Statement stmt = connection.createStatement();
             String query = "SELECT * FROM soal where SOAL_UPLOADED = '" + flag + "'";
@@ -121,6 +122,41 @@ public class SoalFacade {
             Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        return null;
+    }
+
+    public List<Soal> findAllWhereListedIN(List<Ujian> listUjian) {
+        List<Soal> listSoal = null;
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("(");
+
+            for (int i = 0; i < listUjian.size(); i++) {
+                sb.append("'").append(listUjian.get(i).getSoalKode()).append("'");
+                if (i < listUjian.size() - 1) {
+                    sb.append(",");
+                }
+            }
+            sb.append(")");
+
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM soal WHERE soal_kode IN " + sb.toString() + "";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Soal soal = new Soal();
+                soal.setSoalKode(rs.getString(1));
+                soal.setMatkulKode(rs.getString(2));
+                soal.setSoalUploaded(rs.getBoolean(3));
+                soal.setSoalVnved(rs.getBoolean(4));
+                soal.setSoalPrinted(rs.getBoolean(5));
+                soal.setSoalSifat(rs.getString(6));
+
+                listSoal.add(soal);
+            }
+            return listSoal;
+        } catch (SQLException ex) {
+            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return null;
     }
 }

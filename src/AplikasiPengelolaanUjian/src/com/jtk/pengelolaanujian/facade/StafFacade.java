@@ -138,7 +138,7 @@ public class StafFacade {
             sb.append(")");
 
             Statement stmt = connection.createStatement();
-            String query = "SELECT * FROM staf where STAF_NIP = " + sb.toString() + "";
+            String query = "SELECT * FROM staf where STAF_NIP IN " + sb.toString() + "";
             ResultSet rs = stmt.executeQuery(query);
             List<Staf> stafList = new ArrayList<>();
             while (rs.next()) {
@@ -172,7 +172,7 @@ public class StafFacade {
             sb.append(")");
 
             Statement stmt = connection.createStatement();
-            String query = "SELECT * FROM STAF where RUANGAN_UJIAN.STAF_NIP = " + sb.toString() + "";
+            String query = "SELECT * FROM STAF where RUANGAN_UJIAN.STAF_NIP IN " + sb.toString() + "";
             ResultSet rs = stmt.executeQuery(query);
             List<Staf> stafList = new ArrayList<>();
             while (rs.next()) {

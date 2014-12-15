@@ -27,9 +27,8 @@ public class Event {
     private int delayPengawas;
     private int delayUploadNilai;
     private int timeReminder;
-    private List<Ujian> ujian;
-   
-
+    private List<Ujian> ujian;   
+    
     public Date getUploadNilaiSelesai() {
         return uploadNilaiSelesai;
     }

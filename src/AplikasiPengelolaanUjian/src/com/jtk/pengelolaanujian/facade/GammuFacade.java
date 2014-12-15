@@ -112,4 +112,35 @@ public class GammuFacade {
             Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public boolean sendRemainderUploadNilaiSMS(List<Staf> listStaf, String text) {
+        Statement statmentDB = null;
+        StringBuilder sb = null;
+        try {
+            for (int i = 0; i < listStaf.size(); i++) {
+                Staf staf = listStaf.get(i);
+                sb.append("(");
+                sb.append("'");
+                sb.append(staf.getStafKontak());
+                sb.append("'");
+                sb.append(",'");
+                sb.append(text);
+                sb.append("',");
+                sb.append("'Gammu'");
+                sb.append(")");
+                if (i < listStaf.size() - 1) {
+                    sb.append(",");
+                }
+            }
+
+            for (Staf staf : listStaf) {
+                statmentDB = connection.createStatement();
+                statmentDB.execute("INSERT INTO outbox(DestinationNumber, TextDecoded, creatorID) VALUES" + sb.toString());
+            }
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 }

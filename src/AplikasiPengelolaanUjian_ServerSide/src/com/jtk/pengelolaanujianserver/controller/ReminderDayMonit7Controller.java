@@ -13,9 +13,8 @@ import java.util.List;
 
 /**
  *
- * @author pahlevi
- * reminder pengingat_pengawas untuk ngawas di H-x
- * 
+ * @author pahlevi reminder pengingat_pengawas untuk ngawas di H-x
+ *
  */
 public class ReminderDayMonit7Controller extends Reminder {
 
@@ -26,19 +25,20 @@ public class ReminderDayMonit7Controller extends Reminder {
     }
 
     public void checkRule() throws SQLException {
-        List<Ujian> listUjian1 = new ArrayList<>();
+        List<Ujian> listUjianReminder = new ArrayList<>();
         event = eventFacade.findLast();
 
         listUjian = ujianFacade.findByKodeEvent(event.getKode());
 
         for (Ujian ujian : listUjian) {
             if (date.getDate() + event.getDelayPengawas() == ujian.getUjianMulai().getDate()) {
-                listUjian1.add(ujian);
+                listUjianReminder.add(ujian);
             }
         }
 
-        listRuanganUjian = ruanganUjianFacade.findAllWhereInsertedIn(listUjian1);
-        gammuFacade.sendPengawasSMS(listRuanganUjian, event);
-
+        if (listUjianReminder != null) {
+            listRuanganUjian = ruanganUjianFacade.findAllWhereInsertedIn(listUjianReminder);
+            gammuFacade.sendPengawasSMS(listRuanganUjian, event);
+        }
     }
 }

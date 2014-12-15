@@ -9,6 +9,7 @@ import com.jtk.pengelolaanujian.facade.BeritaAcaraFacade;
 import com.jtk.pengelolaanujian.facade.RuanganFacade;
 import com.jtk.pengelolaanujian.facade.StafFacade;
 import com.jtk.pengelolaanujian.facade.UjianFacade;
+import java.util.Date;
 
 /**
  *
@@ -24,6 +25,24 @@ public class RuanganUjian {
     private BeritaAcara beritaAcara;
     private Ujian ujian;
     private Staf staf;
+    private Date ruanganUjianTanggalUjian;
+
+    public Date getRuanganUjianTanggalUjian() {
+        return ruanganUjianTanggalUjian;
+    }
+
+    public void setRuanganUjianTanggalUjian(Date ruanganUjianTanggalUjian) {
+        this.ruanganUjianTanggalUjian = ruanganUjianTanggalUjian;
+    }
+
+    public boolean isRuanganUjianUploadNilaiStatus() {
+        return ruanganUjianUploadNilaiStatus;
+    }
+
+    public void setRuanganUjianUploadNilaiStatus(boolean ruanganUjianUploadNilaiStatus) {
+        this.ruanganUjianUploadNilaiStatus = ruanganUjianUploadNilaiStatus;
+    }
+    private boolean ruanganUjianUploadNilaiStatus;
 
     public RuanganUjian() {
     }
