@@ -34,10 +34,24 @@ public class PanitiaPanel extends javax.swing.JPanel {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         createEvent1 = new com.jtk.pengelolaanujian.view.panitia.CreateEvent();
+        createUjian1 = new com.jtk.pengelolaanujian.view.panitia.CreateUjian();
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Create Event", createEvent1);
+
+        javax.swing.GroupLayout createUjian1Layout = new javax.swing.GroupLayout(createUjian1);
+        createUjian1.setLayout(createUjian1Layout);
+        createUjian1Layout.setHorizontalGroup(
+            createUjian1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 615, Short.MAX_VALUE)
+        );
+        createUjian1Layout.setVerticalGroup(
+            createUjian1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 511, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Create Ujian", createUjian1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -54,6 +68,7 @@ public class PanitiaPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.jtk.pengelolaanujian.view.panitia.CreateEvent createEvent1;
+    private com.jtk.pengelolaanujian.view.panitia.CreateUjian createUjian1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
