@@ -24,15 +24,15 @@ import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-public class ChartPanel2 extends javax.swing.JPanel {
+public class PipePanelSample extends javax.swing.JPanel {
 
     /**
-     * Creates new form ChartPanel2
+     * Creates new form PipePanelSample
      */
     private JFreeChart barchart;
     private ChartPanel panel;
 
-    public ChartPanel2() {
+    public PipePanelSample() {
         panel = createChart(createData());
         setLayout(new BorderLayout());
         add(panel, BorderLayout.CENTER);
@@ -75,11 +75,11 @@ public class ChartPanel2 extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 323, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 252, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -7,6 +7,7 @@ package com.jtk.pengelolaanujian.controller.panitiaController;
 
 import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.facade.EventFacade;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +17,11 @@ public class CreateEventController {
 
     public boolean createEvent(Event event) {
         EventFacade eventFacade = new EventFacade();
-        return eventFacade.createEvent(event);
+        if (eventFacade.findByKodeEvent(event.getKode()) == null) {
+            return eventFacade.createEvent(event);
+        } else {
+            JOptionPane.showMessageDialog(null, "Event dengan kode '" + event.getKode() + " sudah ada", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
     }
 }
