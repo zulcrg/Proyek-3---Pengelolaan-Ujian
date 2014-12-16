@@ -11,7 +11,7 @@ import com.jtk.pengelolaanujian.view.MainFrame;
  *
  * @author Zulkhair Abdullah D
  */
-public class DashboardPanel extends javax.swing.JPanel {
+public class DashboardPanel1 extends javax.swing.JPanel {
 
     MainFrame mainFrame;
 
@@ -19,7 +19,7 @@ public class DashboardPanel extends javax.swing.JPanel {
      * Creates new form DashboardPanel
      * @param mainFrame
      */
-    public DashboardPanel(MainFrame mainFrame) {
+    public DashboardPanel1(MainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
     }
@@ -38,21 +38,9 @@ public class DashboardPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        chartPanel11 = new com.jtk.pengelolaanujian.view.dashboard.ChartPanel1();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        chartPanel21 = new com.jtk.pengelolaanujian.view.dashboard.ChartPanel2();
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jScrollPane1.setViewportView(chartPanel11);
-
-        jTabbedPane1.addTab("Pie", jScrollPane1);
-
-        jScrollPane2.setViewportView(chartPanel21);
-
-        jTabbedPane1.addTab("Batang", jScrollPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -68,10 +56,6 @@ public class DashboardPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.jtk.pengelolaanujian.view.dashboard.ChartPanel1 chartPanel11;
-    private com.jtk.pengelolaanujian.view.dashboard.ChartPanel2 chartPanel21;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

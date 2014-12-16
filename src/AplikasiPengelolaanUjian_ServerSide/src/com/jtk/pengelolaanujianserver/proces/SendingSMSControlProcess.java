@@ -21,12 +21,12 @@ public class SendingSMSControlProcess extends TimerTask{
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println("Cek aturan main - action control setiap 10 detik 1x "+formatDate.format(date));
 
-        //Reminder1Controller remainder1Controller = new Reminder1Controller(date);
-        //ReminderDayMonit2Controller remainder2Controller = new ReminderDayMonit2Controller(date);
+        //Reminder1Controller remainder1Controller = new Reminder1Controller(date);        
         //Reminder3Controller remainder3Controller = new Reminder3Controller(date);
         //Reminder4Controller remainder4Controller = new Reminder4Controller(date);
         //Reminder5Controller remainder5Controller = new Reminder5Controller(date);
         //Reminder6Controller remainder6Controller = new Reminder6Controller(date);
+        //ReminderDayMonit2Controller remainder2Controller = new ReminderDayMonit2Controller(date);
         //ReminderDayMonit7Controller remainder7Controller = new ReminderDayMonit7Controller(date);
         //ReminderDayMonit8Controller remainder8Controller = new ReminderDayMonit8Controller(date);
 
