@@ -7,8 +7,8 @@ package com.jtk.pengelolaanujian.view;
 
 import com.jtk.pengelolaanujian.util.EnumRole;
 import com.jtk.pengelolaanujian.view.admin.AdminPanel;
-import com.jtk.pengelolaanujian.view.dashboard.DashboardPanel;
-import com.jtk.pengelolaanujian.view.dashboard.DashboardPanel2;
+import com.jtk.pengelolaanujian.view.dashboard.DashboardPanel1;
+import com.jtk.pengelolaanujian.view.dashboard.DashboardPanelHeadinfo;
 import com.jtk.pengelolaanujian.view.dosenpengampu.DosenPengampuPanel;
 import com.jtk.pengelolaanujian.view.panitia.PanitiaPanel;
 import com.jtk.pengelolaanujian.view.util.AboutAppsDialog;
@@ -31,8 +31,8 @@ public class MainFrame extends javax.swing.JFrame {
     private final VnvPanel vnvPanel = new VnvPanel();
     private final LoginPanel loginPanel = new LoginPanel(this);
     private final WelcomePanel panel = new WelcomePanel(this);
-    private final DashboardPanel2 dashboardPanel2 = new DashboardPanel2(this);
-    private final DashboardPanel dashboardPanel = new DashboardPanel(this);
+    private final DashboardPanelHeadinfo dashboardPanelHeadinfo = new DashboardPanelHeadinfo(this);
+    private final DashboardPanel1 dashboardPanel = new DashboardPanel1(this);
 
     /**
      * Creates new form MainFrame
@@ -50,7 +50,7 @@ public class MainFrame extends javax.swing.JFrame {
         cardPanel.add(dosenPengampuPanel, EnumRole.DOSEN_PENGAMPU.toString());
         cardPanel.add(panitiaPanel, EnumRole.PANITIA.toString());
         cardPanel.add(vnvPanel, EnumRole.VNV.toString());
-        cardPanel.add(dashboardPanel, EnumRole.DASHBOARD.toString());
+        cardPanel.add(dashboardPanelHeadinfo, EnumRole.DASHBOARD.toString());
         
         setMenuFalse();
         setMenuLogout();
@@ -318,7 +318,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnDashBoardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashBoardActionPerformed
         cardLayout.show(cardPanel, EnumRole.DASHBOARD.toString());
-        dashboardPanel.preparation();
+        dashboardPanelHeadinfo.preparation();
     }//GEN-LAST:event_btnDashBoardActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
