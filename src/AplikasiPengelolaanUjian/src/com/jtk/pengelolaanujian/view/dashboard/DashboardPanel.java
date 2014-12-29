@@ -11,7 +11,7 @@ import com.jtk.pengelolaanujian.view.MainFrame;
  *
  * @author Zulkhair Abdullah D
  */
-public class DashboardPanel1 extends javax.swing.JPanel {
+public class DashboardPanel extends javax.swing.JPanel {
 
     MainFrame mainFrame;
 
@@ -19,7 +19,7 @@ public class DashboardPanel1 extends javax.swing.JPanel {
      * Creates new form DashboardPanel
      * @param mainFrame
      */
-    public DashboardPanel1(MainFrame mainFrame) {
+    public DashboardPanel(MainFrame mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
     }
@@ -50,7 +50,9 @@ public class DashboardPanel1 extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

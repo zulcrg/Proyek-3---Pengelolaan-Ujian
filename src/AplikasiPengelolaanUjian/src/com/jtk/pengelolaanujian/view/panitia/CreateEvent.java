@@ -139,6 +139,11 @@ public class CreateEvent extends javax.swing.JPanel {
         });
 
         textTahun.setEditable(false);
+        textTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textTahunActionPerformed(evt);
+            }
+        });
 
         jLabel14.setText("Reminder H - ");
 
@@ -462,6 +467,10 @@ public class CreateEvent extends javax.swing.JPanel {
     private void cboSemesterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSemesterActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboSemesterActionPerformed
+
+    private void textTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTahunActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textTahunActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

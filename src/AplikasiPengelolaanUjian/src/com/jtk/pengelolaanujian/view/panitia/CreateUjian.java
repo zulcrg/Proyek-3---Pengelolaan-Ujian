@@ -28,19 +28,130 @@ public class CreateUjian extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        labelNamaUjian = new javax.swing.JLabel();
+        textNamaUjian = new javax.swing.JTextField();
+        labelEventUjian = new javax.swing.JLabel();
+        dateUjianMulai = new com.toedter.calendar.JDateChooser();
+        labelTanggal = new javax.swing.JLabel();
+        labelPukul = new javax.swing.JLabel();
+        textJam = new javax.swing.JTextField();
+        labelPukul1 = new javax.swing.JLabel();
+        textMenit = new javax.swing.JTextField();
+        labelArsipSoal = new javax.swing.JLabel();
+        textArsipSoal = new javax.swing.JTextField();
+        btnBrowse = new javax.swing.JButton();
+        btnCreateUjian = new javax.swing.JButton();
+        textTahun = new javax.swing.JTextField();
+
+        labelNamaUjian.setText("Nama Ujian");
+
+        labelEventUjian.setText("Event Ujian");
+
+        dateUjianMulai.setPreferredSize(new java.awt.Dimension(90, 20));
+
+        labelTanggal.setText("Tanggal");
+
+        labelPukul.setText("Pukul");
+
+        labelPukul1.setText(":");
+
+        labelArsipSoal.setText("Arsip Soal");
+
+        btnBrowse.setText("Browse");
+
+        btnCreateUjian.setText("Create Ujian");
+
+        textTahun.setEditable(false);
+        textTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textTahunActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 615, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCreateUjian)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelEventUjian)
+                            .addComponent(labelNamaUjian)
+                            .addComponent(labelTanggal)
+                            .addComponent(labelArsipSoal))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(dateUjianMulai, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(textArsipSoal)
+                            .addComponent(textNamaUjian)
+                            .addComponent(textTahun))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBrowse)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelPukul)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(textJam, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelPukul1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textMenit, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 511, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEventUjian)
+                    .addComponent(textTahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNamaUjian)
+                    .addComponent(textNamaUjian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelArsipSoal)
+                    .addComponent(textArsipSoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBrowse))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelPukul)
+                        .addComponent(textJam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelPukul1)
+                        .addComponent(textMenit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(dateUjianMulai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(61, 61, 61)
+                .addComponent(btnCreateUjian)
+                .addContainerGap(249, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void textTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTahunActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textTahunActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBrowse;
+    private javax.swing.JButton btnCreateUjian;
+    private com.toedter.calendar.JDateChooser dateUjianMulai;
+    private javax.swing.JLabel labelArsipSoal;
+    private javax.swing.JLabel labelEventUjian;
+    private javax.swing.JLabel labelNamaUjian;
+    private javax.swing.JLabel labelPukul;
+    private javax.swing.JLabel labelPukul1;
+    private javax.swing.JLabel labelTanggal;
+    private javax.swing.JTextField textArsipSoal;
+    private javax.swing.JTextField textJam;
+    private javax.swing.JTextField textMenit;
+    private javax.swing.JTextField textNamaUjian;
+    private javax.swing.JTextField textTahun;
     // End of variables declaration//GEN-END:variables
 }
