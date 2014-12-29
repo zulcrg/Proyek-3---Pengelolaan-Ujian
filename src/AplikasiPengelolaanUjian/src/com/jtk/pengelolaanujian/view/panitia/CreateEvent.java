@@ -96,6 +96,11 @@ public class CreateEvent extends javax.swing.JPanel {
         jLabel4.setText("Ujian");
 
         cboSemester.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ganjil", "Genap" }));
+        cboSemester.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboSemesterActionPerformed(evt);
+            }
+        });
 
         cboUjian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "UTS", "UAS" }));
 
@@ -453,6 +458,10 @@ public class CreateEvent extends javax.swing.JPanel {
     private void delayPengawasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delayPengawasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_delayPengawasActionPerformed
+
+    private void cboSemesterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSemesterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboSemesterActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
