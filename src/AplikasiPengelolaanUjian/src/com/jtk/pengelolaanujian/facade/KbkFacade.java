@@ -5,6 +5,7 @@
  */
 package com.jtk.pengelolaanujian.facade;
 
+import com.jtk.pengelolaanujian.entity.Dosen;
 import com.jtk.pengelolaanujian.entity.Kbk;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
@@ -58,6 +59,42 @@ public class KbkFacade {
             }
         } catch (SQLException ex) {
             Logger.getLogger(KbkFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Kbk> findAllWhereListedIn(List<Dosen> dosens) {
+        try {
+            //for (MataKuliahToDosen mataKuliahToDosen : listMataKuliahToDosen) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("(");
+
+            for (int i = 0; i < dosens.size(); i++) {
+                sb.append("'").append(dosens.get(i).getKbkKode()).append("'");
+                if (i < dosens.size() - 1) {
+                    sb.append(",");
+                }
+            }
+            
+            sb.append(")");
+            System.out.println(sb);
+            
+            Statement stmt = connection.createStatement();
+            String query = "SELECT kbk * FROM kbk WHERE kbk_kode IN " + sb.toString() + "";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Kbk> kbks = new ArrayList<>();
+            while (rs.next()) {
+                Kbk kbk = new Kbk();
+                kbk.setKbkKode(rs.getString(1));
+                kbk.setKbkNama(rs.getString(2));                
+
+                kbks.add(kbk);
+            }
+            return kbks;
+            //}
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DosenFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

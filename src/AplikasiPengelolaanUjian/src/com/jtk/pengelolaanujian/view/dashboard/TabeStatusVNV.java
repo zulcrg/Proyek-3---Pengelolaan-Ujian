@@ -6,6 +6,7 @@
 
 package com.jtk.pengelolaanujian.view.dashboard;
 
+import com.jtk.pengelolaanujian.controller.dashboard.TriggerDashboardController;
 import com.jtk.pengelolaanujian.entity.Soal;
 
 /**
@@ -13,12 +14,14 @@ import com.jtk.pengelolaanujian.entity.Soal;
  * @author pahlevi
  */
 public class TabeStatusVNV extends javax.swing.JPanel {
-
+    TriggerDashboardController triggerDashboardController = new TriggerDashboardController();
+    
     /**
      * Creates new form TabeStatusAdmin
      */
     public TabeStatusVNV() {
         initComponents();
+        triggerDashboardController.viewTableVnv(tabelStatusVNV);
     }
 
      public void preparation() {
@@ -61,6 +64,7 @@ public class TabeStatusVNV extends javax.swing.JPanel {
             tabelStatusVNV.getColumnModel().getColumn(1).setResizable(false);
             tabelStatusVNV.getColumnModel().getColumn(2).setResizable(false);
             tabelStatusVNV.getColumnModel().getColumn(3).setResizable(false);
+            tabelStatusVNV.getColumnModel().getColumn(3).setPreferredWidth(50);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

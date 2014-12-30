@@ -57,7 +57,7 @@ public class UserFacade {
     public List<User> findByRoleKode(String roleKode) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "SELECT user.* FROM user, user_to_role WHERE user_to_role.ROLE_KODE = '" + roleKode + "'";
+            String query = "SELECT user.* FROM user, user_to_role WHERE user_to_role.ROLE_KODE = '" + roleKode + "' AND user_to_role.STAF_NIP = user.STAF_NIP";
             ResultSet rs = stmt.executeQuery(query);
             List<User> userList = new ArrayList<>();
             while (rs.next()) {
