@@ -6,6 +6,7 @@
 
 package com.jtk.pengelolaanujian.view.dashboard;
 
+import com.jtk.pengelolaanujian.controller.dashboard.TriggerDashboardController;
 import com.jtk.pengelolaanujian.entity.Soal;
 
 /**
@@ -13,12 +14,14 @@ import com.jtk.pengelolaanujian.entity.Soal;
  * @author pahlevi
  */
 public class TabeStatusDosenPengampu extends javax.swing.JPanel {
-
+    TriggerDashboardController triggerDashboardController = new TriggerDashboardController();
+    
     /**
      * Creates new form TabeStatusAdmin
      */
     public TabeStatusDosenPengampu() {
         initComponents();
+        triggerDashboardController.viewTableDosenPengampu(tabelStatusDosenPengampu);
     }
 
      public void preparation() {

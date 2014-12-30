@@ -88,8 +88,12 @@ public class TriggerDashboardController {
 
     public void viewTableVnv(JTable tabelStatusVNV) {        
         DashboardFacade dashboardFacade = new DashboardFacade();
-        dashboardFacade.findAlltableVnv(tabelStatusVNV);
-                
+        dashboardFacade.findAlltableVnv(tabelStatusVNV);                
+    }
+
+    public void viewTableDosenPengampu(JTable tabelStatusDosenPengampu) {
+        DashboardFacade dashboardFacade = new DashboardFacade();
+        dashboardFacade.findAlltableDosenPengampu(tabelStatusDosenPengampu);
     }
     
 }
