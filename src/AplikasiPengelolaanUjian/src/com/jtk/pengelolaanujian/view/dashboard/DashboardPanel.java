@@ -39,12 +39,14 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         statusTransaksi1 = new com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        statusEvent1 = new com.jtk.pengelolaanujian.view.dashboard.StatusEvent();
         statusUser1 = new com.jtk.pengelolaanujian.view.dashboard.StatusUser();
         statusAplikasi1 = new com.jtk.pengelolaanujian.view.dashboard.StatusAplikasi();
         statusTransaksi2 = new com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi();
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTabbedPane1.addTab("Status Event", statusEvent1);
         jTabbedPane1.addTab("Status User", statusUser1);
         jTabbedPane1.addTab("Status Aplikasi", statusAplikasi1);
         jTabbedPane1.addTab("Status Transaksi", statusTransaksi2);
@@ -65,6 +67,7 @@ public class DashboardPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane1;
     private com.jtk.pengelolaanujian.view.dashboard.StatusAplikasi statusAplikasi1;
+    private com.jtk.pengelolaanujian.view.dashboard.StatusEvent statusEvent1;
     private com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi statusTransaksi1;
     private com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi statusTransaksi2;
     private com.jtk.pengelolaanujian.view.dashboard.StatusUser statusUser1;

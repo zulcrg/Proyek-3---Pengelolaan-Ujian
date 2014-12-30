@@ -130,9 +130,36 @@ public class EventFacade {
     public Event findLast() {
         try {
             Statement stmt = connection.createStatement();
-            String query = "SELECT * FROM event ORDER BY id DESC LIMIT 1";
+            String query = "SELECT * FROM event ORDER BY EVENT_KODE DESC LIMIT 1";
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
+                Event event = new Event();
+                event.setKode(rs.getString(1));
+                event.setTanggalMulai(rs.getDate(2));
+                event.setTanggalSelesai(rs.getDate(3));
+                event.setUploadMulai(rs.getDate(4));
+                event.setUploadSelesai(rs.getDate(5));
+                event.setVnvMulai(rs.getDate(6));
+                event.setVnvSelesai(rs.getDate(7));
+                event.setDelayUploadSoal(rs.getInt(8));
+                event.setDelayPengawas(rs.getInt(9));
+                event.setDelayUploadNilai(rs.getInt(10));
+                event.setUploadNilaiSelesai(rs.getDate(11));
+                event.setTimeReminder(rs.getInt(12));
+                return event;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }   
+
+    public Event findTrue() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM event WHERE EVENT_ACTIVE = 1";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {                
                 Event event = new Event();
                 event.setKode(rs.getString(1));
                 event.setTanggalMulai(rs.getDate(2));
