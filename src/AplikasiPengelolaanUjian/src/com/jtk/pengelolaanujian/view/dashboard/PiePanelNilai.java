@@ -48,8 +48,8 @@ public class PiePanelNilai extends javax.swing.JPanel {
     private ChartPanel createChart(PieDataset data) {
         piechart = ChartFactory.createPieChart("Nilai Upload", data, true, true, false);
         PiePlot plot = (PiePlot) piechart.getPlot();
-        plot.setSectionPaint("Belum Di Print", new Color(135,206,250));
-        plot.setSectionPaint("Sudah Di Print", new Color(205,133,63));        
+        plot.setSectionPaint("Belum Di Print", new Color(60,70,5));
+        plot.setSectionPaint("Sudah Di Print", new Color(100,20,30));        
         plot.setNoDataMessage("Data Tidak Ada");
         plot.setExplodePercent("data", 0.1D);
         plot.setLabelBackgroundPaint(new Color(255,228,225));

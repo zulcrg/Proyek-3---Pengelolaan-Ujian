@@ -11,16 +11,20 @@ import com.jtk.pengelolaanujian.view.MainFrame;
  *
  * @author pahlevi
  */
-public class DashboardPanelHeadinfo extends javax.swing.JPanel {
+public class StatusTransaksi extends javax.swing.JPanel {
 
-    MainFrame mainFrame = null;
-            
+    //MainFrame mainFrame = null;
+
     /**
      * Creates new form DashboardPanel2
      */
-    public DashboardPanelHeadinfo(MainFrame mainFrame) {
-        this.mainFrame = mainFrame;
+    public StatusTransaksi() {
+        //this.mainFrame = mainFrame;
         initComponents();
+    }
+
+    public void preparation() {
+     
     }
 
     /**
@@ -38,55 +42,60 @@ public class DashboardPanelHeadinfo extends javax.swing.JPanel {
         piePanelSoal = new com.jtk.pengelolaanujian.view.dashboard.PiePanelSoal();
         labelDate = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         labelDate.setText("Date :");
 
         jLabel1.setText("Time :");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Grafik Monotoring Status Transaksi Soal & Nilai");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
                     .addComponent(jLabel1)
                     .addComponent(labelDate)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(piePanelSoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(piePanelVnv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(piePanelNilai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(piePanelSoal, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(piePanelVnv, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(piePanelNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(10, 10, 10)
                 .addComponent(labelDate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(piePanelSoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(piePanelVnv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(piePanelNilai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(piePanelVnv, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(piePanelSoal, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(piePanelNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel labelDate;
     private com.jtk.pengelolaanujian.view.dashboard.PiePanelNilai piePanelNilai;
     private com.jtk.pengelolaanujian.view.dashboard.PiePanelSoal piePanelSoal;
     private com.jtk.pengelolaanujian.view.dashboard.PiePanelVnv piePanelVnv;
     private com.jtk.pengelolaanujian.view.dashboard.PiePanelVnv piePanelVnv1;
     // End of variables declaration//GEN-END:variables
-    
-    public void preparation() {
 
-    }
 }
