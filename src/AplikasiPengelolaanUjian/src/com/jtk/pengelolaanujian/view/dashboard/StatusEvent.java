@@ -52,6 +52,7 @@ public class StatusEvent extends javax.swing.JPanel {
         textVnvMulai.setText(event.getVnvMulai().toString());
         textVnvAkhir.setText(event.getVnvSelesai().toString());
         
+        triggerDashboardController.viewTableUjian(tableUjian);
     }
     
     public void preparation(){
@@ -67,7 +68,7 @@ public class StatusEvent extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        labelHeader1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         labelUjian = new javax.swing.JLabel();
         textUjian = new javax.swing.JTextField();
@@ -87,12 +88,15 @@ public class StatusEvent extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         labelUploadSoal3 = new javax.swing.JLabel();
+        labelHeader2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableUjian = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Beranda Informasi Event Ujian Terkini");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 11, -1, -1));
+        labelHeader1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelHeader1.setText("Ujian yang akan diselenggarakan");
+        add(labelHeader1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 77, -1, -1));
 
         labelUjian.setText("Ujian");
@@ -188,6 +192,41 @@ public class StatusEvent extends javax.swing.JPanel {
 
         labelUploadSoal3.setText("Upload Nilai");
         add(labelUploadSoal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 200, -1, -1));
+
+        labelHeader2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelHeader2.setText("Beranda Informasi Event Ujian Terkini");
+        add(labelHeader2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 11, -1, -1));
+
+        tableUjian.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Ujian", "Kode Soal", "Kode Matkul", "Pelaksanaan", "Ruangan", "Pengawas"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tableUjian);
+        if (tableUjian.getColumnModel().getColumnCount() > 0) {
+            tableUjian.getColumnModel().getColumn(0).setResizable(false);
+            tableUjian.getColumnModel().getColumn(1).setResizable(false);
+            tableUjian.getColumnModel().getColumn(2).setResizable(false);
+            tableUjian.getColumnModel().getColumn(3).setResizable(false);
+            tableUjian.getColumnModel().getColumn(4).setResizable(false);
+            tableUjian.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 560, 170));
     }// </editor-fold>//GEN-END:initComponents
 
     private void textUjianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUjianActionPerformed
@@ -224,18 +263,21 @@ public class StatusEvent extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelBerakhirPada;
+    private javax.swing.JLabel labelHeader1;
+    private javax.swing.JLabel labelHeader2;
     private javax.swing.JLabel labelPelaksanaan;
     private javax.swing.JLabel labelUjian;
     private javax.swing.JLabel labelUploadSoal;
     private javax.swing.JLabel labelUploadSoal2;
     private javax.swing.JLabel labelUploadSoal3;
+    private javax.swing.JTable tableUjian;
     private javax.swing.JTextField textEventAkhir;
     private javax.swing.JTextField textEventMulai;
     private javax.swing.JTextField textNilaiAkhir;

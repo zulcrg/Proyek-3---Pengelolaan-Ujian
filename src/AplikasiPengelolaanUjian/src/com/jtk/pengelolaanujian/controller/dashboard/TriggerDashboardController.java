@@ -95,5 +95,9 @@ public class TriggerDashboardController {
         DashboardFacade dashboardFacade = new DashboardFacade();
         dashboardFacade.findAlltableDosenPengampu(tabelStatusDosenPengampu);
     }
+    public void viewTableUjian(JTable tabelUjian) {
+        DashboardFacade dashboardFacade = new DashboardFacade();
+        dashboardFacade.findAlltableUjian(tabelUjian);
+    }
     
 }

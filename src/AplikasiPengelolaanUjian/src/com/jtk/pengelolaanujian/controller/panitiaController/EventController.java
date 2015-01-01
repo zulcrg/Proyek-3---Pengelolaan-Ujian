@@ -11,9 +11,9 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Zulkhair Abdullah D
+ * @author Zulkhair Abdullah D & Pahlevi Ridwan P.
  */
-public class CreateEventController {
+public class EventController {
 
     public boolean createEvent(Event event) {
         EventFacade eventFacade = new EventFacade();
@@ -23,5 +23,10 @@ public class CreateEventController {
             JOptionPane.showMessageDialog(null, "Event dengan kode '" + event.getKode() + " sudah ada", "Perhatian", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+    }
+    
+    public Event getListEvent() {
+        EventFacade eventFacade = new EventFacade();        
+        return eventFacade.findTrue();        
     }
 }

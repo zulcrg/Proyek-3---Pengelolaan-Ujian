@@ -6,17 +6,30 @@
 
 package com.jtk.pengelolaanujian.view.panitia;
 
+import com.jtk.pengelolaanujian.controller.panitiaController.EventController;
+import com.jtk.pengelolaanujian.entity.Event;
+import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.entity.Staf;
+import com.jtk.pengelolaanujian.util.EnumPanel;
+import com.jtk.pengelolaanujian.view.util.SearchDialog;
+
 /**
  *
  * @author Zulkhair Abdullah D
  */
 public class CreateUjian extends javax.swing.JPanel {
-
+    EventController eventController = new EventController();
+    Event event;
     /**
      * Creates new form CreateUjian
      */
     public CreateUjian() {
-        initComponents();
+        initComponents();    
+        String string = null;
+        event=eventController.getListEvent();
+        System.out.println(event.getKode().toString());        
+        System.out.println(createTahun());            
+        textEvent.setText(createTahun());
     }
 
     /**
@@ -41,7 +54,7 @@ public class CreateUjian extends javax.swing.JPanel {
         textArsipSoal = new javax.swing.JTextField();
         btnBrowse = new javax.swing.JButton();
         btnCreateUjian = new javax.swing.JButton();
-        textTahun = new javax.swing.JTextField();
+        textEvent = new javax.swing.JTextField();
 
         labelNamaUjian.setText("Nama Ujian");
 
@@ -58,13 +71,18 @@ public class CreateUjian extends javax.swing.JPanel {
         labelArsipSoal.setText("Arsip Soal");
 
         btnBrowse.setText("Browse");
+        btnBrowse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrowseActionPerformed(evt);
+            }
+        });
 
         btnCreateUjian.setText("Create Ujian");
 
-        textTahun.setEditable(false);
-        textTahun.addActionListener(new java.awt.event.ActionListener() {
+        textEvent.setEditable(false);
+        textEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textTahunActionPerformed(evt);
+                textEventActionPerformed(evt);
             }
         });
 
@@ -83,12 +101,12 @@ public class CreateUjian extends javax.swing.JPanel {
                             .addComponent(labelTanggal)
                             .addComponent(labelArsipSoal))
                         .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dateUjianMulai, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                            .addComponent(textArsipSoal)
-                            .addComponent(textNamaUjian)
-                            .addComponent(textTahun))
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(textNamaUjian, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textArsipSoal, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textEvent, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateUjianMulai, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnBrowse)
                             .addGroup(layout.createSequentialGroup()
@@ -99,7 +117,7 @@ public class CreateUjian extends javax.swing.JPanel {
                                 .addComponent(labelPukul1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(textMenit, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +125,7 @@ public class CreateUjian extends javax.swing.JPanel {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelEventUjian)
-                    .addComponent(textTahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNamaUjian)
@@ -133,10 +151,14 @@ public class CreateUjian extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTahunActionPerformed
+    private void textEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textTahunActionPerformed
+        
+    }//GEN-LAST:event_textEventActionPerformed
 
+    private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
+        // TODO add your handling code here:     
+    }//GEN-LAST:event_btnBrowseActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowse;
@@ -149,9 +171,32 @@ public class CreateUjian extends javax.swing.JPanel {
     private javax.swing.JLabel labelPukul1;
     private javax.swing.JLabel labelTanggal;
     private javax.swing.JTextField textArsipSoal;
+    private javax.swing.JTextField textEvent;
     private javax.swing.JTextField textJam;
     private javax.swing.JTextField textMenit;
     private javax.swing.JTextField textNamaUjian;
-    private javax.swing.JTextField textTahun;
     // End of variables declaration//GEN-END:variables
+
+    private String createTahun() {
+        String string;
+        string = "Ujian ";
+        char[] a;
+        a = new char[5];
+        a=event.getKode().toCharArray();                
+               
+        if(a[3]=='T'){
+            string = string + "Tengah semester ";
+        }else{
+            string = string + "Akhir semester ";
+        }
+        
+        if(a[2]=='1'){
+            string = string + "Genap ";
+        }else{
+            string = string + "Ganjil ";
+        }
+        string = string+"Tahun 20"+a[0]+a[1];
+        
+        return string;
+    }
 }

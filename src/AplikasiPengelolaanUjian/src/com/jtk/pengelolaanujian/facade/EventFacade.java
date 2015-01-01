@@ -102,7 +102,6 @@ public class EventFacade {
 
     public boolean createEvent(Event event) {
         try {
-
             String query = "INSERT INTO event VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, event.getKode());
@@ -156,6 +155,7 @@ public class EventFacade {
 
     public Event findTrue() {
         try {
+            
             Statement stmt = connection.createStatement();
             String query = "SELECT * FROM event WHERE EVENT_ACTIVE = 1";
             ResultSet rs = stmt.executeQuery(query);

@@ -5,7 +5,7 @@
  */
 package com.jtk.pengelolaanujian.view.panitia;
 
-import com.jtk.pengelolaanujian.controller.panitiaController.CreateEventController;
+import com.jtk.pengelolaanujian.controller.panitiaController.EventController;
 import com.jtk.pengelolaanujian.entity.Event;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -444,7 +444,7 @@ public class CreateEvent extends javax.swing.JPanel {
         
         System.out.println(event.getKode());
         
-        CreateEventController createEventController = new CreateEventController();
+        EventController createEventController = new EventController();
         if(createEventController.createEvent(event)){
             JOptionPane.showMessageDialog(this, "Event berhasil dibuat", "Informasi", JOptionPane.INFORMATION_MESSAGE);
         }else{

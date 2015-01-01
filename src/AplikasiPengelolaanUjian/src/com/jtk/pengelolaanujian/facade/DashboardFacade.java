@@ -68,8 +68,8 @@ public class DashboardFacade {
                     + "AND soal.matkul_tipe = mata_kuliah.matkul_tipe";
             ResultSet rs = stmt.executeQuery(query);
 
-            Object[] columnsName = {"Nama", "Matkul", "Jenis", "Soal stat", "Email", "No.Telp"};
-            
+            Object[] columnsName = {"Nama", "Matkul", "Jenis", "Soal Uploaded", "Email", "No.Telp"};
+
             DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
                 @Override
                 public boolean isCellEditable(int row, int column) {
@@ -82,13 +82,43 @@ public class DashboardFacade {
                 o[0] = rs.getString(1);
                 o[1] = rs.getString(2);
                 o[2] = rs.getString(3);
-                o[3] = rs.getString(4);                
+                o[3] = rs.getString(4);
                 o[4] = rs.getString(5);
                 o[5] = rs.getString(6);
 
                 dtm.addRow(o);
             }
             tabelStatusDosenPengampu.setModel(dtm);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DosenFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void findAlltableUjian(JTable tabelUjian) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "select ujian.ujian_nama,soal.soal_kode,soal.matkul_kode,ujian.ujian_mulai,ruangan_ujian.ruangan_kode,staf.staf_nama from ujian,soal,ruangan_ujian,staf where ujian.ujian_kode = ruangan_ujian.ujian_kode AND staf.staf_nip = ruangan_ujian.staf_nip AND soal.soal_kode = ujian.soal_kode";
+            ResultSet rs = stmt.executeQuery(query);
+            Object[] columnsName = {"Ujian", "K.SOal", "K.Matkul", "Pelaksanaan","Ruangan","Pengawas"};
+            DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+
+            while (rs.next()) {
+                Object[] o = new Object[6];
+                o[0] = rs.getString(1);
+                o[1] = rs.getString(2);
+                o[2] = rs.getString(3);
+                o[3] = rs.getString(4);
+                o[4] = rs.getString(5);
+                o[5] = rs.getString(6);
+                dtm.addRow(o);
+            }
+            tabelUjian.setModel(dtm);
 
         } catch (SQLException ex) {
             Logger.getLogger(DosenFacade.class.getName()).log(Level.SEVERE, null, ex);

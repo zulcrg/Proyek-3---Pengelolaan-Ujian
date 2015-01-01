@@ -8,6 +8,8 @@ package com.jtk.pengelolaanujian.view.util;
 import com.jtk.pengelolaanujian.controller.admin.AssignRoleController;
 import com.jtk.pengelolaanujian.controller.admin.EditUserController;
 import com.jtk.pengelolaanujian.controller.admin.RegistrasiUserController;
+import com.jtk.pengelolaanujian.controller.panitiaController.PanitiaController;
+import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.util.EnumPanel;
 import java.awt.Color;
@@ -35,6 +37,7 @@ public class SearchDialog extends javax.swing.JDialog {
      * @param modal
      * @param staf
      * @param enumPanel
+     * @param soal
      */
     public SearchDialog(Frame parent, boolean modal, Staf staf, EnumPanel enumPanel) {
         super(parent, modal);
@@ -60,7 +63,7 @@ public class SearchDialog extends javax.swing.JDialog {
             case EDIT_USER:
                 stafList = editUserController.searchUserNotMe("", tableStaf);
                 textSearch.setText("Cari berdasarkan Nama atau Username");
-                break;
+                break; 
         }
     }
     
@@ -99,6 +102,11 @@ public class SearchDialog extends javax.swing.JDialog {
         textSearch.setForeground(new java.awt.Color(153, 153, 153));
         textSearch.setText("Cari berdasarkan Nama atau NIP");
         textSearch.setToolTipText("Cari berdasakan Nama atau NIK");
+        textSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textSearchActionPerformed(evt);
+            }
+        });
         textSearch.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textSearchFocusGained(evt);
@@ -193,6 +201,10 @@ public class SearchDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tableStafMouseClicked
 
+    private void textSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textSearchActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -204,3 +216,4 @@ public class SearchDialog extends javax.swing.JDialog {
     private javax.swing.JTextField textSearch;
     // End of variables declaration//GEN-END:variables
 }
+
