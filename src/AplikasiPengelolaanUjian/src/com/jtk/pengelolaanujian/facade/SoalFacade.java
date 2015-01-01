@@ -9,6 +9,8 @@ import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -158,5 +161,24 @@ public class SoalFacade {
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void createSoal(Soal soal) {
+        try {
+            String query = "INSERT INTO soal(SOAL_KODE, MATKUL_KODE, SOAL_UPLOADED, SOAL_VNVED, SOAL_PRINTED, SOAL_SIFAT, MATKUL_TIPE) values(?,?,?,?,?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, soal.getSoalKode());
+            preparedStatement.setString(2, soal.getMatkulKode());
+            preparedStatement.setBoolean(3, soal.isSoalUploaded());
+            preparedStatement.setBoolean(4, soal.isSoalVnved());
+            preparedStatement.setBoolean(5, soal.isSoalPrinted());
+            preparedStatement.setString(6, soal.getSoalSifat());
+            preparedStatement.setString(7, soal.getMatkulTipe());
+            
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

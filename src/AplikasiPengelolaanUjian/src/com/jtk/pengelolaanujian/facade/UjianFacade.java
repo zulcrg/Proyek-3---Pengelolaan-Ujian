@@ -10,6 +10,8 @@ import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -142,10 +145,10 @@ public class UjianFacade {
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }   
+    }
 
     public List<Ujian> findAllWhereListedIN(List<RuanganUjian> listRuanganUjian) {
-        List<Ujian> listUjian = null;
+        List<Ujian> listUjian = new ArrayList<>();
         try {
             StringBuilder sb = new StringBuilder();
             sb.append("(");
@@ -157,7 +160,7 @@ public class UjianFacade {
                 }
             }
             sb.append(")");
-            
+
             Statement stmt = connection.createStatement();
             String query = "SELECT * FROM ujian WHERE UJIAN_KODE IN " + sb.toString() + "";
             ResultSet rs = stmt.executeQuery(query);
@@ -167,9 +170,9 @@ public class UjianFacade {
                 ujian.setSoalKode(rs.getString(2));
                 ujian.setUjianKode(rs.getString(3));
                 ujian.setUjianMenit(rs.getInt(4));
-                ujian.setUjianMulai(rs.getDate(5));                
-                ujian.setUjianNama(rs.getString(6)); 
-                
+                ujian.setUjianMulai(rs.getDate(5));
+                ujian.setUjianNama(rs.getString(6));
+
                 listUjian.add(ujian);
             }
             return listUjian;
@@ -179,5 +182,21 @@ public class UjianFacade {
         return null;
     }
 
-
+    public void createUjian(Ujian ujian) {
+        try {
+            String query = "INSERT INTO ujian(UJIAN_KODE, EVENT_KODE, SOAL_KODE, UJIAN_MULAI, UJIAN_MENIT, UJIAN_NAMA) values(?,?,?,?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, ujian.getUjianKode());
+            preparedStatement.setString(2, ujian.getEventKode());
+            preparedStatement.setString(3, ujian.getSoalKode());
+            preparedStatement.setDate(4, new Date(ujian.getUjianMulai().getTime()));
+            preparedStatement.setInt(5, ujian.getUjianMenit());
+            preparedStatement.setString(6, ujian.getUjianNama());   
+            
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

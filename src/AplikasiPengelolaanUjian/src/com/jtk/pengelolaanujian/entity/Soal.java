@@ -23,6 +23,7 @@ public class Soal {
     private Boolean soalVnved;
     private Boolean soalPrinted;
     private String soalSifat;
+    private String matkulTipe;
     private MataKuliah mataKuliah;
     private List<StorageSoal> storageSoalList;
     private Ujian ujian;
@@ -89,9 +90,13 @@ public class Soal {
         this.soalSifat = soalSifat;
     }
 
-    public MataKuliah getMataKuliah() {
+    public MataKuliah getMataKuliahQuery() {
         MataKuliahFacade mataKuliahFacade = new MataKuliahFacade();
         mataKuliah = mataKuliahFacade.findByKodeMatkul(matkulKode);
+        return mataKuliah;
+    }
+
+    public MataKuliah getMataKuliah() {
         return mataKuliah;
     }
 
@@ -99,9 +104,13 @@ public class Soal {
         this.mataKuliah = mataKuliah;
     }
 
-    public List<StorageSoal> getStorageSoalList() {
+    public List<StorageSoal> getStorageSoalListQuery() {
         StorageSoalFacade storageSoalFacade = new StorageSoalFacade();
         storageSoalFacade.findByKodeSoal(soalKode);
+        return storageSoalList;
+    }
+
+    public List<StorageSoal> getStorageSoalList() {
         return storageSoalList;
     }
 
@@ -109,9 +118,13 @@ public class Soal {
         this.storageSoalList = storageSoalList;
     }
 
-    public Ujian getUjian() {
+    public Ujian getUjianQuery() {
         UjianFacade ujianFacade = new UjianFacade();
         ujian = ujianFacade.findByKodeSoal(soalKode);
+        return ujian;
+    }
+
+    public Ujian getUjian() {
         return ujian;
     }
 
@@ -119,14 +132,26 @@ public class Soal {
         this.ujian = ujian;
     }
 
-    public Vnv getVnv() {
+    public Vnv getVnvQuery() {
         VnvFacade vnvFacade = new VnvFacade();
         vnv = vnvFacade.findByKodeSoal(soalKode);
         return vnv;
     }
 
+    public Vnv getVnv() {
+        return vnv;
+    }
+
     public void setVnv(Vnv vnv) {
         this.vnv = vnv;
+    }
+
+    public String getMatkulTipe() {
+        return matkulTipe;
+    }
+
+    public void setMatkulTipe(String matkulTipe) {
+        this.matkulTipe = matkulTipe;
     }
 
 }

@@ -65,6 +65,27 @@ public class MataKuliahFacade {
         return null;
     }
 
+    public List<MataKuliah> findByLikeKodeMatkul(String text) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM mata_kuliah WHERE MATKUL_KODE LIKE '%" + text + "%' OR MATKUL_NAMA LIKE '%" + text + "%'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<MataKuliah> mataKuliahs = new ArrayList<>();
+            while (rs.next()) {
+                MataKuliah mataKuliah = new MataKuliah();
+                mataKuliah.setMatkulKode(rs.getString(1));
+                mataKuliah.setMatkulNama(rs.getString(2));
+                mataKuliah.setMatkulTipe(rs.getString(3));
+
+                mataKuliahs.add(mataKuliah);
+            }
+            return mataKuliahs;
+        } catch (SQLException ex) {
+            Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public List<MataKuliah> findByUsername(String username) {
         try {
             Statement stmt = connection.createStatement();
