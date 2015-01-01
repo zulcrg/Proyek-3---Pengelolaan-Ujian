@@ -226,7 +226,7 @@ public class StatusEvent extends javax.swing.JPanel {
             tableUjian.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 560, 170));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 620, 170));
     }// </editor-fold>//GEN-END:initComponents
 
     private void textUjianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUjianActionPerformed
