@@ -9,6 +9,7 @@ import com.jtk.pengelolaanujian.entity.Role;
 import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.facade.UserFacade;
 import com.jtk.pengelolaanujian.util.EnumRole;
+import com.zlib.util.ZHash;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -37,7 +38,7 @@ public class LoginPanel extends javax.swing.JPanel {
             if (!textPassword.getText().isEmpty()) {
                 User user = userFacade.findByUsername(textUsername.getText());
                 if (user != null) {
-                    if (user.getUserPassword().equals(textPassword.getText())) {
+                    if (user.getUserPassword().equals(ZHash.hashMD5(textPassword.getText()))) {
                         if (user.isUserActive()) {
                             for (Role role : user.getRoleListQuery()) {
                                 if (role.getRoleKode().equals(EnumRole.ADMIN.getKey())) {
@@ -60,7 +61,7 @@ public class LoginPanel extends javax.swing.JPanel {
                             username = textUsername.getText();
                         }
                     } else {
-                        JOptionPane.showMessageDialog(mainFrame, "User anda tidak aktif", "Perhatian", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(mainFrame, "Kesalahan pada username atau password", "Perhatian", JOptionPane.WARNING_MESSAGE);
                         textUsername.requestFocus();
                     }
                 } else {

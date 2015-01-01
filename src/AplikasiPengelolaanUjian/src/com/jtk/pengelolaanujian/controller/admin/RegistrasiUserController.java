@@ -8,6 +8,7 @@ package com.jtk.pengelolaanujian.controller.admin;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.facade.StafFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
+import com.zlib.util.ZHash;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,7 +23,7 @@ public class RegistrasiUserController {
 
     public void registrasiUser(Staf staf, String textNama, String textPassword) {
         UserFacade userFacade = new UserFacade();
-        userFacade.registrasiUser(staf, textNama, textPassword);
+        userFacade.registrasiUser(staf, textNama, ZHash.hashMD5(textPassword));
     }
 
     public void searchUser(String text, JTable tableStaf) {
@@ -51,20 +52,9 @@ public class RegistrasiUserController {
 
     public static boolean isStrongPassword(String password) {
         String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+{8,}$"; // harus mengandung huruf kecil , besar, angka, dan min 8 digit
-        Pattern pattern;
-        Matcher matcher;
-        boolean kuat = false;
-
-        pattern = Pattern.compile(PASSWORD_PATTERN);
-
-        matcher = pattern.matcher(password);
-        if (matcher.matches() == true) {
-            kuat = true;
-        } else {
-            kuat = false;
-        }
-
+        Pattern  pattern = Pattern.compile(PASSWORD_PATTERN);
+        Matcher matcher = pattern.matcher(password);             
+        boolean kuat = matcher.matches() == true;
         return kuat;
     }
-
 }
