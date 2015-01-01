@@ -23,7 +23,10 @@ public class StatusEvent extends javax.swing.JPanel {
      * Creates new form StatusEvent
      */
     public StatusEvent() {
-        initComponents();
+        initComponents();        
+    }
+    
+    public void preparation(){
         event=triggerDashboardController.getListEvent();
         String ujian = "Ujian ";
         char[] a;
@@ -53,10 +56,6 @@ public class StatusEvent extends javax.swing.JPanel {
         textVnvAkhir.setText(event.getVnvSelesai().toString());
         
         triggerDashboardController.viewTableUjian(tableUjian);
-    }
-    
-    public void preparation(){
-        
     }
 
     /**

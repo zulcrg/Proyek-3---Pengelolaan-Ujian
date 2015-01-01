@@ -159,4 +159,96 @@ public class SoalFacade {
         }
         return null;
     }
+
+    public int checkUploadedSoalFacade() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM soal WHERE SOAL_UPLOADED = 1";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0; //rs.getString(1);           
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public int checkUnUploadedSoalFacade() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM soal WHERE SOAL_UPLOADED = 0";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0; //rs.getString(1);           
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public int checkUploadVNV() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM soal WHERE SOAL_VNVED = 1";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+
+    }
+
+    public int checkUnUploadVNV() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM soal WHERE SOAL_VNVED = 0";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+
+    }
+
+    public int checkUploadNilai() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM ruangan_ujian WHERE ruangan_ujian_nilai_uploaded = 1";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public int checkUnUploadNilai() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM ruangan_ujian WHERE ruangan_ujian_nilai_uploaded = 0";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 }

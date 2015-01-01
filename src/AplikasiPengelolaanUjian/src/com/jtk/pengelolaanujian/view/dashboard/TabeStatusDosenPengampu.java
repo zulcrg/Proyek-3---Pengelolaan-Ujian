@@ -20,12 +20,11 @@ public class TabeStatusDosenPengampu extends javax.swing.JPanel {
      * Creates new form TabeStatusAdmin
      */
     public TabeStatusDosenPengampu() {
-        initComponents();
-        triggerDashboardController.viewTableDosenPengampu(tabelStatusDosenPengampu);
+        initComponents();       
     }
 
      public void preparation() {
-        
+         triggerDashboardController.viewTableDosenPengampu(tabelStatusDosenPengampu);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,7 +84,7 @@ public class TabeStatusDosenPengampu extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

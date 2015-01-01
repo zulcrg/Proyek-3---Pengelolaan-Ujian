@@ -10,6 +10,7 @@ package com.jtk.pengelolaanujian.view.dashboard;
  *
  * @author pahlevi
  */
+import com.jtk.pengelolaanujian.controller.dashboard.TriggerDashboardController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -22,26 +23,39 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
 public class PiePanelNilai extends javax.swing.JPanel {
-
+    TriggerDashboardController triggerDashboardController;
+    
     /**
      * Creates new form ChartPanelSoal
      */
   
     private JFreeChart piechart;
-    private final ChartPanel panel;
+    private ChartPanel panel;
+    private int uploaded;
+    private int unuploaded;
     
     public PiePanelNilai(){
+        initComponents();        
+    }
+    
+    
+    public void preparation(){
+        uploaded=0;
+        unuploaded=0;
+        triggerDashboardController = new TriggerDashboardController();    
         panel = createChart(createData());
         panel.setPreferredSize(new Dimension(250, 250));
  
         setLayout(new BorderLayout());
-        add(panel,BorderLayout.CENTER);        
+        add(panel,BorderLayout.CENTER);                
     }
  
     private PieDataset createData() {
+        uploaded = triggerDashboardController.checkUploadNilaidSoal();
+        unuploaded = triggerDashboardController.checkUnUploadNilaiSoal();
         DefaultPieDataset data = new DefaultPieDataset();
-        data.setValue("Belum Di Upload",90);
-        data.setValue("Sudah Di Upload", 10);        
+        data.setValue("Belum Di Upload",uploaded);
+        data.setValue("Sudah Di Upload", unuploaded);        
         return data;
     }
  

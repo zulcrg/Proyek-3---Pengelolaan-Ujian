@@ -19,12 +19,11 @@ public class TabeStatusAdmin extends javax.swing.JPanel {
      * Creates new form TabeStatusAdmin
      */
     public TabeStatusAdmin() {
-        initComponents();
-        triggerDashboardController.viewTableAdmin(tabelStatusAdmin);
+        initComponents();        
     }
 
      public void preparation() {
-        
+        triggerDashboardController.viewTableAdmin(tabelStatusAdmin);
     }
     /**
      * This method is called from within the constructor to initialize the form.

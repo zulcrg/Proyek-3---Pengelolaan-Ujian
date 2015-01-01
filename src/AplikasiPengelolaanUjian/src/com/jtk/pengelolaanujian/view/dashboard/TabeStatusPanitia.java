@@ -21,11 +21,11 @@ public class TabeStatusPanitia extends javax.swing.JPanel {
      */
     public TabeStatusPanitia() {
         initComponents();
-        triggerDashboardController.viewTablePanitia(tabelStatusPanitia);        
+        
     }
 
      public void preparation() {
-        
+        triggerDashboardController.viewTablePanitia(tabelStatusPanitia);        
     }
     /**
      * This method is called from within the constructor to initialize the form.
