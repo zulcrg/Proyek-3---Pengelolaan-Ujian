@@ -24,7 +24,10 @@ public class StatusTransaksi extends javax.swing.JPanel {
     }
 
     public void preparation() {
-     
+        piePanelNilai.preparation();
+        piePanelSoal.preparation();
+        piePanelVnv.preparation();
+        piePanelVnv1.preparation();
     }
 
     /**

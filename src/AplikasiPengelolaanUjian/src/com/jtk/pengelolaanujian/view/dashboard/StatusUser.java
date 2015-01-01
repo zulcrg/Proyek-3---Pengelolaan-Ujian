@@ -16,11 +16,14 @@ public class StatusUser extends javax.swing.JPanel {
      * Creates new form StatusUser
      */
     public StatusUser() {
-        initComponents();
+        initComponents();        
     }
 
     public void preparation() {
-        
+        tabeStatusAdmin2.preparation();
+        tabeStatusDosenPengampu1.preparation();
+        tabeStatusPanitia1.preparation();
+        tabeStatusVNV1.preparation();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,9 +58,10 @@ public class StatusUser extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(313, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane1)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

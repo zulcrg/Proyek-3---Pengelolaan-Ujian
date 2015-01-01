@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.view.dashboard;
 
 /**
  *
  * @author pahlevi
  */
+import com.jtk.pengelolaanujian.controller.dashboard.TriggerDashboardController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -22,49 +22,62 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
 public class PiePanelSoal extends javax.swing.JPanel {
-
+    TriggerDashboardController triggerDashboardController;
+    
     /**
      * Creates new form PiePanelSoal
      */
-  
+
     private JFreeChart piechart;
-    private final ChartPanel panel;
-    
-    public PiePanelSoal(){
-        panel = createChart(createData());
-        panel.setPreferredSize(new Dimension(250, 250));
- 
-        setLayout(new BorderLayout());
-        add(panel,BorderLayout.CENTER);        
+    private ChartPanel panel;
+    private int uploaded;
+    private int unuploaded;
+
+    public PiePanelSoal() {
+        initComponents();
     }
- 
-    private PieDataset createData() {
+    
+    public void preparation(){        
+        uploaded=0;
+        unuploaded=0;
+        triggerDashboardController = new TriggerDashboardController();    
+        panel = createChart(createData(triggerDashboardController));
+        panel.setPreferredSize(new Dimension(250, 250));
+        
+        setLayout(new BorderLayout());
+        add(panel, BorderLayout.CENTER);
+        
+    }
+
+    private PieDataset createData(TriggerDashboardController triggerDashboardController) {
+        uploaded = triggerDashboardController.checkUploadedSoal();
+        unuploaded = triggerDashboardController.checkUnUploadedSoal();        
+        
         DefaultPieDataset data = new DefaultPieDataset();
-        data.setValue("Belum Di Upload",90);
-        data.setValue("Sudah Di Upload", 10);               
+        data.setValue("Belum Di Upload", unuploaded);
+        data.setValue("Sudah Di Upload", uploaded);        
         return data;
     }
- 
+
     private ChartPanel createChart(PieDataset data) {
-          piechart = ChartFactory.createPieChart("Soal Upload", data, true, true, false);
-          PiePlot plot = (PiePlot) piechart.getPlot();  
-          plot.setSectionPaint("Belum Di Print", new Color(135,206,250));
-          plot.setSectionPaint("Sudah Di Print", new Color(205,133,63));        
-          plot.setNoDataMessage("Data Tidak Ada");
-          plot.setExplodePercent("data", 0.1D);
-          plot.setLabelBackgroundPaint(new Color(255,228,225));
-          plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} ({1})"));
-          plot.setLegendLabelGenerator(new StandardPieSectionLabelGenerator());
-        
+
+        piechart = ChartFactory.createPieChart("Soal Upload", data, true, true, false);
+        PiePlot plot = (PiePlot) piechart.getPlot();
+        plot.setSectionPaint("Belum Di Print", new Color(135, 206, 250));
+        plot.setSectionPaint("Sudah Di Print", new Color(205, 133, 63));
+        plot.setNoDataMessage("Data Tidak Ada");
+        plot.setExplodePercent("data", 0.1D);
+        plot.setLabelBackgroundPaint(new Color(255, 228, 225));
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} ({1})"));
+        plot.setLegendLabelGenerator(new StandardPieSectionLabelGenerator());
+
         // Key = 0 ----> section as String (Windows, Linux, Lainnya)
         // Key = 1 ----> section as value (300,200,100)
         // KEy - 2 ----> section as percentage (50%,33%,17 %) Muncul jika aplikasi telah di running
-        
         plot.setSimpleLabels(true);
         plot.setInteriorGap(0.0D);
         return new ChartPanel(piechart);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -21,11 +21,11 @@ public class TabeStatusVNV extends javax.swing.JPanel {
      */
     public TabeStatusVNV() {
         initComponents();
-        triggerDashboardController.viewTableVnv(tabelStatusVNV);
+        
     }
 
      public void preparation() {
-        
+        triggerDashboardController.viewTableVnv(tabelStatusVNV);
     }
     /**
      * This method is called from within the constructor to initialize the form.

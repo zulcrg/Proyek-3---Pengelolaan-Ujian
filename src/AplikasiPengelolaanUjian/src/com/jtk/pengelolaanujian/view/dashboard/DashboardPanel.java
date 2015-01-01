@@ -25,7 +25,10 @@ public class DashboardPanel extends javax.swing.JPanel {
     }
     
     public void preparation(){
-        
+        statusUser1.preparation();
+        statusEvent1.preparation();
+        statusTransaksi1.preparation();
+        statusAplikasi1.preparation();              
     }
 
     /**
@@ -37,19 +40,18 @@ public class DashboardPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        statusTransaksi1 = new com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         statusEvent1 = new com.jtk.pengelolaanujian.view.dashboard.StatusEvent();
         statusUser1 = new com.jtk.pengelolaanujian.view.dashboard.StatusUser();
         statusAplikasi1 = new com.jtk.pengelolaanujian.view.dashboard.StatusAplikasi();
-        statusTransaksi2 = new com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi();
+        statusTransaksi1 = new com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi();
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Status Event", statusEvent1);
         jTabbedPane1.addTab("Status User", statusUser1);
         jTabbedPane1.addTab("Status Aplikasi", statusAplikasi1);
-        jTabbedPane1.addTab("Status Transaksi", statusTransaksi2);
+        jTabbedPane1.addTab("Status Transaksi", statusTransaksi1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -69,7 +71,6 @@ public class DashboardPanel extends javax.swing.JPanel {
     private com.jtk.pengelolaanujian.view.dashboard.StatusAplikasi statusAplikasi1;
     private com.jtk.pengelolaanujian.view.dashboard.StatusEvent statusEvent1;
     private com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi statusTransaksi1;
-    private com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi statusTransaksi2;
     private com.jtk.pengelolaanujian.view.dashboard.StatusUser statusUser1;
     // End of variables declaration//GEN-END:variables
 }
