@@ -163,7 +163,6 @@ public class SoalFacade {
         return null;
     }
 
-
     public void createSoal(Soal soal) {
         try {
             String query = "INSERT INTO soal(SOAL_KODE, MATKUL_KODE, SOAL_UPLOADED, SOAL_VNVED, SOAL_PRINTED, SOAL_SIFAT, MATKUL_TIPE) values(?,?,?,?,?,?,?)";
@@ -175,13 +174,13 @@ public class SoalFacade {
             preparedStatement.setBoolean(5, soal.isSoalPrinted());
             preparedStatement.setString(6, soal.getSoalSifat());
             preparedStatement.setString(7, soal.getMatkulTipe());
-            
+
             preparedStatement.execute();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
+    }
 
     public int checkUploadedSoalFacade() {
         try {
