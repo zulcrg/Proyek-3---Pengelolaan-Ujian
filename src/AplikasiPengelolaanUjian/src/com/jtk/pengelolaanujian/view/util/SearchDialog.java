@@ -180,6 +180,12 @@ public class SearchDialog extends javax.swing.JDialog {
             }
         });
 
+        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane1MouseClicked(evt);
+            }
+        });
+
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -270,6 +276,10 @@ public class SearchDialog extends javax.swing.JDialog {
             first = true;
         }
     }//GEN-LAST:event_textSearchFocusLost
+
+    private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane1MouseClicked
 
     /**
      * @param args the command line arguments

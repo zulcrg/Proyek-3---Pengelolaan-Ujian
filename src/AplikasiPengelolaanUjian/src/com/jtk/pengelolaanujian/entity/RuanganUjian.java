@@ -24,6 +24,16 @@ public class RuanganUjian {
     private Ruangan ruangan;
     private BeritaAcara beritaAcara;
     private Ujian ujian;
+    private Kelas kelas;
+    private String kelasKode;
+
+    public String getKelasKode() {
+        return kelasKode;
+    }
+
+    public void setKelasKode(String kelasKode) {
+        this.kelasKode = kelasKode;
+    }
     private Staf staf;
     private Date ruanganUjianTanggalUjian;
 
@@ -56,6 +66,15 @@ public class RuanganUjian {
 
     public String getRuanganKode() {
         return ruanganKode;
+    }
+
+    public Kelas getKelas() {
+        
+        return kelas;
+    }
+
+    public void setKelas(Kelas kelas) {
+        this.kelas = kelas;
     }
 
     public void setRuanganKode(String ruanganKode) {

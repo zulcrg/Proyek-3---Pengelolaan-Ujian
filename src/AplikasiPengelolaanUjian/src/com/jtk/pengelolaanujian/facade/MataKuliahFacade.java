@@ -7,6 +7,7 @@ package com.jtk.pengelolaanujian.facade;
 
 import com.jtk.pengelolaanujian.entity.MataKuliah;
 import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -140,6 +141,28 @@ public class MataKuliahFacade {
             return mataKuliahList;
         } catch (SQLException ex) {
             Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<MataKuliah> findAllWhereSesionIdis(String username) {
+        try {
+            Statement stmt = connection.createStatement();            
+            String query = "SELECT * FROM mata_kuliah, soal, dosen, mata_kuliah_to_dosen, staf, user WHERE mata_kuliah.matkul_kode = soal.matkul_kode AND mata_kuliah.matkul_tipe = soal.matkul_tipe AND mata_kuliah.matkul_kode = mata_kuliah_to_dosen.matkul_kode AND mata_kuliah.matkul_tipe = mata_kuliah_to_dosen.matkul_tipe AND mata_kuliah_to_dosen.dosen_kode = dosen.dosen_kode AND dosen.staf_nip = staf.staf_nip AND staf.staf_nip = user.staf_nip AND user.user_username ='"+username+"'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<MataKuliah> mataKuliahList = new ArrayList<>();
+            while (rs.next()) {
+                MataKuliah mataKuliah = new MataKuliah();                
+                
+                mataKuliah.setMatkulKode(rs.getString(1));
+                mataKuliah.setMatkulNama(rs.getString(2)+" - "+rs.getString(3));
+                mataKuliah.setMatkulTipe(rs.getString(3));
+                                
+                mataKuliahList.add(mataKuliah);
+            }
+            return mataKuliahList;
+        } catch (SQLException ex) {
+            Logger.getLogger(MataKuliahFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

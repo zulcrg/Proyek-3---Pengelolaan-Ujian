@@ -77,6 +77,11 @@ public class UploadSoal extends javax.swing.JPanel {
         jLabel2.setText("Mata Kuliah");
 
         cboMatkul.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboMatkul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMatkulActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Sifat Ujian");
 
@@ -177,6 +182,10 @@ public class UploadSoal extends javax.swing.JPanel {
     private void radBukaBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBukaBukuActionPerformed
         soal.setSoalSifat("BUKA BUKU");
     }//GEN-LAST:event_radBukaBukuActionPerformed
+
+    private void cboMatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMatkulActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboMatkulActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

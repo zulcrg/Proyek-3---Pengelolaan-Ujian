@@ -5,10 +5,12 @@
  */
 package com.jtk.pengelolaanujian.facade;
 
+import com.jtk.pengelolaanujian.entity.Kelas;
 import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -195,7 +197,7 @@ public class RuanganUjianFacade {
         return null;
     }
 
-    public List<RuanganUjian> findAllWhereNilaiUploaded(boolean b) {        
+    public List<RuanganUjian> findAllWhereNilaiUploaded(boolean b) {
         try {
             Statement stmt = connection.createStatement();
             String query = "SELECT * FROM RUANG_UJIAN WHERE RUANGUJIAN_NILAI_UPLOADED = '" + b + "'";
@@ -207,8 +209,51 @@ public class RuanganUjianFacade {
                 ruanganUjian.setUjianKode(rs.getString(2));
                 ruanganUjian.setStafNip(rs.getString(3));
                 ruanganUjian.setBeritaKode(rs.getString(4));
-                ruanganUjian.setRuanganUjianTanggalUjian(getDate(5));
-                ruanganUjian.setRuanganUjianUploadNilaiStatus(getBoolean(6));
+                ruanganUjian.setRuanganUjianUploadNilaiStatus(rs.getBoolean(5));
+                ruanganUjian.setKelasKode(rs.getString(6));
+
+            }
+            return listRuanganUjian;
+        } catch (SQLException ex) {
+            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<RuanganUjian> findRuanganUjianByUsername() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "select ruangan_ujian.*,ujian.*,kelas.*\n"
+                    + "from user,staf,dosen,mata_kuliah_to_dosen,mata_kuliah,soal,ujian,ruangan_ujian,kelas \n"
+                    + "where ruangan_ujian.ujian_kode = ujian.ujian_kode AND \n"
+                    + "kelas.kelas_kode = ruangan_ujian.kelas_kode AND\n\n"
+                    + "ujian.soal_kode = soal.soal_kode AND \n"
+                    + "soal.matkul_kode = mata_kuliah.matkul_kode AND\n"
+                    + "soal.matkul_tipe = mata_kuliah.matkul_tipe AND \n"
+                    + "mata_kuliah_to_dosen.matkul_kode = mata_kuliah.matkul_kode AND \n"
+                    + "mata_kuliah_to_dosen.matkul_tipe = mata_kuliah.matkul_tipe AND \n"
+                    + "dosen.dosen_kode = mata_kuliah_to_dosen.dosen_kode AND \n"
+                    + "dosen.staf_nip = staf.staf_nip AND \n"
+                    + "user.staf_nip = staf.staf_nip AND \n"
+                    + "user.user_username = '" + LoginPanel.getUsername() + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<RuanganUjian> listRuanganUjian = new ArrayList<>();
+            while (rs.next()) {
+                RuanganUjian ruanganUjian = new RuanganUjian();
+                ruanganUjian.setRuanganKode(rs.getString(1));
+                ruanganUjian.setUjianKode(rs.getString(2));
+                ruanganUjian.setStafNip(rs.getString(3));
+                ruanganUjian.setBeritaKode(rs.getString(4));
+                ruanganUjian.setRuanganUjianUploadNilaiStatus(getBoolean(5));
+                ruanganUjian.setKelasKode(rs.getString(6));
+
+                Ujian ujian = new Ujian();
+                ujian.setUjianNama(rs.getString(12));
+                Kelas kelas = new Kelas();
+                kelas.setKelasNama(rs.getString(14));
+                
+                ruanganUjian.setUjian(ujian);
+                ruanganUjian.setKelas(kelas);
 
                 listRuanganUjian.add(ruanganUjian);
             }
@@ -216,10 +261,6 @@ public class RuanganUjianFacade {
         } catch (SQLException ex) {
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;        
-    }
-
-    private Date getDate(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 }

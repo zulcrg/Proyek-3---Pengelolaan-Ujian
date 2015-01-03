@@ -26,7 +26,7 @@ public class ConnectionHelper {
         try {
             String user = "client";
             String password = ZHash.hashMD5("root");
-            connection = DriverManager.getConnection("jdbc:mysql://192.168.137.1:3306/pengelolaan_ujian", user, password);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pengelolaan_ujian", "root","root" );
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Gagal terkoneksi ke database", "Error", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(ConnectionHelper.class.getName()).log(Level.SEVERE, null, ex);

@@ -20,7 +20,7 @@ public class UploadSoalController {
 
     public List<MataKuliah> searchMatkul(JComboBox cbo) {
         MataKuliahFacade mataKuliahFacade = new MataKuliahFacade();
-        List<MataKuliah> mataKuliahs = mataKuliahFacade.findByUsername(LoginPanel.getUsername());
+        List<MataKuliah> mataKuliahs = mataKuliahFacade.findAllWhereSesionIdis(LoginPanel.getUsername());//findByUsername(LoginPanel.getUsername());
         String matkul[] = new String[mataKuliahs.size()];
         for (int i = 0; i < mataKuliahs.size(); i++) {
             MataKuliah mk = mataKuliahs.get(i);
@@ -29,4 +29,6 @@ public class UploadSoalController {
         cbo.setModel(new DefaultComboBoxModel(matkul));
         return mataKuliahs;
     }
+    
+    
 }

@@ -198,5 +198,5 @@ public class UjianFacade {
             JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }   
 }
