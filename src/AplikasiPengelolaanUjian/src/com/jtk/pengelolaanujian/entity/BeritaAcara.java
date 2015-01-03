@@ -17,6 +17,7 @@ public class BeritaAcara {
     private int beritaTidakHadir;
     private int beritaSoalSisa;
     private int beritaJawabSisa;
+    private boolean beritaStatus;
 
     public BeritaAcara() {
     }
@@ -76,6 +77,14 @@ public class BeritaAcara {
 
     public void setBeritaJawabSisa(int beritaJawabSisa) {
         this.beritaJawabSisa = beritaJawabSisa;
+    }
+
+    public boolean isBeritaStatus() {
+        return beritaStatus;
+    }
+
+    public void setBeritaStatus(boolean beritaStatus) {
+        this.beritaStatus = beritaStatus;
     }
     
     

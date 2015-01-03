@@ -22,6 +22,7 @@ public class PanitiaPanel extends javax.swing.JPanel {
     public void preparation(){
         createEvent1.preparation();
         createUjian2.preparation();
+        assignUjian1.preparation();
     }
 
     /**

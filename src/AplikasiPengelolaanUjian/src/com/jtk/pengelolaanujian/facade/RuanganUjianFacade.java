@@ -5,6 +5,7 @@
  */
 package com.jtk.pengelolaanujian.facade;
 
+import com.jtk.pengelolaanujian.entity.BeritaAcara;
 import com.jtk.pengelolaanujian.entity.Kelas;
 import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Staf;
@@ -12,6 +13,7 @@ import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import static javax.swing.UIManager.getBoolean;
 
 /**
@@ -28,13 +31,48 @@ import static javax.swing.UIManager.getBoolean;
  */
 public class RuanganUjianFacade {
 
-    private Connection connection = ConnectionHelper.getConnection();
+    private final Connection connection = ConnectionHelper.getConnection();
 
     public List<RuanganUjian> findAll() {
         try {
             Statement stmt = connection.createStatement();
             String query = "SELECT * FROM ruangan_ujian";
             ResultSet rs = stmt.executeQuery(query);
+            List<RuanganUjian> ruanganUjianList = new ArrayList<>();
+            while (rs.next()) {
+                RuanganUjian ruanganUjian = new RuanganUjian();
+                ruanganUjian.setRuanganKode(rs.getString(1));
+                ruanganUjian.setUjianKode(rs.getString(2));
+                ruanganUjian.setStafNip(rs.getString(3));
+                ruanganUjian.setBeritaKode(rs.getString(4));
+
+                ruanganUjianList.add(ruanganUjian);
+            }
+            return ruanganUjianList;
+        } catch (SQLException ex) {
+            Logger.getLogger(RuanganUjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<RuanganUjian> findByUjianKodeStafNipKelasKode(String ujianKode, String kelasKode) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM ruangan_ujian ";
+            StringBuilder sb = new StringBuilder();
+            if (ujianKode != null && !ujianKode.isEmpty()) {
+                sb.append("WHERE UJIAN_KODE = '").append(ujianKode).append("' ");
+            }
+            if (kelasKode != null && !kelasKode.isEmpty()) {
+                if (sb.length() > 0) {
+                    sb.append("AND ");
+                } else {
+                    sb.append("WHERE ");
+                }
+                sb.append("KELAS_KODE = '").append(kelasKode).append("'");
+            }
+
+            ResultSet rs = stmt.executeQuery(query + sb.toString());
             List<RuanganUjian> ruanganUjianList = new ArrayList<>();
             while (rs.next()) {
                 RuanganUjian ruanganUjian = new RuanganUjian();
@@ -251,7 +289,7 @@ public class RuanganUjianFacade {
                 ujian.setUjianNama(rs.getString(12));
                 Kelas kelas = new Kelas();
                 kelas.setKelasNama(rs.getString(14));
-                
+
                 ruanganUjian.setUjian(ujian);
                 ruanganUjian.setKelas(kelas);
 
@@ -262,5 +300,23 @@ public class RuanganUjianFacade {
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void createRuanganUjian(RuanganUjian ruanganUjian) {
+        try {
+            String query = "INSERT INTO ruangan_ujian(RUANGAN_KODE, UJIAN_KODE, STAF_NIP, BERITA_KODE, RUANGAN_UJIAN_NILAI_UPLOADED, KELAS_KODE) values(?,?,?,?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, ruanganUjian.getRuanganKode());
+            preparedStatement.setString(2, ruanganUjian.getUjianKode());
+            preparedStatement.setString(3, ruanganUjian.getStafNip());
+            preparedStatement.setString(4, ruanganUjian.getBeritaKode());
+            preparedStatement.setBoolean(5, ruanganUjian.isRuanganUjianUploadNilaiStatus());
+            preparedStatement.setString(6, ruanganUjian.getKelasKode());
+
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
