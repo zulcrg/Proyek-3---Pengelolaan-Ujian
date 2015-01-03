@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * @author pahlevi
  */
 public class AssignUjian extends javax.swing.JPanel {
-
+    
     private Ujian ujian;
     private Staf staf;
     private Ruangan ruangan;
@@ -31,7 +31,7 @@ public class AssignUjian extends javax.swing.JPanel {
     public AssignUjian() {
         initComponents();
     }
-
+    
     public void preparation() {
         ujian = new Ujian();
         staf = new Staf();
@@ -206,7 +206,16 @@ public class AssignUjian extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Harap pilih kelas", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else {
             AssignUjianController assignUjianController = new AssignUjianController();
-            assignUjianController.createRuanganUjian(ujian.getUjianKode(), ruangan.getRuanganKode(), staf.getStafNIP(), kelas.getKelasKode());
+            if (assignUjianController.createRuanganUjian(ujian.getUjianKode(), ruangan.getRuanganKode(), staf.getStafNIP(), kelas.getKelasKode())) {
+                ujian = new Ujian();
+                ruangan = new Ruangan();
+                staf = new Staf();
+                kelas = new Kelas();
+                textUjian.setText("");
+                textRuangan.setText("");
+                textPengawas.setText("");
+                textKelas.setText("");
+            }
         }
     }//GEN-LAST:event_btnSimpanActionPerformed
 

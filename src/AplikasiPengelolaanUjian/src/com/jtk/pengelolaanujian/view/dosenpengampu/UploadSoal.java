@@ -36,6 +36,7 @@ public class UploadSoal extends javax.swing.JPanel {
         mataKuliahList = uploadSoalController.searchMatkul(cboMatkul);
         url = "";
         soal = new Soal();
+        soal.setSoalSifat("TUTUP BUKU");
         spinDurasi.setModel(CommonHelper.createDurasiSpinnerModel());
     }
 
@@ -92,6 +93,7 @@ public class UploadSoal extends javax.swing.JPanel {
         jLabel3.setText("Sifat Ujian");
 
         buttonGroup1.add(radTutupBuku);
+        radTutupBuku.setSelected(true);
         radTutupBuku.setText("Tutup Buku");
         radTutupBuku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,10 +188,14 @@ public class UploadSoal extends javax.swing.JPanel {
     }
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
-        if (spinDurasi.getValue() == null) {
+        if (textUrl.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Harap pilih file yang akan di upload", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (spinDurasi.getValue() == null) {
             JOptionPane.showMessageDialog(this, "Harap isi durasi ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (!CommonHelper.isStringNumberMaxMin(spinDurasi.getValue().toString(), 1000, 1)) {
             JOptionPane.showMessageDialog(this, "Harap isi format durasi dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else {
+            
         }
     }//GEN-LAST:event_btnUploadActionPerformed
 

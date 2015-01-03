@@ -35,7 +35,6 @@ public class CreateUjian extends javax.swing.JPanel {
     public void preparation() {
         event = LoginPanel.getEvent();
         textEvent.setText(CommonHelper.createTahun(event));
-
     }
 
     /**
