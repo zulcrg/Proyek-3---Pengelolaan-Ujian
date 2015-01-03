@@ -5,6 +5,8 @@
  */
 package com.jtk.pengelolaanujian.util;
 
+import com.jtk.pengelolaanujian.controller.panitiaController.EventController;
+import com.jtk.pengelolaanujian.entity.Event;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.SpinnerModel;
@@ -40,5 +42,25 @@ public class CommonHelper {
     public static SpinnerModel createDurasiSpinnerModel() {
         SpinnerModel spinnerModel = new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 10);
         return spinnerModel;
+    }
+
+    public static String createTahun(Event event) {        
+        String string = "Ujian ";
+        char[] a = event.getKode().toCharArray();
+
+        if (a[3] == 'T') {
+            string = string + "Tengah semester ";
+        } else {
+            string = string + "Akhir semester ";
+        }
+
+        if (a[2] == '1') {
+            string = string + "Genap ";
+        } else {
+            string = string + "Ganjil ";
+        }
+        string = string + "Tahun 20" + a[0] + a[1];
+
+        return string;
     }
 }

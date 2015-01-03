@@ -5,6 +5,8 @@
  */
 package com.jtk.pengelolaanujian.view;
 
+import com.jtk.pengelolaanujian.controller.panitiaController.EventController;
+import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.entity.Role;
 import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.facade.UserFacade;
@@ -21,6 +23,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
     MainFrame mainFrame;
     private static String username;
+    private static Event event;
 
     /**
      * Creates new form LoginPanel
@@ -59,6 +62,9 @@ public class LoginPanel extends javax.swing.JPanel {
                             mainFrame.setMenuLogout();
                             mainFrame.getMenuPanel().setVisible(true);
                             username = textUsername.getText();
+
+                            EventController eventController = new EventController();
+                            event = eventController.getListEvent();
                         }
                     } else {
                         JOptionPane.showMessageDialog(mainFrame, "Kesalahan pada username atau password", "Perhatian", JOptionPane.WARNING_MESSAGE);
@@ -85,6 +91,14 @@ public class LoginPanel extends javax.swing.JPanel {
 
     public static void setUsername(String username) {
         LoginPanel.username = username;
+    }
+
+    public static Event getEvent() {
+        return event;
+    }
+
+    public static void setEvent(Event event) {
+        LoginPanel.event = event;
     }
 
     /**

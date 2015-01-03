@@ -11,6 +11,7 @@ import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.entity.MataKuliah;
 import com.jtk.pengelolaanujian.util.CommonHelper;
 import com.jtk.pengelolaanujian.util.EnumPanel;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import com.jtk.pengelolaanujian.view.util.SearchDialog;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -20,18 +21,16 @@ import javax.swing.JOptionPane;
  * @author Zulkhair Abdullah D
  */
 public class CreateUjian extends javax.swing.JPanel {
-    
-    private final EventController eventController = new EventController();
-    private final Event event;
+
     private MataKuliah mataKuliah;
+    private Event event = LoginPanel.getEvent();
 
     /**
      * Creates new form CreateUjian
      */
     public CreateUjian() {
         initComponents();
-        event = eventController.getListEvent();
-        textEvent.setText(createTahun());
+        textEvent.setText(CommonHelper.createTahun(event));
         spinDurasi.setModel(CommonHelper.createDurasiSpinnerModel());
     }
 
@@ -244,7 +243,7 @@ public class CreateUjian extends javax.swing.JPanel {
             date.setHours(Integer.parseInt(textJam.getText()));
             date.setMinutes(Integer.parseInt(textMenit.getText()));
             date.setSeconds(0);
-            
+
             if (controller.createUjian(event.getKode(), textNamaUjian.getText(),
                     textKodeSoal.getText(), mataKuliah, cboSifatSoal.getSelectedItem().toString(),
                     date, (int) spinDurasi.getValue())) {
@@ -284,25 +283,4 @@ public class CreateUjian extends javax.swing.JPanel {
     private javax.swing.JTextField textNamaUjian;
     // End of variables declaration//GEN-END:variables
 
-    private String createTahun() {
-        String string;
-        string = "Ujian ";
-        char[] a;
-        a = event.getKode().toCharArray();
-        
-        if (a[3] == 'T') {
-            string = string + "Tengah semester ";
-        } else {
-            string = string + "Akhir semester ";
-        }
-        
-        if (a[2] == '1') {
-            string = string + "Genap ";
-        } else {
-            string = string + "Ganjil ";
-        }
-        string = string + "Tahun 20" + a[0] + a[1];
-        
-        return string;
-    }
 }
