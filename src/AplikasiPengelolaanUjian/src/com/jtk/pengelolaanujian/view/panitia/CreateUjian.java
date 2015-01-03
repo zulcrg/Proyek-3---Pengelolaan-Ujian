@@ -23,13 +23,17 @@ import javax.swing.JOptionPane;
 public class CreateUjian extends javax.swing.JPanel {
 
     private MataKuliah mataKuliah;
-    private Event event = LoginPanel.getEvent();
+    private Event event;
 
     /**
      * Creates new form CreateUjian
      */
     public CreateUjian() {
         initComponents();
+    }
+
+    public void preparation() {
+        event = LoginPanel.getEvent();
         textEvent.setText(CommonHelper.createTahun(event));
         spinDurasi.setModel(CommonHelper.createDurasiSpinnerModel());
     }
