@@ -8,6 +8,7 @@ package com.jtk.pengelolaanujian.view.admin;
 import com.jtk.pengelolaanujian.view.util.SearchDialog;
 import com.jtk.pengelolaanujian.controller.admin.RegistrasiUserController;
 import com.jtk.pengelolaanujian.entity.Staf;
+import com.jtk.pengelolaanujian.util.CommonHelper;
 import com.jtk.pengelolaanujian.util.EnumPanel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -144,7 +145,7 @@ public class RegistrasiUser extends javax.swing.JPanel {
             if (textUsername.getText() != null && !textUsername.getText().isEmpty()) {
                 if (textPassword.getText().equals(textPasswordRetype.getText())) {
                     if (textPassword.getText() != null && !textPassword.getText().isEmpty()) {
-                        if (registrasiUserController.isStrongPassword(textPassword.getText())) {
+                        if (CommonHelper.isStrongPassword(textPassword.getText())) {
                             registrasiUserController.registrasiUser(staf, textUsername.getText(), textPassword.getText());
                             JOptionPane.showMessageDialog(this, "User baru berhasil diinputkan, Nama ->" + staf.getStafNama());
                             textNama.setText("");

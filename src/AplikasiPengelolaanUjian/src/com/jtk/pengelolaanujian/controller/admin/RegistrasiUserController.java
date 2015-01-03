@@ -50,11 +50,5 @@ public class RegistrasiUserController {
         tableStaf.setModel(dtm);
     }
 
-    public static boolean isStrongPassword(String password) {
-        String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+{8,}$"; // harus mengandung huruf kecil , besar, angka, dan min 8 digit
-        Pattern  pattern = Pattern.compile(PASSWORD_PATTERN);
-        Matcher matcher = pattern.matcher(password);             
-        boolean kuat = matcher.matches() == true;
-        return kuat;
-    }
+    
 }

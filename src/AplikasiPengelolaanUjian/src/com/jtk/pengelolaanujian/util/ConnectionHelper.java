@@ -21,23 +21,23 @@ public class ConnectionHelper {
 
     private static Connection connection;
     private static Connection connectionGammu;
+    private static final String user = "client";
+    private static final String password = ZHash.hashMD5("root");
 
     private static void createConnection() {
         try {
-            String user = "client";
-            String password = ZHash.hashMD5("root");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pengelolaan_ujian", "root","root" );
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pengelolaan_ujian", user, password);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Gagal terkoneksi ke database", "Error", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(ConnectionHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private static void createConnectionGammu(){
+
+    private static void createConnectionGammu() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gammu", "root", "root");            
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gammu", user, password);
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionHelper.class.getName()).log(Level.SEVERE, null, ex);                       
+            Logger.getLogger(ConnectionHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -47,13 +47,13 @@ public class ConnectionHelper {
         }
         return connection;
     }
-    
-    public static Connection getConnectionGammu(){
+
+    public static Connection getConnectionGammu() {
         if (connectionGammu == null) {
             createConnection();
         }
         return connectionGammu;
-        
+
     }
 
 }

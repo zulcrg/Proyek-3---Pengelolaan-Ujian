@@ -9,16 +9,18 @@ import com.jtk.pengelolaanujian.controller.panitiaController.CreateUjianControll
 import com.jtk.pengelolaanujian.controller.panitiaController.EventController;
 import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.entity.MataKuliah;
+import com.jtk.pengelolaanujian.util.CommonHelper;
 import com.jtk.pengelolaanujian.util.EnumPanel;
 import com.jtk.pengelolaanujian.view.util.SearchDialog;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Zulkhair Abdullah D
  */
 public class CreateUjian extends javax.swing.JPanel {
-
+    
     private final EventController eventController = new EventController();
     private final Event event;
     private MataKuliah mataKuliah;
@@ -30,7 +32,7 @@ public class CreateUjian extends javax.swing.JPanel {
         initComponents();
         event = eventController.getListEvent();
         textEvent.setText(createTahun());
-
+        spinDurasi.setModel(CommonHelper.createDurasiSpinnerModel());
     }
 
     /**
@@ -77,6 +79,8 @@ public class CreateUjian extends javax.swing.JPanel {
         labelPukul1.setText(":");
 
         labelArsipSoal.setText("Mata Kuliah");
+
+        textMatkul.setEditable(false);
 
         btnBrowse.setText("Browse");
         btnBrowse.addActionListener(new java.awt.event.ActionListener() {
@@ -211,16 +215,49 @@ public class CreateUjian extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBrowseActionPerformed
 
     private void btnCreateUjianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUjianActionPerformed
-        CreateUjianController controller = new CreateUjianController();
-        Date date = new Date();
-        date.setTime(date.getTime());
-        date.setHours(Integer.parseInt(textJam.getText()));
-        date.setMinutes(Integer.parseInt(textMenit.getText()));
-        date.setSeconds(0);
-        
-        controller.createUjian(event.getKode(), textNamaUjian.getText(),
-                textKodeSoal.getText(), mataKuliah, cboSifatSoal.getSelectedItem().toString(),
-                date, (int) spinDurasi.getValue());
+        if (textNamaUjian.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Harap isi nama ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (mataKuliah == null) {
+            JOptionPane.showMessageDialog(this, "Harap pilih mata kuliah", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (textKodeSoal.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Harap isi kode soal", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (textKodeSoal.getText().length() > 5) {
+            JOptionPane.showMessageDialog(this, "Kode soal tidak boleh melebihi 5 karakter", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (dateUjianMulai.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Harap isi tanggal mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (textJam.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Harap isi jam mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (!CommonHelper.isStringNumberMaxMin(textJam.getText(), 23, 0)) {
+            JOptionPane.showMessageDialog(this, "Harap isi format jam dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (textMenit.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Harap isi menit mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (!CommonHelper.isStringNumberMaxMin(textMenit.getText(), 59, 0)) {
+            JOptionPane.showMessageDialog(this, "Harap isi format menit dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (spinDurasi.getValue() == null) {
+            JOptionPane.showMessageDialog(this, "Harap isi durasi ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (!CommonHelper.isStringNumberMaxMin(spinDurasi.getValue().toString(), 1000, 1)) {
+            JOptionPane.showMessageDialog(this, "Harap isi format durasi dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else {
+            CreateUjianController controller = new CreateUjianController();
+            Date date = new Date();
+            date.setTime(date.getTime());
+            date.setHours(Integer.parseInt(textJam.getText()));
+            date.setMinutes(Integer.parseInt(textMenit.getText()));
+            date.setSeconds(0);
+            
+            if (controller.createUjian(event.getKode(), textNamaUjian.getText(),
+                    textKodeSoal.getText(), mataKuliah, cboSifatSoal.getSelectedItem().toString(),
+                    date, (int) spinDurasi.getValue())) {
+                textNamaUjian.setText("");
+                mataKuliah = new MataKuliah();
+                textMatkul.setText("");
+                textKodeSoal.setText("");
+                cboSifatSoal.setSelectedIndex(0);
+                textJam.setText("");
+                textMenit.setText("");
+                spinDurasi.setModel(CommonHelper.createDurasiSpinnerModel());
+            }
+        }
     }//GEN-LAST:event_btnCreateUjianActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -252,20 +289,20 @@ public class CreateUjian extends javax.swing.JPanel {
         string = "Ujian ";
         char[] a;
         a = event.getKode().toCharArray();
-
+        
         if (a[3] == 'T') {
             string = string + "Tengah semester ";
         } else {
             string = string + "Akhir semester ";
         }
-
+        
         if (a[2] == '1') {
             string = string + "Genap ";
         } else {
             string = string + "Ganjil ";
         }
         string = string + "Tahun 20" + a[0] + a[1];
-
+        
         return string;
     }
 }
