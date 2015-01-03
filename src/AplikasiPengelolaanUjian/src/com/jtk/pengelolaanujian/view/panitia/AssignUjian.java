@@ -227,7 +227,4 @@ public class AssignUjian extends javax.swing.JPanel {
     private javax.swing.JTextField textUjian;
     // End of variables declaration//GEN-END:variables
 
-    void preparation() {
-        
-    }
 }
