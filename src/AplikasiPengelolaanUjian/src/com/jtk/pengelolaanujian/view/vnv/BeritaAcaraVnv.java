@@ -6,12 +6,15 @@
 
 package com.jtk.pengelolaanujian.view.vnv;
 
+import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.view.util.SearchSoalDialog;
+
 /**
  *
  * @author Rizki
  */
 public class BeritaAcaraVnv extends javax.swing.JPanel {
-
+    private Soal soal;
     /**
      * Creates new form BeritaAcara
      */
@@ -172,6 +175,11 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         jLabel1.setText("Soal");
 
         btnChoose.setText("Choose");
+        btnChoose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChooseActionPerformed(evt);
+            }
+        });
 
         txtSoal.setEditable(false);
 
@@ -359,6 +367,13 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
     private void txtKelayakanBobotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKelayakanBobotActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtKelayakanBobotActionPerformed
+
+    private void btnChooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseActionPerformed
+        soal = new  Soal();
+        SearchSoalDialog searchSoalDialog = new SearchSoalDialog();
+        searchSoalDialog.show();
+        txtSoal.setText(soal.getSoalKode());
+    }//GEN-LAST:event_btnChooseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

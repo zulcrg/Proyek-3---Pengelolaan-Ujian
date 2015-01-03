@@ -18,6 +18,15 @@ public class MataKuliah {
     private String matkulNama;
     private String matkulTipe;
     private List<Dosen> dosenList;
+    private Dosen dosen;
+
+    public Dosen getDosen() {
+        return dosen;
+    }
+
+    public void setDosen(Dosen dosen) {
+        this.dosen = dosen;
+    }
     private List<Soal> soalList;
 
     public String getMatkulKode() {
