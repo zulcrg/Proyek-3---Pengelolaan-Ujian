@@ -63,6 +63,27 @@ public class RuanganFacade {
         return null;
     }
 
+    public List<Ruangan> findKodeRuanganLike(String text) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM ruangan where RUANGAN_KODE LIKE '%" + text + "%' OR RUANGAN_NAMA LIKE '%" + text + "%'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Ruangan> ruangans = new ArrayList<>();
+
+            while (rs.next()) {
+                Ruangan ruangan = new Ruangan();
+                ruangan.setRuanganKode(rs.getString(1));
+                ruangan.setRuanganNama(rs.getString(2));
+
+                ruangans.add(ruangan);
+            }
+            return ruangans;
+        } catch (SQLException ex) {
+            Logger.getLogger(RuanganFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public List<Ruangan> findByKodeUjian(String kodeUjian) {
         try {
             Statement stmt = connection.createStatement();

@@ -6,6 +6,7 @@
 package com.jtk.pengelolaanujian.util;
 
 import com.jtk.pengelolaanujian.entity.Event;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.SpinnerModel;
@@ -75,5 +76,9 @@ public class CommonHelper {
             default:
                 return "";
         }
+    }
+
+    public static String createUUID() {
+        return UUID.randomUUID().toString().replace("-", "");
     }
 }

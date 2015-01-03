@@ -26,6 +26,7 @@ public class RuanganUjian {
     private Ujian ujian;
     private Kelas kelas;
     private String kelasKode;
+    private Staf staf;
 
     public String getKelasKode() {
         return kelasKode;
@@ -33,16 +34,6 @@ public class RuanganUjian {
 
     public void setKelasKode(String kelasKode) {
         this.kelasKode = kelasKode;
-    }
-    private Staf staf;
-    private Date ruanganUjianTanggalUjian;
-
-    public Date getRuanganUjianTanggalUjian() {
-        return ruanganUjianTanggalUjian;
-    }
-
-    public void setRuanganUjianTanggalUjian(Date ruanganUjianTanggalUjian) {
-        this.ruanganUjianTanggalUjian = ruanganUjianTanggalUjian;
     }
 
     public boolean isRuanganUjianUploadNilaiStatus() {
@@ -69,7 +60,7 @@ public class RuanganUjian {
     }
 
     public Kelas getKelas() {
-        
+
         return kelas;
     }
 
@@ -114,7 +105,7 @@ public class RuanganUjian {
     public Ruangan getRuangan() {
         return ruangan;
     }
-    
+
     public void setRuangan(Ruangan ruangan) {
         this.ruangan = ruangan;
     }
@@ -148,8 +139,8 @@ public class RuanganUjian {
         staf = stafFacade.findByStafNip(stafNip);
         return staf;
     }
-    
-    public Staf getStaf() {        
+
+    public Staf getStaf() {
         return staf;
     }
 

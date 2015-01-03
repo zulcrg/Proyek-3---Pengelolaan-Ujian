@@ -8,9 +8,13 @@ package com.jtk.pengelolaanujian.view.util;
 import com.jtk.pengelolaanujian.controller.admin.AssignRoleController;
 import com.jtk.pengelolaanujian.controller.admin.EditUserController;
 import com.jtk.pengelolaanujian.controller.admin.RegistrasiUserController;
+import com.jtk.pengelolaanujian.controller.panitiaController.AssignUjianController;
 import com.jtk.pengelolaanujian.controller.panitiaController.CreateUjianController;
+import com.jtk.pengelolaanujian.entity.Kelas;
 import com.jtk.pengelolaanujian.entity.MataKuliah;
+import com.jtk.pengelolaanujian.entity.Ruangan;
 import com.jtk.pengelolaanujian.entity.Staf;
+import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.EnumPanel;
 import java.awt.Color;
 import java.awt.Frame;
@@ -25,12 +29,19 @@ public class SearchDialog extends javax.swing.JDialog {
     boolean first = true;
     private Staf staf;
     private MataKuliah mataKuliah;
+    private Ujian ujian;
+    private Ruangan ruangan;
+    private List<Ruangan> ruanganList;
+    private Kelas kelas;
+    private List<Kelas> kelasList;
     private List<Staf> stafList;
     private List<MataKuliah> mataKuliahList;
+    private List<Ujian> ujianList;
     private RegistrasiUserController registrasiUserController;
     private AssignRoleController assignRoleController;
     private EditUserController editUserController;
     private CreateUjianController createUjianController;
+    private AssignUjianController assignUjianController;
     private final EnumPanel enumPanel;
 
     /**
@@ -71,6 +82,60 @@ public class SearchDialog extends javax.swing.JDialog {
         switchPanel();
     }
 
+    /**
+     *
+     * @param parent
+     * @param modal
+     * @param ujian
+     * @param enumPanel
+     */
+    public SearchDialog(Frame parent, boolean modal, Ujian ujian, EnumPanel enumPanel) {
+        super(parent, modal);
+        initComponents();
+        setFocusable(true);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        this.ujian = ujian;
+        this.enumPanel = enumPanel;
+        switchPanel();
+    }
+
+    /**
+     *
+     * @param parent
+     * @param modal
+     * @param ruangan
+     * @param enumPanel
+     */
+    public SearchDialog(Frame parent, boolean modal, Ruangan ruangan, EnumPanel enumPanel) {
+        super(parent, modal);
+        initComponents();
+        setFocusable(true);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        this.ruangan = ruangan;
+        this.enumPanel = enumPanel;
+        switchPanel();
+    }
+
+    /**
+     *
+     * @param parent
+     * @param modal
+     * @param kelas
+     * @param enumPanel
+     */
+    public SearchDialog(Frame parent, boolean modal, Kelas kelas, EnumPanel enumPanel) {
+        super(parent, modal);
+        initComponents();
+        setFocusable(true);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        this.kelas = kelas;
+        this.enumPanel = enumPanel;
+        switchPanel();
+    }
+
     private void switchPanel() {
         switch (enumPanel) {
             case REGISTER_USER:
@@ -94,6 +159,24 @@ public class SearchDialog extends javax.swing.JDialog {
                 textSearch.setText("Cari berdasarkan Kode atau Nama Mata kuliah");
                 setTitle("Mata Kuliah");
                 break;
+            case SEARCH_UJIAN:
+                assignUjianController = new AssignUjianController();
+                ujianList = assignUjianController.searchUjian("", table);
+                textSearch.setText("Cari berdasarkan Kode atau Nama Ujian");
+                setTitle("Ujian");
+                break;
+            case SEARCH_RUANGAN:
+                assignUjianController = new AssignUjianController();
+                ruanganList = assignUjianController.searchRuangan("", table);
+                textSearch.setText("Cari berdasarkan Kode atau Nama Ruangan");
+                setTitle("Ruangan");
+                break;
+            case SEARCH_KELAS:
+                assignUjianController = new AssignUjianController();
+                kelasList = assignUjianController.searchKelas("", table);
+                textSearch.setText("Cari berdasarkan Kode atau Nama Kelas");
+                setTitle("Kelas");
+                break;
         }
     }
 
@@ -110,6 +193,15 @@ public class SearchDialog extends javax.swing.JDialog {
                 break;
             case SEARCH_SOAL:
                 textSearch.setText("Cari berdasarkan Kode atau Nama Mata kuliah");
+                break;
+            case SEARCH_UJIAN:
+                textSearch.setText("Cari berdasarkan Kode atau Nama Ujian");
+                break;
+            case SEARCH_RUANGAN:
+                textSearch.setText("Cari berdasarkan Kode atau Nama Ruangan");
+                break;
+            case SEARCH_KELAS:
+                textSearch.setText("Cari berdasarkan Kode atau Nama Kelas");
                 break;
         }
     }
@@ -129,6 +221,19 @@ public class SearchDialog extends javax.swing.JDialog {
                 mataKuliah.setMatkulKode(mataKuliahList.get(table.getSelectedRow()).getMatkulKode());
                 mataKuliah.setMatkulNama(mataKuliahList.get(table.getSelectedRow()).getMatkulNama());
                 mataKuliah.setMatkulTipe(mataKuliahList.get(table.getSelectedRow()).getMatkulTipe());
+                break;
+            case SEARCH_UJIAN:
+                ujian.setUjianKode(ujianList.get(table.getSelectedRow()).getUjianKode());
+                ujian.setUjianNama(ujianList.get(table.getSelectedRow()).getUjianNama());
+                ujian.setUjianMulai(ujianList.get(table.getSelectedRow()).getUjianMulai());
+                break;
+            case SEARCH_RUANGAN:
+                ruangan.setRuanganKode(ruanganList.get(table.getSelectedRow()).getRuanganKode());
+                ruangan.setRuanganNama(ruanganList.get(table.getSelectedRow()).getRuanganNama());
+                break;
+            case SEARCH_KELAS:
+                kelas.setKelasKode(kelasList.get(table.getSelectedRow()).getKelasKode());
+                kelas.setKelasNama(kelasList.get(table.getSelectedRow()).getKelasNama());
                 break;
         }
         this.dispose();
@@ -247,6 +352,15 @@ public class SearchDialog extends javax.swing.JDialog {
                 break;
             case SEARCH_SOAL:
                 mataKuliahList = createUjianController.searchMataKuliah(textSearch.getText(), table);
+                break;
+            case SEARCH_UJIAN:
+                ujianList = assignUjianController.searchUjian(textSearch.getText(), table);
+                break;
+            case SEARCH_RUANGAN:
+                ruanganList = assignUjianController.searchRuangan(textSearch.getText(), table);
+                break;
+            case SEARCH_KELAS:
+                kelasList = assignUjianController.searchKelas(textSearch.getText(), table);
                 break;
         }
     }//GEN-LAST:event_textSearchKeyReleased

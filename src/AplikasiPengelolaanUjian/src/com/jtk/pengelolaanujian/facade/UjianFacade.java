@@ -27,7 +27,7 @@ import javax.swing.JOptionPane;
  */
 public class UjianFacade {
 
-    private Connection connection = ConnectionHelper.getConnection();
+    private final Connection connection = ConnectionHelper.getConnection();
 
     public List<Ujian> findAll() {
         try {
@@ -37,11 +37,12 @@ public class UjianFacade {
             List<Ujian> ujianList = new ArrayList<>();
             while (rs.next()) {
                 Ujian ujian = new Ujian();
-                ujian.setEventKode(rs.getString(1));
-                ujian.setSoalKode(rs.getString(2));
-                ujian.setUjianKode(rs.getString(3));
-                ujian.setUjianMenit(rs.getInt(4));
-                ujian.setUjianMulai(rs.getDate(5));
+                ujian.setEventKode(rs.getString("EVENT_KODE"));
+                ujian.setSoalKode(rs.getString("SOAL_KODE"));
+                ujian.setUjianKode(rs.getString("UJIAN_KODE"));
+                ujian.setUjianMenit(rs.getInt("UJIAN_MENIT"));
+                ujian.setUjianMulai(rs.getDate("UJIAN_MULAI"));
+                ujian.setUjianNama(rs.getString("UJIAN_NAMA"));
 
                 ujianList.add(ujian);
             }
@@ -60,11 +61,12 @@ public class UjianFacade {
             List<Ujian> ujianList = new ArrayList<>();
             while (rs.next()) {
                 Ujian ujian = new Ujian();
-                ujian.setEventKode(rs.getString(1));
-                ujian.setSoalKode(rs.getString(2));
-                ujian.setUjianKode(rs.getString(3));
-                ujian.setUjianMenit(rs.getInt(4));
-                ujian.setUjianMulai(rs.getDate(5));
+                ujian.setEventKode(rs.getString("EVENT_KODE"));
+                ujian.setSoalKode(rs.getString("SOAL_KODE"));
+                ujian.setUjianKode(rs.getString("UJIAN_KODE"));
+                ujian.setUjianMenit(rs.getInt("UJIAN_MENIT"));
+                ujian.setUjianMulai(rs.getDate("UJIAN_MULAI"));
+                ujian.setUjianNama(rs.getString("UJIAN_NAMA"));
 
                 ujianList.add(ujian);
             }
@@ -82,11 +84,12 @@ public class UjianFacade {
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
                 Ujian ujian = new Ujian();
-                ujian.setEventKode(rs.getString(1));
-                ujian.setSoalKode(rs.getString(2));
-                ujian.setUjianKode(rs.getString(3));
-                ujian.setUjianMenit(rs.getInt(4));
-                ujian.setUjianMulai(rs.getDate(5));
+                ujian.setEventKode(rs.getString("EVENT_KODE"));
+                ujian.setSoalKode(rs.getString("SOAL_KODE"));
+                ujian.setUjianKode(rs.getString("UJIAN_KODE"));
+                ujian.setUjianMenit(rs.getInt("UJIAN_MENIT"));
+                ujian.setUjianMulai(rs.getDate("UJIAN_MULAI"));
+                ujian.setUjianNama(rs.getString("UJIAN_NAMA"));
 
                 return ujian;
             }
@@ -103,14 +106,39 @@ public class UjianFacade {
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
                 Ujian ujian = new Ujian();
-                ujian.setEventKode(rs.getString(1));
-                ujian.setSoalKode(rs.getString(2));
-                ujian.setUjianKode(rs.getString(3));
-                ujian.setUjianMenit(rs.getInt(4));
-                ujian.setUjianMulai(rs.getDate(5));
+                ujian.setEventKode(rs.getString("EVENT_KODE"));
+                ujian.setSoalKode(rs.getString("SOAL_KODE"));
+                ujian.setUjianKode(rs.getString("UJIAN_KODE"));
+                ujian.setUjianMenit(rs.getInt("UJIAN_MENIT"));
+                ujian.setUjianMulai(rs.getDate("UJIAN_MULAI"));
+                ujian.setUjianNama(rs.getString("UJIAN_NAMA"));
 
                 return ujian;
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Ujian> findUjianLike(String text) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM ujian WHERE UJIAN_KODE LIKE '%" + text + "%' OR UJIAN_NAMA LIKE '%" + text + "%'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Ujian> ujians = new ArrayList<>();
+            while (rs.next()) {
+                Ujian ujian = new Ujian();
+                ujian.setEventKode(rs.getString("EVENT_KODE"));
+                ujian.setSoalKode(rs.getString("SOAL_KODE"));
+                ujian.setUjianKode(rs.getString("UJIAN_KODE"));
+                ujian.setUjianMenit(rs.getInt("UJIAN_MENIT"));
+                ujian.setUjianMulai(rs.getDate("UJIAN_MULAI"));
+                ujian.setUjianNama(rs.getString("UJIAN_NAMA"));
+
+                ujians.add(ujian);
+            }
+            return ujians;
         } catch (SQLException ex) {
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -132,11 +160,12 @@ public class UjianFacade {
             List<Ujian> ujianList = new ArrayList<>();
             while (rs.next()) {
                 Ujian ujian = new Ujian();
-                ujian.setEventKode(rs.getString(1));
-                ujian.setSoalKode(rs.getString(2));
-                ujian.setUjianKode(rs.getString(3));
-                ujian.setUjianMenit(rs.getInt(4));
-                ujian.setUjianMulai(rs.getDate(5));
+                ujian.setEventKode(rs.getString("EVENT_KODE"));
+                ujian.setSoalKode(rs.getString("SOAL_KODE"));
+                ujian.setUjianKode(rs.getString("UJIAN_KODE"));
+                ujian.setUjianMenit(rs.getInt("UJIAN_MENIT"));
+                ujian.setUjianMulai(rs.getDate("UJIAN_MULAI"));
+                ujian.setUjianNama(rs.getString("UJIAN_NAMA"));
 
                 ujianList.add(ujian);
             }
@@ -166,12 +195,12 @@ public class UjianFacade {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Ujian ujian = new Ujian();
-                ujian.setEventKode(rs.getString(1));
-                ujian.setSoalKode(rs.getString(2));
-                ujian.setUjianKode(rs.getString(3));
-                ujian.setUjianMenit(rs.getInt(4));
-                ujian.setUjianMulai(rs.getDate(5));
-                ujian.setUjianNama(rs.getString(6));
+                ujian.setEventKode(rs.getString("EVENT_KODE"));
+                ujian.setSoalKode(rs.getString("SOAL_KODE"));
+                ujian.setUjianKode(rs.getString("UJIAN_KODE"));
+                ujian.setUjianMenit(rs.getInt("UJIAN_MENIT"));
+                ujian.setUjianMulai(rs.getDate("UJIAN_MULAI"));
+                ujian.setUjianNama(rs.getString("UJIAN_NAMA"));
 
                 listUjian.add(ujian);
             }
@@ -191,12 +220,12 @@ public class UjianFacade {
             preparedStatement.setString(3, ujian.getSoalKode());
             preparedStatement.setDate(4, new Date(ujian.getUjianMulai().getTime()));
             preparedStatement.setInt(5, ujian.getUjianMenit());
-            preparedStatement.setString(6, ujian.getUjianNama());   
-            
+            preparedStatement.setString(6, ujian.getUjianNama());
+
             preparedStatement.execute();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }   
+    }
 }
