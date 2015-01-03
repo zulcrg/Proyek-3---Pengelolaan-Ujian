@@ -5,7 +5,10 @@
  */
 package com.jtk.pengelolaanujian.facade;
 
+import com.jtk.pengelolaanujian.entity.Dosen;
+import com.jtk.pengelolaanujian.entity.MataKuliah;
 import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
@@ -273,4 +276,42 @@ public class SoalFacade {
         }
         return 0;
     }
+
+    public List<Soal> findAllWhereVNVtrue() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT soal.soal_kode, mata_kuliah.matkul_kode, mata_kuliah.matkul_nama , staf.staf_nama FROM soal,mata_kuliah,mata_kuliah_to_dosen,dosen,staf WHERE staf.staf_nip = dosen.staf_nip AND dosen.dosen_kode = mata_kuliah_to_dosen.dosen_kode AND mata_kuliah_to_dosen.matkul_kode = mata_kuliah.matkul_kode AND mata_kuliah_to_dosen.matkul_tipe = mata_kuliah.matkul_tipe AND mata_kuliah.matkul_kode = soal.matkul_kode AND mata_kuliah.matkul_tipe = soal.matkul_tipe AND soal.soal_vnved = 1";
+
+
+            ResultSet rs = stmt.executeQuery(query);
+            List<Soal> soalList = new ArrayList<>();
+            while (rs.next()) {
+                Soal soal = new Soal();
+                soal.setSoalKode(rs.getString(1));
+                
+                MataKuliah mataKuliah = new MataKuliah();
+                mataKuliah.setMatkulKode(rs.getString(2));
+                mataKuliah.setMatkulNama(rs.getString(3));
+                
+                Staf staf = new Staf();
+                staf.setStafNama(rs.getString(4));
+                
+                Dosen dosen = new Dosen();
+                dosen.setStafNama(staf.getStafNama());
+                
+                mataKuliah.setDosen(dosen);
+                
+                soal.setMataKuliah(mataKuliah);                
+                                
+                soalList.add(soal);
+            }
+            return soalList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
 }

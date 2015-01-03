@@ -22,6 +22,7 @@ public class PanitiaPanel extends javax.swing.JPanel {
     public void preparation(){
         createEvent1.preparation();
         createUjian2.preparation();
+        printSoal1.preparation();
     }
 
     /**
@@ -37,12 +38,14 @@ public class PanitiaPanel extends javax.swing.JPanel {
         createEvent1 = new com.jtk.pengelolaanujian.view.panitia.CreateEvent();
         createUjian2 = new com.jtk.pengelolaanujian.view.panitia.CreateUjian();
         assignUjian1 = new com.jtk.pengelolaanujian.view.panitia.AssignUjian();
+        printSoal1 = new com.jtk.pengelolaanujian.view.panitia.PrintSoal();
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Create Event", createEvent1);
         jTabbedPane1.addTab("Create Ujian", createUjian2);
         jTabbedPane1.addTab("Assign Ujian", assignUjian1);
+        jTabbedPane1.addTab("Print Soal", printSoal1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,5 +65,6 @@ public class PanitiaPanel extends javax.swing.JPanel {
     private com.jtk.pengelolaanujian.view.panitia.CreateEvent createEvent1;
     private com.jtk.pengelolaanujian.view.panitia.CreateUjian createUjian2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private com.jtk.pengelolaanujian.view.panitia.PrintSoal printSoal1;
     // End of variables declaration//GEN-END:variables
 }
