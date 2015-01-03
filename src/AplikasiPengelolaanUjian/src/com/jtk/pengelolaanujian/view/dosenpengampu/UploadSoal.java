@@ -8,8 +8,10 @@ package com.jtk.pengelolaanujian.view.dosenpengampu;
 import com.jtk.pengelolaanujian.controller.dosenPengampu.UploadSoalController;
 import com.jtk.pengelolaanujian.entity.MataKuliah;
 import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.util.CommonHelper;
 import java.util.List;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -34,6 +36,7 @@ public class UploadSoal extends javax.swing.JPanel {
         mataKuliahList = uploadSoalController.searchMatkul(cboMatkul);
         url = "";
         soal = new Soal();
+        spinDurasi.setModel(CommonHelper.createDurasiSpinnerModel());
     }
 
     /**
@@ -55,6 +58,9 @@ public class UploadSoal extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         radTutupBuku = new javax.swing.JRadioButton();
         radBukaBuku = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
+        spinDurasi = new javax.swing.JSpinner();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel1.setText("Pilih File");
 
@@ -101,6 +107,10 @@ public class UploadSoal extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setText("Durasi");
+
+        jLabel5.setText("Menit");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,9 +122,20 @@ public class UploadSoal extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 40, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 36, Short.MAX_VALUE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(spinDurasi, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(radTutupBuku)
                                 .addGap(18, 18, 18)
@@ -126,10 +147,7 @@ public class UploadSoal extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnBrowse))
                             .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(122, 122, 122))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(122, 122, 122))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,8 +167,13 @@ public class UploadSoal extends javax.swing.JPanel {
                     .addComponent(radTutupBuku)
                     .addComponent(radBukaBuku))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(spinDurasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btnUpload)
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -163,7 +186,11 @@ public class UploadSoal extends javax.swing.JPanel {
     }
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
-
+        if (spinDurasi.getValue() == null) {
+            JOptionPane.showMessageDialog(this, "Harap isi durasi ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (!CommonHelper.isStringNumberMaxMin(spinDurasi.getValue().toString(), 1000, 1)) {
+            JOptionPane.showMessageDialog(this, "Harap isi format durasi dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
@@ -196,8 +223,11 @@ public class UploadSoal extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JRadioButton radBukaBuku;
     private javax.swing.JRadioButton radTutupBuku;
+    private javax.swing.JSpinner spinDurasi;
     private javax.swing.JTextField textUrl;
     // End of variables declaration//GEN-END:variables
 }
