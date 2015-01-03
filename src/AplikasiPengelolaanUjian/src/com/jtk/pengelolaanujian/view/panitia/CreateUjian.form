@@ -19,51 +19,33 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labelEventUjian" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelTanggal" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelArsipSoal" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelNamaUjian" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="labelArsipSoal1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="spinDurasi" min="-2" pref="56" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="btnCreateUjian" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textKodeSoal" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="textNamaUjian" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="textMatkul" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="textEvent" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="dateUjianMulai" pref="129" max="32767" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="labelPukul" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="textJam" min="-2" pref="29" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="labelPukul1" min="-2" pref="4" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="textMenit" min="-2" pref="29" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="cboSifatSoal" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnBrowse" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Component id="labelEventUjian" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelTanggal" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelArsipSoal" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNamaUjian" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelArsipSoal1" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="btnCreateUjian" min="-2" max="-2" attributes="0"/>
+                  <Component id="textKodeSoal" alignment="0" max="32767" attributes="0"/>
+                  <Component id="textNamaUjian" alignment="0" max="32767" attributes="0"/>
+                  <Component id="textMatkul" alignment="0" max="32767" attributes="0"/>
+                  <Component id="textEvent" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="dateUjianMulai" pref="129" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="labelPukul" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="textJam" min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="labelPukul1" min="-2" pref="4" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="textMenit" min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnBrowse" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="157" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -92,12 +74,7 @@
                   <Component id="labelArsipSoal1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="textKodeSoal" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cboSifatSoal" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="labelPukul" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -110,15 +87,9 @@
                       <Component id="labelTanggal" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="spinDurasi" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="btnCreateUjian" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="185" max="32767" attributes="0"/>
+              <EmptySpace pref="251" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -196,39 +167,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textEventActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Durasi"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Menit"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSpinner" name="spinDurasi">
-    </Component>
     <Component class="javax.swing.JLabel" name="labelArsipSoal1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kode Soal"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="textKodeSoal">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Sifat Soal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cboSifatSoal">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="Buka Buku"/>
-            <StringItem index="1" value="Tutup Buku"/>
-          </StringArray>
-        </Property>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

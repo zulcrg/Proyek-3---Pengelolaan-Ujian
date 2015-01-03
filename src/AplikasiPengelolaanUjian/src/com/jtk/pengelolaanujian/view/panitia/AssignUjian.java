@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * @author pahlevi
  */
 public class AssignUjian extends javax.swing.JPanel {
-
+    
     private Ujian ujian;
     private Staf staf;
     private Ruangan ruangan;
@@ -31,7 +31,7 @@ public class AssignUjian extends javax.swing.JPanel {
     public AssignUjian() {
         initComponents();
     }
-
+    
     public void preparation() {
         ujian = new Ujian();
         staf = new Staf();
@@ -207,6 +207,15 @@ public class AssignUjian extends javax.swing.JPanel {
         } else {
             AssignUjianController assignUjianController = new AssignUjianController();
             assignUjianController.createRuanganUjian(ujian.getUjianKode(), ruangan.getRuanganKode(), staf.getStafNIP(), kelas.getKelasKode());
+                ujian = new Ujian();
+                ruangan = new Ruangan();
+                staf = new Staf();
+                kelas = new Kelas();
+                textUjian.setText("");
+                textRuangan.setText("");
+                textPengawas.setText("");
+                textKelas.setText("");
+            }
         }
     }//GEN-LAST:event_btnSimpanActionPerformed
 
@@ -226,5 +235,4 @@ public class AssignUjian extends javax.swing.JPanel {
     private javax.swing.JTextField textRuangan;
     private javax.swing.JTextField textUjian;
     // End of variables declaration//GEN-END:variables
-
 }
