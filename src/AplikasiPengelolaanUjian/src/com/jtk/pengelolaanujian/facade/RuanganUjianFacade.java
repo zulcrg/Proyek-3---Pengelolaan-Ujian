@@ -31,7 +31,7 @@ import static javax.swing.UIManager.getBoolean;
  */
 public class RuanganUjianFacade {
 
-    private final Connection connection = ConnectionHelper.getConnection();
+    private Connection connection = ConnectionHelper.getConnection();
 
     public List<RuanganUjian> findAll() {
         try {
@@ -274,6 +274,46 @@ public class RuanganUjianFacade {
                     + "dosen.staf_nip = staf.staf_nip AND \n"
                     + "user.staf_nip = staf.staf_nip AND \n"
                     + "user.user_username = '" + LoginPanel.getUsername() + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<RuanganUjian> listRuanganUjian = new ArrayList<>();
+            while (rs.next()) {
+                RuanganUjian ruanganUjian = new RuanganUjian();
+                ruanganUjian.setRuanganKode(rs.getString(1));
+                ruanganUjian.setUjianKode(rs.getString(2));
+                ruanganUjian.setStafNip(rs.getString(3));
+                ruanganUjian.setBeritaKode(rs.getString(4));
+                ruanganUjian.setRuanganUjianUploadNilaiStatus(getBoolean(5));
+                ruanganUjian.setKelasKode(rs.getString(6));
+
+                Ujian ujian = new Ujian();
+                ujian.setUjianNama(rs.getString(12));
+                Kelas kelas = new Kelas();
+                kelas.setKelasNama(rs.getString(14));
+
+                ruanganUjian.setUjian(ujian);
+                ruanganUjian.setKelas(kelas);
+
+                listRuanganUjian.add(ruanganUjian);
+            }
+            return listRuanganUjian;
+        } catch (SQLException ex) {
+            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<RuanganUjian> findRuanganUjianAll() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * "
+                    + " FROM"
+                    + " ruangan_ujian,ujian,soal,mata_kuliah"
+                    + " WHERE"
+                    + " ruangan_ujian.ujian_kode = ujian.ujian_kode AND"
+                    + " ujian.soal_kode= soal.soal_kode AND"
+                    + " soal.matkul_kode = mata_kuliah.matkul_kode AND"
+                    + " soal.matkul_tipe = mata_kuliah.matkul_tipe";
+            
             ResultSet rs = stmt.executeQuery(query);
             List<RuanganUjian> listRuanganUjian = new ArrayList<>();
             while (rs.next()) {

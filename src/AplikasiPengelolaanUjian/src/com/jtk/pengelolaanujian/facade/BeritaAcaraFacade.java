@@ -7,6 +7,7 @@ package com.jtk.pengelolaanujian.facade;
 
 import com.jtk.pengelolaanujian.entity.BeritaAcara;
 import com.jtk.pengelolaanujian.entity.Ujian;
+import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.Date;
@@ -90,6 +91,22 @@ public class BeritaAcaraFacade {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+    public void updateBeritaAcara(BeritaAcara beritaAcara) {
+        String beritaKet = beritaAcara.getBeritaKet();
+        int beritaHadir = beritaAcara.getBeritaHadir();
+        int beritaTidakHadir = beritaAcara.getBeritaTidakHadir();
+        int beritaSoalSisa = beritaAcara.getBeritaSoalSisa();
+        int beritaJawabSisa = beritaAcara.getBeritaJawabSisa();
+        String beritaKode = beritaAcara.getBeritaKode();
+        
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "UPDATE berita_acara SET BERITA_KET = '" + beritaKet + "',BERITA_HADIR = '" + beritaHadir + "',BERITA_TIDAK_HADIR = '" + beritaTidakHadir + "',BERITA_SOAL_SISA = '" + beritaSoalSisa + "',BERITA_JAWAB_SISA = '" + beritaJawabSisa + "',BERITA_STATUS = 1 WHERE berita_acara.BERITA_KODE = '" + beritaKode + "'";
+            stmt.executeUpdate(query);                        
+        } catch (SQLException ex) {
+            Logger.getLogger(BeritaAcaraFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

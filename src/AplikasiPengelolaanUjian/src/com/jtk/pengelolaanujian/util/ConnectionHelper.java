@@ -22,7 +22,7 @@ public class ConnectionHelper {
     private static Connection connection;
     private static Connection connectionGammu;
     private static final String user = "client";
-    private static final String password = ZHash.hashMD5("root");
+    private static final String password = ZHash.hashMD5("root");    
 
     private static void createConnection() {
         try {
