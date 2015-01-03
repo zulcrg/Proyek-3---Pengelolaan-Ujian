@@ -6,11 +6,15 @@
 package com.jtk.pengelolaanujian.facade;
 
 import com.jtk.pengelolaanujian.entity.Dosen;
+import com.jtk.pengelolaanujian.entity.Event;
+import com.jtk.pengelolaanujian.entity.Kelas;
 import com.jtk.pengelolaanujian.entity.MataKuliah;
+import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -311,6 +315,82 @@ public class SoalFacade {
             Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        return null;
+    }
+    
+    public List<Soal> searchSoalInKbk(String text){
+        Statement stmt;
+        try {
+            // create statement for connection
+            stmt = connection.createStatement(); 
+            // query yang diberikan
+            String query = "SELECT soal.SOAL_KODE, soal.SOAL_SIFAT, mata_kuliah.MATKUL_KODE, mata_kuliah.MATKUL_NAMA, mata_kuliah.MATKUL_TIPE, ujian.UJIAN_MULAI,  ujian.UJIAN_MENIT, event.EVENT_KODE, dosen.DOSEN_KODE, staf.STAF_NAMA, kelas.KELAS_NAMA "
+                    + "FROM soal, mata_kuliah, ujian, event, staf, dosen, kelas, mata_kuliah_to_dosen, ruangan_ujian"
+                    + "WHERE (soal.SOAL_KODE like '%" + text + "%' OR mata_kuliah.MATKUL_NAMA like '%" + text + "%' )"
+                    + "AND mata_kuliah.MATKUL_KODE = soal.MATKUL_KODE AND "
+                    + "ujian.SOAL_KODE = soal.SOAL_KODE AND "
+                    + "event.EVENT_KODE = ujian.EVENT_KODE AND "
+                    + "mata_kuliah_to_dosen.MATKUL_KODE = mata_kuliah.MATKUL_KODE AND "
+                    + "dosen.DOSEN_KODE = mata_kuliah_to_dosen.DOSEN_KODE AND "
+                    + "staf.STAF_NIP = dosen.STAF_NIP AND "
+                    + "ruangan_ujian.SOAL_KODE = soal.SOAL_KODE AND "
+                    + "kelas.KELAS_KODE = ruangan_ujian.KELAS_KODE "
+                    + "user.STAF_NIP = staf.STAF_NIP"
+                    + "user.USERNAME = '"+LoginPanel.getUsername()+"' AND"
+                    + "kbk.KBK_KODE = dosen.KBK_KODE";
+            // alokasi resultset sebagai penampung hasil dari query yang di eksekusi
+            ResultSet rs = stmt.executeQuery(query);
+            //
+            List<Soal> soalList = new ArrayList<>();
+            while(rs.next()){
+                Soal soal = new Soal();
+                soal.setSoalKode(rs.getString(1));
+                soal.setSoalSifat(rs.getString(2));
+                
+                
+                MataKuliah mataKuliah = new MataKuliah();
+                mataKuliah.setMatkulKode(rs.getString(3));
+                mataKuliah.setMatkulNama(rs.getString(4));
+                mataKuliah.setMatkulTipe(rs.getString(5));
+                
+                soal.setMataKuliah(mataKuliah);
+                
+                Ujian ujian = new Ujian();
+                ujian.setUjianMulai(rs.getDate(6));
+                ujian.setUjianMenit(rs.getInt(7));
+                
+                soal.setUjian(ujian);
+                
+                Event event = new Event();
+                event.setKode(rs.getString(8));
+                
+                ujian.setEvent(event);
+                
+                Dosen dosen = new Dosen();
+                dosen.setDosenKode(rs.getString(9));
+                
+                mataKuliah.setDosen(dosen);
+                
+                dosen.setStafNama(rs.getString(10));
+                
+                Kelas kelas = new Kelas();
+                kelas.setKelasNama(rs.getString(11));
+                
+                RuanganUjian ruanganUjian = new RuanganUjian();
+                ruanganUjian.setKelas(kelas);
+                
+                ruanganUjian.setUjian(ujian);
+                
+                ujian.setSoal(soal);
+                
+                soalList.add(soal);
+               //gelo asli
+            }
+            return soalList;
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
         return null;
     }
 
