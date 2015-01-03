@@ -12,6 +12,7 @@ import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.facade.MataKuliahFacade;
 import com.jtk.pengelolaanujian.facade.SoalFacade;
 import com.jtk.pengelolaanujian.facade.UjianFacade;
+import com.jtk.pengelolaanujian.util.CommonHelper;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JTable;
@@ -58,7 +59,7 @@ public class CreateUjianController extends AbstractController {
         return false;
     }
 
-    public List<MataKuliah> searchSoal(String text, JTable table) {
+    public List<MataKuliah> searchMataKuliah(String text, JTable table) {
         MataKuliahFacade mataKuliahFacade = new MataKuliahFacade();
         List<MataKuliah> matkuls = mataKuliahFacade.findByLikeKodeMatkul(text);
 
@@ -74,7 +75,7 @@ public class CreateUjianController extends AbstractController {
             Object[] o = new Object[3];
             o[0] = matkul.getMatkulKode();
             o[1] = matkul.getMatkulNama();
-            o[2] = matkul.getMatkulTipe();
+            o[2] = CommonHelper.convertTipeMatkul(matkul.getMatkulTipe());
 
             dtm.addRow(o);
         }

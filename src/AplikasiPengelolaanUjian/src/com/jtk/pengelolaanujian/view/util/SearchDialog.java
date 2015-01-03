@@ -90,7 +90,7 @@ public class SearchDialog extends javax.swing.JDialog {
                 break;
             case SEARCH_SOAL:
                 createUjianController = new CreateUjianController();
-                mataKuliahList = createUjianController.searchSoal("", table);
+                mataKuliahList = createUjianController.searchMataKuliah("", table);
                 textSearch.setText("Cari berdasarkan Kode atau Nama Mata kuliah");
                 setTitle("Mata Kuliah");
                 break;
@@ -246,7 +246,7 @@ public class SearchDialog extends javax.swing.JDialog {
                 stafList = editUserController.searchUserNotMe(textSearch.getText(), table);
                 break;
             case SEARCH_SOAL:
-                mataKuliahList = createUjianController.searchSoal(textSearch.getText(), table);
+                mataKuliahList = createUjianController.searchMataKuliah(textSearch.getText(), table);
                 break;
         }
     }//GEN-LAST:event_textSearchKeyReleased

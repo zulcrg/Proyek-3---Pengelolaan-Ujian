@@ -5,7 +5,6 @@
  */
 package com.jtk.pengelolaanujian.util;
 
-import com.jtk.pengelolaanujian.controller.panitiaController.EventController;
 import com.jtk.pengelolaanujian.entity.Event;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,23 +43,37 @@ public class CommonHelper {
         return spinnerModel;
     }
 
-    public static String createTahun(Event event) {        
-        String string = "Ujian ";
-        char[] a = event.getKode().toCharArray();
+    public static String createTahun(Event event) {
+        if (event != null) {
+            String string = "Ujian ";
+            char[] a = event.getKode().toCharArray();
 
-        if (a[3] == 'T') {
-            string = string + "Tengah semester ";
-        } else {
-            string = string + "Akhir semester ";
+            if (a[3] == 'T') {
+                string = string + "Tengah semester ";
+            } else {
+                string = string + "Akhir semester ";
+            }
+
+            if (a[2] == '1') {
+                string = string + "Genap ";
+            } else {
+                string = string + "Ganjil ";
+            }
+            string = string + "Tahun 20" + a[0] + a[1];
+
+            return string;
         }
+        return "";
+    }
 
-        if (a[2] == '1') {
-            string = string + "Genap ";
-        } else {
-            string = string + "Ganjil ";
+    public static String convertTipeMatkul(String text) {
+        switch (text) {
+            case "TE":
+                return "TEORI";
+            case "PR":
+                return "PRAKTEK";
+            default:
+                return "";
         }
-        string = string + "Tahun 20" + a[0] + a[1];
-
-        return string;
     }
 }
