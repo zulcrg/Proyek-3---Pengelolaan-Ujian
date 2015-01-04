@@ -196,27 +196,27 @@ public class AssignUjian extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBrowseKelasActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        if (ujian.getUjianKode() == null) {
-            JOptionPane.showMessageDialog(null, "Harap pilih ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
-        } else if (ruangan.getRuanganKode() == null) {
-            JOptionPane.showMessageDialog(null, "Harap pilih ruangan", "Perhatian", JOptionPane.WARNING_MESSAGE);
-        } else if (staf.getStafNIP() == null) {
-            JOptionPane.showMessageDialog(null, "Harap pilih staff", "Perhatian", JOptionPane.WARNING_MESSAGE);
-        } else if (kelas.getKelasKode() == null) {
-            JOptionPane.showMessageDialog(null, "Harap pilih kelas", "Perhatian", JOptionPane.WARNING_MESSAGE);
-        } else {
-            AssignUjianController assignUjianController = new AssignUjianController();
-            assignUjianController.createRuanganUjian(ujian.getUjianKode(), ruangan.getRuanganKode(), staf.getStafNIP(), kelas.getKelasKode());
-                ujian = new Ujian();
-                ruangan = new Ruangan();
-                staf = new Staf();
-                kelas = new Kelas();
-                textUjian.setText("");
-                textRuangan.setText("");
-                textPengawas.setText("");
-                textKelas.setText("");
-            }
-        }
+//        if (ujian.getUjianKode() == null) {
+//            JOptionPane.showMessageDialog(null, "Harap pilih ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+//        } else if (ruangan.getRuanganKode() == null) {
+//            JOptionPane.showMessageDialog(null, "Harap pilih ruangan", "Perhatian", JOptionPane.WARNING_MESSAGE);
+//        } else if (staf.getStafNIP() == null) {
+//            JOptionPane.showMessageDialog(null, "Harap pilih staff", "Perhatian", JOptionPane.WARNING_MESSAGE);
+//        } else if (kelas.getKelasKode() == null) {
+//            JOptionPane.showMessageDialog(null, "Harap pilih kelas", "Perhatian", JOptionPane.WARNING_MESSAGE);
+//        } else {
+//            AssignUjianController assignUjianController = new AssignUjianController();
+//            assignUjianController.createRuanganUjian(ujian.getUjianKode(), ruangan.getRuanganKode(), staf.getStafNIP(), kelas.getKelasKode());
+//                ujian = new Ujian();
+//                ruangan = new Ruangan();
+//                staf = new Staf();
+//                kelas = new Kelas();
+//                textUjian.setText("");
+//                textRuangan.setText("");
+//                textPengawas.setText("");
+//                textKelas.setText("");
+//            }
+//        }
     }//GEN-LAST:event_btnSimpanActionPerformed
 
 
@@ -235,4 +235,5 @@ public class AssignUjian extends javax.swing.JPanel {
     private javax.swing.JTextField textRuangan;
     private javax.swing.JTextField textUjian;
     // End of variables declaration//GEN-END:variables
+
 }

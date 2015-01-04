@@ -6,6 +6,7 @@
 package com.jtk.pengelolaanujian.view.dashboard;
 
 import com.jtk.pengelolaanujian.view.MainFrame;
+import java.awt.Color;
 
 /**
  *
@@ -28,7 +29,8 @@ public class DashboardPanel extends javax.swing.JPanel {
         statusUser1.preparation();
         statusEvent1.preparation();
         statusTransaksi1.preparation();
-        statusAplikasi1.preparation();              
+        statusAplikasi1.preparation();  
+        this.setBackground(Color.darkGray);
     }
 
     /**
@@ -61,7 +63,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

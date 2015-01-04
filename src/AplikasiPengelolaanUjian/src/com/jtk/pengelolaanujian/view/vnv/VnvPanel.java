@@ -6,6 +6,8 @@
 
 package com.jtk.pengelolaanujian.view.vnv;
 
+import java.awt.Color;
+
 /**
  *
  * @author pahlevi
@@ -20,7 +22,7 @@ public class VnvPanel extends javax.swing.JPanel {
     }
     
     public void preparation(){
-        
+        this.setBackground(Color.darkGray);
     }
 
     /**

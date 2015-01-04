@@ -6,6 +6,8 @@
 
 package com.jtk.pengelolaanujian.view.panitia;
 
+import java.awt.Color;
+
 /**
  *
  * @author pahlevi
@@ -25,6 +27,7 @@ public class PanitiaPanel extends javax.swing.JPanel {
         assignUjian1.preparation();
         printSoal1.preparation();
         uploadBeritaAcara1.preparation();
+        this.setBackground(Color.darkGray);
     }
 
     /**

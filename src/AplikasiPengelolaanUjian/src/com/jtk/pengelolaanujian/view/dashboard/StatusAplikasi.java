@@ -31,31 +31,73 @@ public class StatusAplikasi extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        labelReminderStatus = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("STATUS APLIKASI");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel1)
-                .addContainerGap(78, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel1)
-                .addContainerGap(214, Short.MAX_VALUE))
-        );
+        labelReminderStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelReminderStatus.setText("Reminder Status");
+        add(labelReminderStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 20, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel1.setText("Triggered Reminder");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 78, 130, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel2.setText("Scheduled Reminder");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 226, 140, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 255, 0));
+        jLabel3.setText("Active");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 247, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 255, 0));
+        jLabel4.setText("Active");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 104, -1, -1));
+
+        jLabel5.setText("Reminder Jadwal Upload Nilai  Dosen Pengampu H - ");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
+
+        jLabel6.setText("Reminder Uploaded Soal Status");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
+
+        jLabel7.setText("Reminder Uploaded Vnv Status");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
+
+        jLabel8.setText("Reminder Printed Soal Status");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
+
+        jLabel9.setText("Reminder Jadwal Pengawas Ujian H - ");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
+
+        jLabel10.setText("Reminder Jadwal Upload Soal  Dosen Pengampu H - ");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel labelReminderStatus;
     // End of variables declaration//GEN-END:variables
 }

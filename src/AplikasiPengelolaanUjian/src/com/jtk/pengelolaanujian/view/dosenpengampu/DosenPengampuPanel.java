@@ -5,6 +5,8 @@
  */
 package com.jtk.pengelolaanujian.view.dosenpengampu;
 
+import java.awt.Color;
+
 /**
  *
  * @author pahlevi
@@ -21,6 +23,7 @@ public class DosenPengampuPanel extends javax.swing.JPanel {
     public void preparation() {
         uploadSoal1.preparation();
         uploadNilai1.preparation();
+        this.setBackground(Color.darkGray);
     }
 
     /**

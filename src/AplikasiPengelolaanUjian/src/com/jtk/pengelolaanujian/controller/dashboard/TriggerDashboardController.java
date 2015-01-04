@@ -15,6 +15,7 @@ import com.jtk.pengelolaanujian.facade.DashboardFacade;
 import com.jtk.pengelolaanujian.facade.DosenFacade;
 import com.jtk.pengelolaanujian.facade.EventFacade;
 import com.jtk.pengelolaanujian.facade.KbkFacade;
+import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
 import com.jtk.pengelolaanujian.facade.SoalFacade;
 import com.jtk.pengelolaanujian.facade.StafFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
@@ -132,6 +133,23 @@ public class TriggerDashboardController {
     public int checkUnUploadedVNV() {
         SoalFacade soalFacade = new SoalFacade();
         return soalFacade.checkUnUploadVNV();
+    }
+
+    public int checkUjianTerlalui() {
+        RuanganUjianFacade ruanganUjianFacade = new RuanganUjianFacade();        
+        System.out.println(ruanganUjianFacade.checkTerlalui(true));
+        return ruanganUjianFacade.checkTerlalui(true);            
+    }
+
+    public int cekUjianBelumTerlalui() {
+        RuanganUjianFacade ruanganUjianFacade = new RuanganUjianFacade();        
+        System.out.println(ruanganUjianFacade.checkTerlalui(false));
+        return ruanganUjianFacade.checkTerlalui(false);
+    }
+
+    public void viewTableUjian(JTable tableUjian, String toString) {
+        DashboardFacade dashboardFacade = new DashboardFacade();
+        dashboardFacade.findTableUjianWherePengawasLike(tableUjian,toString);    
     }
 
 }

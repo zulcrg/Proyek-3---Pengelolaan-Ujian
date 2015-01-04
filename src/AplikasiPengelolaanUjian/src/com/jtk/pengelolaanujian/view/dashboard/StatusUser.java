@@ -40,6 +40,7 @@ public class StatusUser extends javax.swing.JPanel {
         tabeStatusDosenPengampu1 = new com.jtk.pengelolaanujian.view.dashboard.TabeStatusDosenPengampu();
         tabeStatusVNV1 = new com.jtk.pengelolaanujian.view.dashboard.TabeStatusVNV();
         jLabel1 = new javax.swing.JLabel();
+        labelUploadSoal4 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(609, 462));
 
@@ -50,6 +51,8 @@ public class StatusUser extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Tabel Monitoring Status Staff dalam Ujian");
+
+        labelUploadSoal4.setText("Detail Informasi Umum mengenai User yang terlibat dalam Event Ujian yang Aktif");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,6 +65,10 @@ public class StatusUser extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addContainerGap(313, Short.MAX_VALUE))
                     .addComponent(jTabbedPane1)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(labelUploadSoal4)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,7 +77,9 @@ public class StatusUser extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(labelUploadSoal4)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -78,6 +87,7 @@ public class StatusUser extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel labelUploadSoal4;
     private com.jtk.pengelolaanujian.view.dashboard.TabeStatusAdmin tabeStatusAdmin2;
     private com.jtk.pengelolaanujian.view.dashboard.TabeStatusDosenPengampu tabeStatusDosenPengampu1;
     private com.jtk.pengelolaanujian.view.dashboard.TabeStatusPanitia tabeStatusPanitia1;

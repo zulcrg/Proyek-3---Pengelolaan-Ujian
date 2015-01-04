@@ -31,6 +31,11 @@
                   <Component id="jTabbedPane1" max="32767" attributes="0"/>
               </Group>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Component id="labelUploadSoal4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -40,7 +45,9 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jTabbedPane1" min="-2" pref="365" max="-2" attributes="0"/>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="labelUploadSoal4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -94,6 +101,11 @@
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tabel Monitoring Status Staff dalam Ujian"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelUploadSoal4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Detail Informasi Umum mengenai User yang terlibat dalam Event Ujian yang Aktif"/>
       </Properties>
     </Component>
   </SubComponents>
