@@ -6,11 +6,20 @@
 package com.jtk.pengelolaanujian.view.dosenpengampu;
 
 import com.jtk.pengelolaanujian.controller.dosenPengampu.UploadSoalController;
-import com.jtk.pengelolaanujian.entity.MataKuliah;
 import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.entity.Ujian;
+import com.jtk.pengelolaanujian.util.CommonHelper;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  *
@@ -19,7 +28,7 @@ import javax.swing.JTextField;
 public class UploadSoal extends javax.swing.JPanel {
 
     private final UploadSoalController uploadSoalController = new UploadSoalController();
-    private List<MataKuliah> mataKuliahList;
+    private List<Ujian> ujianList;
     private String url;
     private Soal soal;
 
@@ -31,9 +40,11 @@ public class UploadSoal extends javax.swing.JPanel {
     }
 
     public void preparation() {
-        mataKuliahList = uploadSoalController.searchMatkul(cboMatkul);
+        ujianList = uploadSoalController.searchMatkul(cboMatkul);
         url = "";
         soal = new Soal();
+        soal.setSoalSifat("TUTUP BUKU");
+        spinDurasi.setModel(CommonHelper.createDurasiSpinnerModel());
     }
 
     /**
@@ -55,6 +66,9 @@ public class UploadSoal extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         radTutupBuku = new javax.swing.JRadioButton();
         radBukaBuku = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
+        spinDurasi = new javax.swing.JSpinner();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel1.setText("Pilih File");
 
@@ -74,13 +88,19 @@ public class UploadSoal extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("Mata Kuliah");
+        jLabel2.setText("Ujian");
 
         cboMatkul.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboMatkul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMatkulActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Sifat Ujian");
 
         buttonGroup1.add(radTutupBuku);
+        radTutupBuku.setSelected(true);
         radTutupBuku.setText("Tutup Buku");
         radTutupBuku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +116,10 @@ public class UploadSoal extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setText("Durasi");
+
+        jLabel5.setText("Menit");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,9 +131,20 @@ public class UploadSoal extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 40, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 36, Short.MAX_VALUE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(spinDurasi, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(radTutupBuku)
                                 .addGap(18, 18, 18)
@@ -121,10 +156,7 @@ public class UploadSoal extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnBrowse))
                             .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(122, 122, 122))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(122, 122, 122))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,8 +176,13 @@ public class UploadSoal extends javax.swing.JPanel {
                     .addComponent(radTutupBuku)
                     .addComponent(radBukaBuku))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(spinDurasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btnUpload)
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -158,7 +195,26 @@ public class UploadSoal extends javax.swing.JPanel {
     }
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
-
+        if (textUrl.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Harap pilih file yang akan di upload", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (!new File(url).exists()) {
+            JOptionPane.showMessageDialog(this, "File yang anda upload tidak ada", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (spinDurasi.getValue() == null) {
+            JOptionPane.showMessageDialog(this, "Harap isi durasi ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (!CommonHelper.isStringNumberMaxMin(spinDurasi.getValue().toString(), 1000, 1)) {
+            JOptionPane.showMessageDialog(this, "Harap isi format durasi dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                InputStream is = new FileInputStream(new File(url));
+                int durasi = Integer.parseInt(spinDurasi.getValue().toString());
+                String tipeFile = FilenameUtils.getExtension(url);
+                if (uploadSoalController.uploadSoal(is, ujianList.get(cboMatkul.getSelectedIndex()).getUjianKode(), soal.getSoalSifat(), durasi, tipeFile)) {
+                    JOptionPane.showMessageDialog(this, "File berhasil di upload", "Perhatian", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(UploadSoal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
@@ -178,6 +234,10 @@ public class UploadSoal extends javax.swing.JPanel {
         soal.setSoalSifat("BUKA BUKU");
     }//GEN-LAST:event_radBukaBukuActionPerformed
 
+    private void cboMatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMatkulActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboMatkulActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowse;
@@ -187,8 +247,11 @@ public class UploadSoal extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JRadioButton radBukaBuku;
     private javax.swing.JRadioButton radTutupBuku;
+    private javax.swing.JSpinner spinDurasi;
     private javax.swing.JTextField textUrl;
     // End of variables declaration//GEN-END:variables
 }

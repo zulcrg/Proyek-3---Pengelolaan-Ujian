@@ -11,5 +11,5 @@ package com.jtk.pengelolaanujian.util;
  * @author Zulkhair Abdullah D
  */
 public enum EnumPanel {
-    REGISTER_USER, ASSIGN_ROLE, EDIT_USER
+    REGISTER_USER, ASSIGN_ROLE, EDIT_USER, SEARCH_SOAL, SEARCH_UJIAN, SEARCH_RUANGAN, SEARCH_KELAS, SEARCH_SOALMATKUL, SEARCH_PENGAWAS
 }

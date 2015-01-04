@@ -6,9 +6,12 @@
 package com.jtk.pengelolaanujian.controller.dosenPengampu;
 
 import com.jtk.pengelolaanujian.entity.Ruangan;
+import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.facade.RuanganFacade;
+import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
 import com.jtk.pengelolaanujian.facade.UjianFacade;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -33,7 +36,7 @@ public class UploadNilaiController {
 
     public List<Ruangan> searchRuangan(JComboBox cbo, String ujianKode) {
         RuanganFacade ruanganFacade = new RuanganFacade();
-        List<Ruangan> ruangans = ruanganFacade.findByKodeUjian(ujianKode);
+        List<Ruangan> ruangans = ruanganFacade.findAll();//findByKodeUjian(ujianKode);
         String ruangan[] = new String[ruangans.size()];
         for (int i = 0; i < ruangans.size(); i++) {
             Ruangan u = ruangans.get(i);
@@ -41,6 +44,18 @@ public class UploadNilaiController {
         }
         cbo.setModel(new DefaultComboBoxModel(ruangan));
         return ruangans;
+    }
+
+    public List<RuanganUjian> searchUjianByUsername(JComboBox cbo) {
+        RuanganUjianFacade ruanganUjianFacade = new RuanganUjianFacade();
+        List<RuanganUjian> ruanganUjians = ruanganUjianFacade.findRuanganUjianByUsername();
+        String ruanganUjian[] = new String[ruanganUjians.size()];
+        for (int i = 0; i < ruanganUjians.size(); i++) {
+            RuanganUjian u = ruanganUjians.get(i);
+            ruanganUjian[i] = "Ujian "+u.getUjian().getUjianNama()+", Kelas "+u.getKelas().getKelasNama()+", Ruangan "+u.getRuanganKode();
+        }
+        cbo.setModel(new DefaultComboBoxModel(ruanganUjian));
+        return ruanganUjians;        
     }
 
 }

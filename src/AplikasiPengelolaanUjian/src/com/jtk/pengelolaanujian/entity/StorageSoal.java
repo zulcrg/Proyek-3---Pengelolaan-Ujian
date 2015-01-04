@@ -8,8 +8,8 @@ package com.jtk.pengelolaanujian.entity;
 
 import com.jtk.pengelolaanujian.facade.SoalFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
-import java.sql.Blob;
-import java.sql.Date;
+import java.io.InputStream;
+import java.util.Date;
 
 /**
  *
@@ -20,14 +20,16 @@ public class StorageSoal {
     private int stsoalNoUrut;
     private String stafNip;
     private Date stsoalTglUpload;
-    private Blob stsoalFile;
+    private InputStream stsoalFile;
     private Soal soal;
     private User user;
+    private String namaFile;
+    private String tipeFile;
     
     public StorageSoal() {
     }
 
-    public StorageSoal(String soalKode, int stsoalNoUrut, String stafNip, Date stsoalTglUpload, Blob stsoalFile) {
+    public StorageSoal(String soalKode, int stsoalNoUrut, String stafNip, Date stsoalTglUpload, InputStream stsoalFile) {
         this.soalKode = soalKode;
         this.stsoalNoUrut = stsoalNoUrut;
         this.stafNip = stafNip;
@@ -69,11 +71,11 @@ public class StorageSoal {
         this.stsoalTglUpload = stsoalTglUpload;
     }
 
-    public Blob getStsoalFile() {
+    public InputStream getStsoalFile() {
         return stsoalFile;
     }
 
-    public void setStsoalFile(Blob stsoalFile) {
+    public void setStsoalFile(InputStream stsoalFile) {
         this.stsoalFile = stsoalFile;
     }
 
@@ -97,7 +99,19 @@ public class StorageSoal {
         this.user = user;
     }
 
-   
-    
-    
+    public String getNamaFile() {
+        return namaFile;
+    }
+
+    public void setNamaFile(String namaFile) {
+        this.namaFile = namaFile;
+    }
+
+    public String getTipeFile() {
+        return tipeFile;
+    }
+
+    public void setTipeFile(String tipeFile) {
+        this.tipeFile = tipeFile;
+    }    
 }

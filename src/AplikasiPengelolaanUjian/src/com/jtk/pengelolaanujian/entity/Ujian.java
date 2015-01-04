@@ -7,7 +7,7 @@ package com.jtk.pengelolaanujian.entity;
 
 import com.jtk.pengelolaanujian.facade.EventFacade;
 import com.jtk.pengelolaanujian.facade.SoalFacade;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -22,6 +22,15 @@ public class Ujian {
     private int ujianMenit;
     private Event event;
     private Soal soal;
+    private String ujianNama;
+
+    public String getUjianNama() {
+        return ujianNama;
+    }
+
+    public void setUjianNama(String ujianNama) {
+        this.ujianNama = ujianNama;
+    }
 
     public Ujian() {
 
@@ -75,9 +84,13 @@ public class Ujian {
         this.ujianMenit = ujianMenit;
     }
 
-    public Event getEvent() {
+    public Event getEventQuery() {
         EventFacade eventControler = new EventFacade();
         event = eventControler.findByKodeUjian(ujianKode);
+        return event;
+    }
+
+    public Event getEvent() {
         return event;
     }
 
@@ -85,9 +98,13 @@ public class Ujian {
         this.event = event;
     }
 
-    public Soal getSoal() {
+    public Soal getSoalQuery() {
         SoalFacade soalFacade = new SoalFacade();
         soal = soalFacade.findByKodeSoal(soalKode);
+        return soal;
+    }
+
+    public Soal getSoal() {
         return soal;
     }
 

@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.view.dashboard;
 
 /**
  *
  * @author pahlevi
  */
+import com.jtk.pengelolaanujian.controller.dashboard.TriggerDashboardController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -21,52 +21,60 @@ import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
-public class ChartPanel1 extends javax.swing.JPanel {
+public class PiePanelVnv extends javax.swing.JPanel {
 
+    TriggerDashboardController triggerDashboardController;
     /**
-     * Creates new form ChartPanel1
+     * Creates new form ChartPanelSoal
      */
-  
     private JFreeChart piechart;
-    private final ChartPanel panel;
-    
-    public ChartPanel1(){
+    private ChartPanel panel;
+    private int uploaded;
+    private int unuploaded;
+
+    public PiePanelVnv() {
+        initComponents();
+    }
+
+    public void preparation() {
+        uploaded = 0;
+        unuploaded = 0;
+        triggerDashboardController = new TriggerDashboardController();
+
         panel = createChart(createData());
         panel.setPreferredSize(new Dimension(250, 250));
- 
+
         setLayout(new BorderLayout());
-        add(panel,BorderLayout.CENTER);        
+        add(panel, BorderLayout.CENTER);
     }
- 
+
     private PieDataset createData() {
+        uploaded = triggerDashboardController.checkUploadVNV();
+        unuploaded = triggerDashboardController.checkUnUploadedVNV();        
         DefaultPieDataset data = new DefaultPieDataset();
-        data.setValue("Belum Di Upload",20);
-        data.setValue("Belum Di VNV", 25);
-        data.setValue("Belum Di Cetak", 30);        
+        data.setValue("Belum Di VNV", unuploaded);
+        data.setValue("Sudah Di VNV", uploaded);
         return data;
     }
- 
+
     private ChartPanel createChart(PieDataset data) {
-        piechart = ChartFactory.createPieChart("Grafik Siklus Soal Ujian", data, true, true, false);
+        piechart = ChartFactory.createPieChart("Soal Vnv", data, true, true, false);
         PiePlot plot = (PiePlot) piechart.getPlot();
-        plot.setSectionPaint("Belum Di Upload", new Color(135,206,250));
-        plot.setSectionPaint("Belum Di VNV", new Color(205,133,63));
-        plot.setSectionPaint("Belum Di Cetak", new Color(255,105,180));
+        plot.setSectionPaint("Belum Di VNV", new Color(135, 206, 250));
+        plot.setSectionPaint("sudah Di VNV", new Color(205, 133, 63));
         plot.setNoDataMessage("Data Tidak Ada");
-        plot.setExplodePercent("Linux", 0.1D);
-        plot.setLabelBackgroundPaint(new Color(255,228,225));
+        plot.setExplodePercent("data", 0.1D);
+        plot.setLabelBackgroundPaint(new Color(255, 228, 225));
         plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} ({1})"));
-        // plot.setLegendLabelGenerator(new StandardPieSectionLabelGenerator("Pengguna {0}"));
-        
+        plot.setLegendLabelGenerator(new StandardPieSectionLabelGenerator());
+
         // Key = 0 ----> section as String (Windows, Linux, Lainnya)
         // Key = 1 ----> section as value (300,200,100)
         // KEy - 2 ----> section as percentage (50%,33%,17 %) Muncul jika aplikasi telah di running
-        
         plot.setSimpleLabels(true);
         plot.setInteriorGap(0.0D);
         return new ChartPanel(piechart);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,11 +89,11 @@ public class ChartPanel1 extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 310, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 213, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

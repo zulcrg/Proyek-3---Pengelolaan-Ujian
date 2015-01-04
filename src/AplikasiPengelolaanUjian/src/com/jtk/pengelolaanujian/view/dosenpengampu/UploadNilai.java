@@ -8,6 +8,7 @@ package com.jtk.pengelolaanujian.view.dosenpengampu;
 import com.jtk.pengelolaanujian.controller.dosenPengampu.UploadNilaiController;
 import com.jtk.pengelolaanujian.entity.Nilai;
 import com.jtk.pengelolaanujian.entity.Ruangan;
+import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -23,6 +24,7 @@ public class UploadNilai extends javax.swing.JPanel {
     private final UploadNilaiController uploadNilaiController = new UploadNilaiController();
     private List<Ujian> ujianList;
     private List<Ruangan> ruanganList;
+    private List<RuanganUjian> ruanganUjianList;
     private String url;
     private Nilai nilai;
 
@@ -34,14 +36,13 @@ public class UploadNilai extends javax.swing.JPanel {
     }
 
     public void preparation() {
-        ujianList = uploadNilaiController.searchUjian(cboUjian);
+        ruanganUjianList = uploadNilaiController.searchUjianByUsername(cboUjian);
         url = "";
-        nilai = new Nilai();
-        cboRuangan.setModel(new DefaultComboBoxModel());
+        nilai = new Nilai();        
     }
 
     public void searchRuangan() {
-        ruanganList = uploadNilaiController.searchRuangan(cboRuangan, ujianList.get(cboUjian.getSelectedIndex()).getUjianKode());
+        
     }
 
     /**
@@ -59,8 +60,6 @@ public class UploadNilai extends javax.swing.JPanel {
         btnUpload = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cboUjian = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        cboRuangan = new javax.swing.JComboBox();
 
         jLabel1.setText("Pilih File");
 
@@ -80,7 +79,7 @@ public class UploadNilai extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("Ujian");
+        jLabel2.setText("Pelaksanaan Ujian");
 
         cboUjian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboUjian.addActionListener(new java.awt.event.ActionListener() {
@@ -88,10 +87,6 @@ public class UploadNilai extends javax.swing.JPanel {
                 cboUjianActionPerformed(evt);
             }
         });
-
-        jLabel3.setText("Ruangan");
-
-        cboRuangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -101,23 +96,19 @@ public class UploadNilai extends javax.swing.JPanel {
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(395, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(cboUjian, 0, 284, Short.MAX_VALUE)
-                                    .addComponent(textUrl))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBrowse))
-                            .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(122, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textUrl)
+                            .addComponent(cboUjian, 0, 329, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBrowse)
+                        .addGap(0, 53, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,13 +122,9 @@ public class UploadNilai extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cboUjian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cboRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addComponent(btnUpload)
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -170,11 +157,9 @@ public class UploadNilai extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowse;
     private javax.swing.JButton btnUpload;
-    private javax.swing.JComboBox cboRuangan;
     private javax.swing.JComboBox cboUjian;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField textUrl;
     // End of variables declaration//GEN-END:variables
 }

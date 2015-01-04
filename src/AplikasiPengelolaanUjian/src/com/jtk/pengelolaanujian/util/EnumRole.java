@@ -11,7 +11,7 @@ package com.jtk.pengelolaanujian.util;
  */
 public enum EnumRole {
 
-    ADMIN("0"), DOSEN_PENGAMPU("1"), PANITIA("3"), VNV("2");
+    ADMIN("0"), DOSEN_PENGAMPU("1"), PANITIA("3"), VNV("2"), DASHBOARD("4");
     String key;
 
     private EnumRole(String key) {

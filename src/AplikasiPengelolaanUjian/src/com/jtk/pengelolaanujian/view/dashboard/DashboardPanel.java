@@ -3,36 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.view.dashboard;
+
+import com.jtk.pengelolaanujian.view.MainFrame;
+import java.awt.Color;
 
 /**
  *
- * @author pahlevi
+ * @author Zulkhair Abdullah D
  */
-import com.jtk.pengelolaanujian.view.MainFrame;
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-
-public class DashboardPanel extends javax.swing.JFrame {
+public class DashboardPanel extends javax.swing.JPanel {
 
     MainFrame mainFrame;
-    
+
     /**
      * Creates new form DashboardPanel
+     * @param mainFrame
      */
-    private JPanel panel;
-    private final ChartPanel1 piechart;
-    private final ChartPanel2 barchart;
-    
     public DashboardPanel(MainFrame mainFrame) {
-        this.mainFrame = mainFrame;
-        setTitle("GRAFIK DENGAN JFREECHART");
-        piechart = new ChartPanel1();
-        barchart = new ChartPanel2();
-        setLayout(new BorderLayout());
-        getContentPane().add(piechart,BorderLayout.CENTER);
         initComponents();
+        this.mainFrame = mainFrame;
+    }
+    
+    public void preparation(){
+        statusUser1.preparation();
+        statusEvent1.preparation();
+        statusTransaksi1.preparation();
+        statusAplikasi1.preparation();  
+        this.setBackground(Color.darkGray);
     }
 
     /**
@@ -44,40 +42,37 @@ public class DashboardPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        chartPanel11 = new com.jtk.pengelolaanujian.view.dashboard.ChartPanel1();
-        chartPanel21 = new com.jtk.pengelolaanujian.view.dashboard.ChartPanel2();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        statusEvent1 = new com.jtk.pengelolaanujian.view.dashboard.StatusEvent();
+        statusUser1 = new com.jtk.pengelolaanujian.view.dashboard.StatusUser();
+        statusAplikasi1 = new com.jtk.pengelolaanujian.view.dashboard.StatusAplikasi();
+        statusTransaksi1 = new com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTabbedPane1.addTab("Status Event", statusEvent1);
+        jTabbedPane1.addTab("Status User", statusUser1);
+        jTabbedPane1.addTab("Status Aplikasi", statusAplikasi1);
+        jTabbedPane1.addTab("Status Transaksi", statusTransaksi1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(chartPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chartPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 937, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chartPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chartPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(107, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.jtk.pengelolaanujian.view.dashboard.ChartPanel1 chartPanel11;
-    private com.jtk.pengelolaanujian.view.dashboard.ChartPanel2 chartPanel21;
-    // End of variables declaration//GEN-END:variables
 
-    public void preparation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private com.jtk.pengelolaanujian.view.dashboard.StatusAplikasi statusAplikasi1;
+    private com.jtk.pengelolaanujian.view.dashboard.StatusEvent statusEvent1;
+    private com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi statusTransaksi1;
+    private com.jtk.pengelolaanujian.view.dashboard.StatusUser statusUser1;
+    // End of variables declaration//GEN-END:variables
 }

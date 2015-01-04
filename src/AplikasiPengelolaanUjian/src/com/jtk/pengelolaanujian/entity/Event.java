@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.entity;
 
 import com.jtk.pengelolaanujian.facade.UjianFacade;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,14 +14,52 @@ import java.util.List;
  * @author Rizki
  */
 public class Event {
+
     private String kode;
     private Date tanggalMulai;
     private Date tanggalSelesai;
     private Date uploadMulai;
     private Date uploadSelesai;
     private Date vnvMulai;
-    private Date vnvSelesai;
-    private List<Ujian> ujian;
+    private Date vnvSelesai;    
+    private Date uploadNilaiSelesai;
+    private int delayUploadSoal;
+    private int delayPengawas;
+    private int delayUploadNilai;
+    private int timeReminder;
+    private List<Ujian> ujian;   
+    
+    public Date getUploadNilaiSelesai() {
+        return uploadNilaiSelesai;
+    }
+
+    public void setUploadNilaiSelesai(Date uploadNilaiSelesai) {
+        this.uploadNilaiSelesai = uploadNilaiSelesai;
+    }
+
+    public int getDelayUploadSoal() {
+        return delayUploadSoal;
+    }
+
+    public void setDelayUploadSoal(int delayUploadSoal) {
+        this.delayUploadSoal = delayUploadSoal;
+    }
+
+    public int getDelayPengawas() {
+        return delayPengawas;
+    }
+
+    public void setDelayPengawas(int delayPengawas) {
+        this.delayPengawas = delayPengawas;
+    }
+
+    public int getDelayUploadNilai() {
+        return delayUploadNilai;
+    }
+
+    public void setDelayUploadNilai(int delayUploadNilai) {
+        this.delayUploadNilai = delayUploadNilai;
+    }
 
     public Event() {
     }
@@ -65,6 +102,14 @@ public class Event {
         return uploadMulai;
     }
 
+    public int getTimeReminder() {
+        return timeReminder;
+    }
+
+    public void setTimeReminder(int timeReminder) {
+        this.timeReminder = timeReminder;
+    }
+
     public void setUploadMulai(Date uploadMulai) {
         this.uploadMulai = uploadMulai;
     }
@@ -102,5 +147,5 @@ public class Event {
     public void setUjian(List<Ujian> ujian) {
         this.ujian = ujian;
     }
-    
+
 }

@@ -5,6 +5,8 @@
  */
 package com.jtk.pengelolaanujian.view.admin;
 
+import java.awt.Color;
+
 /**
  *
  * @author Zulkhair Abdullah D
@@ -23,6 +25,7 @@ public class AdminPanel extends javax.swing.JPanel {
         assignRole1.preparation();
         createUndangan1.preparation();
         editUser1.preparation();
+        this.setBackground(Color.darkGray);
     }
 
     /**

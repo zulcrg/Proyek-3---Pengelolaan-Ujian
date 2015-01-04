@@ -5,9 +5,20 @@
  */
 package com.jtk.pengelolaanujian.facade;
 
+import com.jtk.pengelolaanujian.entity.Dosen;
+import com.jtk.pengelolaanujian.entity.Event;
+import com.jtk.pengelolaanujian.entity.Kbk;
+import com.jtk.pengelolaanujian.entity.Kelas;
+import com.jtk.pengelolaanujian.entity.MataKuliah;
+import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.entity.Staf;
+import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -97,4 +109,325 @@ public class SoalFacade {
 
         return null;
     }
+
+    public List<Soal> findAllWhereUploaded(boolean flag) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM soal where SOAL_UPLOADED = '" + flag + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Soal> soalList = new ArrayList<>();
+            while (rs.next()) {
+                Soal soal = new Soal();
+                soal.setMatkulKode(rs.getString(1));
+                soal.setSoalKode(rs.getString(2));
+                soal.setSoalPrinted(rs.getBoolean(3));
+                soal.setSoalVnved(rs.getBoolean(4));
+                soal.setSoalUploaded(rs.getBoolean(5));
+                soal.setSoalSifat(rs.getString(6));
+
+                soalList.add(soal);
+            }
+            return soalList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
+    public List<Soal> findAllWhereListedIN(List<Ujian> listUjian) {
+        List<Soal> listSoal = new ArrayList<>();
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("(");
+
+            for (int i = 0; i < listUjian.size(); i++) {
+                sb.append("'").append(listUjian.get(i).getSoalKode()).append("'");
+                if (i < listUjian.size() - 1) {
+                    sb.append(",");
+                }
+            }
+            sb.append(")");
+
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM soal WHERE soal_kode IN " + sb.toString() + "";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Soal soal = new Soal();
+                soal.setSoalKode(rs.getString(1));
+                soal.setMatkulKode(rs.getString(2));
+                soal.setSoalUploaded(rs.getBoolean(3));
+                soal.setSoalVnved(rs.getBoolean(4));
+                soal.setSoalPrinted(rs.getBoolean(5));
+                soal.setSoalSifat(rs.getString(6));
+
+                listSoal.add(soal);
+            }
+            return listSoal;
+        } catch (SQLException ex) {
+            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public void createSoal(Soal soal) {
+        try {
+            String query = "INSERT INTO soal(SOAL_KODE, MATKUL_KODE, SOAL_UPLOADED, SOAL_VNVED, SOAL_PRINTED, SOAL_SIFAT, MATKUL_TIPE) values(?,?,?,?,?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, soal.getSoalKode());
+            preparedStatement.setString(2, soal.getMatkulKode());
+            preparedStatement.setBoolean(3, soal.isSoalUploaded());
+            preparedStatement.setBoolean(4, soal.isSoalVnved());
+            preparedStatement.setBoolean(5, soal.isSoalPrinted());
+            preparedStatement.setString(6, soal.getSoalSifat());
+            preparedStatement.setString(7, soal.getMatkulTipe());
+
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public int checkUploadedSoalFacade() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM soal WHERE SOAL_UPLOADED = 1";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0; //rs.getString(1);           
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public int checkUnUploadedSoalFacade() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM soal WHERE SOAL_UPLOADED = 0";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0; //rs.getString(1);           
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public int checkUploadVNV() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM soal WHERE SOAL_VNVED = 1";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+
+    }
+
+    public int checkUnUploadVNV() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM soal WHERE SOAL_VNVED = 0";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+
+    }
+
+    public int checkUploadNilai() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM ruangan_ujian WHERE ruangan_ujian_nilai_uploaded = 1";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public int checkUnUploadNilai() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM ruangan_ujian WHERE ruangan_ujian_nilai_uploaded = 0";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public List<Soal> findAllWhereVNVtrue() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT soal.soal_kode, mata_kuliah.matkul_kode, mata_kuliah.matkul_nama , staf.staf_nama FROM soal,mata_kuliah,mata_kuliah_to_dosen,dosen,staf WHERE staf.staf_nip = dosen.staf_nip AND dosen.dosen_kode = mata_kuliah_to_dosen.dosen_kode AND mata_kuliah_to_dosen.matkul_kode = mata_kuliah.matkul_kode AND mata_kuliah_to_dosen.matkul_tipe = mata_kuliah.matkul_tipe AND mata_kuliah.matkul_kode = soal.matkul_kode AND mata_kuliah.matkul_tipe = soal.matkul_tipe AND soal.soal_vnved = 1";
+
+            ResultSet rs = stmt.executeQuery(query);
+            List<Soal> soalList = new ArrayList<>();
+            while (rs.next()) {
+                Soal soal = new Soal();
+                soal.setSoalKode(rs.getString(1));
+
+                MataKuliah mataKuliah = new MataKuliah();
+                mataKuliah.setMatkulKode(rs.getString(2));
+                mataKuliah.setMatkulNama(rs.getString(3));
+
+                Staf staf = new Staf();
+                staf.setStafNama(rs.getString(4));
+
+                Dosen dosen = new Dosen();
+                dosen.setStafNama(staf.getStafNama());
+
+                mataKuliah.setDosen(dosen);
+
+                soal.setMataKuliah(mataKuliah);
+
+                soalList.add(soal);
+            }
+            return soalList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
+    public List<Soal> searchSoalInKbk(String text) {
+        Statement stmt;
+        try {
+            // create statement for connection
+            String kbkKode = findUserKbk();
+            if (kbkKode != null && !kbkKode.isEmpty()) {
+                stmt = connection.createStatement();
+                // query yang diberikan
+                String query = "SELECT soal.SOAL_KODE, soal.SOAL_SIFAT, mata_kuliah.MATKUL_KODE, mata_kuliah.MATKUL_NAMA, mata_kuliah.MATKUL_TIPE, ujian.UJIAN_MULAI,  ujian.UJIAN_MENIT, event.EVENT_KODE, dosen.DOSEN_KODE, staf.STAF_NAMA, kelas.KELAS_NAMA "
+                        + "FROM soal, mata_kuliah, ujian, event, staf, dosen, kelas, mata_kuliah_to_dosen, ruangan_ujian "
+                        + "WHERE (soal.SOAL_KODE like '%" + text + "%' OR mata_kuliah.MATKUL_NAMA like '%" + text + "%' ) "
+                        + "AND mata_kuliah.MATKUL_KODE = soal.MATKUL_KODE AND "
+                        + "ujian.SOAL_KODE = soal.SOAL_KODE AND "
+                        + "event.EVENT_KODE = ujian.EVENT_KODE AND "
+                        + "mata_kuliah_to_dosen.MATKUL_KODE = mata_kuliah.MATKUL_KODE AND "
+                        + "dosen.DOSEN_KODE = mata_kuliah_to_dosen.DOSEN_KODE AND "
+                        + "staf.STAF_NIP = dosen.STAF_NIP AND "
+                        + "ruangan_ujian.UJIAN_KODE = ujian.UJIAN_KODE AND "
+                        + "kelas.KELAS_KODE = ruangan_ujian.KELAS_KODE AND"
+                        + "dosen.KBK_KODE = '" + kbkKode + "' AND"
+                        + "soal.SOAL_VNVED = 0";
+                // alokasi resultset sebagai penampung hasil dari query yang di eksekusi
+                ResultSet rs = stmt.executeQuery(query);
+                List<Soal> soalList = new ArrayList<>();
+                while (rs.next()) {
+                    Soal soal = new Soal();
+                    soal.setSoalKode(rs.getString(1));
+                    soal.setSoalSifat(rs.getString(2));
+
+                    MataKuliah mataKuliah = new MataKuliah();
+                    mataKuliah.setMatkulKode(rs.getString(3));
+                    mataKuliah.setMatkulNama(rs.getString(4));
+                    mataKuliah.setMatkulTipe(rs.getString(5));
+
+                    soal.setMataKuliah(mataKuliah);
+
+                    Ujian ujian = new Ujian();
+                    ujian.setUjianMulai(rs.getDate(6));
+                    ujian.setUjianMenit(rs.getInt(7));
+
+                    soal.setUjian(ujian);
+
+                    Event event = new Event();
+                    event.setKode(rs.getString(8));
+
+                    ujian.setEvent(event);
+
+                    Dosen dosen = new Dosen();
+                    dosen.setDosenKode(rs.getString(9));
+
+                    mataKuliah.setDosen(dosen);
+
+                    dosen.setStafNama(rs.getString(10));
+
+                    Kelas kelas = new Kelas();
+                    kelas.setKelasNama(rs.getString(11));
+
+                    RuanganUjian ruanganUjian = new RuanganUjian();
+                    ruanganUjian.setKelas(kelas);
+
+                    ruanganUjian.setUjian(ujian);
+
+                    ujian.setSoal(soal);
+
+                    soalList.add(soal);
+               //gelo asli
+
+                }
+                return soalList;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
+    public String findUserKbk() {
+        try {
+            String kbkKode = "";
+            Statement statement = connection.createStatement();
+            String query = "SELECT kbk.KBK_KODE from kbk, user, dosen, staf "
+                    + "WHERE user.user_username = '" + LoginPanel.getUsername() + "' AND "
+                    + "user.staf_nip = staf.staf_nip AND "
+                    + "dosen.staf_nip = staf.staf_nip AND "
+                    + "kbk.KBK_KODE = dosen.KBK_KODE";
+            ResultSet rs = statement.executeQuery(query);
+            if (rs.next()) {
+                kbkKode = rs.getString(1);
+            }
+            return kbkKode;
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public boolean submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain) {
+        
+        return false;
+    }
+
+    public void updateSoalSifatUploaded(Soal soal) throws SQLException {
+        String query = "UPDATE soal SET SOAL_SIFAT = ?, SOAL_UPLOADED = ? WHERE SOAL_KODE = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, soal.getSoalSifat());
+        preparedStatement.setBoolean(2, soal.isSoalUploaded());
+        preparedStatement.setString(3, soal.getSoalKode());
+
+        preparedStatement.executeUpdate();
+	}
 }

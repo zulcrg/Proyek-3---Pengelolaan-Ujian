@@ -6,6 +6,8 @@
 
 package com.jtk.pengelolaanujian.view.panitia;
 
+import java.awt.Color;
+
 /**
  *
  * @author pahlevi
@@ -20,7 +22,12 @@ public class PanitiaPanel extends javax.swing.JPanel {
     }
     
     public void preparation(){
-        
+        createEvent1.preparation();
+        createUjian2.preparation();
+        assignUjian1.preparation();
+        printSoal1.preparation();
+        uploadBeritaAcara1.preparation();
+        this.setBackground(Color.darkGray);
     }
 
     /**
@@ -32,30 +39,40 @@ public class PanitiaPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        createEvent1 = new com.jtk.pengelolaanujian.view.panitia.CreateEvent();
+        createUjian2 = new com.jtk.pengelolaanujian.view.panitia.CreateUjian();
+        assignUjian1 = new com.jtk.pengelolaanujian.view.panitia.AssignUjian();
+        printSoal1 = new com.jtk.pengelolaanujian.view.panitia.PrintSoal();
+        uploadBeritaAcara1 = new com.jtk.pengelolaanujian.view.panitia.UploadBeritaAcara();
 
-        jLabel1.setText("jLabel1");
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTabbedPane1.addTab("Create Event", createEvent1);
+        jTabbedPane1.addTab("Create Ujian", createUjian2);
+        jTabbedPane1.addTab("Assign Ujian", assignUjian1);
+        jTabbedPane1.addTab("Print Soal", printSoal1);
+        jTabbedPane1.addTab("Assign Berita Acara", uploadBeritaAcara1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel1)
-                .addContainerGap(644, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addContainerGap(420, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private com.jtk.pengelolaanujian.view.panitia.AssignUjian assignUjian1;
+    private com.jtk.pengelolaanujian.view.panitia.CreateEvent createEvent1;
+    private com.jtk.pengelolaanujian.view.panitia.CreateUjian createUjian2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private com.jtk.pengelolaanujian.view.panitia.PrintSoal printSoal1;
+    private com.jtk.pengelolaanujian.view.panitia.UploadBeritaAcara uploadBeritaAcara1;
     // End of variables declaration//GEN-END:variables
 }

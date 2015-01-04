@@ -9,6 +9,7 @@ import com.jtk.pengelolaanujian.facade.BeritaAcaraFacade;
 import com.jtk.pengelolaanujian.facade.RuanganFacade;
 import com.jtk.pengelolaanujian.facade.StafFacade;
 import com.jtk.pengelolaanujian.facade.UjianFacade;
+import java.util.Date;
 
 /**
  *
@@ -23,7 +24,26 @@ public class RuanganUjian {
     private Ruangan ruangan;
     private BeritaAcara beritaAcara;
     private Ujian ujian;
+    private Kelas kelas;
+    private String kelasKode;
     private Staf staf;
+
+    public String getKelasKode() {
+        return kelasKode;
+    }
+
+    public void setKelasKode(String kelasKode) {
+        this.kelasKode = kelasKode;
+    }
+
+    public boolean isRuanganUjianUploadNilaiStatus() {
+        return ruanganUjianUploadNilaiStatus;
+    }
+
+    public void setRuanganUjianUploadNilaiStatus(boolean ruanganUjianUploadNilaiStatus) {
+        this.ruanganUjianUploadNilaiStatus = ruanganUjianUploadNilaiStatus;
+    }
+    private boolean ruanganUjianUploadNilaiStatus;
 
     public RuanganUjian() {
     }
@@ -37,6 +57,15 @@ public class RuanganUjian {
 
     public String getRuanganKode() {
         return ruanganKode;
+    }
+
+    public Kelas getKelas() {
+
+        return kelas;
+    }
+
+    public void setKelas(Kelas kelas) {
+        this.kelas = kelas;
     }
 
     public void setRuanganKode(String ruanganKode) {
@@ -67,9 +96,13 @@ public class RuanganUjian {
         this.beritaKode = beritaKode;
     }
 
-    public Ruangan getRuangan() {
+    public Ruangan getRuanganQuery() {
         RuanganFacade ruanganFacade = new RuanganFacade();
         ruangan = ruanganFacade.findByKodeRuangan(ruanganKode);
+        return ruangan;
+    }
+
+    public Ruangan getRuangan() {
         return ruangan;
     }
 
@@ -87,9 +120,13 @@ public class RuanganUjian {
         this.beritaAcara = beritaAcara;
     }
 
-    public Ujian getUjian() {
+    public Ujian getUjianQuery() {
         UjianFacade ujianFacade = new UjianFacade();
         ujian = ujianFacade.findByKodeUjian(ujianKode);
+        return ujian;
+    }
+
+    public Ujian getUjian() {
         return ujian;
     }
 
@@ -97,9 +134,13 @@ public class RuanganUjian {
         this.ujian = ujian;
     }
 
-    public Staf getStaf() {
+    public Staf getStafQuery() {
         StafFacade stafFacade = new StafFacade();
         staf = stafFacade.findByStafNip(stafNip);
+        return staf;
+    }
+
+    public Staf getStaf() {
         return staf;
     }
 

@@ -5,7 +5,10 @@
  */
 package com.jtk.pengelolaanujian.facade;
 
+import com.jtk.pengelolaanujian.entity.Dosen;
+import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Staf;
+import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -77,11 +80,11 @@ public class StafFacade {
         }
         return false;
     }
-    
-    public List<Staf> searchNameNIP(String keyword){
+
+    public List<Staf> searchNameNIP(String keyword) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "SELECT * FROM staf where staf_nip like '%"+keyword+"%' OR staf_nama like '%"+keyword+"%'";
+            String query = "SELECT * FROM staf where staf_nip like '%" + keyword + "%' OR staf_nama like '%" + keyword + "%'";
             ResultSet rs = stmt.executeQuery(query);
             List<Staf> stafList = new ArrayList<>();
             while (rs.next()) {
@@ -99,11 +102,11 @@ public class StafFacade {
         }
         return null;
     }
-    
-    public List<Staf> searchNameNIPNotHaveUser(String keyword){
+
+    public List<Staf> searchNameNIPNotHaveUser(String keyword) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "SELECT * FROM staf where (staf_nip like '%"+keyword+"%' OR staf_nama like '%"+keyword+"%') AND staf_nip NOT IN (Select staf_nip from user)";
+            String query = "SELECT * FROM staf where (staf_nip like '%" + keyword + "%' OR staf_nama like '%" + keyword + "%') AND staf_nip NOT IN (Select staf_nip from user)";
             ResultSet rs = stmt.executeQuery(query);
             List<Staf> stafList = new ArrayList<>();
             while (rs.next()) {
@@ -120,5 +123,108 @@ public class StafFacade {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public List<Staf> findAllWhereListedIn(List<Dosen> listDosen) {
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("(");
+
+            for (int i = 0; i < listDosen.size(); i++) {
+                sb.append("'").append(listDosen.get(i).getDosenKode()).append("'");
+                if (i < listDosen.size() - 1) {
+                    sb.append(",");
+                }
+            }
+            sb.append(")");
+
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM staf where STAF_NIP IN " + sb.toString() + "";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Staf> stafList = new ArrayList<>();
+            while (rs.next()) {
+                Staf staf = new Staf();
+                staf.setStafNIP(rs.getString(1));
+                staf.setStafNama(rs.getString(2));
+                staf.setStafEmail(rs.getString(3));
+                staf.setStafKontak(rs.getString(4));
+
+                stafList.add(staf);
+            }
+            return stafList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Staf> find1AllWhereListedIn(List<RuanganUjian> listRuangUjian) {
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("(");
+
+            for (int i = 0; i < listRuangUjian.size(); i++) {
+                sb.append("'").append(listRuangUjian.get(i).getStafNip()).append("'");
+                if (i < listRuangUjian.size() - 1) {
+                    sb.append(",");
+                }
+            }
+            sb.append(")");
+
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM STAF where RUANGAN_UJIAN.STAF_NIP IN " + sb.toString() + "";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Staf> stafList = new ArrayList<>();
+            while (rs.next()) {
+                Staf staf = new Staf();
+                staf.setStafNIP(rs.getString(1));
+                staf.setStafNama(rs.getString(2));
+                staf.setStafEmail(rs.getString(3));
+                staf.setStafKontak(rs.getString(4));
+
+                stafList.add(staf);
+            }
+            return stafList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Staf> findAllWhereListedIn1(List<User> users) {
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("(");
+
+            for (int i = 0; i < users.size(); i++) {
+                sb.append("'").append(users.get(i).getStafNIP()).append("'");
+                if (i < users.size() - 1) {
+                    sb.append(",");
+                }
+            }
+            sb.append(")");
+
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM staf where STAF_NIP IN " + sb.toString() + "";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Staf> stafList = new ArrayList<>();
+            while (rs.next()) {
+                Staf staf = new Staf();
+                staf.setStafNIP(rs.getString(1));
+                staf.setStafNama(rs.getString(2));
+                staf.setStafEmail(rs.getString(3));
+                staf.setStafKontak(rs.getString(4));
+
+                stafList.add(staf);
+            }
+            return stafList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+
     }
 }

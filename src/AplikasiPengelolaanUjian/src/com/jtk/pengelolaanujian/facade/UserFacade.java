@@ -57,7 +57,7 @@ public class UserFacade {
     public List<User> findByRoleKode(String roleKode) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "SELECT user.* FROM user, user_to_role WHERE user_to_role.ROLE_KODE = '" + roleKode + "'";
+            String query = "SELECT user.* FROM user, user_to_role WHERE user_to_role.ROLE_KODE = '" + roleKode + "' AND user_to_role.STAF_NIP = user.STAF_NIP";
             ResultSet rs = stmt.executeQuery(query);
             List<User> userList = new ArrayList<>();
             while (rs.next()) {
@@ -158,7 +158,7 @@ public class UserFacade {
         try {
             Statement stmt;
             stmt = connection.createStatement();
-            boolean flag = stmt.execute("INSERT INTO user(STAF_NIP,USER_USERNAME,USER_PASSWORD) VALUES('" + staf.getStafNIP() + "','" + textNama + "','" + textPassword + "', 1)");
+            boolean flag = stmt.execute("INSERT INTO user(STAF_NIP,USER_USERNAME,USER_PASSWORD,USER_ACTIVE ) VALUES('" + staf.getStafNIP() + "','" + textNama + "','" + textPassword + "', 1)");
             return flag;
         } catch (SQLException ex) {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
@@ -217,6 +217,28 @@ public class UserFacade {
                 user.setUserPassword(rs.getString(6));
                 staf.setUser(user);
 
+                stafList.add(staf);
+            }
+            return stafList;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Staf> searchNameNip(String keyword) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT staf.* FROM staf "
+                    + "WHERE (staf.STAF_NAMA like '%" + keyword + "%' OR staf.STAF_NIP like '%" + keyword + "%' ) ORDER BY staf.STAF_NIP ASC";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Staf> stafList = new ArrayList<>();
+            while (rs.next()) {
+                Staf staf = new Staf();
+                staf.setStafNIP(rs.getString(1));
+                staf.setStafNama(rs.getString(2));
+                staf.setStafEmail(rs.getString(3));
+                staf.setStafKontak(rs.getString(4));
                 stafList.add(staf);
             }
             return stafList;
