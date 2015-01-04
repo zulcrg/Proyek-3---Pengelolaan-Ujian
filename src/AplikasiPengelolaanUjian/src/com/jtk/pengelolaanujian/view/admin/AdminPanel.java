@@ -43,9 +43,14 @@ public class AdminPanel extends javax.swing.JPanel {
         assignRole1 = new com.jtk.pengelolaanujian.view.admin.AssignRole();
         createUndangan1 = new com.jtk.pengelolaanujian.view.admin.CreateUndangan();
 
+        jTabbedPane1.setBackground(new java.awt.Color(0, 153, 153));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(665, 217));
         jTabbedPane1.addTab("Registrasi User", registrasiUser1);
+
+        editUser1.setMinimumSize(new java.awt.Dimension(573, 212));
+        editUser1.setPreferredSize(new java.awt.Dimension(701, 462));
         jTabbedPane1.addTab("Edit User", editUser1);
         jTabbedPane1.addTab("Assign Role", assignRole1);
 
@@ -53,7 +58,7 @@ public class AdminPanel extends javax.swing.JPanel {
         createUndangan1.setLayout(createUndangan1Layout);
         createUndangan1Layout.setHorizontalGroup(
             createUndangan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
+            .addGap(0, 608, Short.MAX_VALUE)
         );
         createUndangan1Layout.setVerticalGroup(
             createUndangan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,12 +71,14 @@ public class AdminPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jTabbedPane1.getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
 
