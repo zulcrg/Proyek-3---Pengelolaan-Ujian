@@ -211,22 +211,17 @@ public class UjianFacade {
         return null;
     }
 
-    public void createUjian(Ujian ujian) {
-        try {
-            String query = "INSERT INTO ujian(UJIAN_KODE, EVENT_KODE, SOAL_KODE, UJIAN_MULAI, UJIAN_MENIT, UJIAN_NAMA) values(?,?,?,?,?,?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, ujian.getUjianKode());
-            preparedStatement.setString(2, ujian.getEventKode());
-            preparedStatement.setString(3, ujian.getSoalKode());
-            preparedStatement.setDate(4, new Date(ujian.getUjianMulai().getTime()));
-            preparedStatement.setInt(5, ujian.getUjianMenit());
-            preparedStatement.setString(6, ujian.getUjianNama());
+    public void createUjian(Ujian ujian) throws SQLException {
+        String query = "INSERT INTO ujian(UJIAN_KODE, EVENT_KODE, SOAL_KODE, UJIAN_MULAI, UJIAN_MENIT, UJIAN_NAMA) values(?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, ujian.getUjianKode());
+        preparedStatement.setString(2, ujian.getEventKode());
+        preparedStatement.setString(3, ujian.getSoalKode());
+        preparedStatement.setDate(4, new Date(ujian.getUjianMulai().getTime()));
+        preparedStatement.setInt(5, ujian.getUjianMenit());
+        preparedStatement.setString(6, ujian.getUjianNama());
 
-            preparedStatement.execute();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        preparedStatement.execute();
     }
 
     public void updateUjianMenit(Ujian ujian) throws SQLException {

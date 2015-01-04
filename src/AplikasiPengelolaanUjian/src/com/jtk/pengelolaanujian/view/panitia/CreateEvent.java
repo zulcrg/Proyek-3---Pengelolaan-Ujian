@@ -447,8 +447,6 @@ public class CreateEvent extends javax.swing.JPanel {
         EventController createEventController = new EventController();
         if(createEventController.createEvent(event)){
             JOptionPane.showMessageDialog(this, "Event berhasil dibuat", "Informasi", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            JOptionPane.showMessageDialog(this, "Gagal membuat event", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnCreateEventActionPerformed
 

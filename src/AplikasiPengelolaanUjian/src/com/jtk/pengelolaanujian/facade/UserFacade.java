@@ -159,16 +159,11 @@ public class UserFacade {
         return false;
     }
 
-    public boolean registrasiUser(Staf staf, String textNama, String textPassword) {
-        try {
-            Statement stmt;
-            stmt = connection.createStatement();
-            boolean flag = stmt.execute("INSERT INTO user(STAF_NIP,USER_USERNAME,USER_PASSWORD,USER_ACTIVE ) VALUES('" + staf.getStafNIP() + "','" + textNama + "','" + textPassword + "', 1)");
-            return flag;
-        } catch (SQLException ex) {
-            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
+    public boolean registrasiUser(Staf staf, String textNama, String textPassword) throws SQLException {
+        Statement stmt;
+        stmt = connection.createStatement();
+        boolean flag = stmt.execute("INSERT INTO user(STAF_NIP,USER_USERNAME,USER_PASSWORD,USER_ACTIVE ) VALUES('" + staf.getStafNIP() + "','" + textNama + "','" + textPassword + "', 1)");
+        return flag;
     }
 
     public List<Staf> searchNameUsername(String keyword) {

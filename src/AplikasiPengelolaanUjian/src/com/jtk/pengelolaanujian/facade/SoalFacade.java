@@ -383,7 +383,7 @@ public class SoalFacade {
                     ujian.setSoal(soal);
 
                     soalList.add(soal);
-               //gelo asli
+                    //gelo asli
 
                 }
                 return soalList;
@@ -417,7 +417,7 @@ public class SoalFacade {
     }
 
     public boolean submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain) {
-        
+
         return false;
     }
 
@@ -429,5 +429,5 @@ public class SoalFacade {
         preparedStatement.setString(3, soal.getSoalKode());
 
         preparedStatement.executeUpdate();
-	}
+    }
 }

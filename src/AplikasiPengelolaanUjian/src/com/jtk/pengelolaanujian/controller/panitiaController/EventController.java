@@ -5,28 +5,54 @@
  */
 package com.jtk.pengelolaanujian.controller.panitiaController;
 
+import com.jtk.pengelolaanujian.controller.AbstractController;
 import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.facade.EventFacade;
+import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.view.LoginPanel;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Zulkhair Abdullah D & Pahlevi Ridwan P.
  */
-public class EventController {
-
+public class EventController extends AbstractController {
+    
     public boolean createEvent(Event event) {
         EventFacade eventFacade = new EventFacade();
         if (eventFacade.findByKodeEvent(event.getKode()) == null) {
-            return eventFacade.createEvent(event);
+            try {
+                ConnectionHelper.getConnection().setAutoCommit(false);
+                eventFacade.updateActiveEvent();
+                eventFacade.createEvent(event);
+                return true;
+            } catch (SQLException ex) {
+                Logger.getLogger(EventController.class.getName()).log(Level.SEVERE, null, ex);
+                addErrorMessage("Gagal membuat event", "Error");
+                try {
+                    ConnectionHelper.getConnection().rollback();
+                } catch (SQLException sqlex) {
+                    Logger.getLogger(EventController.class.getName()).log(Level.SEVERE, null, sqlex);
+                }
+            } finally {
+                try {
+                    ConnectionHelper.getConnection().commit();
+                    LoginPanel.setEvent(event);
+                } catch (SQLException ex) {
+                    Logger.getLogger(EventController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Event dengan kode '" + event.getKode() + " sudah ada", "Perhatian", JOptionPane.WARNING_MESSAGE);
-            return false;
+            addWarnMessage("Event dengan kode " + event.getKode() + " sudah ada", "Perhatian");
         }
+        return false;
     }
     
     public Event getListEvent() {
-        EventFacade eventFacade = new EventFacade();        
-        return eventFacade.findTrue();        
+        EventFacade eventFacade = new EventFacade();
+        return eventFacade.findTrue();
     }
 }

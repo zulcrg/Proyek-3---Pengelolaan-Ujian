@@ -41,10 +41,17 @@ public class UploadSoal extends javax.swing.JPanel {
 
     public void preparation() {
         ujianList = uploadSoalController.searchMatkul(cboMatkul);
+        clear();
+    }
+
+    public void clear() {
         url = "";
         soal = new Soal();
         soal.setSoalSifat("TUTUP BUKU");
         spinDurasi.setModel(CommonHelper.createDurasiSpinnerModel());
+        textUrl.setText("");
+        cboMatkul.setSelectedIndex(0);
+        radTutupBuku.setSelected(true);
     }
 
     /**
@@ -208,8 +215,10 @@ public class UploadSoal extends javax.swing.JPanel {
                 InputStream is = new FileInputStream(new File(url));
                 int durasi = Integer.parseInt(spinDurasi.getValue().toString());
                 String tipeFile = FilenameUtils.getExtension(url);
-                if (uploadSoalController.uploadSoal(is, ujianList.get(cboMatkul.getSelectedIndex()).getUjianKode(), soal.getSoalSifat(), durasi, tipeFile)) {
+                String namaFile = FilenameUtils.getBaseName(url);
+                if (uploadSoalController.uploadSoal(is, ujianList.get(cboMatkul.getSelectedIndex()).getUjianKode(), soal.getSoalSifat(), durasi, tipeFile, namaFile)) {
                     JOptionPane.showMessageDialog(this, "File berhasil di upload", "Perhatian", JOptionPane.INFORMATION_MESSAGE);
+                    clear();
                 }
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(UploadSoal.class.getName()).log(Level.SEVERE, null, ex);

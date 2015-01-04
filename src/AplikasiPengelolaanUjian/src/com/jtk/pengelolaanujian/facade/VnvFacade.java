@@ -5,7 +5,6 @@
  */
 package com.jtk.pengelolaanujian.facade;
 
-import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.entity.Vnv;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
