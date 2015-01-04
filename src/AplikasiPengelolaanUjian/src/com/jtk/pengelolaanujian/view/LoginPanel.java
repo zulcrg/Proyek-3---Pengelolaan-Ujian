@@ -145,7 +145,7 @@ public class LoginPanel extends javax.swing.JPanel {
         });
 
         btnLogin.setBackground(new java.awt.Color(0, 102, 102));
-        btnLogin.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        btnLogin.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         btnLogin.setText("Login");
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
