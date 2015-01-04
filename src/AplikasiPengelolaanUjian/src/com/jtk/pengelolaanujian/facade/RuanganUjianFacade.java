@@ -344,22 +344,17 @@ public class RuanganUjianFacade {
         return null;
     }
 
-    public void createRuanganUjian(RuanganUjian ruanganUjian) {
-        try {
-            String query = "INSERT INTO ruangan_ujian(RUANGAN_KODE, UJIAN_KODE, STAF_NIP, BERITA_KODE, RUANGAN_UJIAN_NILAI_UPLOADED, KELAS_KODE) values(?,?,?,?,?,?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, ruanganUjian.getRuanganKode());
-            preparedStatement.setString(2, ruanganUjian.getUjianKode());
-            preparedStatement.setString(3, ruanganUjian.getStafNip());
-            preparedStatement.setString(4, ruanganUjian.getBeritaKode());
-            preparedStatement.setBoolean(5, ruanganUjian.isRuanganUjianUploadNilaiStatus());
-            preparedStatement.setString(6, ruanganUjian.getKelasKode());
+    public void createRuanganUjian(RuanganUjian ruanganUjian) throws SQLException {
+        String query = "INSERT INTO ruangan_ujian(RUANGAN_KODE, UJIAN_KODE, STAF_NIP, BERITA_KODE, RUANGAN_UJIAN_NILAI_UPLOADED, KELAS_KODE) values(?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, ruanganUjian.getRuanganKode());
+        preparedStatement.setString(2, ruanganUjian.getUjianKode());
+        preparedStatement.setString(3, ruanganUjian.getStafNip());
+        preparedStatement.setString(4, ruanganUjian.getBeritaKode());
+        preparedStatement.setBoolean(5, ruanganUjian.isRuanganUjianUploadNilaiStatus());
+        preparedStatement.setString(6, ruanganUjian.getKelasKode());
 
-            preparedStatement.execute();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        preparedStatement.execute();
     }
 
     public int checkTerlalui(boolean b) {
@@ -390,25 +385,35 @@ public class RuanganUjianFacade {
         try {
             Date date = new Date();
             SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
-            
+
             Date tanggal2 = formatDate.parse(tanggal);
             if (b == true) {
-                if (date.after(tanggal2)) {                    
+                if (date.after(tanggal2)) {
                     return true;
-                } else {                    
+                } else {
                     return false;
                 }
             }
             if (b == false) {
-                if (tanggal2.after(date)) {                    
+                if (tanggal2.after(date)) {
                     return true;
-                } else {                    
+                } else {
                     return false;
                 }
-            }            
+            }
         } catch (ParseException ex) {
             Logger.getLogger(RuanganUjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+
+    public void updateUploadedNilai(RuanganUjian ruanganUjian) throws SQLException {
+        String query = "UPDATE ruangan_ujian SET RUANGAN_UJIAN_NILAI_UPLOADED = ? WHERE RUANGAN_KODE = ? AND UJIAN_KODE = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setBoolean(1, ruanganUjian.isRuanganUjianUploadNilaiStatus());
+        preparedStatement.setString(2, ruanganUjian.getRuanganKode());
+        preparedStatement.setString(3, ruanganUjian.getUjianKode());
+
+        preparedStatement.executeUpdate();
     }
 }

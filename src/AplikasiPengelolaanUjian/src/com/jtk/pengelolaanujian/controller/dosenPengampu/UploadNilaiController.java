@@ -5,13 +5,13 @@
  */
 package com.jtk.pengelolaanujian.controller.dosenPengampu;
 
+import com.jtk.pengelolaanujian.entity.Nilai;
 import com.jtk.pengelolaanujian.entity.Ruangan;
 import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.facade.RuanganFacade;
 import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
 import com.jtk.pengelolaanujian.facade.UjianFacade;
-import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -56,6 +56,13 @@ public class UploadNilaiController {
         }
         cbo.setModel(new DefaultComboBoxModel(ruanganUjian));
         return ruanganUjians;        
+    }
+    
+    public boolean uploadNilai(Nilai nilai){
+        RuanganUjianFacade ruanganUjianFacade = new RuanganUjianFacade();
+        
+//        RuanganUjian ruanganUjian = ruanganUjianFacade.findByUjianKodeStafNipKelasKode(null, null);
+        return false;
     }
 
 }

@@ -13,8 +13,12 @@ import com.jtk.pengelolaanujian.facade.MataKuliahFacade;
 import com.jtk.pengelolaanujian.facade.SoalFacade;
 import com.jtk.pengelolaanujian.facade.UjianFacade;
 import com.jtk.pengelolaanujian.util.CommonHelper;
+import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -42,8 +46,6 @@ public class CreateUjianController extends AbstractController {
             soal.setSoalPrinted(false);
             soal.setMatkulTipe(mataKuliah.getMatkulTipe());
 
-            soalFacade.createSoal(soal);
-
             Ujian ujian = new Ujian();
             ujian.setEventKode(kodeEvent);
             ujian.setUjianNama(namaUjian);
@@ -52,9 +54,24 @@ public class CreateUjianController extends AbstractController {
 //            ujian.setUjianMenit(durasi);
             ujian.setUjianMulai(waktu);
 
-            facade.createUjian(ujian);
-            addInfoMessage("Berhasil menambahkan data", "Informasi");
-            return true;
+            try {
+                ConnectionHelper.getConnection().setAutoCommit(false);
+                soalFacade.createSoal(soal);
+                facade.createUjian(ujian);
+                addInfoMessage("Berhasil menambahkan data", "Informasi");
+                ConnectionHelper.getConnection().commit();
+                ConnectionHelper.getConnection().setAutoCommit(true);
+                return true;
+            } catch (SQLException ex) {
+                Logger.getLogger(CreateUjianController.class.getName()).log(Level.SEVERE, null, ex);
+                addErrorMessage(ex.getMessage(), "Error");
+                try {
+                    ConnectionHelper.getConnection().rollback();
+                } catch (SQLException ex1) {
+                    Logger.getLogger(CreateUjianController.class.getName()).log(Level.SEVERE, null, ex1);
+                    addErrorMessage(ex1.getMessage(), "Error");
+                }
+            }
         }
         return false;
     }

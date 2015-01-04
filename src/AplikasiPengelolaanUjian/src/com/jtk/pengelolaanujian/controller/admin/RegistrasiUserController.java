@@ -5,11 +5,15 @@
  */
 package com.jtk.pengelolaanujian.controller.admin;
 
+import com.jtk.pengelolaanujian.controller.AbstractController;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.facade.StafFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
 import com.zlib.util.ZHash;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,11 +21,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author pahlevi
  */
-public class RegistrasiUserController {
+public class RegistrasiUserController extends AbstractController {
 
     public void registrasiUser(Staf staf, String textNama, String textPassword) {
-        UserFacade userFacade = new UserFacade();
-        userFacade.registrasiUser(staf, textNama, ZHash.hashMD5(textPassword));
+        try {
+            UserFacade userFacade = new UserFacade();
+            userFacade.registrasiUser(staf, textNama, ZHash.hashMD5(textPassword));
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrasiUserController.class.getName()).log(Level.SEVERE, null, ex);
+            addErrorMessage(ex.getMessage(), "ERROR");
+        }
     }
 
     public void searchUser(String text, JTable tableStaf) {
@@ -48,5 +57,4 @@ public class RegistrasiUserController {
         tableStaf.setModel(dtm);
     }
 
-    
 }

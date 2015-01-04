@@ -19,8 +19,12 @@ import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
 import com.jtk.pengelolaanujian.facade.UjianFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
 import com.jtk.pengelolaanujian.util.CommonHelper;
+import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -100,7 +104,7 @@ public class AssignUjianController extends AbstractController {
         table.setModel(dtm);
         return kelasList;
     }
-    
+
     public List<Staf> searchPengawas(String text, JTable tableStaf) {
         List<Staf> stafList;
 
@@ -109,7 +113,7 @@ public class AssignUjianController extends AbstractController {
 
         Object[] columnsName = {"NIP", "Nama"};
 
-        DefaultTableModel dtm = new DefaultTableModel(null, columnsName){
+        DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -142,7 +146,6 @@ public class AssignUjianController extends AbstractController {
             beritaAcara.setBeritaStatus(false);
 
             BeritaAcaraFacade beritaAcaraFacade = new BeritaAcaraFacade();
-            beritaAcaraFacade.createBeritaAcara(beritaAcara);
 
             RuanganUjian ruanganUjian = new RuanganUjian();
             ruanganUjian.setBeritaKode(beritaAcara.getBeritaKode());
@@ -152,10 +155,25 @@ public class AssignUjianController extends AbstractController {
             ruanganUjian.setStafNip(stafNip);
             ruanganUjian.setUjianKode(kodeUjian);
 
-            ruanganFacade.createRuanganUjian(ruanganUjian);
+            try {
+                ConnectionHelper.getConnection().setAutoCommit(false);
+                beritaAcaraFacade.createBeritaAcara(beritaAcara);
+                ruanganFacade.createRuanganUjian(ruanganUjian);
+                addInfoMessage("Berhasil menambahkat data", "Perhatian");
+                ConnectionHelper.getConnection().commit();
+                ConnectionHelper.getConnection().setAutoCommit(true);
+                return true;
+            } catch (SQLException ex) {
+                Logger.getLogger(AssignUjianController.class.getName()).log(Level.SEVERE, null, ex);
+                addErrorMessage(ex.getMessage(), "Error");
+                try {
+                    ConnectionHelper.getConnection().rollback();
+                } catch (SQLException ex1) {
+                    Logger.getLogger(AssignUjianController.class.getName()).log(Level.SEVERE, null, ex1);
+                    addErrorMessage(ex1.getMessage(), "Error");
+                }
+            }
 
-            addInfoMessage("Berhasil menambahkat data", "Perhatian");
-            return true;
         }
         return false;
     }
