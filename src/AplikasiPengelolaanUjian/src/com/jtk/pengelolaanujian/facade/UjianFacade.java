@@ -150,7 +150,7 @@ public class UjianFacade {
             Statement stmt = connection.createStatement();
             String query = "SELECT ujian.* FROM ujian "
                     + "INNER JOIN soal ON (soal.SOAL_KODE = ujian.SOAL_KODE) "
-                    + "INNER JOIN mata_kuliah ON (mata_kuliah.MATKUL_KODE = soal.MATKUL_KODE) "
+                    + "INNER JOIN mata_kuliah ON (mata_kuliah.MATKUL_KODE = soal.MATKUL_KODE AND mata_kuliah.MATKUL_TIPE = soal.MATKUL_TIPE) "
                     + "INNER JOIN mata_kuliah_to_dosen ON (mata_kuliah_to_dosen.MATKUL_KODE = mata_kuliah.MATKUL_KODE) "
                     + "INNER JOIN dosen ON (mata_kuliah_to_dosen.DOSEN_KODE = dosen.DOSEN_KODE) "
                     + "INNER JOIN staf ON (staf.STAF_NIP = dosen.STAF_NIP) "
@@ -227,5 +227,14 @@ public class UjianFacade {
             JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void updateUjianMenit(Ujian ujian) throws SQLException {
+        String query = "UPDATE ujian SET UJIAN_MENIT = ? WHERE UJIAN_KODE = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, ujian.getUjianMenit());
+        preparedStatement.setString(2, ujian.getUjianKode());
+
+        preparedStatement.executeUpdate();
     }
 }

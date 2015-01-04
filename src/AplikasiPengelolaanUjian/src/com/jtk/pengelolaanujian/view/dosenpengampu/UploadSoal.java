@@ -6,13 +6,20 @@
 package com.jtk.pengelolaanujian.view.dosenpengampu;
 
 import com.jtk.pengelolaanujian.controller.dosenPengampu.UploadSoalController;
-import com.jtk.pengelolaanujian.entity.MataKuliah;
 import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.CommonHelper;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  *
@@ -21,7 +28,7 @@ import javax.swing.JTextField;
 public class UploadSoal extends javax.swing.JPanel {
 
     private final UploadSoalController uploadSoalController = new UploadSoalController();
-    private List<MataKuliah> mataKuliahList;
+    private List<Ujian> ujianList;
     private String url;
     private Soal soal;
 
@@ -33,7 +40,7 @@ public class UploadSoal extends javax.swing.JPanel {
     }
 
     public void preparation() {
-        mataKuliahList = uploadSoalController.searchMatkul(cboMatkul);
+        ujianList = uploadSoalController.searchMatkul(cboMatkul);
         url = "";
         soal = new Soal();
         soal.setSoalSifat("TUTUP BUKU");
@@ -81,7 +88,7 @@ public class UploadSoal extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("Mata Kuliah");
+        jLabel2.setText("Ujian");
 
         cboMatkul.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboMatkul.addActionListener(new java.awt.event.ActionListener() {
@@ -190,12 +197,23 @@ public class UploadSoal extends javax.swing.JPanel {
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         if (textUrl.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Harap pilih file yang akan di upload", "Perhatian", JOptionPane.WARNING_MESSAGE);
+        } else if (!new File(url).exists()) {
+            JOptionPane.showMessageDialog(this, "File yang anda upload tidak ada", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (spinDurasi.getValue() == null) {
             JOptionPane.showMessageDialog(this, "Harap isi durasi ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (!CommonHelper.isStringNumberMaxMin(spinDurasi.getValue().toString(), 1000, 1)) {
             JOptionPane.showMessageDialog(this, "Harap isi format durasi dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else {
-            
+            try {
+                InputStream is = new FileInputStream(new File(url));
+                int durasi = Integer.parseInt(spinDurasi.getValue().toString());
+                String tipeFile = FilenameUtils.getExtension(url);
+                if (uploadSoalController.uploadSoal(is, ujianList.get(cboMatkul.getSelectedIndex()).getUjianKode(), soal.getSoalSifat(), durasi, tipeFile)) {
+                    JOptionPane.showMessageDialog(this, "File berhasil di upload", "Perhatian", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(UploadSoal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnUploadActionPerformed
 

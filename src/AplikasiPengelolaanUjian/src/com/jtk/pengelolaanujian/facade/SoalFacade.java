@@ -286,27 +286,26 @@ public class SoalFacade {
             Statement stmt = connection.createStatement();
             String query = "SELECT soal.soal_kode, mata_kuliah.matkul_kode, mata_kuliah.matkul_nama , staf.staf_nama FROM soal,mata_kuliah,mata_kuliah_to_dosen,dosen,staf WHERE staf.staf_nip = dosen.staf_nip AND dosen.dosen_kode = mata_kuliah_to_dosen.dosen_kode AND mata_kuliah_to_dosen.matkul_kode = mata_kuliah.matkul_kode AND mata_kuliah_to_dosen.matkul_tipe = mata_kuliah.matkul_tipe AND mata_kuliah.matkul_kode = soal.matkul_kode AND mata_kuliah.matkul_tipe = soal.matkul_tipe AND soal.soal_vnved = 1";
 
-
             ResultSet rs = stmt.executeQuery(query);
             List<Soal> soalList = new ArrayList<>();
             while (rs.next()) {
                 Soal soal = new Soal();
                 soal.setSoalKode(rs.getString(1));
-                
+
                 MataKuliah mataKuliah = new MataKuliah();
                 mataKuliah.setMatkulKode(rs.getString(2));
                 mataKuliah.setMatkulNama(rs.getString(3));
-                
+
                 Staf staf = new Staf();
                 staf.setStafNama(rs.getString(4));
-                
+
                 Dosen dosen = new Dosen();
                 dosen.setStafNama(staf.getStafNama());
-                
+
                 mataKuliah.setDosen(dosen);
-                
-                soal.setMataKuliah(mataKuliah);                
-                                
+
+                soal.setMataKuliah(mataKuliah);
+
                 soalList.add(soal);
             }
             return soalList;
@@ -317,12 +316,12 @@ public class SoalFacade {
 
         return null;
     }
-    
-    public List<Soal> searchSoalInKbk(String text){
+
+    public List<Soal> searchSoalInKbk(String text) {
         Statement stmt;
         try {
             // create statement for connection
-            stmt = connection.createStatement(); 
+            stmt = connection.createStatement();
             // query yang diberikan
             String query = "SELECT soal.SOAL_KODE, soal.SOAL_SIFAT, mata_kuliah.MATKUL_KODE, mata_kuliah.MATKUL_NAMA, mata_kuliah.MATKUL_TIPE, ujian.UJIAN_MULAI,  ujian.UJIAN_MENIT, event.EVENT_KODE, dosen.DOSEN_KODE, staf.STAF_NAMA, kelas.KELAS_NAMA "
                     + "FROM soal, mata_kuliah, ujian, event, staf, dosen, kelas, mata_kuliah_to_dosen, ruangan_ujian"
@@ -336,62 +335,70 @@ public class SoalFacade {
                     + "ruangan_ujian.SOAL_KODE = soal.SOAL_KODE AND "
                     + "kelas.KELAS_KODE = ruangan_ujian.KELAS_KODE "
                     + "user.STAF_NIP = staf.STAF_NIP"
-                    + "user.USERNAME = '"+LoginPanel.getUsername()+"' AND"
+                    + "user.USERNAME = '" + LoginPanel.getUsername() + "' AND"
                     + "kbk.KBK_KODE = dosen.KBK_KODE";
             // alokasi resultset sebagai penampung hasil dari query yang di eksekusi
             ResultSet rs = stmt.executeQuery(query);
             //
             List<Soal> soalList = new ArrayList<>();
-            while(rs.next()){
+            while (rs.next()) {
                 Soal soal = new Soal();
                 soal.setSoalKode(rs.getString(1));
                 soal.setSoalSifat(rs.getString(2));
-                
-                
+
                 MataKuliah mataKuliah = new MataKuliah();
                 mataKuliah.setMatkulKode(rs.getString(3));
                 mataKuliah.setMatkulNama(rs.getString(4));
                 mataKuliah.setMatkulTipe(rs.getString(5));
-                
+
                 soal.setMataKuliah(mataKuliah);
-                
+
                 Ujian ujian = new Ujian();
                 ujian.setUjianMulai(rs.getDate(6));
                 ujian.setUjianMenit(rs.getInt(7));
-                
+
                 soal.setUjian(ujian);
-                
+
                 Event event = new Event();
                 event.setKode(rs.getString(8));
-                
+
                 ujian.setEvent(event);
-                
+
                 Dosen dosen = new Dosen();
                 dosen.setDosenKode(rs.getString(9));
-                
+
                 mataKuliah.setDosen(dosen);
-                
+
                 dosen.setStafNama(rs.getString(10));
-                
+
                 Kelas kelas = new Kelas();
                 kelas.setKelasNama(rs.getString(11));
-                
+
                 RuanganUjian ruanganUjian = new RuanganUjian();
                 ruanganUjian.setKelas(kelas);
-                
+
                 ruanganUjian.setUjian(ujian);
-                
+
                 ujian.setSoal(soal);
-                
+
                 soalList.add(soal);
-               //gelo asli
+                //gelo asli
             }
             return soalList;
         } catch (SQLException ex) {
             Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+
         return null;
     }
 
+    public void updateSoalSifatUploaded(Soal soal) throws SQLException {
+        String query = "UPDATE soal SET SOAL_SIFAT = ?, SOAL_UPLOADED = ? WHERE SOAL_KODE = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, soal.getSoalSifat());
+        preparedStatement.setBoolean(2, soal.isSoalUploaded());
+        preparedStatement.setString(3, soal.getSoalKode());
+
+        preparedStatement.executeUpdate();
+    }
 }

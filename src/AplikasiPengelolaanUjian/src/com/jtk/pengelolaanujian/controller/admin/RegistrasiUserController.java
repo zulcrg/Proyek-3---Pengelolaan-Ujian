@@ -10,8 +10,6 @@ import com.jtk.pengelolaanujian.facade.StafFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
 import com.zlib.util.ZHash;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 

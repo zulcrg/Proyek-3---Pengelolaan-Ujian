@@ -10,12 +10,14 @@ import com.jtk.pengelolaanujian.entity.BeritaAcara;
 import com.jtk.pengelolaanujian.entity.Kelas;
 import com.jtk.pengelolaanujian.entity.Ruangan;
 import com.jtk.pengelolaanujian.entity.RuanganUjian;
+import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.facade.BeritaAcaraFacade;
 import com.jtk.pengelolaanujian.facade.KelasFacade;
 import com.jtk.pengelolaanujian.facade.RuanganFacade;
 import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
 import com.jtk.pengelolaanujian.facade.UjianFacade;
+import com.jtk.pengelolaanujian.facade.UserFacade;
 import com.jtk.pengelolaanujian.util.CommonHelper;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -97,6 +99,32 @@ public class AssignUjianController extends AbstractController {
         }
         table.setModel(dtm);
         return kelasList;
+    }
+    
+    public List<Staf> searchPengawas(String text, JTable tableStaf) {
+        List<Staf> stafList;
+
+        UserFacade userFacade = new UserFacade();
+        stafList = userFacade.searchNameNip(text);
+
+        Object[] columnsName = {"NIP", "Nama"};
+
+        DefaultTableModel dtm = new DefaultTableModel(null, columnsName){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        for (Staf staf : stafList) {
+            Object[] o = new Object[2];
+            o[0] = staf.getStafNIP();
+            o[1] = staf.getStafNama();
+
+            dtm.addRow(o);
+        }
+        tableStaf.setModel(dtm);
+
+        return stafList;
     }
 
     public boolean createRuanganUjian(String kodeUjian, String kodeRuangan, String stafNip, String kelasKode) {

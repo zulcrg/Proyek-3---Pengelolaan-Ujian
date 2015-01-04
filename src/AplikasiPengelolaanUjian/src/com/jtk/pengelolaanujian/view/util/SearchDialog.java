@@ -177,6 +177,12 @@ public class SearchDialog extends javax.swing.JDialog {
                 textSearch.setText("Cari berdasarkan Kode atau Nama Kelas");
                 setTitle("Kelas");
                 break;
+            case SEARCH_PENGAWAS:
+                assignUjianController = new AssignUjianController();
+                stafList = assignUjianController.searchPengawas("", table);
+                textSearch.setText("Cari berdasarkan NIP atau Nama Pengawas");
+                setTitle("Pengawas");
+                break;
         }
     }
 
@@ -202,6 +208,9 @@ public class SearchDialog extends javax.swing.JDialog {
                 break;
             case SEARCH_KELAS:
                 textSearch.setText("Cari berdasarkan Kode atau Nama Kelas");
+                break;
+            case SEARCH_PENGAWAS:
+                textSearch.setText("Cari berdasarkan NIP atau Nama Pengawas");
                 break;
         }
     }
@@ -234,6 +243,10 @@ public class SearchDialog extends javax.swing.JDialog {
             case SEARCH_KELAS:
                 kelas.setKelasKode(kelasList.get(table.getSelectedRow()).getKelasKode());
                 kelas.setKelasNama(kelasList.get(table.getSelectedRow()).getKelasNama());
+                break;
+            case SEARCH_PENGAWAS:
+                staf.setStafNama(stafList.get(table.getSelectedRow()).getStafNama());
+                staf.setStafNIP(stafList.get(table.getSelectedRow()).getStafNIP());
                 break;
         }
         this.dispose();
@@ -361,6 +374,9 @@ public class SearchDialog extends javax.swing.JDialog {
                 break;
             case SEARCH_KELAS:
                 kelasList = assignUjianController.searchKelas(textSearch.getText(), table);
+                break;
+            case SEARCH_PENGAWAS:
+                stafList = assignUjianController.searchPengawas(textSearch.getText(), table);
                 break;
         }
     }//GEN-LAST:event_textSearchKeyReleased
