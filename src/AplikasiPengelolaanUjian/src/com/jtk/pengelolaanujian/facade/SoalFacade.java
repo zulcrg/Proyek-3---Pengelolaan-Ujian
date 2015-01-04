@@ -400,5 +400,16 @@ public class SoalFacade {
         preparedStatement.setString(3, soal.getSoalKode());
 
         preparedStatement.executeUpdate();
+	}
+	
+    public void findUserKbk(){
+        try {
+            Statement statement = connection.createStatement();
+            String query ="SELECT kbk.KBK_KODE from kbk, user, dosen, staf"
+                    + "WHERE ";
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 }
