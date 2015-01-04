@@ -131,7 +131,7 @@ public class StafFacade {
             sb.append("(");
 
             for (int i = 0; i < listDosen.size(); i++) {
-                sb.append("'").append(listDosen.get(i).getDosenKode()).append("'");
+                sb.append("'").append(listDosen.get(i).getStafNIP()).append("'");
                 if (i < listDosen.size() - 1) {
                     sb.append(",");
                 }

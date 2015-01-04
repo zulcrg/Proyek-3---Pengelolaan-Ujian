@@ -120,6 +120,7 @@ public class SoalFacade {
             ResultSet rs = stmt.executeQuery(query);
             List<Soal> soalList = new ArrayList<>();
             while (rs.next()) {
+
                 Soal soal = new Soal();
                 soal.setMatkulKode(rs.getString("MATKUL_KODE"));
                 soal.setSoalKode(rs.getString("SOAL_KODE"));
@@ -431,3 +432,4 @@ public class SoalFacade {
         preparedStatement.executeUpdate();
     }
 }
+
