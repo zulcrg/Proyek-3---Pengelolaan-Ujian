@@ -129,7 +129,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Mata Kuliah"/>
+        <Property name="text" type="java.lang.String" value="Ujian"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cboMatkul">

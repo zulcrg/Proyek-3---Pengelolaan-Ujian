@@ -207,6 +207,12 @@ public class SearchDialog extends javax.swing.JDialog {
                 textSearch.setText("Cari berdasarkan Kode Soal atau Nama Mata Kuliah");
                 setTitle("Soal");
                 break;
+            case SEARCH_PENGAWAS:
+                assignUjianController = new AssignUjianController();
+                stafList = assignUjianController.searchPengawas("", table);
+                textSearch.setText("Cari berdasarkan NIP atau Nama Pengawas");
+                setTitle("Pengawas");
+                break;
         }
     }
 
@@ -235,6 +241,9 @@ public class SearchDialog extends javax.swing.JDialog {
                 break;
             case SEARCH_SOALMATKUL:
                 textSearch.setText("Cari berdasarkan Kode Soal atau Nama Mata Kuliah");
+				break;
+            case SEARCH_PENGAWAS:
+                textSearch.setText("Cari berdasarkan NIP atau Nama Pengawas");
                 break;
         }
     }
@@ -271,6 +280,10 @@ public class SearchDialog extends javax.swing.JDialog {
             case SEARCH_SOALMATKUL:
                 soal.setSoalKode(soalList.get(table.getSelectedRow()).getSoalKode());
                 soal.setMataKuliah(soalList.get(table.getSelectedRow()).getMataKuliah());
+				break;
+            case SEARCH_PENGAWAS:
+                staf.setStafNama(stafList.get(table.getSelectedRow()).getStafNama());
+                staf.setStafNIP(stafList.get(table.getSelectedRow()).getStafNIP());
                 break;
         }
         this.dispose();
@@ -401,6 +414,9 @@ public class SearchDialog extends javax.swing.JDialog {
                 break;
             case SEARCH_SOALMATKUL:
                 soalList = beritaAcaraVnvController.searchSoal(textSearch.getText(), table);
+				break;
+            case SEARCH_PENGAWAS:
+                stafList = assignUjianController.searchPengawas(textSearch.getText(), table);
                 break;
         }
     }//GEN-LAST:event_textSearchKeyReleased

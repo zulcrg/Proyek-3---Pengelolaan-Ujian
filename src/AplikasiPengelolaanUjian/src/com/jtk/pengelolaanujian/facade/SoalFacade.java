@@ -417,13 +417,16 @@ public class SoalFacade {
     }
 
     public boolean submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain) {
-        try {
-            Statement statement = connection.createStatement();
-            String query = "INSERT INTO vnv()";
-        } catch (SQLException ex) {
-            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return false;
+        return null;
     }
+
+    public void updateSoalSifatUploaded(Soal soal) throws SQLException {
+        String query = "UPDATE soal SET SOAL_SIFAT = ?, SOAL_UPLOADED = ? WHERE SOAL_KODE = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, soal.getSoalSifat());
+        preparedStatement.setBoolean(2, soal.isSoalUploaded());
+        preparedStatement.setString(3, soal.getSoalKode());
+
+        preparedStatement.executeUpdate();
+	}
 }

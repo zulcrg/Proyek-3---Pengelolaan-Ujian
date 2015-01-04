@@ -5,10 +5,23 @@
  */
 package com.jtk.pengelolaanujian.controller.dosenPengampu;
 
-import com.jtk.pengelolaanujian.entity.MataKuliah;
-import com.jtk.pengelolaanujian.facade.MataKuliahFacade;
+import com.jtk.pengelolaanujian.entity.StorageSoal;
+import com.jtk.pengelolaanujian.entity.Ujian;
+import com.jtk.pengelolaanujian.facade.SoalFacade;
+import com.jtk.pengelolaanujian.facade.StafFacade;
+import com.jtk.pengelolaanujian.facade.StorageSoalFacade;
+import com.jtk.pengelolaanujian.facade.UjianFacade;
+import com.jtk.pengelolaanujian.facade.UserFacade;
+import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import com.jtk.pengelolaanujian.view.LoginPanel;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
@@ -18,17 +31,60 @@ import javax.swing.JComboBox;
  */
 public class UploadSoalController {
 
-    public List<MataKuliah> searchMatkul(JComboBox cbo) {
-        MataKuliahFacade mataKuliahFacade = new MataKuliahFacade();
-        List<MataKuliah> mataKuliahs = mataKuliahFacade.findAllWhereSesionIdis(LoginPanel.getUsername());//findByUsername(LoginPanel.getUsername());
-        String matkul[] = new String[mataKuliahs.size()];
-        for (int i = 0; i < mataKuliahs.size(); i++) {
-            MataKuliah mk = mataKuliahs.get(i);
-            matkul[i] = mk.getMatkulNama();
+    public List<Ujian> searchMatkul(JComboBox cbo) {
+        UjianFacade ujianFacade = new UjianFacade();
+        List<Ujian> ujians = ujianFacade.findByUsername();
+        String ujian[] = new String[ujians.size()];
+        for (int i = 0; i < ujians.size(); i++) {
+            Ujian mk = ujians.get(i);
+            ujian[i] = mk.getUjianNama();
         }
-        cbo.setModel(new DefaultComboBoxModel(matkul));
-        return mataKuliahs;
+        cbo.setModel(new DefaultComboBoxModel(ujian));
+        return ujians;
     }
-    
-    
+
+    public boolean uploadSoal(InputStream file, String kodeUjian, String sifatUjian, int durasi, String tipeFile) {
+        UjianFacade ujianFacade = new UjianFacade();
+        UserFacade userFacade = new UserFacade();
+        StorageSoalFacade storageSoalFacade = new StorageSoalFacade();
+        SoalFacade soalFacade = new SoalFacade();
+
+        Ujian ujian = ujianFacade.findByKodeUjian(kodeUjian);
+        ujian.getSoalQuery().setSoalSifat(sifatUjian);
+        ujian.getSoal().setStorageSoalList(new ArrayList<StorageSoal>());
+        ujian.getSoal().setSoalUploaded(true);
+        StorageSoal storageSoal = new StorageSoal();
+        storageSoal.setSoalKode(ujian.getSoalKode());
+        storageSoal.setStafNip(userFacade.findByUsername(LoginPanel.getUsername()).getStafNIP());
+        storageSoal.setStsoalFile(file);
+        storageSoal.setStsoalNoUrut(storageSoalFacade.findNoUrut(ujian.getSoalKode()) + 1);
+        storageSoal.setStsoalTglUpload(new Date());
+        storageSoal.setTipeFile(tipeFile);
+
+        Connection connection = ConnectionHelper.getConnection();
+        try {
+            connection.setAutoCommit(false);
+            ujianFacade.updateUjianMenit(ujian);
+            soalFacade.updateSoalSifatUploaded(ujian.getSoal());
+            storageSoalFacade.createStorageSoal(storageSoal);
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(UploadSoalController.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                connection.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(UploadSoalController.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } finally {
+            try {
+                connection.commit();
+                connection.setAutoCommit(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(UploadSoalController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+
+    }
+
 }

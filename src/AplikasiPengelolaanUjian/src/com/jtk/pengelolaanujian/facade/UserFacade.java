@@ -230,4 +230,26 @@ public class UserFacade {
         }
         return null;
     }
+
+    public List<Staf> searchNameNip(String keyword) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT staf.* FROM staf "
+                    + "WHERE (staf.STAF_NAMA like '%" + keyword + "%' OR staf.STAF_NIP like '%" + keyword + "%' ) ORDER BY staf.STAF_NIP ASC";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Staf> stafList = new ArrayList<>();
+            while (rs.next()) {
+                Staf staf = new Staf();
+                staf.setStafNIP(rs.getString(1));
+                staf.setStafNama(rs.getString(2));
+                staf.setStafEmail(rs.getString(3));
+                staf.setStafKontak(rs.getString(4));
+                stafList.add(staf);
+            }
+            return stafList;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }
