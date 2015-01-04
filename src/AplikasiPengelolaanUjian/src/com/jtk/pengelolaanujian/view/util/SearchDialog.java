@@ -10,9 +10,11 @@ import com.jtk.pengelolaanujian.controller.admin.EditUserController;
 import com.jtk.pengelolaanujian.controller.admin.RegistrasiUserController;
 import com.jtk.pengelolaanujian.controller.panitiaController.AssignUjianController;
 import com.jtk.pengelolaanujian.controller.panitiaController.CreateUjianController;
+import com.jtk.pengelolaanujian.controller.vnv.BeritaAcaraVnvController;
 import com.jtk.pengelolaanujian.entity.Kelas;
 import com.jtk.pengelolaanujian.entity.MataKuliah;
 import com.jtk.pengelolaanujian.entity.Ruangan;
+import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.EnumPanel;
@@ -29,11 +31,13 @@ public class SearchDialog extends javax.swing.JDialog {
     boolean first = true;
     private Staf staf;
     private MataKuliah mataKuliah;
+    private Soal soal;
     private Ujian ujian;
     private Ruangan ruangan;
     private List<Ruangan> ruanganList;
     private Kelas kelas;
     private List<Kelas> kelasList;
+    private List<Soal> soalList;
     private List<Staf> stafList;
     private List<MataKuliah> mataKuliahList;
     private List<Ujian> ujianList;
@@ -42,7 +46,27 @@ public class SearchDialog extends javax.swing.JDialog {
     private EditUserController editUserController;
     private CreateUjianController createUjianController;
     private AssignUjianController assignUjianController;
+    private BeritaAcaraVnvController beritaAcaraVnvController;
     private final EnumPanel enumPanel;
+
+    /**
+     * Creates new form SearchStafDialog
+     *
+     * @param parent
+     * @param modal
+     * @param soal
+     * @param enumPanel
+     */
+    public SearchDialog(Frame parent, boolean modal, Soal soal, EnumPanel enumPanel) {
+        super(parent, modal);
+        initComponents();
+        setFocusable(true);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        this.soal = soal;
+        this.enumPanel = enumPanel;
+        switchPanel();
+    }
 
     /**
      * Creates new form SearchStafDialog
@@ -177,6 +201,12 @@ public class SearchDialog extends javax.swing.JDialog {
                 textSearch.setText("Cari berdasarkan Kode atau Nama Kelas");
                 setTitle("Kelas");
                 break;
+            case SEARCH_SOALMATKUL:
+                beritaAcaraVnvController = new BeritaAcaraVnvController();
+                soalList = beritaAcaraVnvController.searchSoal("", table);
+                textSearch.setText("Cari berdasarkan Kode Soal atau Nama Mata Kuliah");
+                setTitle("Soal");
+                break;
         }
     }
 
@@ -202,6 +232,9 @@ public class SearchDialog extends javax.swing.JDialog {
                 break;
             case SEARCH_KELAS:
                 textSearch.setText("Cari berdasarkan Kode atau Nama Kelas");
+                break;
+            case SEARCH_SOALMATKUL:
+                textSearch.setText("Cari berdasarkan Kode Soal atau Nama Mata Kuliah");
                 break;
         }
     }
@@ -234,6 +267,10 @@ public class SearchDialog extends javax.swing.JDialog {
             case SEARCH_KELAS:
                 kelas.setKelasKode(kelasList.get(table.getSelectedRow()).getKelasKode());
                 kelas.setKelasNama(kelasList.get(table.getSelectedRow()).getKelasNama());
+                break;
+            case SEARCH_SOALMATKUL:
+                soal.setSoalKode(soalList.get(table.getSelectedRow()).getSoalKode());
+                soal.setMataKuliah(soalList.get(table.getSelectedRow()).getMataKuliah());
                 break;
         }
         this.dispose();
@@ -361,6 +398,9 @@ public class SearchDialog extends javax.swing.JDialog {
                 break;
             case SEARCH_KELAS:
                 kelasList = assignUjianController.searchKelas(textSearch.getText(), table);
+                break;
+            case SEARCH_SOALMATKUL:
+                soalList = beritaAcaraVnvController.searchSoal(textSearch.getText(), table);
                 break;
         }
     }//GEN-LAST:event_textSearchKeyReleased

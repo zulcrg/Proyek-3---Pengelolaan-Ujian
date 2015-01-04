@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.view.vnv;
 
+import com.jtk.pengelolaanujian.controller.vnv.BeritaAcaraVnvController;
 import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.util.EnumPanel;
+import com.jtk.pengelolaanujian.view.util.SearchDialog;
 import com.jtk.pengelolaanujian.view.util.SearchSoalDialog;
 
 /**
@@ -14,7 +16,10 @@ import com.jtk.pengelolaanujian.view.util.SearchSoalDialog;
  * @author Rizki
  */
 public class BeritaAcaraVnv extends javax.swing.JPanel {
+
+    BeritaAcaraVnvController beritaAcaraVnvController = new BeritaAcaraVnvController();
     private Soal soal;
+
     /**
      * Creates new form BeritaAcara
      */
@@ -184,6 +189,11 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         txtSoal.setEditable(false);
 
         btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -367,11 +377,16 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
     }//GEN-LAST:event_txtKelayakanBobotActionPerformed
 
     private void btnChooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseActionPerformed
-        soal = new  Soal();
-        SearchSoalDialog searchSoalDialog = new SearchSoalDialog();
-        searchSoalDialog.show();
+        soal = new Soal();
+        SearchDialog searchDialog = new SearchDialog(null, true, soal, EnumPanel.SEARCH_SOALMATKUL);
+        searchDialog.show();
         txtSoal.setText(soal.getSoalKode());
     }//GEN-LAST:event_btnChooseActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+       // beritaAcaraVnvController.submitVnv(null, soal, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
