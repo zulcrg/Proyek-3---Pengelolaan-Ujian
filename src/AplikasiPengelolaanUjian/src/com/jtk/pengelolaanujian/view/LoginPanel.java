@@ -12,6 +12,7 @@ import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.facade.UserFacade;
 import com.jtk.pengelolaanujian.util.EnumRole;
 import com.zlib.util.ZHash;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -31,8 +32,9 @@ public class LoginPanel extends javax.swing.JPanel {
      * @param mainFrame
      */
     public LoginPanel(MainFrame mainFrame) {
-        initComponents();
+        initComponents();        
         this.mainFrame = mainFrame;
+        this.setBackground(Color.lightGray);
     }
 
     public void login() {

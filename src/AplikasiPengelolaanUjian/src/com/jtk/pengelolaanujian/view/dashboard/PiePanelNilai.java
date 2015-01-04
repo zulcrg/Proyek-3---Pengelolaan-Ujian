@@ -54,8 +54,8 @@ public class PiePanelNilai extends javax.swing.JPanel {
         uploaded = triggerDashboardController.checkUploadNilaidSoal();
         unuploaded = triggerDashboardController.checkUnUploadNilaiSoal();
         DefaultPieDataset data = new DefaultPieDataset();
-        data.setValue("Belum Di Upload",uploaded);
-        data.setValue("Sudah Di Upload", unuploaded);        
+        data.setValue("Belum Di Upload",unuploaded);
+        data.setValue("Sudah Di Upload", uploaded);        
         return data;
     }
  

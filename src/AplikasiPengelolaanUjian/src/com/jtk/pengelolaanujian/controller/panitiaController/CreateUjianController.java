@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CreateUjianController extends AbstractController {
 
-    public boolean createUjian(String kodeEvent, String namaUjian, String kodeSoal, MataKuliah mataKuliah, String sifatSoal, Date waktu, int durasi) {
+    public boolean createUjian(String kodeEvent, String namaUjian, String kodeSoal, MataKuliah mataKuliah, Date waktu) {
         SoalFacade soalFacade = new SoalFacade();
         UjianFacade facade = new UjianFacade();
 
@@ -36,7 +36,7 @@ public class CreateUjianController extends AbstractController {
             Soal soal = new Soal();
             soal.setMatkulKode(mataKuliah.getMatkulKode());
             soal.setSoalKode(kodeSoal);
-            soal.setSoalSifat(sifatSoal);
+//            soal.setSoalSifat(sifatSoal);
             soal.setSoalUploaded(false);
             soal.setSoalVnved(false);
             soal.setSoalPrinted(false);
@@ -49,7 +49,7 @@ public class CreateUjianController extends AbstractController {
             ujian.setUjianNama(namaUjian);
             ujian.setSoalKode(kodeSoal);
             ujian.setUjianKode(kodeEvent + kodeSoal);
-            ujian.setUjianMenit(durasi);
+//            ujian.setUjianMenit(durasi);
             ujian.setUjianMulai(waktu);
 
             facade.createUjian(ujian);

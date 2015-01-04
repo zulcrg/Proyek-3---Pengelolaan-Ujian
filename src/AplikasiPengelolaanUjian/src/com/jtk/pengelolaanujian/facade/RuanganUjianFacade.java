@@ -17,6 +17,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -313,7 +315,7 @@ public class RuanganUjianFacade {
                     + " ujian.soal_kode= soal.soal_kode AND"
                     + " soal.matkul_kode = mata_kuliah.matkul_kode AND"
                     + " soal.matkul_tipe = mata_kuliah.matkul_tipe";
-            
+
             ResultSet rs = stmt.executeQuery(query);
             List<RuanganUjian> listRuanganUjian = new ArrayList<>();
             while (rs.next()) {
@@ -358,5 +360,55 @@ public class RuanganUjianFacade {
             JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public int checkTerlalui(boolean b) {
+        int counter = 0;
+        String tanggal;
+        boolean stat;
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM ruangan_ujian,ujian WHERE ruangan_ujian.ujian_kode = ujian.ujian_kode";
+            ResultSet rs = stmt.executeQuery(query);
+            Ujian ujian = new Ujian();
+            while (rs.next()) {
+                tanggal = rs.getString(10);
+                tanggal = tanggal.substring(0, 12);
+                stat = check(tanggal, b);
+                if (stat == true) {
+                    counter++;
+                }
+            }
+            return counter;
+        } catch (SQLException ex) {
+            Logger.getLogger(RuanganUjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return counter;
+    }
+
+    private boolean check(String tanggal, boolean b) {
+        try {
+            Date date = new Date();
+            SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+            
+            Date tanggal2 = formatDate.parse(tanggal);
+            if (b == true) {
+                if (date.after(tanggal2)) {                    
+                    return true;
+                } else {                    
+                    return false;
+                }
+            }
+            if (b == false) {
+                if (tanggal2.after(date)) {                    
+                    return true;
+                } else {                    
+                    return false;
+                }
+            }            
+        } catch (ParseException ex) {
+            Logger.getLogger(RuanganUjianFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

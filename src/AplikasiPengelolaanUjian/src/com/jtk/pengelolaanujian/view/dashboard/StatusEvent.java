@@ -56,6 +56,8 @@ public class StatusEvent extends javax.swing.JPanel {
         textVnvAkhir.setText(event.getVnvSelesai().toString());
         
         triggerDashboardController.viewTableUjian(tableUjian);
+        progresEvent.setValue(20);
+        piePanelUjian1.preparation();
     }
 
     /**
@@ -90,12 +92,19 @@ public class StatusEvent extends javax.swing.JPanel {
         labelHeader2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUjian = new javax.swing.JTable();
+        labelHeader3 = new javax.swing.JLabel();
+        piePanelUjian1 = new com.jtk.pengelolaanujian.view.dashboard.PiePanelUjian();
+        labelUploadSoal4 = new javax.swing.JLabel();
+        progresEvent = new javax.swing.JProgressBar();
+        labelHeader4 = new javax.swing.JLabel();
+        textSearch = new javax.swing.JTextField();
+        labelUploadSoal5 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelHeader1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labelHeader1.setText("Ujian yang akan diselenggarakan");
-        add(labelHeader1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+        add(labelHeader1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 77, -1, -1));
 
         labelUjian.setText("Ujian");
@@ -189,12 +198,12 @@ public class StatusEvent extends javax.swing.JPanel {
         jLabel7.setText("-");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 162, -1, -1));
 
-        labelUploadSoal3.setText("Upload Nilai");
-        add(labelUploadSoal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 200, -1, -1));
+        labelUploadSoal3.setText("Detail Informasi Umum mengenai penyelenggaraan Event Ujian ");
+        add(labelUploadSoal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, -1, -1));
 
-        labelHeader2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labelHeader2.setText("Beranda Informasi Event Ujian Terkini");
-        add(labelHeader2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 11, -1, -1));
+        labelHeader2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelHeader2.setText("Keberlangsungan Event");
+        add(labelHeader2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, 20));
 
         tableUjian.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -225,7 +234,57 @@ public class StatusEvent extends javax.swing.JPanel {
             tableUjian.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 620, 170));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 670, 230));
+
+        labelHeader3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelHeader3.setText("Beranda Informasi Event Ujian Terkini");
+        add(labelHeader3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 11, -1, -1));
+
+        javax.swing.GroupLayout piePanelUjian1Layout = new javax.swing.GroupLayout(piePanelUjian1);
+        piePanelUjian1.setLayout(piePanelUjian1Layout);
+        piePanelUjian1Layout.setHorizontalGroup(
+            piePanelUjian1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        piePanelUjian1Layout.setVerticalGroup(
+            piePanelUjian1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+        );
+
+        add(piePanelUjian1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 240, 190));
+
+        labelUploadSoal4.setText("Search Ujian");
+        add(labelUploadSoal4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        add(progresEvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 230, -1));
+
+        labelHeader4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelHeader4.setText("Ujian Status");
+        add(labelHeader4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, 20));
+
+        textSearch.setText("Cari berdasakan nama");
+        textSearch.setToolTipText("Cari berdasakan nama");
+        textSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textSearchActionPerformed(evt);
+            }
+        });
+        textSearch.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textSearchFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textSearchFocusLost(evt);
+            }
+        });
+        textSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textSearchKeyReleased(evt);
+            }
+        });
+        add(textSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 210, -1));
+
+        labelUploadSoal5.setText("Upload Nilai");
+        add(labelUploadSoal5, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 200, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void textUjianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUjianActionPerformed
@@ -260,6 +319,25 @@ public class StatusEvent extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_textNilaiAkhirActionPerformed
 
+    private void textSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textSearchActionPerformed
+
+    private void textSearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textSearchFocusGained
+        // TODO add your handling code here:
+        textSearch.setText("");
+    }//GEN-LAST:event_textSearchFocusGained
+
+    private void textSearchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textSearchFocusLost
+        // TODO add your handling code here:
+        textSearch.setText("Cari berdasakan nama");
+    }//GEN-LAST:event_textSearchFocusLost
+
+    private void textSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textSearchKeyReleased
+        // TODO add your handling code here:
+        triggerDashboardController.viewTableUjian(tableUjian,textSearch.getText());
+    }//GEN-LAST:event_textSearchKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
@@ -271,15 +349,22 @@ public class StatusEvent extends javax.swing.JPanel {
     private javax.swing.JLabel labelBerakhirPada;
     private javax.swing.JLabel labelHeader1;
     private javax.swing.JLabel labelHeader2;
+    private javax.swing.JLabel labelHeader3;
+    private javax.swing.JLabel labelHeader4;
     private javax.swing.JLabel labelPelaksanaan;
     private javax.swing.JLabel labelUjian;
     private javax.swing.JLabel labelUploadSoal;
     private javax.swing.JLabel labelUploadSoal2;
     private javax.swing.JLabel labelUploadSoal3;
+    private javax.swing.JLabel labelUploadSoal4;
+    private javax.swing.JLabel labelUploadSoal5;
+    private com.jtk.pengelolaanujian.view.dashboard.PiePanelUjian piePanelUjian1;
+    private javax.swing.JProgressBar progresEvent;
     private javax.swing.JTable tableUjian;
     private javax.swing.JTextField textEventAkhir;
     private javax.swing.JTextField textEventMulai;
     private javax.swing.JTextField textNilaiAkhir;
+    private javax.swing.JTextField textSearch;
     private javax.swing.JTextField textSoalAkhir;
     private javax.swing.JTextField textSoalMulai;
     private javax.swing.JTextField textUjian;
