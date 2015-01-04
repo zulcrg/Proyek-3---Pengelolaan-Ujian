@@ -167,8 +167,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        menuPanel.setBackground(new java.awt.Color(102, 102, 102));
         menuPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        btnAdmin.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         btnAdmin.setText("Admin");
         btnAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,6 +178,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        btnDosen.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         btnDosen.setText("Dosen Pengampu");
         btnDosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +186,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        btnVnv.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         btnVnv.setText("VnV");
         btnVnv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,6 +194,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        btnPanitia.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         btnPanitia.setText("Panitia Ujian");
         btnPanitia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,6 +202,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        btnDashBoard.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         btnDashBoard.setText("Dashboard");
         btnDashBoard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,6 +236,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btnDashBoard))
         );
 
+        menuPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDosen, btnVnv});
+
         javax.swing.GroupLayout cardPanelLayout = new javax.swing.GroupLayout(cardPanel);
         cardPanel.setLayout(cardPanelLayout);
         cardPanelLayout.setHorizontalGroup(
@@ -238,7 +246,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         cardPanelLayout.setVerticalGroup(
             cardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 596, Short.MAX_VALUE)
+            .addGap(0, 602, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");
