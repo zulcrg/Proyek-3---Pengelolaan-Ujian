@@ -10,10 +10,17 @@ import com.jtk.pengelolaanujian.entity.Nilai;
 import com.jtk.pengelolaanujian.entity.Ruangan;
 import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Ujian;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  *
@@ -143,7 +150,23 @@ public class UploadNilai extends javax.swing.JPanel {
     }
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
-        
+        if (url != null && !url.isEmpty()) {
+            if (new File(url).exists()) {
+                try {
+                    nilai.setNamaFile(FilenameUtils.getBaseName(url));
+                    nilai.setNilaiFile(new FileInputStream(new File(url)));
+                    nilai.setRuanganKode(ruanganUjianList.get(cboUjian.getSelectedIndex()).getRuanganKode());
+                    nilai.setTipeFile(FilenameUtils.getExtension(url));
+                    nilai.setUjianKode(ruanganUjianList.get(cboUjian.getSelectedIndex()).getUjianKode());
+
+                    if (uploadNilaiController.uploadNilai(nilai)) {
+                        JOptionPane.showMessageDialog(this, "Upload nilai berhasil");
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(UploadNilai.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed

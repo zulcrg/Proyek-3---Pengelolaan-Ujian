@@ -406,4 +406,14 @@ public class RuanganUjianFacade {
         }
         return false;
     }
+
+    public void updateUploadedNilai(RuanganUjian ruanganUjian) throws SQLException {
+        String query = "UPDATE ruangan_ujian SET RUANGAN_UJIAN_NILAI_UPLOADED = ? WHERE RUANGAN_KODE = ? AND UJIAN_KODE = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setBoolean(1, ruanganUjian.isRuanganUjianUploadNilaiStatus());
+        preparedStatement.setString(2, ruanganUjian.getRuanganKode());
+        preparedStatement.setString(3, ruanganUjian.getUjianKode());
+
+        preparedStatement.executeUpdate();
+    }
 }
