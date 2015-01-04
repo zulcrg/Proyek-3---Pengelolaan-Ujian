@@ -50,7 +50,9 @@ public class UploadSoal extends javax.swing.JPanel {
         soal.setSoalSifat("TUTUP BUKU");
         spinDurasi.setModel(CommonHelper.createDurasiSpinnerModel());
         textUrl.setText("");
-        cboMatkul.setSelectedIndex(0);
+        if (ujianList != null && !ujianList.isEmpty()) {
+            cboMatkul.setSelectedIndex(0);
+        }
         radTutupBuku.setSelected(true);
     }
 

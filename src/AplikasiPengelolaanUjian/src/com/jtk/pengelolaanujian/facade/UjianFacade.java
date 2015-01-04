@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -217,11 +218,11 @@ public class UjianFacade {
         preparedStatement.setString(1, ujian.getUjianKode());
         preparedStatement.setString(2, ujian.getEventKode());
         preparedStatement.setString(3, ujian.getSoalKode());
-        preparedStatement.setDate(4, new Date(ujian.getUjianMulai().getTime()));
+        preparedStatement.setTimestamp(4, new Timestamp(ujian.getUjianMulai().getTime()));
         preparedStatement.setInt(5, ujian.getUjianMenit());
         preparedStatement.setString(6, ujian.getUjianNama());
 
-        preparedStatement.execute();
+        preparedStatement.executeUpdate();
     }
 
     public void updateUjianMenit(Ujian ujian) throws SQLException {

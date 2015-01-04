@@ -57,5 +57,9 @@ public class UploadNilaiController {
         cbo.setModel(new DefaultComboBoxModel(ruanganUjian));
         return ruanganUjians;        
     }
+    
+    public boolean uploadNilai(){
+        return false;
+    }
 
 }

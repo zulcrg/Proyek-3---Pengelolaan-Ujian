@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  * @author Zulkhair Abdullah D & Pahlevi Ridwan P.
  */
 public class EventController extends AbstractController {
-    
+
     public boolean createEvent(Event event) {
         EventFacade eventFacade = new EventFacade();
         if (eventFacade.findByKodeEvent(event.getKode()) == null) {
@@ -28,6 +28,9 @@ public class EventController extends AbstractController {
                 ConnectionHelper.getConnection().setAutoCommit(false);
                 eventFacade.updateActiveEvent();
                 eventFacade.createEvent(event);
+                ConnectionHelper.getConnection().commit();
+                ConnectionHelper.getConnection().setAutoCommit(true);
+                LoginPanel.setEvent(event);
                 return true;
             } catch (SQLException ex) {
                 Logger.getLogger(EventController.class.getName()).log(Level.SEVERE, null, ex);
@@ -37,20 +40,13 @@ public class EventController extends AbstractController {
                 } catch (SQLException sqlex) {
                     Logger.getLogger(EventController.class.getName()).log(Level.SEVERE, null, sqlex);
                 }
-            } finally {
-                try {
-                    ConnectionHelper.getConnection().commit();
-                    LoginPanel.setEvent(event);
-                } catch (SQLException ex) {
-                    Logger.getLogger(EventController.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
         } else {
             addWarnMessage("Event dengan kode " + event.getKode() + " sudah ada", "Perhatian");
         }
         return false;
     }
-    
+
     public Event getListEvent() {
         EventFacade eventFacade = new EventFacade();
         return eventFacade.findTrue();

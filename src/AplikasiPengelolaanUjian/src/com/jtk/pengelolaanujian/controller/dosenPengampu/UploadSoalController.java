@@ -51,8 +51,8 @@ public class UploadSoalController extends AbstractController {
 
         Ujian ujian = ujianFacade.findByKodeUjian(kodeUjian);
         ujian.getSoalQuery().setSoalSifat(sifatUjian);
-        ujian.getSoal().setStorageSoalList(new ArrayList<StorageSoal>());
         ujian.getSoal().setSoalUploaded(true);
+        ujian.setUjianMenit(durasi);
         StorageSoal storageSoal = new StorageSoal();
         storageSoal.setSoalKode(ujian.getSoalKode());
         storageSoal.setStafNip(userFacade.findByUsername(LoginPanel.getUsername()).getStafNIP());
@@ -68,6 +68,8 @@ public class UploadSoalController extends AbstractController {
             ujianFacade.updateUjianMenit(ujian);
             soalFacade.updateSoalSifatUploaded(ujian.getSoal());
             storageSoalFacade.createStorageSoal(storageSoal);
+            connection.commit();
+            connection.setAutoCommit(true);
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(UploadSoalController.class.getName()).log(Level.SEVERE, null, ex);
@@ -77,14 +79,6 @@ public class UploadSoalController extends AbstractController {
             } catch (SQLException ex1) {
                 Logger.getLogger(UploadSoalController.class.getName()).log(Level.SEVERE, null, ex1);
                 addErrorMessage(ex1.getMessage(), "ERROR");
-            }
-        } finally {
-            try {
-                connection.commit();
-                connection.setAutoCommit(true);
-            } catch (SQLException ex) {
-                Logger.getLogger(UploadSoalController.class.getName()).log(Level.SEVERE, null, ex);
-                addErrorMessage(ex.getMessage(), "ERROR");
             }
         }
         return false;

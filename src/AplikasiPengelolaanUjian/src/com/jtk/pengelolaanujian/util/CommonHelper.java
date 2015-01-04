@@ -6,7 +6,10 @@
 package com.jtk.pengelolaanujian.util;
 
 import com.jtk.pengelolaanujian.entity.Event;
+import com.jtk.pengelolaanujian.facade.SoalFacade;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.SpinnerModel;
@@ -80,5 +83,27 @@ public class CommonHelper {
 
     public static String createUUID() {
         return UUID.randomUUID().toString().replace("-", "");
+    }
+
+    public static Integer booleanToInt(Boolean b) {
+        if (b) {
+            return 1;
+        } else if (!b) {
+            return 0;
+        } else {
+            Logger.getLogger(CommonHelper.class.getName()).log(Level.SEVERE, null, "Error Convert " + b + " to integer");
+            return null;
+        }
+    }
+
+    public static Boolean intToBoolean(Integer i) {
+        if (i == 1) {
+            return true;
+        } else if (i == 0) {
+            return false;
+        } else {
+            Logger.getLogger(CommonHelper.class.getName()).log(Level.SEVERE, null, "Error Convert " + i + " to boolean");
+            return null;
+        }
     }
 }
