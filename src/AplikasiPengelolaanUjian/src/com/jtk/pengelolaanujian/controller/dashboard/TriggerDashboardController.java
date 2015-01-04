@@ -136,14 +136,12 @@ public class TriggerDashboardController {
     }
 
     public int checkUjianTerlalui() {
-        RuanganUjianFacade ruanganUjianFacade = new RuanganUjianFacade();        
-        System.out.println(ruanganUjianFacade.checkTerlalui(true));
+        RuanganUjianFacade ruanganUjianFacade = new RuanganUjianFacade();                
         return ruanganUjianFacade.checkTerlalui(true);            
     }
 
     public int cekUjianBelumTerlalui() {
         RuanganUjianFacade ruanganUjianFacade = new RuanganUjianFacade();        
-        System.out.println(ruanganUjianFacade.checkTerlalui(false));
         return ruanganUjianFacade.checkTerlalui(false);
     }
 

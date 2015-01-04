@@ -417,7 +417,8 @@ public class SoalFacade {
     }
 
     public boolean submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain) {
-        return null;
+        
+        return false;
     }
 
     public void updateSoalSifatUploaded(Soal soal) throws SQLException {
