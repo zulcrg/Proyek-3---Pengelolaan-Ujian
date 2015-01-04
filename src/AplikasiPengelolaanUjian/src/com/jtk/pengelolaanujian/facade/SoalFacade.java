@@ -335,7 +335,6 @@ public class SoalFacade {
                     + "staf.STAF_NIP = dosen.STAF_NIP AND "
                     + "ruangan_ujian.SOAL_KODE = soal.SOAL_KODE AND "
                     + "kelas.KELAS_KODE = ruangan_ujian.KELAS_KODE "
-                    + "user.STAF_NIP = staf.STAF_NIP"
                     + "user.USERNAME = '"+LoginPanel.getUsername()+"' AND"
                     + "kbk.KBK_KODE = dosen.KBK_KODE";
             // alokasi resultset sebagai penampung hasil dari query yang di eksekusi
@@ -393,5 +392,15 @@ public class SoalFacade {
             
         return null;
     }
-
+    
+    public void findUserKbk(){
+        try {
+            Statement statement = connection.createStatement();
+            String query ="SELECT kbk.KBK_KODE from kbk, user, dosen, staf"
+                    + "WHERE ";
+        } catch (SQLException ex) {
+            Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }
