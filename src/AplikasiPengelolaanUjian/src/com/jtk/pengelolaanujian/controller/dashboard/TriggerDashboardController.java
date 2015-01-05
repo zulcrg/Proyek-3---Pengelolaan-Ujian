@@ -19,6 +19,7 @@ import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
 import com.jtk.pengelolaanujian.facade.SoalFacade;
 import com.jtk.pengelolaanujian.facade.StafFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
+import com.jtk.pengelolaanujian.util.CommonHelper;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -101,6 +102,7 @@ public class TriggerDashboardController {
     public void viewTableUjian(JTable tabelUjian) {
         DashboardFacade dashboardFacade = new DashboardFacade();
         dashboardFacade.findAlltableUjian(tabelUjian);
+        CommonHelper.resizeColumnWidth(tabelUjian);
     }
 
     public int checkUploadedSoal() {

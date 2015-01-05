@@ -189,23 +189,23 @@ public class CreateUjian extends javax.swing.JPanel {
 
     private void btnCreateUjianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUjianActionPerformed
         if (textNamaUjian.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Harap isi nama ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Harap isi nama ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (mataKuliah == null) {
-            JOptionPane.showMessageDialog(this, "Harap pilih mata kuliah", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Harap pilih mata kuliah", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (textKodeSoal.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Harap isi kode soal", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Harap isi kode soal", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (textKodeSoal.getText().length() > 5) {
-            JOptionPane.showMessageDialog(this, "Kode soal tidak boleh melebihi 5 karakter", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Kode soal tidak boleh melebihi 5 karakter", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (dateUjianMulai.getDate() == null) {
-            JOptionPane.showMessageDialog(this, "Harap isi tanggal mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Harap isi tanggal mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (textJam.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Harap isi jam mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Harap isi jam mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (!CommonHelper.isStringNumberMaxMin(textJam.getText(), 23, 0)) {
-            JOptionPane.showMessageDialog(this, "Harap isi format jam dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Harap isi format jam dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (textMenit.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Harap isi menit mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Harap isi menit mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (!CommonHelper.isStringNumberMaxMin(textMenit.getText(), 59, 0)) {
-            JOptionPane.showMessageDialog(this, "Harap isi format menit dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Harap isi format menit dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else {
             CreateUjianController controller = new CreateUjianController();
             Date date = new Date();
