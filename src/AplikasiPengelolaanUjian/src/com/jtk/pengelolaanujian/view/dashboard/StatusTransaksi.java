@@ -6,6 +6,8 @@
 package com.jtk.pengelolaanujian.view.dashboard;
 
 import com.jtk.pengelolaanujian.view.MainFrame;
+import com.sun.org.apache.xalan.internal.lib.ExsltDatetime;
+import java.util.Date;
 
 /**
  *
@@ -24,10 +26,12 @@ public class StatusTransaksi extends javax.swing.JPanel {
     }
 
     public void preparation() {
+        Date date = new Date();
         piePanelNilai.preparation();
         piePanelSoal.preparation();
         piePanelVnv.preparation();
         piePanelVnv1.preparation();
+        lableDate.setText(date.toLocaleString());                        
     }
 
     /**
@@ -43,19 +47,20 @@ public class StatusTransaksi extends javax.swing.JPanel {
         piePanelNilai = new com.jtk.pengelolaanujian.view.dashboard.PiePanelNilai();
         piePanelVnv = new com.jtk.pengelolaanujian.view.dashboard.PiePanelVnv();
         piePanelSoal = new com.jtk.pengelolaanujian.view.dashboard.PiePanelSoal();
-        labelDate = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        labelDate2 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         labelDate1 = new javax.swing.JLabel();
+        lableDate = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
-        labelDate.setText("Date :");
-
-        jLabel1.setText("Time :");
+        labelDate2.setText("Date :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Grafik Monotoring Status Transaksi Soal & Nilai");
 
         labelDate1.setText("Detail Informasi Transaksi dalam simple grafik");
+
+        lableDate.setText("-");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -65,16 +70,19 @@ public class StatusTransaksi extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(labelDate)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelDate2)
+                                .addGap(18, 18, 18)
+                                .addComponent(lableDate))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(piePanelSoal, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(piePanelVnv, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(piePanelNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(piePanelNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(labelDate1)))
@@ -86,14 +94,16 @@ public class StatusTransaksi extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addGap(10, 10, 10)
-                .addComponent(labelDate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDate2)
+                    .addComponent(lableDate))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(piePanelVnv, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(piePanelSoal, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(piePanelNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(piePanelVnv, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(piePanelNilai, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(piePanelSoal, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
                 .addComponent(labelDate1)
                 .addGap(31, 31, 31))
@@ -102,10 +112,11 @@ public class StatusTransaksi extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel labelDate;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelDate1;
+    private javax.swing.JLabel labelDate2;
+    private javax.swing.JLabel lableDate;
     private com.jtk.pengelolaanujian.view.dashboard.PiePanelNilai piePanelNilai;
     private com.jtk.pengelolaanujian.view.dashboard.PiePanelSoal piePanelSoal;
     private com.jtk.pengelolaanujian.view.dashboard.PiePanelVnv piePanelVnv;

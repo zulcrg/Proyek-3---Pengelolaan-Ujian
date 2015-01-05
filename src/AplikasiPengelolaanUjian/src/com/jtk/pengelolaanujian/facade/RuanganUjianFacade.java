@@ -373,7 +373,9 @@ public class RuanganUjianFacade {
             Ujian ujian = new Ujian();
             while (rs.next()) {
                 tanggal = rs.getString(10);
-                tanggal = tanggal.substring(0, 12);
+                
+                tanggal = tanggal.substring(0, 10);
+                System.out.println(tanggal);
                 stat = check(tanggal, b);
                 if (stat == true) {
                     counter++;

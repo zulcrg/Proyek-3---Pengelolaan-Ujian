@@ -116,7 +116,7 @@ public class StatusEvent extends javax.swing.JPanel {
                 textUjianActionPerformed(evt);
             }
         });
-        add(textUjian, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 51, 230, -1));
+        add(textUjian, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 260, -1));
 
         textEventMulai.setEditable(false);
         textEventMulai.addActionListener(new java.awt.event.ActionListener() {

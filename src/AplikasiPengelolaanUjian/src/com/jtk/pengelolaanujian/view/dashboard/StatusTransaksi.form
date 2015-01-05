@@ -24,10 +24,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelDate" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="labelDate2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lableDate" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="piePanelSoal" min="-2" pref="216" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -35,6 +38,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="piePanelNilai" min="-2" pref="204" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -52,15 +56,18 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Component id="labelDate" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="piePanelVnv" min="-2" pref="183" max="-2" attributes="0"/>
-                  <Component id="piePanelSoal" min="-2" pref="183" max="-2" attributes="0"/>
-                  <Component id="piePanelNilai" min="-2" pref="175" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelDate2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lableDate" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="piePanelVnv" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="piePanelNilai" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="piePanelSoal" min="-2" pref="175" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace pref="246" max="32767" attributes="0"/>
               <Component id="labelDate1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -75,14 +82,9 @@
     </Component>
     <Component class="com.jtk.pengelolaanujian.view.dashboard.PiePanelSoal" name="piePanelSoal">
     </Component>
-    <Component class="javax.swing.JLabel" name="labelDate">
+    <Component class="javax.swing.JLabel" name="labelDate2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Date :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Time :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -97,6 +99,13 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Detail Informasi Transaksi dalam simple grafik"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lableDate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="-"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
   </SubComponents>
 </Form>
