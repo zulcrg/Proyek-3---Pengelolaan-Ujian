@@ -6,9 +6,11 @@
 package com.jtk.pengelolaanujian.view.dosenpengampu;
 
 import com.jtk.pengelolaanujian.controller.dosenPengampu.UploadSoalController;
+import com.jtk.pengelolaanujian.controller.reminder.Reminder3Controller;
 import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.CommonHelper;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -228,6 +230,8 @@ public class UploadSoal extends javax.swing.JPanel {
                 String namaFile = FilenameUtils.getBaseName(url);
                 if (uploadSoalController.uploadSoal(is, ujianList.get(cboMatkul.getSelectedIndex()).getUjianKode(), soal.getSoalSifat(), durasi, tipeFile, namaFile)) {
                     JOptionPane.showMessageDialog(this, "File berhasil di upload", "Perhatian", JOptionPane.INFORMATION_MESSAGE);
+                    Reminder3Controller reminder3Controller = new Reminder3Controller();
+                    reminder3Controller.preparation();
                     clear();
                 }
             } catch (FileNotFoundException ex) {

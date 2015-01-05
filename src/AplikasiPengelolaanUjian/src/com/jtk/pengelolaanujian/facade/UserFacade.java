@@ -246,5 +246,5 @@ public class UserFacade {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
+    }  
 }

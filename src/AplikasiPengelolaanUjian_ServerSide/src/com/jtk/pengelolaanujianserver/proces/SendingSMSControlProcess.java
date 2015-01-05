@@ -5,6 +5,7 @@
  */
 package com.jtk.pengelolaanujianserver.proces;
 
+import com.jtk.pengelolaanujian.controller.reminder.Reminder3Controller;
 import com.jtk.pengelolaanujianserver.controller.ReminderDayMonit2Controller;
 import com.jtk.pengelolaanujianserver.controller.ReminderDayMonit7Controller;
 import com.jtk.pengelolaanujianserver.controller.ReminderDayMonit8Controller;
@@ -20,14 +21,13 @@ public class SendingSMSControlProcess extends TimerTask {
 
     ReminderDayMonit2Controller reminderDayMonit2Controller = new ReminderDayMonit2Controller();
     ReminderDayMonit7Controller reminderDayMonit7Controller = new ReminderDayMonit7Controller();
-    ReminderDayMonit8Controller reminderDayMonit8Controller = new ReminderDayMonit8Controller();
-
+    ReminderDayMonit8Controller reminderDayMonit8Controller = new ReminderDayMonit8Controller();    
+    
     public void run() {
         //SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println("Cek aturan main - action control setiap 10 detik 1x ");
 
-        //Reminder1Controller remainder1Controller = new Reminder1Controller(date);        
-        //Reminder3Controller remainder3Controller = new Reminder3Controller(date);
+        //Reminder1Controller remainder1Controller = new Reminder1Controller(date);                
         //Reminder4Controller remainder4Controller = new Reminder4Controller(date);
         //Reminder5Controller remainder5Controller = new Reminder5Controller(date);
         //Reminder6Controller remainder6Controller = new Reminder6Controller(date);
@@ -44,14 +44,14 @@ public class SendingSMSControlProcess extends TimerTask {
          H-xx pengawas ujian diingatkan mengenai jadwal mengawsnya
          */
         reminderDayMonit7Controller.preparation();
-        
+
         /*
          Remainder 8
          Day Monitoring    
          H - xx dosen pengampu diingatkan mengenai jadwal mengupload nilai reminderDayMonit8Controller
          */
-        reminderDayMonit8Controller.preparation();        
-
+        reminderDayMonit8Controller.preparation();                
+          
     }
     /* TODO:  
      Reminder 1
@@ -61,21 +61,7 @@ public class SendingSMSControlProcess extends TimerTask {
      -jadwal setiap proses upload soal, vnv, ujian.
      -role setiap orang /akun
      -tanggal2 penting lainnya
-
-     
-
-     Reminder 3 
-     real time monitoring -> Trigger DB
-        
-     pemberitahuan untuk pembuat soal, bahwa soal berhasil diunggah dan 
-     akan diproses ke tahap selanjutnya.
-     notifikasi untuk tim vnv untuk memulai proses vnv
-            
-     pemberitahuan kepada pembuat soal bahwa soal yang diunggah tidak
-     dapat di proses ke tahap selanjutnya karena keterlambatan proses
-     pengunggahan
-
-    
+           
      Reminder 5
      real time monitoring -> Trigger DB
     

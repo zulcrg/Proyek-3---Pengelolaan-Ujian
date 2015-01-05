@@ -154,7 +154,6 @@ public class EventFacade {
 
     public Event findTrue() {
         try {
-
             Statement stmt = connection.createStatement();
             String query = "SELECT * FROM event WHERE EVENT_ACTIVE = 1";
             ResultSet rs = stmt.executeQuery(query);
@@ -167,11 +166,11 @@ public class EventFacade {
                 event.setUploadSelesai(rs.getDate(5));
                 event.setVnvMulai(rs.getDate(6));
                 event.setVnvSelesai(rs.getDate(7));
-                event.setDelayUploadSoal(rs.getInt(8));
-                event.setDelayPengawas(rs.getInt(9));
-                event.setDelayUploadNilai(rs.getInt(10));
-                event.setUploadNilaiSelesai(rs.getDate(11));
-                event.setTimeReminder(rs.getInt(12));
+                event.setUploadNilaiSelesai(rs.getDate(8));
+                event.setDelayUploadSoal(rs.getInt(10));
+                event.setDelayPengawas(rs.getInt(11));
+                event.setDelayUploadNilai(rs.getInt(12));
+                event.setTimeReminder(rs.getInt(13));
                 return event;
             }
         } catch (SQLException ex) {

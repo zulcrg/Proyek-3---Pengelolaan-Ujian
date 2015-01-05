@@ -6,23 +6,17 @@
 
 package com.jtk.pengelolaanujian.view.vnv;
 
-import java.awt.Color;
-
 /**
  *
  * @author pahlevi
  */
-public class VnvPanel extends javax.swing.JPanel {
+public class BeritaAcaraVnvScroll extends javax.swing.JPanel {
 
     /**
-     * Creates new form VnvPanel
+     * Creates new form test
      */
-    public VnvPanel() {
+    public BeritaAcaraVnvScroll() {
         initComponents();
-    }
-    
-    public void preparation(){
-        this.setBackground(Color.darkGray);
     }
 
     /**
@@ -34,31 +28,28 @@ public class VnvPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        beritaAcaraVnvScroll1 = new com.jtk.pengelolaanujian.view.vnv.BeritaAcaraVnvScroll();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        beritaAcaraVnv1 = new com.jtk.pengelolaanujian.view.vnv.BeritaAcaraVnv();
 
-        setMinimumSize(new java.awt.Dimension(818, 625));
-        setPreferredSize(new java.awt.Dimension(818, 625));
-
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTabbedPane1.addTab("Berita Acara VNV", beritaAcaraVnvScroll1);
+        jScrollPane1.setViewportView(beritaAcaraVnv1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 141, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.jtk.pengelolaanujian.view.vnv.BeritaAcaraVnvScroll beritaAcaraVnvScroll1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private com.jtk.pengelolaanujian.view.vnv.BeritaAcaraVnv beritaAcaraVnv1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
