@@ -11,6 +11,7 @@ import com.jtk.pengelolaanujian.controller.admin.RegistrasiUserController;
 import com.jtk.pengelolaanujian.controller.panitiaController.AssignUjianController;
 import com.jtk.pengelolaanujian.controller.panitiaController.CreateUjianController;
 import com.jtk.pengelolaanujian.controller.vnv.BeritaAcaraVnvController;
+import com.jtk.pengelolaanujian.entity.Dosen;
 import com.jtk.pengelolaanujian.entity.Kelas;
 import com.jtk.pengelolaanujian.entity.MataKuliah;
 import com.jtk.pengelolaanujian.entity.Ruangan;
@@ -39,7 +40,8 @@ public class SearchDialog extends javax.swing.JDialog {
     private List<Kelas> kelasList;
     private List<Soal> soalList;
     private List<Staf> stafList;
-    private List<Staf> stafListSelected;
+    private List<Dosen> dosenList;
+    private List<Dosen> dosenListSelected;
     private List<MataKuliah> mataKuliahList;
     private List<Ujian> ujianList;
     private RegistrasiUserController registrasiUserController;
@@ -93,16 +95,16 @@ public class SearchDialog extends javax.swing.JDialog {
      *
      * @param parent
      * @param modal
-     * @param stafList
+     * @param dosenList
      * @param enumPanel
      */
-    public SearchDialog(Frame parent, boolean modal, List<Staf> stafList, EnumPanel enumPanel) {
+    public SearchDialog(Frame parent, boolean modal, List<Dosen> dosenList, EnumPanel enumPanel) {
         super(parent, modal);
         initComponents();
         setFocusable(true);
         setLocationRelativeTo(null);
         setResizable(false);
-        this.stafListSelected = stafList;
+        this.dosenListSelected = dosenList;
         this.enumPanel = enumPanel;
         switchPanel();
     }
@@ -235,7 +237,7 @@ public class SearchDialog extends javax.swing.JDialog {
                 break;
             case SEARCH_STAF:
                 beritaAcaraVnvController = new BeritaAcaraVnvController();
-                stafList = beritaAcaraVnvController.searchTimVnv("", table);
+                dosenList = beritaAcaraVnvController.searchTimVnv("", table);
                 textSearch.setText("Cari berdasarkan NIP atau Nama Staf");
                 setTitle("Tim Vnv");
                 break;
@@ -315,9 +317,9 @@ public class SearchDialog extends javax.swing.JDialog {
                 staf.setStafNIP(stafList.get(table.getSelectedRow()).getStafNIP());
                 break;
             case SEARCH_STAF:
-                for (int i = 0; i < stafList.size(); i++) {
+                for (int i = 0; i < dosenList.size(); i++) {
                     if ((boolean) table.getValueAt(i, 2)) {
-                        stafListSelected.add(stafList.get(i));
+                        dosenListSelected.add(dosenList.get(i));
                     }
                 }
                 break;
@@ -455,7 +457,7 @@ public class SearchDialog extends javax.swing.JDialog {
                 stafList = assignUjianController.searchPengawas(textSearch.getText(), table);
                 break;
             case SEARCH_STAF:
-                stafList = beritaAcaraVnvController.searchTimVnv(textSearch.getText(), table);
+                dosenList = beritaAcaraVnvController.searchTimVnv(textSearch.getText(), table);
                 break;
         }
     }//GEN-LAST:event_textSearchKeyReleased
