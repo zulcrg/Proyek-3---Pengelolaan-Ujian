@@ -80,34 +80,47 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         txtSoal = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel2.setText("Tim Verifikasi dan Validasi");
 
         btnTimVnv.setText("Browse");
 
         txtTimVnv.setEditable(false);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel3.setText("Mata Kuliah :");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setText("Perkuliahan :");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel5.setText("Tanggal Ujian :");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel6.setText("Waktu :");
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel7.setText("Nama Dosen :");
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel8.setText("Kode Dosen :");
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel9.setText("Kode Mata Kuliah :");
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel10.setText("Bentuk Ujian :");
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel11.setText("Sifat Ujian :");
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel12.setText("Tahun Akademik :");
 
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel13.setText("Semester :");
 
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel14.setText("Kelas :");
 
         txtMatkul.setEditable(false);
@@ -149,10 +162,13 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
 
         txtKelas.setEditable(false);
 
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel15.setText("Dengan Catatan Sebagai Berikut :");
 
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel16.setText("1. Relevansi Soal dengan Materi yang diajarkan");
 
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel17.setText("2. Derajat Kesulitan");
 
         txtDerajatSulit.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +177,7 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
             }
         });
 
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel18.setText("3. Kelayakan Bobot Nilai");
 
         txtKelayakanBobot.addActionListener(new java.awt.event.ActionListener() {
@@ -169,14 +186,17 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
             }
         });
 
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel19.setText("4. Kelayakan Waktu dan Kompleksitas Masalah");
 
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel20.setText("5. Lain-lain");
 
         txtLain.setColumns(20);
         txtLain.setRows(5);
         jScrollPane1.setViewportView(txtLain);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel1.setText("Soal");
 
         btnChoose.setText("Choose");
@@ -200,7 +220,7 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnSubmit)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,9 +259,9 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
                                             .addComponent(txtTglUjian)
                                             .addComponent(txtWaktuUjian)
                                             .addComponent(txtNmDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 21, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel9)
                                             .addComponent(jLabel10)
@@ -255,9 +275,13 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
                                             .addComponent(txtTahunAk, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel14))
-                                        .addGap(20, 20, 20)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel14)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtSemester)
                                             .addComponent(txtKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))))

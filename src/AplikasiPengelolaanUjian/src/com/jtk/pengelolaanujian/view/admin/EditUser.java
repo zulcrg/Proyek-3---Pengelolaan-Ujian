@@ -55,7 +55,7 @@ public class EditUser extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(640, 625));
         setPreferredSize(new java.awt.Dimension(640, 625));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Username");
 
         textUsername.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +64,7 @@ public class EditUser extends javax.swing.JPanel {
             }
         });
 
+        btnBrowse.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnBrowse.setText("Cari");
         btnBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +72,7 @@ public class EditUser extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Status");
 
         btnSimpan.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -104,12 +105,12 @@ public class EditUser extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(189, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(157, 157, 157)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(26, 26, 26)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSimpan)
                     .addGroup(layout.createSequentialGroup()
@@ -118,14 +119,14 @@ public class EditUser extends javax.swing.JPanel {
                         .addComponent(radNonAktif))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBrowse)))
-                .addGap(181, 181, 181))
+                .addGap(212, 212, 212))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(179, 179, 179)
+                .addGap(131, 131, 131)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,7 +138,7 @@ public class EditUser extends javax.swing.JPanel {
                     .addComponent(radNonAktif))
                 .addGap(34, 34, 34)
                 .addComponent(btnSimpan)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addContainerGap(365, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

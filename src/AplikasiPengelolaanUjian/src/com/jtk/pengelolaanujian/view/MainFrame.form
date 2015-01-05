@@ -152,6 +152,9 @@
               <Image iconType="3" name="/com/jtk/pengelolaanujian/view/images/admin1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Admin"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalAlignment" type="int" value="3"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdminActionPerformed"/>
@@ -172,6 +175,8 @@
               <Image iconType="3" name="/com/jtk/pengelolaanujian/view/images/Teacher1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Dosen Pengampu"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDosenActionPerformed"/>
@@ -192,6 +197,8 @@
               <Image iconType="3" name="/com/jtk/pengelolaanujian/view/images/vnv1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="VnV"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVnvActionPerformed"/>
@@ -212,6 +219,8 @@
               <Image iconType="3" name="/com/jtk/pengelolaanujian/view/images/Crew1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Panitia Ujian"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPanitiaActionPerformed"/>
@@ -232,6 +241,8 @@
               <Image iconType="3" name="/com/jtk/pengelolaanujian/view/images/Dashboard1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Dashboard"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDashBoardActionPerformed"/>
@@ -249,7 +260,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="548" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="564" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

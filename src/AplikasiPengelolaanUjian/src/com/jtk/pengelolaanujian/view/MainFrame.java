@@ -178,6 +178,9 @@ public class MainFrame extends javax.swing.JFrame {
         btnAdmin.setForeground(new java.awt.Color(240, 240, 240));
         btnAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/pengelolaanujian/view/images/admin1.png"))); // NOI18N
         btnAdmin.setText("Admin");
+        btnAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAdmin.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnAdmin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminActionPerformed(evt);
@@ -189,6 +192,8 @@ public class MainFrame extends javax.swing.JFrame {
         btnDosen.setForeground(new java.awt.Color(240, 240, 240));
         btnDosen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/pengelolaanujian/view/images/Teacher1.png"))); // NOI18N
         btnDosen.setText("Dosen Pengampu");
+        btnDosen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDosen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnDosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDosenActionPerformed(evt);
@@ -200,6 +205,8 @@ public class MainFrame extends javax.swing.JFrame {
         btnVnv.setForeground(new java.awt.Color(240, 240, 240));
         btnVnv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/pengelolaanujian/view/images/vnv1.png"))); // NOI18N
         btnVnv.setText("VnV");
+        btnVnv.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVnv.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnVnv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVnvActionPerformed(evt);
@@ -211,6 +218,8 @@ public class MainFrame extends javax.swing.JFrame {
         btnPanitia.setForeground(new java.awt.Color(240, 240, 240));
         btnPanitia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/pengelolaanujian/view/images/Crew1.png"))); // NOI18N
         btnPanitia.setText("Panitia Ujian");
+        btnPanitia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPanitia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPanitia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPanitiaActionPerformed(evt);
@@ -222,6 +231,8 @@ public class MainFrame extends javax.swing.JFrame {
         btnDashBoard.setForeground(new java.awt.Color(240, 240, 240));
         btnDashBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/pengelolaanujian/view/images/Dashboard1.png"))); // NOI18N
         btnDashBoard.setText("Dashboard");
+        btnDashBoard.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDashBoard.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnDashBoard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDashBoardActionPerformed(evt);
@@ -262,7 +273,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         cardPanelLayout.setVerticalGroup(
             cardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+            .addGap(0, 564, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");
