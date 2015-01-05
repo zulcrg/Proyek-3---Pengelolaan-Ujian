@@ -190,9 +190,10 @@ public class UjianFacade {
                 }
             }
             sb.append(")");
-
+            //System.out.println(sb);
+            
             Statement stmt = connection.createStatement();
-            String query = "SELECT * FROM ujian WHERE UJIAN_KODE IN " + sb.toString() + "";
+            String query = "SELECT * FROM ujian WHERE UJIAN_KODE IN " + sb.toString() + "";                            
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Ujian ujian = new Ujian();

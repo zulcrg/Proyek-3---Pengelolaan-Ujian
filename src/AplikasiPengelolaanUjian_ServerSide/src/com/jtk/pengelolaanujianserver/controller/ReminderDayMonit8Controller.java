@@ -21,13 +21,17 @@ import java.util.List;
  */
 public class ReminderDayMonit8Controller extends Reminder {
 
-    private final Date date;
+    private Date date;
 
-    public ReminderDayMonit8Controller(Date date) {
-        this.date = date;
+    public ReminderDayMonit8Controller() {
+        this.date = new Date();
+    }
+    
+    public void preparation(){
+        checkRule();
     }
 
-    public void checkRule() throws SQLException {
+    public void checkRule(){
         event = eventFacade.findLast();
         List<RuanganUjian> listRuanganUjian = null;
         List<Ujian> listUjian = null;
@@ -38,9 +42,11 @@ public class ReminderDayMonit8Controller extends Reminder {
         
         listUjian = ujianFacade.findByKodeEvent(event.getKode());
         String smsString = "Sekarang sudah H-" + event.getDelayUploadNilai() + " batas akhir Upload Nilai, Mohon segera Upload data Nilai Ujian Matkul anda. Terima Kasih";
-
+        //System.out.println(listUjian.get(0).getUjianNama());
+        
         if (date.getDate() + event.getDelayUploadNilai()== event.getUploadNilaiSelesai().getDate()) {
             listRuanganUjian=ruanganUjianFacade.findAllWhereNilaiUploaded(false);
+            //System.out.println(listRuanganUjian.get(0).getRuanganKode());
             listUjian=ujianFace.findAllWhereListedIN(listRuanganUjian);
             listSoal=soalFacade.findAllWhereListedIN(listUjian);
             listMataKuliah = mataKuliahFacade.findAllWhereListedIn(listSoal);

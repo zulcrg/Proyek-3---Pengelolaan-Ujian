@@ -46,6 +46,7 @@ public class MataKuliahToDosenFacade {
                 MataKuliahToDosen mataKuliahToDosen = new MataKuliahToDosen();
                 mataKuliahToDosen.setDosenKode(rs.getString(1));
                 mataKuliahToDosen.setMatkulKode(rs.getString(2));
+                
                 mataKuliahTodosenList.add(mataKuliahToDosen);
             }
             return mataKuliahTodosenList;
