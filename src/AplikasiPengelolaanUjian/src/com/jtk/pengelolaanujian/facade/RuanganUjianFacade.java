@@ -57,7 +57,7 @@ public class RuanganUjianFacade {
         return null;
     }
 
-    public List<RuanganUjian> findByUjianKodeStafNipKelasKode(String ujianKode, String kelasKode) {
+    public RuanganUjian findByUjianKodeKelasKode(String ujianKode, String kelasKode) {
         try {
             Statement stmt = connection.createStatement();
             String query = "SELECT * FROM ruangan_ujian ";
@@ -75,17 +75,15 @@ public class RuanganUjianFacade {
             }
 
             ResultSet rs = stmt.executeQuery(query + sb.toString());
-            List<RuanganUjian> ruanganUjianList = new ArrayList<>();
-            while (rs.next()) {
+            if (rs.next()) {
                 RuanganUjian ruanganUjian = new RuanganUjian();
                 ruanganUjian.setRuanganKode(rs.getString(1));
                 ruanganUjian.setUjianKode(rs.getString(2));
                 ruanganUjian.setStafNip(rs.getString(3));
                 ruanganUjian.setBeritaKode(rs.getString(4));
 
-                ruanganUjianList.add(ruanganUjian);
+                return ruanganUjian;
             }
-            return ruanganUjianList;
         } catch (SQLException ex) {
             Logger.getLogger(RuanganUjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -229,11 +227,11 @@ public class RuanganUjianFacade {
                 ujian.setUjianMulai(rs.getDate(14));
                 ujian.setUjianMenit(rs.getInt(15));
                 ujian.setUjianNama(rs.getString(16));
-                
+
                 ruanganUjian.setUjian(ujian);
                 ruanganUjian.setStaf(staf);
                 ruanganUjianList.add(ruanganUjian);
-            }            
+            }
             return ruanganUjianList;
         } catch (SQLException ex) {
             Logger.getLogger(RuanganUjianFacade.class.getName()).log(Level.SEVERE, null, ex);
@@ -373,7 +371,7 @@ public class RuanganUjianFacade {
             Ujian ujian = new Ujian();
             while (rs.next()) {
                 tanggal = rs.getString(10);
-                
+
                 tanggal = tanggal.substring(0, 10);
                 System.out.println(tanggal);
                 stat = check(tanggal, b);
@@ -415,10 +413,10 @@ public class RuanganUjianFacade {
     }
 
     public void updateUploadedNilai(RuanganUjian ruanganUjian) throws SQLException {
-        String query = "UPDATE ruangan_ujian SET RUANGAN_UJIAN_NILAI_UPLOADED = ? WHERE RUANGAN_KODE = ? AND UJIAN_KODE = ?";
+        String query = "UPDATE ruangan_ujian SET RUANGAN_UJIAN_NILAI_UPLOADED = ? WHERE KELAS_KODE = ? AND UJIAN_KODE = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setBoolean(1, ruanganUjian.isRuanganUjianUploadNilaiStatus());
-        preparedStatement.setString(2, ruanganUjian.getRuanganKode());
+        preparedStatement.setString(2, ruanganUjian.getKelasKode());
         preparedStatement.setString(3, ruanganUjian.getUjianKode());
 
         preparedStatement.executeUpdate();

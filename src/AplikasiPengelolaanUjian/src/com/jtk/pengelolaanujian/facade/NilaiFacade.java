@@ -6,8 +6,10 @@
 package com.jtk.pengelolaanujian.facade;
 
 import com.jtk.pengelolaanujian.entity.Nilai;
+import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -32,9 +34,11 @@ public class NilaiFacade {
             List<Nilai> nilaiList = new ArrayList<>();
             while (rs.next()) {
                 Nilai nilai = new Nilai();
-                nilai.setRuanganKode(rs.getString(1));
-                nilai.setUjianKode(rs.getString(2));
-                nilai.setNilaiFile(rs.getBinaryStream(3));
+                nilai.setKelasKode(rs.getString("KELAS_KODE"));
+                nilai.setUjianKode(rs.getString("UJIAN_KODE"));
+                nilai.setNilaiFile(rs.getBinaryStream("NILAI_FILE"));
+                nilai.setNamaFile(rs.getString("NILAI_NAMA_FILE"));
+                nilai.setTipeFile(rs.getString("NILAI_TIPE_FILE"));
 
                 nilaiList.add(nilai);
             }
@@ -43,5 +47,17 @@ public class NilaiFacade {
             Logger.getLogger(NilaiFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void uploadNilai(Nilai nilai) throws SQLException {
+        String query = "INSERT INTO nilai(UJIAN_KODE, KELAS_KODE, NILAI_FILE, NILAI_NAMA_FILE, NILAI_TIPE_FILE) values(?,?,?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, nilai.getUjianKode());
+        preparedStatement.setString(2, nilai.getKelasKode());
+        preparedStatement.setBinaryStream(3, nilai.getNilaiFile());
+        preparedStatement.setString(4, nilai.getNamaFile());
+        preparedStatement.setString(5, nilai.getTipeFile());
+
+        preparedStatement.executeUpdate();
     }
 }

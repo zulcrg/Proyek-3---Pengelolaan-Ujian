@@ -37,6 +37,7 @@ public class EventController extends AbstractController {
                 addErrorMessage("Gagal membuat event", "Error");
                 try {
                     ConnectionHelper.getConnection().rollback();
+                    ConnectionHelper.getConnection().setAutoCommit(true);
                 } catch (SQLException sqlex) {
                     Logger.getLogger(EventController.class.getName()).log(Level.SEVERE, null, sqlex);
                 }

@@ -8,7 +8,6 @@ package com.jtk.pengelolaanujian.view;
 import com.jtk.pengelolaanujian.util.EnumRole;
 import com.jtk.pengelolaanujian.view.admin.AdminPanel;
 import com.jtk.pengelolaanujian.view.dashboard.DashboardPanel;
-import com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi;
 import com.jtk.pengelolaanujian.view.dosenpengampu.DosenPengampuPanel;
 import com.jtk.pengelolaanujian.view.panitia.PanitiaPanel;
 import com.jtk.pengelolaanujian.view.util.AboutAppsDialog;

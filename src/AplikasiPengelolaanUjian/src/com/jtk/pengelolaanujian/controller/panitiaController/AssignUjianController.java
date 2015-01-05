@@ -134,7 +134,7 @@ public class AssignUjianController extends AbstractController {
     public boolean createRuanganUjian(String kodeUjian, String kodeRuangan, String stafNip, String kelasKode) {
         RuanganUjianFacade ruanganFacade = new RuanganUjianFacade();
 
-        if (!ruanganFacade.findByUjianKodeStafNipKelasKode(kodeUjian, kelasKode).isEmpty()) {
+        if (ruanganFacade.findByUjianKodeKelasKode(kodeUjian, kelasKode) != null) {
             addWarnMessage("Ujian sudah di assign", "Perhatian");
         } else {
             BeritaAcara beritaAcara = new BeritaAcara();
@@ -168,6 +168,7 @@ public class AssignUjianController extends AbstractController {
                 addErrorMessage(ex.getMessage(), "Error");
                 try {
                     ConnectionHelper.getConnection().rollback();
+                    ConnectionHelper.getConnection().setAutoCommit(true);
                 } catch (SQLException ex1) {
                     Logger.getLogger(AssignUjianController.class.getName()).log(Level.SEVERE, null, ex1);
                     addErrorMessage(ex1.getMessage(), "Error");

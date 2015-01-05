@@ -67,6 +67,7 @@ public class CreateUjianController extends AbstractController {
                 addErrorMessage(ex.getMessage(), "Error");
                 try {
                     ConnectionHelper.getConnection().rollback();
+                    ConnectionHelper.getConnection().setAutoCommit(true);
                 } catch (SQLException ex1) {
                     Logger.getLogger(CreateUjianController.class.getName()).log(Level.SEVERE, null, ex1);
                     addErrorMessage(ex1.getMessage(), "Error");

@@ -8,7 +8,6 @@ package com.jtk.pengelolaanujian.entity;
 
 import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
 import java.io.InputStream;
-import java.sql.Blob;
 
 /**
  *
@@ -16,28 +15,19 @@ import java.sql.Blob;
  */
 public class Nilai {
 
-    private String ruanganKode;
     private String ujianKode;
     private InputStream nilaiFile;
     private RuanganUjian ruanganUjian;
     private String namaFile;
     private String tipeFile;
+    private String kelasKode;
     
     public Nilai() {
     }
     
-    public Nilai(String ruanganKode, String ujianKode, InputStream nilaiFile) {
-        this.ruanganKode = ruanganKode;
+    public Nilai(String ujianKode, InputStream nilaiFile) {
         this.ujianKode = ujianKode;
         this.nilaiFile = nilaiFile;
-    }
-    
-    public String getRuanganKode() {
-        return ruanganKode;
-    }
-    
-    public void setRuanganKode(String ruanganKode) {
-        this.ruanganKode = ruanganKode;
     }
     
     public String getUjianKode() {
@@ -58,7 +48,7 @@ public class Nilai {
     
     public RuanganUjian getRuanganUjian() {
         RuanganUjianFacade ruanganUjianFacade = new RuanganUjianFacade();
-        ruanganUjian = ruanganUjianFacade.findByRuanganKodeUjianKodeStafNip(ruanganKode, ujianKode, null).get(0);
+        ruanganUjian = ruanganUjianFacade.findByUjianKodeKelasKode(ujianKode, kelasKode);
         return ruanganUjian;
     }
     
@@ -80,6 +70,14 @@ public class Nilai {
 
     public void setTipeFile(String tipeFile) {
         this.tipeFile = tipeFile;
+    }
+
+    public String getKelasKode() {
+        return kelasKode;
+    }
+
+    public void setKelasKode(String kelasKode) {
+        this.kelasKode = kelasKode;
     }
     
 }

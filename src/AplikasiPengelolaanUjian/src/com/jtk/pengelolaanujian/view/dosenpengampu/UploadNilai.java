@@ -159,7 +159,7 @@ public class UploadNilai extends javax.swing.JPanel {
                 try {
                     nilai.setNamaFile(FilenameUtils.getBaseName(url));
                     nilai.setNilaiFile(new FileInputStream(new File(url)));
-                    nilai.setRuanganKode(ruanganUjianList.get(cboUjian.getSelectedIndex()).getRuanganKode());
+                    nilai.setKelasKode(ruanganUjianList.get(cboUjian.getSelectedIndex()).getKelasKode());
                     nilai.setTipeFile(FilenameUtils.getExtension(url));
                     nilai.setUjianKode(ruanganUjianList.get(cboUjian.getSelectedIndex()).getUjianKode());
 

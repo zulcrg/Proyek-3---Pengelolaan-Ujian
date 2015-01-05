@@ -76,6 +76,7 @@ public class UploadSoalController extends AbstractController {
             addErrorMessage(ex.getMessage(), "ERROR");
             try {
                 connection.rollback();
+                ConnectionHelper.getConnection().setAutoCommit(true);
             } catch (SQLException ex1) {
                 Logger.getLogger(UploadSoalController.class.getName()).log(Level.SEVERE, null, ex1);
                 addErrorMessage(ex1.getMessage(), "ERROR");
