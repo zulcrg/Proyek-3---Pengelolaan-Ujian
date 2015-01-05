@@ -39,7 +39,7 @@ public class PrintSoal extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableViewListPrintSoal = new javax.swing.JTable();
 
-        labelListSoalSiapPrint.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelListSoalSiapPrint.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelListSoalSiapPrint.setText("List Soal Siap Print");
 
         tableViewListPrintSoal.setModel(new javax.swing.table.DefaultTableModel(
@@ -88,11 +88,11 @@ public class PrintSoal extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(71, 71, 71)
                 .addComponent(labelListSoalSiapPrint)
-                .addGap(28, 28, 28)
+                .addGap(58, 58, 58)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

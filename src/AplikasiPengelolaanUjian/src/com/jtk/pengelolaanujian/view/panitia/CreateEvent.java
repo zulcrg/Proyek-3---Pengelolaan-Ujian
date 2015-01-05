@@ -89,10 +89,13 @@ public class CreateEvent extends javax.swing.JPanel {
 
         jPasswordField1.setText("jPasswordField1");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel1.setText("Tahun Pelaksanaan");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel2.setText("Semester");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel4.setText("Ujian");
 
         cboSemester.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ganjil", "Genap" }));
@@ -104,24 +107,32 @@ public class CreateEvent extends javax.swing.JPanel {
 
         cboUjian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "UTS", "UAS" }));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel5.setText("Tanggal Pelaksanaan");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel6.setText("Dari");
 
         datePelaksanaanStart.setPreferredSize(new java.awt.Dimension(90, 20));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel7.setText("Sampai");
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel8.setText("Tanggal Upload Soal");
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel9.setText("Dari");
 
         dateUploadSoalStart.setPreferredSize(new java.awt.Dimension(90, 20));
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel10.setText("Sampai");
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel11.setText("Tanggal VNV");
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel12.setText("Dari");
         jLabel12.setMaximumSize(new java.awt.Dimension(34, 14));
         jLabel12.setMinimumSize(new java.awt.Dimension(34, 14));
@@ -129,6 +140,7 @@ public class CreateEvent extends javax.swing.JPanel {
 
         dateVnvStart.setPreferredSize(new java.awt.Dimension(90, 20));
 
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel13.setText("Sampai");
 
         btnCreateEvent.setText("Create Event");
@@ -145,14 +157,18 @@ public class CreateEvent extends javax.swing.JPanel {
             }
         });
 
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel14.setText("Reminder H - ");
 
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel16.setText("Tanggal Upload Nilai");
 
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel18.setText("Sampai");
 
         dateUploadNilaiEnd.setPreferredSize(new java.awt.Dimension(90, 20));
 
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel19.setText("Hari");
         jLabel19.setMaximumSize(new java.awt.Dimension(34, 14));
         jLabel19.setMinimumSize(new java.awt.Dimension(34, 14));
@@ -170,12 +186,15 @@ public class CreateEvent extends javax.swing.JPanel {
             }
         });
 
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel20.setText("Reminder Time");
 
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel21.setText("Jam");
 
         jLabel22.setText("Menit");
 
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel15.setText("Reminder H- Pengawas Ujian");
 
         delayPengawas.setPreferredSize(new java.awt.Dimension(90, 20));
@@ -185,13 +204,16 @@ public class CreateEvent extends javax.swing.JPanel {
             }
         });
 
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel17.setText("Hari");
         jLabel17.setMaximumSize(new java.awt.Dimension(34, 14));
         jLabel17.setMinimumSize(new java.awt.Dimension(34, 14));
         jLabel17.setPreferredSize(new java.awt.Dimension(34, 14));
 
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel23.setText("Reminder H-");
 
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel24.setText("Hari");
         jLabel24.setMaximumSize(new java.awt.Dimension(34, 14));
         jLabel24.setMinimumSize(new java.awt.Dimension(34, 14));

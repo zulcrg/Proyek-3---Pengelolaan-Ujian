@@ -17,7 +17,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="labelUjian" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="labelPengawas" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -43,14 +43,14 @@
                   </Group>
                   <Component id="btnBrowseKelas" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="185" max="32767" attributes="0"/>
+              <EmptySpace pref="50" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelUjian" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="textUjian" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -78,7 +78,7 @@
               </Group>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="200" max="32767" attributes="0"/>
+              <EmptySpace pref="101" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -86,6 +86,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="labelUjian">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Ujian"/>
       </Properties>
     </Component>
@@ -104,6 +107,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelPengawas">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Pengawas"/>
       </Properties>
     </Component>
@@ -130,6 +136,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelRuangan">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Ruangan"/>
       </Properties>
     </Component>
@@ -148,6 +157,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelRuangan1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Kelas"/>
       </Properties>
     </Component>

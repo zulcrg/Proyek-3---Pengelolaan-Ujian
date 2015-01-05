@@ -50,7 +50,7 @@ public class PanitiaPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(818, 625));
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Create Event", createEvent1);
         jTabbedPane1.addTab("Create Ujian", createUjian2);
         jTabbedPane1.addTab("Assign Ujian", assignUjian1);

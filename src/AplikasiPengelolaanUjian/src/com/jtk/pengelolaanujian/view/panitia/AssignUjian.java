@@ -62,6 +62,7 @@ public class AssignUjian extends javax.swing.JPanel {
         textKelas = new javax.swing.JTextField();
         btnBrowseKelas = new javax.swing.JButton();
 
+        labelUjian.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelUjian.setText("Ujian");
 
         textUjian.setEditable(false);
@@ -73,6 +74,7 @@ public class AssignUjian extends javax.swing.JPanel {
             }
         });
 
+        labelPengawas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelPengawas.setText("Pengawas");
 
         textPengawas.setEditable(false);
@@ -91,6 +93,7 @@ public class AssignUjian extends javax.swing.JPanel {
             }
         });
 
+        labelRuangan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelRuangan.setText("Ruangan");
 
         textRuangan.setEditable(false);
@@ -102,6 +105,7 @@ public class AssignUjian extends javax.swing.JPanel {
             }
         });
 
+        labelRuangan1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelRuangan1.setText("Kelas");
 
         textKelas.setEditable(false);
@@ -118,7 +122,7 @@ public class AssignUjian extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(168, 168, 168)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelUjian)
                     .addComponent(labelPengawas)
@@ -139,12 +143,12 @@ public class AssignUjian extends javax.swing.JPanel {
                             .addComponent(btnBrowseUjian)
                             .addComponent(btwBrowsePengawas)))
                     .addComponent(btnBrowseKelas))
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(131, 131, 131)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelUjian)
                     .addComponent(textUjian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +171,7 @@ public class AssignUjian extends javax.swing.JPanel {
                     .addComponent(btnBrowseKelas))
                 .addGap(17, 17, 17)
                 .addComponent(btnSimpan)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
