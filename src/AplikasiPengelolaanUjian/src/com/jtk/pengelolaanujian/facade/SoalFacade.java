@@ -159,7 +159,7 @@ public class SoalFacade {
             String query = "SELECT * FROM soal WHERE soal_kode IN " + sb.toString() + "";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-               Soal soal = new Soal();
+                Soal soal = new Soal();
                 soal.setMatkulKode(rs.getString("MATKUL_KODE"));
                 soal.setSoalKode(rs.getString("SOAL_KODE"));
                 soal.setSoalPrinted(rs.getBoolean("SOAL_PRINTED"));
@@ -341,6 +341,8 @@ public class SoalFacade {
                         + "dosen.KBK_KODE = '" + kbkKode + "' AND"
                         + "soal.SOAL_VNVED = 0";
                 // alokasi resultset sebagai penampung hasil dari query yang di eksekusi
+
+                System.out.println(query);
                 ResultSet rs = stmt.executeQuery(query);
                 List<Soal> soalList = new ArrayList<>();
                 while (rs.next()) {
@@ -388,12 +390,12 @@ public class SoalFacade {
 
                 }
                 return soalList;
+            } else {
+                return new ArrayList<>();
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return null;
     }
 
@@ -427,4 +429,3 @@ public class SoalFacade {
         preparedStatement.executeUpdate();
     }
 }
-

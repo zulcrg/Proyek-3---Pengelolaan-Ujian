@@ -11,6 +11,8 @@ import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.util.EnumPanel;
 import com.jtk.pengelolaanujian.view.util.SearchDialog;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,7 +22,7 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
 
     BeritaAcaraVnvController beritaAcaraVnvController = new BeritaAcaraVnvController();
     private Soal soal;
-    private Staf staf;
+    private List<Staf> stafList;
 
     /**
      * Creates new form BeritaAcara
@@ -427,20 +429,28 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         txtKdMatkul.setText(soal.getMataKuliah().getMatkulKode());
         txtBentukUjian.setText(soal.getMataKuliah().getMatkulTipe());
         txtSifatUjian.setText(soal.getSoalSifat());
-        
+
     }//GEN-LAST:event_btnChooseActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-       // beritaAcaraVnvController.submitVnv(null, soal, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
+        // beritaAcaraVnvController.submitVnv(null, soal, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
         Reminder5Controller reminder5Controller = new Reminder5Controller();
         reminder5Controller.preparation();
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnTimVnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimVnvActionPerformed
-        staf = new Staf();
-        SearchDialog searchDialog = new SearchDialog(null, true, staf, EnumPanel.SEARCH_STAF);
+        stafList = new ArrayList<>();
+        SearchDialog searchDialog = new SearchDialog(null, true, stafList, EnumPanel.SEARCH_STAF);
         searchDialog.show();
+        String text = "";
+        for (int i = 0; i < stafList.size(); i++) {
+            text = text + stafList.get(i).getStafNama();
+            if (i < stafList.size() - 1) {
+                text = text + ", ";
+            }
+        }
+        txtTimVnv.setText(text);
     }//GEN-LAST:event_btnTimVnvActionPerformed
 
 
