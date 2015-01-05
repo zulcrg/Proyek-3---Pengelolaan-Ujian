@@ -8,7 +8,9 @@ package com.jtk.pengelolaanujian.controller.vnv;
 
 import com.jtk.pengelolaanujian.entity.Dosen;
 import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.facade.SoalFacade;
+import com.jtk.pengelolaanujian.facade.StafFacade;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
@@ -24,7 +26,7 @@ public class BeritaAcaraVnvController {
         SoalFacade soalFacade = new SoalFacade();
     }
     public List<Soal> searchSoal(String text, JTable tSoal){
-        List<Soal> soalList = new ArrayList<>();
+        List<Soal> soalList;
         
         SoalFacade soalFacade = new SoalFacade();
         soalList = soalFacade.searchSoalInKbk(text);
@@ -40,9 +42,8 @@ public class BeritaAcaraVnvController {
         for (Soal soal : soalList) {
             Object[] o = new Object[3];
             o[0] = soal.getSoalKode();
-            o[1] = soal.getMatkulKode();
-            o[2] = soal.getMatkulTipe();
-            
+            o[1] = soal.getMataKuliah().getMatkulNama();
+            o[2] = soal.getMataKuliah().getMatkulTipe();
 
             dtm.addRow(o);
         }
@@ -50,5 +51,28 @@ public class BeritaAcaraVnvController {
         return soalList;
     }
     
+    public List<Staf> searchTimVnv(String text, JTable tStaf){
+        List<Staf> stafList;
+        StafFacade stafFacade = new StafFacade();
+        stafList = stafFacade.findAll();
+
+        Object[] columnsName = {"Nama", "NIP"};
+
+        DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        for (Staf staf : stafList) {
+            Object[] o = new Object[2];
+            o[0] = staf.getStafNIP();
+            o[1] = staf.getStafNama();
+
+            dtm.addRow(o);
+        }
+        tStaf.setModel(dtm);
+        return stafList;
+    }
     
 }

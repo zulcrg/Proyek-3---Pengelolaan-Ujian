@@ -8,9 +8,9 @@ package com.jtk.pengelolaanujian.view.vnv;
 import com.jtk.pengelolaanujian.controller.reminder.Reminder5Controller;
 import com.jtk.pengelolaanujian.controller.vnv.BeritaAcaraVnvController;
 import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.util.EnumPanel;
 import com.jtk.pengelolaanujian.view.util.SearchDialog;
-import com.jtk.pengelolaanujian.view.util.SearchSoalDialog;
 
 /**
  *
@@ -20,6 +20,7 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
 
     BeritaAcaraVnvController beritaAcaraVnvController = new BeritaAcaraVnvController();
     private Soal soal;
+    private Staf staf;
 
     /**
      * Creates new form BeritaAcara
@@ -85,6 +86,11 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         jLabel2.setText("Tim Verifikasi dan Validasi");
 
         btnTimVnv.setText("Browse");
+        btnTimVnv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimVnvActionPerformed(evt);
+            }
+        });
 
         txtTimVnv.setEditable(false);
 
@@ -262,13 +268,16 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
                                             .addComponent(txtNmDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 21, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel12))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(17, 17, 17)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel10)
+                                                    .addComponent(jLabel9)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel11)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtKdMatkul)
                                             .addComponent(txtBentukUjian)
@@ -285,7 +294,11 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtSemester)
-                                            .addComponent(txtKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(txtKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel12)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -406,6 +419,15 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         SearchDialog searchDialog = new SearchDialog(null, true, soal, EnumPanel.SEARCH_SOALMATKUL);
         searchDialog.show();
         txtSoal.setText(soal.getSoalKode());
+        txtMatkul.setText(soal.getMataKuliah().getMatkulNama());
+        txtTglUjian.setText(soal.getUjian().getUjianMulai().toString());
+        txtWaktuUjian.setText(String.valueOf(soal.getUjian().getUjianMenit()));
+        txtNmDosen.setText(soal.getMataKuliah().getDosen().getStafNama());
+        txtKdDosen.setText(soal.getMataKuliah().getDosen().getDosenKode());
+        txtKdMatkul.setText(soal.getMataKuliah().getMatkulKode());
+        txtBentukUjian.setText(soal.getMataKuliah().getMatkulTipe());
+        txtSifatUjian.setText(soal.getSoalSifat());
+        
     }//GEN-LAST:event_btnChooseActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
@@ -414,6 +436,12 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         Reminder5Controller reminder5Controller = new Reminder5Controller();
         reminder5Controller.preparation();
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnTimVnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimVnvActionPerformed
+        staf = new Staf();
+        SearchDialog searchDialog = new SearchDialog(null, true, staf, EnumPanel.SEARCH_STAF);
+        searchDialog.show();
+    }//GEN-LAST:event_btnTimVnvActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
