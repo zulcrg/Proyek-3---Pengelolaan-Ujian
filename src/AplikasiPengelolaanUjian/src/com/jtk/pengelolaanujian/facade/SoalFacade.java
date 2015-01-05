@@ -337,9 +337,10 @@ public class SoalFacade {
                         + "dosen.DOSEN_KODE = mata_kuliah_to_dosen.DOSEN_KODE AND "
                         + "staf.STAF_NIP = dosen.STAF_NIP AND "
                         + "ruangan_ujian.UJIAN_KODE = ujian.UJIAN_KODE AND "
-                        + "kelas.KELAS_KODE = ruangan_ujian.KELAS_KODE AND"
-                        + "dosen.KBK_KODE = '" + kbkKode + "' AND"
+                        + "kelas.KELAS_KODE = ruangan_ujian.KELAS_KODE AND "
+                        + "dosen.KBK_KODE = '" + kbkKode + "' AND "
                         + "soal.SOAL_VNVED = 0";
+                System.out.println(query);
                 // alokasi resultset sebagai penampung hasil dari query yang di eksekusi
                 ResultSet rs = stmt.executeQuery(query);
                 List<Soal> soalList = new ArrayList<>();
