@@ -48,9 +48,9 @@ public class WelcomePanel extends javax.swing.JPanel {
         jLabel3.setText("Selamat Datang");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText(" Menu-menu diatas adalah role anda saat ini. selamat memulai aktifitas!");
+        jLabel1.setText(" Menu-menu diatas adalah role anda saat ini, selamat memulai aktifitas!");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\rangga rahadian\\Documents\\Arrow_up-200.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/pengelolaanujian/view/images/Arrow_up-200.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

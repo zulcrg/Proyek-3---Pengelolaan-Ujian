@@ -196,9 +196,9 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         btnVnv.setBackground(new java.awt.Color(0, 102, 102));
-        btnVnv.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        btnVnv.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         btnVnv.setForeground(new java.awt.Color(240, 240, 240));
-        btnVnv.setIcon(new javax.swing.ImageIcon("C:\\Users\\rangga rahadian\\Documents\\user\\vnv1.png")); // NOI18N
+        btnVnv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/pengelolaanujian/view/images/vnv1.png"))); // NOI18N
         btnVnv.setText("VnV");
         btnVnv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
