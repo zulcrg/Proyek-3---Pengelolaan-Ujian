@@ -177,4 +177,38 @@ public class GammuFacade {
             Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void sendKonfiramsiUploadVnv(String textSMS) {
+        Statement statementDB;
+        try {
+            UserFacade userFacade = new UserFacade();
+            StafFacade stafFacade = new StafFacade();
+            User user = userFacade.findByUsername(LoginPanel.getUsername());
+            Staf staf = new Staf();            
+            staf = stafFacade.findByStafNip(user.getStafNIP());            
+            
+            statementDB = connection.createStatement();
+            statementDB.execute("INSERT INTO outbox(DestinationNumber, TextDecoded, creatorID) VALUES('" + staf.getStafKontak() + "','" + textSMS + "','Gammu')");
+        } catch (SQLException ex) {
+            Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void sendKonfiramsiUploadVnvTrue(String textSMS) {
+        Statement statementDB;
+        try {
+            UserFacade userFacade = new UserFacade();
+            StafFacade stafFacade = new StafFacade();            
+            DosenFacade dosenFacade = new DosenFacade();
+            User user = userFacade.findByUsername(LoginPanel.getUsername());
+            Staf staf = new Staf();            
+            staf = stafFacade.findByStafNip(user.getStafNIP());            
+            
+            statementDB = connection.createStatement();
+            statementDB.execute("INSERT INTO outbox(DestinationNumber, TextDecoded, creatorID) VALUES('" + staf.getStafKontak() + "','" + textSMS + "','Gammu')");
+                                    
+        } catch (SQLException ex) {
+            Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -5,6 +5,7 @@
  */
 package com.jtk.pengelolaanujian.view.vnv;
 
+import com.jtk.pengelolaanujian.controller.reminder.Reminder5Controller;
 import com.jtk.pengelolaanujian.controller.vnv.BeritaAcaraVnvController;
 import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.util.EnumPanel;
@@ -410,6 +411,8 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
        // beritaAcaraVnvController.submitVnv(null, soal, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
+        Reminder5Controller reminder5Controller = new Reminder5Controller();
+        reminder5Controller.preparation();
     }//GEN-LAST:event_btnSubmitActionPerformed
 
 

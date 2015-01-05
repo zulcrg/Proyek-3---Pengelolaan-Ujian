@@ -13,15 +13,14 @@ import java.util.Date;
 
 /**
  *
- * @author pahlevi
- * Reminder3Controller reminder3Controller = new Reminder3Controller();
-         pemberitahuan untuk pembuat soal, bahwa soal berhasil diunggah dan 
-         akan diproses ke tahap selanjutnya.
-         notifikasi untuk tim vnv untuk memulai proses vnv
-            
-         pemberitahuan kepada pembuat soal bahwa soal yang diunggah tidak
-         dapat di proses ke tahap selanjutnya karena keterlambatan proses
-         pengunggahan        
+ * @author pahlevi 
+ *        pemberitahuan untuk pembuat soal, bahwa soal berhasil diunggah dan 
+ *        akan diproses ke tahap selanjutnya.
+ *        notifikasi untuk tim vnv untuk memulai proses vnv
+ *           
+ *        pemberitahuan kepada pembuat soal bahwa soal yang diunggah tidak
+ *        dapat di proses ke tahap selanjutnya karena keterlambatan proses
+ *        pengunggahan        
  * 
  *                      
 */         

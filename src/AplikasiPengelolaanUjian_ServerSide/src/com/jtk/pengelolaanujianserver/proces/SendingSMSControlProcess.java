@@ -60,18 +60,7 @@ public class SendingSMSControlProcess extends TimerTask {
      mesin kirim email dengan informasi :
      -jadwal setiap proses upload soal, vnv, ujian.
      -role setiap orang /akun
-     -tanggal2 penting lainnya
-           
-     Reminder 5
-     real time monitoring -> Trigger DB
-    
-     pemberitahuan kepada :
-     -pembuat soal bahwa soal lulus vnv
-     -tim vnv bahwa laporan vnv dan soal sudah terunggah tepat waktu
-     dan akan diproses ke tahap selanjutnya
-     -tu, bahwa soal dan laporan vnv sudah tersedia dan menginstruksikan
-     untuk segera melakukan proses pencetakan soal
-
+     -tanggal2 penting lainnya                
      Reminder 6 
      real time monitoring -> Trigger DB    
      soal sudah tercetak.        
