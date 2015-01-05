@@ -17,7 +17,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="labelEventUjian" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="labelTanggal" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -33,7 +33,7 @@
                   <Component id="textMatkul" alignment="0" max="32767" attributes="0"/>
                   <Component id="textEvent" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="dateUjianMulai" pref="129" max="32767" attributes="0"/>
+                      <Component id="dateUjianMulai" min="-2" pref="129" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="labelPukul" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -46,14 +46,14 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnBrowse" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="13" max="32767" attributes="0"/>
+              <EmptySpace pref="136" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelEventUjian" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="textEvent" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -89,7 +89,7 @@
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="btnCreateUjian" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="151" max="32767" attributes="0"/>
+              <EmptySpace pref="252" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

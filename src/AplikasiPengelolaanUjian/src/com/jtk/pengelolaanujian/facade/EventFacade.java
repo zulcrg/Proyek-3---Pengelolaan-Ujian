@@ -13,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -101,7 +100,11 @@ public class EventFacade {
     }
 
     public void createEvent(Event event) throws SQLException {
-        String query = "INSERT INTO event VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO event(EVENT_KODE, EVENT_TGL_MULAI, EVENT_TGL_SELESAI, "
+                + "EVENT_TGL_UPLOAD_MULAI, EVENT_TGL_UPLOAD_SELESAI, EVENT_TGL_VNV_MULAI, "
+                + "EVENT_TGL_VNV_SELESAI, EVENT_DELAY_UPLOAD_SOAL, EVENT_DELAY_PENGAWAS, "
+                + "EVENT_DELAY_UPLOAD_NILAI, EVENT_TGL_UPLOAD_NILAI_SELESAI, "
+                + "EVENT_ACTIVE, EVENT_REMINDER_TIME) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1, event.getKode());
         preparedStatement.setDate(2, new Date(event.getTanggalMulai().getTime()));
