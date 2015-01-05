@@ -9,6 +9,7 @@ package com.jtk.pengelolaanujian.controller.vnv;
 import com.jtk.pengelolaanujian.entity.Dosen;
 import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.facade.SoalFacade;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -23,7 +24,7 @@ public class BeritaAcaraVnvController {
         SoalFacade soalFacade = new SoalFacade();
     }
     public List<Soal> searchSoal(String text, JTable tSoal){
-        List<Soal> soalList;
+        List<Soal> soalList = new ArrayList<>();
         
         SoalFacade soalFacade = new SoalFacade();
         soalList = soalFacade.searchSoalInKbk(text);
