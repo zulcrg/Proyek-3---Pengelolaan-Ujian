@@ -18,6 +18,7 @@ public class AboutAppsDialog extends javax.swing.JDialog {
     public AboutAppsDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**

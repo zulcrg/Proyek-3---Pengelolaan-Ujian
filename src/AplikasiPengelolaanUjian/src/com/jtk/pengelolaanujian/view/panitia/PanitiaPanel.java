@@ -46,6 +46,9 @@ public class PanitiaPanel extends javax.swing.JPanel {
         printSoal1 = new com.jtk.pengelolaanujian.view.panitia.PrintSoal();
         uploadBeritaAcara1 = new com.jtk.pengelolaanujian.view.panitia.UploadBeritaAcara();
 
+        setMinimumSize(new java.awt.Dimension(818, 625));
+        setPreferredSize(new java.awt.Dimension(818, 625));
+
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Create Event", createEvent1);
@@ -58,7 +61,7 @@ public class PanitiaPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

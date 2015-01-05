@@ -48,6 +48,9 @@ public class DashboardPanel extends javax.swing.JPanel {
         statusAplikasi1 = new com.jtk.pengelolaanujian.view.dashboard.StatusAplikasi();
         statusTransaksi1 = new com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi();
 
+        setMinimumSize(new java.awt.Dimension(818, 625));
+        setPreferredSize(new java.awt.Dimension(818, 625));
+
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Status Event", statusEvent1);
@@ -63,7 +66,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

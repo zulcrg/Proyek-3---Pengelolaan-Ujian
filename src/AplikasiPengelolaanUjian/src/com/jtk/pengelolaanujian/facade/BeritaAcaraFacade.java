@@ -6,11 +6,8 @@
 package com.jtk.pengelolaanujian.facade;
 
 import com.jtk.pengelolaanujian.entity.BeritaAcara;
-import com.jtk.pengelolaanujian.entity.Ujian;
-import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -75,38 +72,31 @@ public class BeritaAcaraFacade {
         return null;
     }
 
-    public void createBeritaAcara(BeritaAcara beritaAcara) {
-        try {
-            String query = "INSERT INTO berita_acara(BERITA_KODE, BERITA_KET, BERITA_HADIR, BERITA_TIDAK_HADIR, BERITA_SOAL_SISA, BERITA_JAWAB_SISA, BERITA_STATUS) values(?,?,?,?,?,?,?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, beritaAcara.getBeritaKode());
-            preparedStatement.setString(2, beritaAcara.getBeritaKet());
-            preparedStatement.setInt(3, beritaAcara.getBeritaHadir());
-            preparedStatement.setInt(4, beritaAcara.getBeritaTidakHadir());
-            preparedStatement.setInt(5, beritaAcara.getBeritaSoalSisa());
-            preparedStatement.setInt(6, beritaAcara.getBeritaJawabSisa());
-            preparedStatement.setBoolean(7, beritaAcara.isBeritaStatus());
+    public void createBeritaAcara(BeritaAcara beritaAcara) throws SQLException {
+        String query = "INSERT INTO berita_acara(BERITA_KODE, BERITA_KET, BERITA_HADIR, BERITA_TIDAK_HADIR, BERITA_SOAL_SISA, BERITA_JAWAB_SISA, BERITA_STATUS) values(?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, beritaAcara.getBeritaKode());
+        preparedStatement.setString(2, beritaAcara.getBeritaKet());
+        preparedStatement.setInt(3, beritaAcara.getBeritaHadir());
+        preparedStatement.setInt(4, beritaAcara.getBeritaTidakHadir());
+        preparedStatement.setInt(5, beritaAcara.getBeritaSoalSisa());
+        preparedStatement.setInt(6, beritaAcara.getBeritaJawabSisa());
+        preparedStatement.setBoolean(7, beritaAcara.isBeritaStatus());
 
-            preparedStatement.execute();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }    
-    public void updateBeritaAcara(BeritaAcara beritaAcara) {
+        preparedStatement.execute();
+    }
+
+    public void updateBeritaAcara(BeritaAcara beritaAcara) throws SQLException {
         String beritaKet = beritaAcara.getBeritaKet();
         int beritaHadir = beritaAcara.getBeritaHadir();
         int beritaTidakHadir = beritaAcara.getBeritaTidakHadir();
         int beritaSoalSisa = beritaAcara.getBeritaSoalSisa();
         int beritaJawabSisa = beritaAcara.getBeritaJawabSisa();
         String beritaKode = beritaAcara.getBeritaKode();
-        
-        try {
-            Statement stmt = connection.createStatement();
-            String query = "UPDATE berita_acara SET BERITA_KET = '" + beritaKet + "',BERITA_HADIR = '" + beritaHadir + "',BERITA_TIDAK_HADIR = '" + beritaTidakHadir + "',BERITA_SOAL_SISA = '" + beritaSoalSisa + "',BERITA_JAWAB_SISA = '" + beritaJawabSisa + "',BERITA_STATUS = 1 WHERE berita_acara.BERITA_KODE = '" + beritaKode + "'";
-            stmt.executeUpdate(query);                        
-        } catch (SQLException ex) {
-            Logger.getLogger(BeritaAcaraFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        Statement stmt = connection.createStatement();
+        String query = "UPDATE berita_acara SET BERITA_KET = '" + beritaKet + "',BERITA_HADIR = '" + beritaHadir + "',BERITA_TIDAK_HADIR = '" + beritaTidakHadir + "',BERITA_SOAL_SISA = '" + beritaSoalSisa + "',BERITA_JAWAB_SISA = '" + beritaJawabSisa + "',BERITA_STATUS = 1 WHERE berita_acara.BERITA_KODE = '" + beritaKode + "'";
+        stmt.executeUpdate(query);
+
     }
 }

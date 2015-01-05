@@ -29,13 +29,17 @@ public class GammuFacade {
 
     public boolean sendRemainderUploadSoalSMS(List<Staf> listStaf, String text) {
         Statement statmentDB = null;
-        StringBuilder sb = null;
+        StringBuilder sb = new StringBuilder();;        
+        
         try {
+            Staf stafData;
             for (int i = 0; i < listStaf.size(); i++) {
-                Staf staf = listStaf.get(i);
+                stafData = new Staf();
+                stafData.setStafNIP(listStaf.get(i).getStafNIP());
+                stafData.setStafKontak(listStaf.get(i).getStafKontak());                
                 sb.append("(");
                 sb.append("'");
-                sb.append(staf.getStafKontak());
+                sb.append(stafData.getStafKontak());
                 sb.append("'");
                 sb.append(",'");
                 sb.append(text);
@@ -75,9 +79,20 @@ public class GammuFacade {
     public void sendPengawasSMS(List<RuanganUjian> listRuanganUjian, Event event) {
         String smsString;
         StringBuilder sb = new StringBuilder();
-
+        RuanganUjian ruanganUjian; 
+        Ujian ujian;
+        
         for (int i = 0; i < listRuanganUjian.size(); i++) {
-            RuanganUjian ruanganUjian = listRuanganUjian.get(i);
+            ruanganUjian = new RuanganUjian();
+            ujian = new Ujian();
+            
+            ujian = listRuanganUjian.get(i).getUjian();            
+            ruanganUjian.setUjian(ujian);
+            
+            //System.out.println(ruanganUjian.getUjian().getUjianNama());
+            ruanganUjian.setStaf(listRuanganUjian.get(i).getStaf());
+            ruanganUjian.setRuanganKode(listRuanganUjian.get(i).getRuanganKode());
+                                    
             sb.append("(");
             sb.append("'").append(ruanganUjian.getStaf().getStafKontak()).append("'");
             sb.append(",");
@@ -115,7 +130,7 @@ public class GammuFacade {
     
     public boolean sendRemainderUploadNilaiSMS(List<Staf> listStaf, String text) {
         Statement statmentDB = null;
-        StringBuilder sb = null;
+        StringBuilder sb = new StringBuilder();
         try {
             for (int i = 0; i < listStaf.size(); i++) {
                 Staf staf = listStaf.get(i);

@@ -35,7 +35,7 @@ public class ConnectionHelper {
 
     private static void createConnectionGammu() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gammu", user, password);
+            connectionGammu = DriverManager.getConnection("jdbc:mysql://localhost:3306/gammu", user, password);
         } catch (SQLException ex) {
             Logger.getLogger(ConnectionHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -50,7 +50,7 @@ public class ConnectionHelper {
 
     public static Connection getConnectionGammu() {
         if (connectionGammu == null) {
-            createConnection();
+            createConnectionGammu();
         }
         return connectionGammu;
 

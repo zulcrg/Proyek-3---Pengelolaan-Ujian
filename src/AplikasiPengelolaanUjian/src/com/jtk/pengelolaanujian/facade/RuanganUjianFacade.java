@@ -204,8 +204,9 @@ public class RuanganUjianFacade {
             sb.append(")");
 
             Statement stmt = connection.createStatement();
-            String query = "SELECT ruangan_ujian.*, staf.*, ujian.* FROM ruangan_ujian,staf,ujian where UJIAN_KODE IN " + sb.toString() + " "
-                    + "AND ruangan_ujian.staf_nip = staf.staf_nip";
+            String query = "SELECT ruangan_ujian.*, staf.*, ujian.* FROM ruangan_ujian,staf,ujian where ujian.UJIAN_KODE IN " + sb.toString() + " "
+                    + "AND ruangan_ujian.staf_nip = staf.staf_nip "
+                    + "AND ruangan_ujian.ujian_kode = ujian.ujian_kode";
             ResultSet rs = stmt.executeQuery(query);
             List<RuanganUjian> ruanganUjianList = new ArrayList<>();
             while (rs.next()) {
@@ -216,20 +217,23 @@ public class RuanganUjianFacade {
                 ruanganUjian.setBeritaKode(rs.getString(4));
 
                 Staf staf = new Staf();
-                staf.setStafNIP(rs.getString(5));
-                staf.setStafNama(rs.getString(6));
-                staf.setStafEmail(rs.getString(7));
-                staf.setStafKontak(rs.getString(8));
+                staf.setStafNIP(rs.getString(7));
+                staf.setStafNama(rs.getString(8));
+                staf.setStafEmail(rs.getString(9));
+                staf.setStafKontak(rs.getString(10));
 
                 Ujian ujian = new Ujian();
-                ujian.setUjianKode(rs.getString(9));
-                ujian.setEventKode(rs.getString(10));
-                ujian.setSoalKode(rs.getString(11));
-                ujian.setUjianMulai(rs.getDate(12));
-                ujian.setUjianMenit(rs.getInt(13));
-
+                ujian.setUjianKode(rs.getString(11));
+                ujian.setEventKode(rs.getString(12));
+                ujian.setSoalKode(rs.getString(13));
+                ujian.setUjianMulai(rs.getDate(14));
+                ujian.setUjianMenit(rs.getInt(15));
+                ujian.setUjianNama(rs.getString(16));
+                
+                ruanganUjian.setUjian(ujian);
+                ruanganUjian.setStaf(staf);
                 ruanganUjianList.add(ruanganUjian);
-            }
+            }            
             return ruanganUjianList;
         } catch (SQLException ex) {
             Logger.getLogger(RuanganUjianFacade.class.getName()).log(Level.SEVERE, null, ex);
@@ -240,7 +244,7 @@ public class RuanganUjianFacade {
     public List<RuanganUjian> findAllWhereNilaiUploaded(boolean b) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "SELECT * FROM RUANG_UJIAN WHERE RUANGUJIAN_NILAI_UPLOADED = '" + b + "'";
+            String query = "SELECT * FROM RUANGAN_UJIAN WHERE RUANGAN_UJIAN_NILAI_UPLOADED = '" + b + "'";
             ResultSet rs = stmt.executeQuery(query);
             List<RuanganUjian> listRuanganUjian = new ArrayList<>();
             while (rs.next()) {
@@ -252,6 +256,7 @@ public class RuanganUjianFacade {
                 ruanganUjian.setRuanganUjianUploadNilaiStatus(rs.getBoolean(5));
                 ruanganUjian.setKelasKode(rs.getString(6));
 
+                listRuanganUjian.add(ruanganUjian);
             }
             return listRuanganUjian;
         } catch (SQLException ex) {
@@ -344,22 +349,17 @@ public class RuanganUjianFacade {
         return null;
     }
 
-    public void createRuanganUjian(RuanganUjian ruanganUjian) {
-        try {
-            String query = "INSERT INTO ruangan_ujian(RUANGAN_KODE, UJIAN_KODE, STAF_NIP, BERITA_KODE, RUANGAN_UJIAN_NILAI_UPLOADED, KELAS_KODE) values(?,?,?,?,?,?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, ruanganUjian.getRuanganKode());
-            preparedStatement.setString(2, ruanganUjian.getUjianKode());
-            preparedStatement.setString(3, ruanganUjian.getStafNip());
-            preparedStatement.setString(4, ruanganUjian.getBeritaKode());
-            preparedStatement.setBoolean(5, ruanganUjian.isRuanganUjianUploadNilaiStatus());
-            preparedStatement.setString(6, ruanganUjian.getKelasKode());
+    public void createRuanganUjian(RuanganUjian ruanganUjian) throws SQLException {
+        String query = "INSERT INTO ruangan_ujian(RUANGAN_KODE, UJIAN_KODE, STAF_NIP, BERITA_KODE, RUANGAN_UJIAN_NILAI_UPLOADED, KELAS_KODE) values(?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, ruanganUjian.getRuanganKode());
+        preparedStatement.setString(2, ruanganUjian.getUjianKode());
+        preparedStatement.setString(3, ruanganUjian.getStafNip());
+        preparedStatement.setString(4, ruanganUjian.getBeritaKode());
+        preparedStatement.setBoolean(5, ruanganUjian.isRuanganUjianUploadNilaiStatus());
+        preparedStatement.setString(6, ruanganUjian.getKelasKode());
 
-            preparedStatement.execute();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        preparedStatement.execute();
     }
 
     public int checkTerlalui(boolean b) {
@@ -390,25 +390,35 @@ public class RuanganUjianFacade {
         try {
             Date date = new Date();
             SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
-            
+
             Date tanggal2 = formatDate.parse(tanggal);
             if (b == true) {
-                if (date.after(tanggal2)) {                    
+                if (date.after(tanggal2)) {
                     return true;
-                } else {                    
+                } else {
                     return false;
                 }
             }
             if (b == false) {
-                if (tanggal2.after(date)) {                    
+                if (tanggal2.after(date)) {
                     return true;
-                } else {                    
+                } else {
                     return false;
                 }
-            }            
+            }
         } catch (ParseException ex) {
             Logger.getLogger(RuanganUjianFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+
+    public void updateUploadedNilai(RuanganUjian ruanganUjian) throws SQLException {
+        String query = "UPDATE ruangan_ujian SET RUANGAN_UJIAN_NILAI_UPLOADED = ? WHERE RUANGAN_KODE = ? AND UJIAN_KODE = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setBoolean(1, ruanganUjian.isRuanganUjianUploadNilaiStatus());
+        preparedStatement.setString(2, ruanganUjian.getRuanganKode());
+        preparedStatement.setString(3, ruanganUjian.getUjianKode());
+
+        preparedStatement.executeUpdate();
     }
 }

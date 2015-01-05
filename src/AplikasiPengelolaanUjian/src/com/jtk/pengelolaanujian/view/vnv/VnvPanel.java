@@ -37,6 +37,9 @@ public class VnvPanel extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         beritaAcaraVnv1 = new com.jtk.pengelolaanujian.view.vnv.BeritaAcaraVnv();
 
+        setMinimumSize(new java.awt.Dimension(818, 625));
+        setPreferredSize(new java.awt.Dimension(818, 625));
+
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Berita Acara Vnv", beritaAcaraVnv1);
@@ -45,7 +48,7 @@ public class VnvPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

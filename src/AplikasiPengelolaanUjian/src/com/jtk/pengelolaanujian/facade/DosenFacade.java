@@ -103,7 +103,7 @@ public class DosenFacade {
             sb.append("(");
 
             for (int i = 0; i < listMataKuliahToDosen.size(); i++) {
-                sb.append("'").append(listMataKuliahToDosen.get(i).getMatkulKode()).append("'");
+                sb.append("'").append(listMataKuliahToDosen.get(i).getDosenKode()).append("'");
                 if (i < listMataKuliahToDosen.size() - 1) {
                     sb.append(",");
                 }
@@ -120,10 +120,7 @@ public class DosenFacade {
                 dosen.setDosenKode(rs.getString(1));
                 dosen.setKbkKode(rs.getString(2));
                 dosen.setStafNIP(rs.getString(3));
-                dosen.setStafNama(rs.getString(4));
-                dosen.setStafEmail(rs.getString(5));
-                dosen.setStafKontak(rs.getString(6));
-
+                                
                 dosenList.add(dosen);
             }
             return dosenList;

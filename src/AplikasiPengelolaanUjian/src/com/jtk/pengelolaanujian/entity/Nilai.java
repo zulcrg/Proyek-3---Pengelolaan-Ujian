@@ -7,6 +7,7 @@
 package com.jtk.pengelolaanujian.entity;
 
 import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
+import java.io.InputStream;
 import java.sql.Blob;
 
 /**
@@ -17,7 +18,7 @@ public class Nilai {
 
     private String ruanganKode;
     private String ujianKode;
-    private Blob nilaiFile;
+    private InputStream nilaiFile;
     private RuanganUjian ruanganUjian;
     private String namaFile;
     private String tipeFile;
@@ -25,7 +26,7 @@ public class Nilai {
     public Nilai() {
     }
     
-    public Nilai(String ruanganKode, String ujianKode, Blob nilaiFile) {
+    public Nilai(String ruanganKode, String ujianKode, InputStream nilaiFile) {
         this.ruanganKode = ruanganKode;
         this.ujianKode = ujianKode;
         this.nilaiFile = nilaiFile;
@@ -47,11 +48,11 @@ public class Nilai {
         this.ujianKode = ujianKode;
     }
     
-    public Blob getNilaiFile() {
+    public InputStream getNilaiFile() {
         return nilaiFile;
     }
     
-    public void setNilaiFile(Blob nilaiFile) {
+    public void setNilaiFile(InputStream nilaiFile) {
         this.nilaiFile = nilaiFile;
     }
     

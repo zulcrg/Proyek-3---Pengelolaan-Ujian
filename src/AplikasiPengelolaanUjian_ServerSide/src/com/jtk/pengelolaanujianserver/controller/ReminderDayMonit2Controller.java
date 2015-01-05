@@ -14,12 +14,18 @@ import java.util.Date;
  * 
  */
 public class ReminderDayMonit2Controller extends Reminder{
-    private final Date date;
-    
-    public ReminderDayMonit2Controller(Date date) {
-        this.date = date;
+    private Date date;
+            
+    public ReminderDayMonit2Controller() {
+        
     }
 
+    public void preparation() {
+        this.date = new Date();
+        checkRule();
+    }
+    
+    
     public void checkRule() {
         event = eventFacade.findLast();
         if (date.getDate() + event.getDelayUploadSoal() == event.getUploadSelesai().getDate()) {
@@ -32,6 +38,7 @@ public class ReminderDayMonit2Controller extends Reminder{
             listDosen = dosenFacade.findAllWhereListedIn(listMataKuliahToDosens);
             listStaf = stafFacade.findAllWhereListedIn(listDosen);
 
+            //System.out.println(listStaf.get(0).getStafNIP());
             gammuFacade.sendRemainderUploadSoalSMS(listStaf, smsString);
         }
 
