@@ -8,11 +8,14 @@ package com.jtk.pengelolaanujian.controller.vnv;
 import com.jtk.pengelolaanujian.entity.Dosen;
 import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Staf;
+import com.jtk.pengelolaanujian.entity.Vnv;
+import com.jtk.pengelolaanujian.facade.DosenFacade;
 import com.jtk.pengelolaanujian.facade.SoalFacade;
 import com.jtk.pengelolaanujian.facade.StafFacade;
 import com.jtk.pengelolaanujian.facade.VnvFacade;
 import com.jtk.pengelolaanujian.util.CommonHelper;
-import java.util.ArrayList;
+import com.jtk.pengelolaanujian.view.LoginPanel;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -23,9 +26,23 @@ import javax.swing.table.DefaultTableModel;
  */
 public class BeritaAcaraVnvController {
 
-    public void submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain) {
+    public void submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain, boolean lulus) {
+        StafFacade stafFacade = new StafFacade();
+
+        Vnv vnv = new Vnv();
+        vnv.setSoalKode(soal.getSoalKode());
+        vnv.setStafNip(stafFacade.findByUsername(LoginPanel.getUsername()).getStafNIP());
+        vnv.setVnvKelayakanBobot(bobotNilai);
+        vnv.setVnvKelayakanWaktu(bobotWaktu);
+        vnv.setVnvKesulitan(kesulitan);
+        vnv.setVnvKode(CommonHelper.createUUID());
+        vnv.setVnvLain(lain);
+        vnv.setVnvRelevansi(relevansi);
+        vnv.setVnvStatus(lulus);
+        vnv.setVnvTgl(new Date());
+
         VnvFacade vnvFacade = new VnvFacade();
-        vnvFacade.submitVnv(dosen, soal, relevansi, kesulitan, bobotNilai, bobotWaktu, lain);
+        vnvFacade.submitVnv(dosen, vnv);
     }
 
     public List<Soal> searchSoal(String text, JTable tSoal) {
@@ -52,21 +69,17 @@ public class BeritaAcaraVnvController {
         return soalList;
     }
 
-    public List<Staf> searchTimVnv(String text, JTable tStaf) {
-        List<Staf> stafList;
-        StafFacade stafFacade = new StafFacade();
-        stafList = stafFacade.findAllNotMe();
+    public List<Dosen> searchTimVnv(String text, JTable tStaf) {
+        List<Dosen> dosenList;
+        DosenFacade dosenFacade = new DosenFacade();
+        dosenList = dosenFacade.findAllDosenNotMe();
 
         Object[] columnsName = {"Nama", "NIP", ""};
 
         DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                if (column == 2) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return column == 2;
             }
 
             @Override
@@ -84,7 +97,7 @@ public class BeritaAcaraVnvController {
             }
 
         };
-        for (Staf staf : stafList) {
+        for (Staf staf : dosenList) {
             Object[] o = new Object[3];
             o[0] = staf.getStafNIP();
             o[1] = staf.getStafNama();
@@ -94,7 +107,7 @@ public class BeritaAcaraVnvController {
         }
         tStaf.setModel(dtm);
         CommonHelper.resizeColumnWidth(tStaf);
-        return stafList;
+        return dosenList;
     }
 
 }

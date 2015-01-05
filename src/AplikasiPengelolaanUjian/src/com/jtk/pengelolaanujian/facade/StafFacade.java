@@ -50,33 +50,31 @@ public class StafFacade {
         return null;
     }
 
-    public List<Staf> findAllNotMe() {
+    public Staf findByStafNip(String StafNip) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "SELECT staf.* FROM staf INNER JOIN user ON(staf.STAF_NIP = user.STAF_NIP) "
-                    + "WHERE user.USER_USERNAME <> '" + LoginPanel.getUsername()+"'";
+            String query = "SELECT * FROM staf WHERE STAF_NIP = '" + StafNip + "'";
             ResultSet rs = stmt.executeQuery(query);
-            List<Staf> stafList = new ArrayList<>();
-            while (rs.next()) {
+            if (rs.next()) {
                 Staf staf = new Staf();
                 staf.setStafNIP(rs.getString(1));
                 staf.setStafNama(rs.getString(2));
                 staf.setStafEmail(rs.getString(3));
                 staf.setStafKontak(rs.getString(4));
 
-                stafList.add(staf);
+                return staf;
             }
-            return stafList;
         } catch (SQLException ex) {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
-    public Staf findByStafNip(String StafNip) {
+    public Staf findByUsername(String username) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "SELECT * FROM staf WHERE STAF_NIP = '" + StafNip + "'";
+            String query = "SELECT staf.* FROM staf INNER JOIN user ON (user.STAF_NIP = staf.STAF_NIP) "
+                    + "WHERE user.USER_USERNAME = '" + username + "'";
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
                 Staf staf = new Staf();
