@@ -43,6 +43,9 @@ public class AdminPanel extends javax.swing.JPanel {
         assignRole1 = new com.jtk.pengelolaanujian.view.admin.AssignRole();
         createUndangan1 = new com.jtk.pengelolaanujian.view.admin.CreateUndangan();
 
+        setMinimumSize(new java.awt.Dimension(818, 625));
+        setPreferredSize(new java.awt.Dimension(818, 625));
+
         jTabbedPane1.setBackground(new java.awt.Color(0, 153, 153));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -58,7 +61,7 @@ public class AdminPanel extends javax.swing.JPanel {
         createUndangan1.setLayout(createUndangan1Layout);
         createUndangan1Layout.setHorizontalGroup(
             createUndangan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 608, Short.MAX_VALUE)
+            .addGap(0, 701, Short.MAX_VALUE)
         );
         createUndangan1Layout.setVerticalGroup(
             createUndangan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,7 +74,7 @@ public class AdminPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

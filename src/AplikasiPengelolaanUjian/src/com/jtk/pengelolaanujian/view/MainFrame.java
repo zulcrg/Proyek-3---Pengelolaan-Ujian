@@ -166,7 +166,8 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar2.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(840, 640));
+        setMinimumSize(new java.awt.Dimension(818, 710));
+        setPreferredSize(new java.awt.Dimension(818, 710));
 
         menuPanel.setBackground(new java.awt.Color(0, 102, 102));
         menuPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -261,7 +262,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         cardPanelLayout.setVerticalGroup(
             cardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
+            .addGap(0, 548, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");

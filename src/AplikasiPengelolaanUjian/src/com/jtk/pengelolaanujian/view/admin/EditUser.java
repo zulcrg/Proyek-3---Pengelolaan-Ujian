@@ -52,8 +52,10 @@ public class EditUser extends javax.swing.JPanel {
         radAktif = new javax.swing.JRadioButton();
         radNonAktif = new javax.swing.JRadioButton();
 
-        setPreferredSize(new java.awt.Dimension(609, 462));
+        setMinimumSize(new java.awt.Dimension(640, 625));
+        setPreferredSize(new java.awt.Dimension(640, 625));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Username");
 
         textUsername.addActionListener(new java.awt.event.ActionListener() {
@@ -62,15 +64,17 @@ public class EditUser extends javax.swing.JPanel {
             }
         });
 
-        btnBrowse.setText("Browse");
+        btnBrowse.setText("Cari");
         btnBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBrowseActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Status");
 
+        btnSimpan.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnSimpan.setText("Simpan");
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +83,7 @@ public class EditUser extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(radAktif);
+        radAktif.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         radAktif.setText("Aktif");
         radAktif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +92,7 @@ public class EditUser extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(radNonAktif);
+        radNonAktif.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         radNonAktif.setText("Non-Aktif");
         radNonAktif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,8 +104,8 @@ public class EditUser extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(189, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -112,14 +118,14 @@ public class EditUser extends javax.swing.JPanel {
                         .addComponent(radNonAktif))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBrowse)))
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addGap(181, 181, 181))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(179, 179, 179)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,7 +137,7 @@ public class EditUser extends javax.swing.JPanel {
                     .addComponent(radNonAktif))
                 .addGap(34, 34, 34)
                 .addComponent(btnSimpan)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
