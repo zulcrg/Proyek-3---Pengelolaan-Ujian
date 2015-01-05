@@ -50,7 +50,7 @@ public class SearchDialog extends javax.swing.JDialog {
     private final EnumPanel enumPanel;
 
     /**
-     * Creates new form SearchStafDialog
+     * Creates new form SearchSoalDialog
      *
      * @param parent
      * @param modal
