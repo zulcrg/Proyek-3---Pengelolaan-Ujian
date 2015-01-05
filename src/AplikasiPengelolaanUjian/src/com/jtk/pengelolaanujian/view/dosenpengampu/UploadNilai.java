@@ -164,7 +164,7 @@ public class UploadNilai extends javax.swing.JPanel {
                     nilai.setUjianKode(ruanganUjianList.get(cboUjian.getSelectedIndex()).getUjianKode());
 
                     if (uploadNilaiController.uploadNilai(nilai)) {
-                        JOptionPane.showMessageDialog(this, "Upload nilai berhasil");
+                        JOptionPane.showMessageDialog(null, "Upload nilai berhasil");
                     }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(UploadNilai.class.getName()).log(Level.SEVERE, null, ex);
@@ -175,7 +175,7 @@ public class UploadNilai extends javax.swing.JPanel {
 
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        int result = fileChooser.showOpenDialog(this);
+        int result = fileChooser.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
             url = fileChooser.getSelectedFile().getAbsolutePath();
             textUrl.setText(url);
