@@ -22,7 +22,7 @@ public class ConnectionHelper {
     private static Connection connection;
     private static Connection connectionGammu;
     private static final String user = "root";
-    private static final String password = "";    
+    private static final String password = "root";    
 
     private static void createConnection() {
         try {
