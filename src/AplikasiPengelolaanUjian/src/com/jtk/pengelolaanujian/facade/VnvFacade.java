@@ -5,6 +5,8 @@
  */
 package com.jtk.pengelolaanujian.facade;
 
+import com.jtk.pengelolaanujian.entity.Dosen;
+import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Vnv;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
@@ -37,7 +39,11 @@ public class VnvFacade {
                 vnv.setStafNip(rs.getString(3));
                 vnv.setVnvTgl(rs.getDate(4));
                 vnv.setVnvStatus(rs.getBoolean(5));
-                vnv.setVnvKet(rs.getString(6));
+                vnv.setVnvRelevansi(rs.getString(6));
+                vnv.setVnvKesulitan(rs.getString(7));
+                vnv.setVnvKelayakanBobot(rs.getString(8));
+                vnv.setVnvKelayakanWaktu(rs.getString(9));
+                vnv.setVnvLain(rs.getString(10));
 
                 vnvList.add(vnv);
             }
@@ -60,13 +66,22 @@ public class VnvFacade {
                 vnv.setStafNip(rs.getString(3));
                 vnv.setVnvTgl(rs.getDate(4));
                 vnv.setVnvStatus(rs.getBoolean(5));
-                vnv.setVnvKet(rs.getString(6));
-
+                vnv.setVnvRelevansi(rs.getString(6));
+                vnv.setVnvKesulitan(rs.getString(7));
+                vnv.setVnvKelayakanBobot(rs.getString(8));
+                vnv.setVnvKelayakanWaktu(rs.getString(9));
+                vnv.setVnvLain(rs.getString(10));
+                
                 return vnv;
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+    public boolean submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain) {
+        // TODO: insert ke dosen_to_vnv, vnv udah itu doang
+        return false;
     }
 }

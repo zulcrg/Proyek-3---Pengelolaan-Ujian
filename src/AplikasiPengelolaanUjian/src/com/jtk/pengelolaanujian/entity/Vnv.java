@@ -18,7 +18,11 @@ public class Vnv {
     private String stafNip;
     private Date vnvTgl;
     private boolean vnvStatus;
-    private String vnvKet;
+    private String vnvRelevansi;
+    private String vnvKesulitan;
+    private String vnvKelayakanBobot;
+    private String vnvKelayakanWaktu;
+    private String vnvLain;
 
     public String getVnvKode() {
         return vnvKode;
@@ -59,13 +63,45 @@ public class Vnv {
     public void setVnvStatus(boolean vnvStatus) {
         this.vnvStatus = vnvStatus;
     }
-
-    public String getVnvKet() {
-        return vnvKet;
-    }
-
-    public void setVnvKet(String vnvKet) {
-        this.vnvKet = vnvKet;
-    }
     
+    public String getVnvRelevansi() {
+        return vnvRelevansi;
+    }
+
+    public void setVnvRelevansi(String vnvRelevansi) {
+        this.vnvRelevansi = vnvRelevansi;
+    }
+
+    public String getVnvKesulitan() {
+        return vnvKesulitan;
+    }
+
+    public void setVnvKesulitan(String vnvKesulitan) {
+        this.vnvKesulitan = vnvKesulitan;
+    }
+
+    public String getVnvKelayakanBobot() {
+        return vnvKelayakanBobot;
+    }
+
+    public void setVnvKelayakanBobot(String vnvKelayakanBobot) {
+        this.vnvKelayakanBobot = vnvKelayakanBobot;
+    }
+
+    public String getVnvKelayakanWaktu() {
+        return vnvKelayakanWaktu;
+    }
+
+    public void setVnvKelayakanWaktu(String vnvKelayakanWaktu) {
+        this.vnvKelayakanWaktu = vnvKelayakanWaktu;
+    }
+
+    public String getVnvLain() {
+        return vnvLain;
+    }
+
+    public void setVnvLain(String vnvLain) {
+        this.vnvLain = vnvLain;
+    }
+
 }

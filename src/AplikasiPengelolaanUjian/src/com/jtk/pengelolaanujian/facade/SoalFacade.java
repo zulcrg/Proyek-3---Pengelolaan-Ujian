@@ -417,11 +417,6 @@ public class SoalFacade {
         return null;
     }
 
-    public boolean submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain) {
-
-        return false;
-    }
-
     public void updateSoalSifatUploaded(Soal soal) throws SQLException {
         String query = "UPDATE soal SET SOAL_SIFAT = ?, SOAL_UPLOADED = ? WHERE SOAL_KODE = ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(query);

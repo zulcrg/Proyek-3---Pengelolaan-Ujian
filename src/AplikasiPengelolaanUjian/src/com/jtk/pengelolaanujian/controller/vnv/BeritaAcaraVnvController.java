@@ -11,6 +11,7 @@ import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.facade.SoalFacade;
 import com.jtk.pengelolaanujian.facade.StafFacade;
+import com.jtk.pengelolaanujian.facade.VnvFacade;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
@@ -23,7 +24,8 @@ import javax.swing.table.DefaultTableModel;
 public class BeritaAcaraVnvController {
     
     public void submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain){
-        SoalFacade soalFacade = new SoalFacade();
+        VnvFacade vnvFacade = new VnvFacade();
+        vnvFacade.submitVnv(dosen, soal, relevansi, kesulitan, bobotNilai, bobotWaktu, lain);
     }
     public List<Soal> searchSoal(String text, JTable tSoal){
         List<Soal> soalList;
