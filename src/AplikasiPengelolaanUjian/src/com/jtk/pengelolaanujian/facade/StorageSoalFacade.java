@@ -106,6 +106,7 @@ public class StorageSoalFacade {
             String query = "SELECT COUNT(*) FROM storage_soal WHERE SOAL_KODE = '" + kodeSoal + "'";
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
+                System.out.println(rs.getInt(1));
                 return rs.getInt(1);
             }
         } catch (SQLException ex) {
@@ -118,6 +119,7 @@ public class StorageSoalFacade {
         String query = "INSERT INTO storage_soal(SOAL_KODE, STSOAL_NO_URUT, STAF_NIP, STSOAL_TGL_UPLOAD, STSOAL_FILE, STSOAL_NAMA_FILE, STSOAL_TIPE_FILE) values(?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1, storageSoal.getSoalKode());
+        System.out.println(storageSoal.getStsoalNoUrut());
         preparedStatement.setInt(2, storageSoal.getStsoalNoUrut());
         preparedStatement.setString(3, storageSoal.getStafNip());
         preparedStatement.setTimestamp(4, new Timestamp(storageSoal.getStsoalTglUpload().getTime()));

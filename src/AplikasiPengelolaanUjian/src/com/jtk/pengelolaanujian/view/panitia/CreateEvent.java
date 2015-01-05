@@ -224,7 +224,7 @@ public class CreateEvent extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(88, 88, 88)
@@ -252,11 +252,11 @@ public class CreateEvent extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel21)
                         .addGap(10, 10, 10)
-                        .addComponent(spinnerJam, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(spinnerJam, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel22)
-                        .addGap(4, 4, 4)
-                        .addComponent(spinnerMenit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spinnerMenit, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(279, 279, 279)
@@ -301,7 +301,7 @@ public class CreateEvent extends javax.swing.JPanel {
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(delayUploadNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(179, 179, 179)
                                 .addComponent(btnCreateEvent)
                                 .addGap(26, 26, 26)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -456,7 +456,7 @@ public class CreateEvent extends javax.swing.JPanel {
         
         EventController createEventController = new EventController();
         if(createEventController.createEvent(event)){
-            JOptionPane.showMessageDialog(this, "Event berhasil dibuat", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Event berhasil dibuat", "Informasi", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnCreateEventActionPerformed
 

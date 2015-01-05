@@ -215,13 +215,13 @@ public class UploadSoal extends javax.swing.JPanel {
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         if (textUrl.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Harap pilih file yang akan di upload", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Harap pilih file yang akan di upload", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (!new File(url).exists()) {
-            JOptionPane.showMessageDialog(this, "File yang anda upload tidak ada", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "File yang anda upload tidak ada", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (spinDurasi.getValue() == null) {
-            JOptionPane.showMessageDialog(this, "Harap isi durasi ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Harap isi durasi ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (!CommonHelper.isStringNumberMaxMin(spinDurasi.getValue().toString(), 1000, 1)) {
-            JOptionPane.showMessageDialog(this, "Harap isi format durasi dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Harap isi format durasi dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
                 InputStream is = new FileInputStream(new File(url));
@@ -229,7 +229,7 @@ public class UploadSoal extends javax.swing.JPanel {
                 String tipeFile = FilenameUtils.getExtension(url);
                 String namaFile = FilenameUtils.getBaseName(url);
                 if (uploadSoalController.uploadSoal(is, ujianList.get(cboMatkul.getSelectedIndex()).getUjianKode(), soal.getSoalSifat(), durasi, tipeFile, namaFile)) {
-                    JOptionPane.showMessageDialog(this, "File berhasil di upload", "Perhatian", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "File berhasil di upload", "Perhatian", JOptionPane.INFORMATION_MESSAGE);
                     Reminder3Controller reminder3Controller = new Reminder3Controller();
                     reminder3Controller.preparation();
                     clear();
@@ -242,7 +242,7 @@ public class UploadSoal extends javax.swing.JPanel {
 
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        int result = fileChooser.showOpenDialog(this);
+        int result = fileChooser.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
             url = fileChooser.getSelectedFile().getAbsolutePath();
             textUrl.setText(url);
