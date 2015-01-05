@@ -57,7 +57,7 @@ public class BeritaAcaraVnvController {
         StafFacade stafFacade = new StafFacade();
         stafList = stafFacade.findAllNotMe();
 
-        Object[] columnsName = {"Nama", "NIP", ""};
+        Object[] columnsName = {"NIP", "Nama", ""};
 
         DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
             @Override
