@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.controller.vnv;
 
 import com.jtk.pengelolaanujian.entity.Dosen;
@@ -12,6 +11,7 @@ import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.facade.SoalFacade;
 import com.jtk.pengelolaanujian.facade.StafFacade;
 import com.jtk.pengelolaanujian.facade.VnvFacade;
+import com.jtk.pengelolaanujian.util.CommonHelper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
@@ -22,16 +22,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Rizki
  */
 public class BeritaAcaraVnvController {
-    
-    public void submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain){
+
+    public void submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain) {
         VnvFacade vnvFacade = new VnvFacade();
         vnvFacade.submitVnv(dosen, soal, relevansi, kesulitan, bobotNilai, bobotWaktu, lain);
     }
-    public List<Soal> searchSoal(String text, JTable tSoal){
-        List<Soal> soalList;
-        
+
+    public List<Soal> searchSoal(String text, JTable tSoal) {
         SoalFacade soalFacade = new SoalFacade();
-        soalList = soalFacade.searchSoalInKbk(text);
+        List<Soal> soalList = soalFacade.searchSoalInKbk(text);
 
         Object[] columnsName = {"Kode Soal", "Mata Kuliah", "Mata Kuliah Tipe"};
 
@@ -52,29 +51,50 @@ public class BeritaAcaraVnvController {
         tSoal.setModel(dtm);
         return soalList;
     }
-    
-    public List<Staf> searchTimVnv(String text, JTable tStaf){
+
+    public List<Staf> searchTimVnv(String text, JTable tStaf) {
         List<Staf> stafList;
         StafFacade stafFacade = new StafFacade();
-        stafList = stafFacade.findAll();
+        stafList = stafFacade.findAllNotMe();
 
-        Object[] columnsName = {"Nama", "NIP"};
+        Object[] columnsName = {"Nama", "NIP", ""};
 
         DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false;
+                if (column == 2) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
+
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                switch (columnIndex) {
+                    case 0:
+                        return String.class;
+                    case 1:
+                        return String.class;
+                    case 2:
+                        return Boolean.class;
+                    default:
+                        return String.class;
+                }
+            }
+
         };
         for (Staf staf : stafList) {
-            Object[] o = new Object[2];
+            Object[] o = new Object[3];
             o[0] = staf.getStafNIP();
             o[1] = staf.getStafNama();
+            o[2] = Boolean.FALSE;
 
             dtm.addRow(o);
         }
         tStaf.setModel(dtm);
+        CommonHelper.resizeColumnWidth(tStaf);
         return stafList;
     }
-    
+
 }

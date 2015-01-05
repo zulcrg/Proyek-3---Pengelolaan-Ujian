@@ -10,6 +10,7 @@ import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,6 +32,29 @@ public class StafFacade {
         try {
             Statement stmt = connection.createStatement();
             String query = "SELECT * FROM staf";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Staf> stafList = new ArrayList<>();
+            while (rs.next()) {
+                Staf staf = new Staf();
+                staf.setStafNIP(rs.getString(1));
+                staf.setStafNama(rs.getString(2));
+                staf.setStafEmail(rs.getString(3));
+                staf.setStafKontak(rs.getString(4));
+
+                stafList.add(staf);
+            }
+            return stafList;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Staf> findAllNotMe() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT staf.* FROM staf INNER JOIN user ON(staf.STAF_NIP = user.STAF_NIP) "
+                    + "WHERE user.USER_USERNAME <> '" + LoginPanel.getUsername()+"'";
             ResultSet rs = stmt.executeQuery(query);
             List<Staf> stafList = new ArrayList<>();
             while (rs.next()) {
