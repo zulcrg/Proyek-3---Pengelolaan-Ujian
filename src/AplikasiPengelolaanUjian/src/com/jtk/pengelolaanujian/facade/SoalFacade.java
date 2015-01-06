@@ -344,13 +344,15 @@ public class SoalFacade {
                         + "soal.SOAL_VNVED = 0";                
                 // alokasi resultset sebagai penampung hasil dari query yang di eksekusi
 
-                System.out.println(query);
+                System.out.println("wasfa = "+query);
                 ResultSet rs = stmt.executeQuery(query);
                 List<Soal> soalList = new ArrayList<>();
                 while (rs.next()) {
                     Soal soal = new Soal();
                     soal.setSoalKode(rs.getString(1));
                     soal.setSoalSifat(rs.getString(2));
+                    
+                    System.out.println(soal.getSoalSifat());
 
                     MataKuliah mataKuliah = new MataKuliah();
                     mataKuliah.setMatkulKode(rs.getString(3));

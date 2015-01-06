@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class BeritaAcaraVnvController {
 
-    public void submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain, boolean lulus) {
+    public boolean submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain, boolean lulus) {
         StafFacade stafFacade = new StafFacade();
 
         Vnv vnv = new Vnv();
@@ -42,7 +42,7 @@ public class BeritaAcaraVnvController {
         vnv.setVnvTgl(new Date());
 
         VnvFacade vnvFacade = new VnvFacade();
-        vnvFacade.submitVnv(dosen, vnv);
+        return vnvFacade.submitVnv(dosen, vnv);
     }
 
     public List<Soal> searchSoal(String text, JTable tSoal) {

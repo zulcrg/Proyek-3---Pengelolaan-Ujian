@@ -47,6 +47,14 @@ public class BeritaAcaraVnvScroll extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public BeritaAcaraVnv getBeritaAcaraVnv1() {
+        return beritaAcaraVnv1;
+    }
+
+    public void setBeritaAcaraVnv1(BeritaAcaraVnv beritaAcaraVnv1) {
+        this.beritaAcaraVnv1 = beritaAcaraVnv1;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.jtk.pengelolaanujian.view.vnv.BeritaAcaraVnv beritaAcaraVnv1;

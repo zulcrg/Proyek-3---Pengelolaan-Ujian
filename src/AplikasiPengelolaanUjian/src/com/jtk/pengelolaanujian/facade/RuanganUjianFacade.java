@@ -314,28 +314,32 @@ public class RuanganUjianFacade {
             Statement stmt = connection.createStatement();
             String query = "SELECT * "
                     + " FROM"
-                    + " ruangan_ujian,ujian,soal,mata_kuliah"
+                    + " ruangan_ujian,ujian,soal,mata_kuliah,ruangan,kelas,staf,berita_acara"
                     + " WHERE"
+                    + " ruangan.ruangan_kode = ruangan_ujian.ruangan_kode AND"                    
                     + " ruangan_ujian.ujian_kode = ujian.ujian_kode AND"
-                    + " ujian.soal_kode= soal.soal_kode AND"
+                    + " ujian.soal_kode = soal.soal_kode AND"
+                    + " kelas.kelas_kode = ruangan_ujian.kelas_kode AND"
                     + " soal.matkul_kode = mata_kuliah.matkul_kode AND"
+                    + " ruangan_ujian.staf_nip = staf.staf_nip AND"
+                    + " ruangan_ujian.berita_kode = berita_acara.berita_kode AND"
                     + " soal.matkul_tipe = mata_kuliah.matkul_tipe";
 
             ResultSet rs = stmt.executeQuery(query);
             List<RuanganUjian> listRuanganUjian = new ArrayList<>();
             while (rs.next()) {
                 RuanganUjian ruanganUjian = new RuanganUjian();
-                ruanganUjian.setRuanganKode(rs.getString(1));
-                ruanganUjian.setUjianKode(rs.getString(2));
-                ruanganUjian.setStafNip(rs.getString(3));
-                ruanganUjian.setBeritaKode(rs.getString(4));
-                ruanganUjian.setRuanganUjianUploadNilaiStatus(getBoolean(5));
-                ruanganUjian.setKelasKode(rs.getString(6));
+                ruanganUjian.setRuanganKode(rs.getString("ruangan_ujian.RUANGAN_KODE"));
+                ruanganUjian.setUjianKode(rs.getString("UJIAN.UJIAN_KODE"));
+                ruanganUjian.setStafNip(rs.getString("STAF.STAF_NIP"));
+                ruanganUjian.setBeritaKode(rs.getString("BERITA_ACARA.BERITA_KODE"));
+                ruanganUjian.setRuanganUjianUploadNilaiStatus(getBoolean("RUANGAN_UJIAN.RUANGAN_UJIAN_NILAI_UPLOADED"));
+                ruanganUjian.setKelasKode(rs.getString("KELAS.KELAS_KODE"));
 
                 Ujian ujian = new Ujian();
-                ujian.setUjianNama(rs.getString(12));
+                ujian.setUjianNama(rs.getString("UJIAN.UJIAN_NAMA"));
                 Kelas kelas = new Kelas();
-                kelas.setKelasNama(rs.getString(14));
+                kelas.setKelasNama(rs.getString("KELAS.KELAS_NAMA"));
 
                 ruanganUjian.setUjian(ujian);
                 ruanganUjian.setKelas(kelas);

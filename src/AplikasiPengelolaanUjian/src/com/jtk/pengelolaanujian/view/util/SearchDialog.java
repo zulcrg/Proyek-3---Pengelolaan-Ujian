@@ -19,6 +19,7 @@ import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.EnumPanel;
+import com.zlib.util.ZClass;
 import java.awt.Color;
 import java.awt.Frame;
 import java.util.List;
@@ -309,8 +310,7 @@ public class SearchDialog extends javax.swing.JDialog {
                 kelas.setKelasNama(kelasList.get(table.getSelectedRow()).getKelasNama());
                 break;
             case SEARCH_SOALMATKUL:
-                soal.setSoalKode(soalList.get(table.getSelectedRow()).getSoalKode());
-                soal.setMataKuliah(soalList.get(table.getSelectedRow()).getMataKuliah());
+                ZClass.copyClass(soalList.get(table.getSelectedRow()), soal);
                 break;
             case SEARCH_PENGAWAS:
                 staf.setStafNama(stafList.get(table.getSelectedRow()).getStafNama());
