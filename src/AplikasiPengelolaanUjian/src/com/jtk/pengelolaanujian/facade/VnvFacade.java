@@ -122,6 +122,8 @@ public class VnvFacade {
 
             preparedStatement.executeUpdate();
 
+            SoalFacade soalFacade = new SoalFacade();
+            soalFacade.updateSoalVnved(vnv.getSoalKode(), true);
             connection.commit();
             connection.setAutoCommit(true);
             return true;
