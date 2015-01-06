@@ -189,57 +189,70 @@ public class SearchDialog extends javax.swing.JDialog {
                 registrasiUserController = new RegistrasiUserController();
                 registrasiUserController.searchUser("", table);
                 textSearch.setText("Cari berdasarkan NIP atau Nama");
+                textSearch.setToolTipText("Cari berdasarkan NIP atau Nama");
+                setTitle("Registrasi User");
                 break;
             case ASSIGN_ROLE:
                 assignRoleController = new AssignRoleController();
                 stafList = assignRoleController.searchUser("", table);
                 textSearch.setText("Cari berdasarkan Nama atau Username");
+                textSearch.setToolTipText("Cari berdasarkan Nama atau Username");
+                setTitle("Assign Role");
                 break;
             case EDIT_USER:
                 editUserController = new EditUserController();
                 stafList = editUserController.searchUserNotMe("", table);
                 textSearch.setText("Cari berdasarkan Nama atau Username");
+                textSearch.setToolTipText("Cari berdasarkan Nama atau Username");
+                setTitle("Edit User");
                 break;
             case SEARCH_SOAL:
                 createUjianController = new CreateUjianController();
                 mataKuliahList = createUjianController.searchMataKuliah("", table);
                 textSearch.setText("Cari berdasarkan Kode atau Nama Mata kuliah");
+                textSearch.setToolTipText("Cari berdasarkan Kode atau Nama Mata kuliah");
                 setTitle("Mata Kuliah");
                 break;
             case SEARCH_UJIAN:
                 assignUjianController = new AssignUjianController();
                 ujianList = assignUjianController.searchUjian("", table);
                 textSearch.setText("Cari berdasarkan Kode atau Nama Ujian");
+                textSearch.setToolTipText("Cari berdasarkan Kode atau Nama Ujian");
                 setTitle("Ujian");
                 break;
             case SEARCH_RUANGAN:
                 assignUjianController = new AssignUjianController();
                 ruanganList = assignUjianController.searchRuangan("", table);
                 textSearch.setText("Cari berdasarkan Kode atau Nama Ruangan");
+                textSearch.setToolTipText("Cari berdasarkan Kode atau Nama Ruangan");
                 setTitle("Ruangan");
                 break;
             case SEARCH_KELAS:
                 assignUjianController = new AssignUjianController();
                 kelasList = assignUjianController.searchKelas("", table);
                 textSearch.setText("Cari berdasarkan Kode atau Nama Kelas");
+                textSearch.setToolTipText("Cari berdasarkan Kode atau Nama Kelas");
                 setTitle("Kelas");
                 break;
             case SEARCH_SOALMATKUL:
                 beritaAcaraVnvController = new BeritaAcaraVnvController();
                 soalList = beritaAcaraVnvController.searchSoal("", table);
                 textSearch.setText("Cari berdasarkan Kode Soal atau Nama Mata Kuliah");
+                textSearch.setToolTipText("Cari berdasarkan Kode Soal atau Nama Mata Kuliah");
                 setTitle("Soal");
                 break;
             case SEARCH_PENGAWAS:
                 assignUjianController = new AssignUjianController();
                 stafList = assignUjianController.searchPengawas("", table);
                 textSearch.setText("Cari berdasarkan NIP atau Nama Pengawas");
+                textSearch.setToolTipText("Cari berdasarkan NIP atau Nama Pengawas");
                 setTitle("Pengawas");
                 break;
             case SEARCH_STAF:
                 beritaAcaraVnvController = new BeritaAcaraVnvController();
                 dosenList = beritaAcaraVnvController.searchTimVnv("", table);
                 textSearch.setText("Cari berdasarkan NIP atau Nama Staf");
+                textSearch.setToolTipText("Cari berdasarkan NIP atau Nama Staf");
                 setTitle("Tim Vnv");
                 break;
         }
@@ -249,33 +262,43 @@ public class SearchDialog extends javax.swing.JDialog {
         switch (enumPanel) {
             case REGISTER_USER:
                 textSearch.setText("Cari berdasarkan NIP atau Nama");
+                textSearch.setToolTipText("Cari berdasarkan NIP atau Nama");
                 break;
             case ASSIGN_ROLE:
                 textSearch.setText("Cari berdasarkan Nama atau Username");
+                textSearch.setToolTipText("Cari berdasarkan Nama atau Username");
                 break;
             case EDIT_USER:
                 textSearch.setText("Cari berdasarkan Nama atau Username");
+                textSearch.setToolTipText("Cari berdasarkan Nama atau Username");
                 break;
             case SEARCH_SOAL:
                 textSearch.setText("Cari berdasarkan Kode atau Nama Mata kuliah");
+                textSearch.setToolTipText("Cari berdasarkan Kode atau Nama Mata kuliah");
                 break;
             case SEARCH_UJIAN:
                 textSearch.setText("Cari berdasarkan Kode atau Nama Ujian");
+                textSearch.setToolTipText("Cari berdasarkan Kode atau Nama Ujian");
                 break;
             case SEARCH_RUANGAN:
                 textSearch.setText("Cari berdasarkan Kode atau Nama Ruangan");
+                textSearch.setToolTipText("Cari berdasarkan Kode atau Nama Ruangan");
                 break;
             case SEARCH_KELAS:
                 textSearch.setText("Cari berdasarkan Kode atau Nama Kelas");
+                textSearch.setToolTipText("Cari berdasarkan Kode atau Nama Kelas");
                 break;
             case SEARCH_SOALMATKUL:
                 textSearch.setText("Cari berdasarkan Kode Soal atau Nama Mata Kuliah");
+                textSearch.setToolTipText("Cari berdasarkan Kode Soal atau Nama Mata Kuliah");
                 break;
             case SEARCH_PENGAWAS:
                 textSearch.setText("Cari berdasarkan NIP atau Nama Pengawas");
+                textSearch.setToolTipText("Cari berdasarkan NIP atau Nama Pengawas");
                 break;
             case SEARCH_STAF:
                 textSearch.setText("Cari berdasarkan NIP atau Nama Staf");
+                textSearch.setToolTipText("Cari berdasarkan NIP atau Nama Staf");
                 break;
         }
     }
