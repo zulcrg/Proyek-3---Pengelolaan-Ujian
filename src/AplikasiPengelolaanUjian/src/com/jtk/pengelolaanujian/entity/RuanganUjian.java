@@ -6,6 +6,7 @@
 package com.jtk.pengelolaanujian.entity;
 
 import com.jtk.pengelolaanujian.facade.BeritaAcaraFacade;
+import com.jtk.pengelolaanujian.facade.KelasFacade;
 import com.jtk.pengelolaanujian.facade.RuanganFacade;
 import com.jtk.pengelolaanujian.facade.StafFacade;
 import com.jtk.pengelolaanujian.facade.UjianFacade;
@@ -59,8 +60,13 @@ public class RuanganUjian {
         return ruanganKode;
     }
 
-    public Kelas getKelas() {
+    public Kelas getKelasQuery() {
+        KelasFacade kelasFacade = new KelasFacade();
+        kelas = kelasFacade.findByKelasKode(kelasKode);
+        return kelas;
+    }
 
+    public Kelas getKelas() {
         return kelas;
     }
 

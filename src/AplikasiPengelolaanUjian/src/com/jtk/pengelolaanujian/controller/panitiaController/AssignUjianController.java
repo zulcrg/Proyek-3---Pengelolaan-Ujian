@@ -20,11 +20,15 @@ import com.jtk.pengelolaanujian.facade.UjianFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
 import com.jtk.pengelolaanujian.util.CommonHelper;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.util.SendEmailModel;
+import com.jtk.pengelolaanujian.util.SendingEmailControlProcess;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -162,6 +166,71 @@ public class AssignUjianController extends AbstractController {
                 addInfoMessage("Berhasil menambahkat data", "Perhatian");
                 ConnectionHelper.getConnection().commit();
                 ConnectionHelper.getConnection().setAutoCommit(true);
+
+                Staf staf = ruanganUjian.getStafQuery();
+                Ruangan ruangan = ruanganUjian.getRuanganQuery();
+                Ujian ujian = ruanganUjian.getUjianQuery();
+                Kelas kelas = ruanganUjian.getKelasQuery();
+                SendEmailModel sendEmailModel = new SendEmailModel();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm:ss");
+
+                List<String> reciever = new ArrayList<>();
+                reciever.add(staf.getStafEmail());
+
+                sendEmailModel.setReciever(reciever);
+                sendEmailModel.setSubject("Pemberitahuan Pengawas Ujian");
+
+                String messageBody = "<table>\n"
+                        + "	<tr>\n"
+                        + "		<td style=\"width:150px;\">Ujian</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td style=\"width:300px;\">" + ujian.getUjianNama() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>NIP</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + staf.getStafNIP() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Nama</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + staf.getStafNama() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Kelas</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + kelas.getKelasNama() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Kode Ruangan</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + ruangan.getRuanganKode() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Nama Ruangan</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + ruangan.getRuanganNama() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Tanggal</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + sdf.format(ujian.getUjianMulai()) + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Waktu</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + sdf2.format(ujian.getUjianMenit()) + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Durasi</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + ujian.getUjianMenit() + " Menit</td>\n"
+                        + "	</tr>\n"
+                        + "</table>";
+                sendEmailModel.setMessageBody(messageBody);
+                SendingEmailControlProcess secp = new SendingEmailControlProcess();
+                secp.SendEmail(sendEmailModel);
                 return true;
             } catch (SQLException ex) {
                 Logger.getLogger(AssignUjianController.class.getName()).log(Level.SEVERE, null, ex);
@@ -173,6 +242,8 @@ public class AssignUjianController extends AbstractController {
                     Logger.getLogger(AssignUjianController.class.getName()).log(Level.SEVERE, null, ex1);
                     addErrorMessage(ex1.getMessage(), "Error");
                 }
+            } catch (MessagingException ex) {
+                Logger.getLogger(AssignUjianController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
