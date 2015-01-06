@@ -23,7 +23,6 @@ public class AdminPanel extends javax.swing.JPanel {
     public void preparation() {
         registrasiUser1.preparation();
         assignRole1.preparation();
-        createUndangan1.preparation();
         editUser1.preparation();
         this.setBackground(Color.darkGray);
     }
