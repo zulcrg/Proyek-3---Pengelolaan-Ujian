@@ -481,6 +481,7 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         txtBentukUjian.setText(soal.getMataKuliah().getMatkulTipe());
         txtTglUjian.setText(sdf.format(soal.getUjian().getUjianMulai()));
         txtWaktuUjian.setText(String.valueOf(soal.getUjian().getUjianMenit()));
+        txtKelas.setText(soal.getUjian().getRuanganUjian().getKelas().getKelasNama());
         char[] a = event.getKode().toCharArray();
 
         txtTahunAk.setText("20" + a[0] + a[1]);
