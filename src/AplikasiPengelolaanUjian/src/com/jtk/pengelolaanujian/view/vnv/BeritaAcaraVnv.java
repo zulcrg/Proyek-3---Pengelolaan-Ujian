@@ -8,8 +8,10 @@ package com.jtk.pengelolaanujian.view.vnv;
 import com.jtk.pengelolaanujian.controller.reminder.Reminder5Controller;
 import com.jtk.pengelolaanujian.controller.vnv.BeritaAcaraVnvController;
 import com.jtk.pengelolaanujian.entity.Dosen;
+import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.util.EnumPanel;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import com.jtk.pengelolaanujian.view.util.SearchDialog;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
     BeritaAcaraVnvController beritaAcaraVnvController = new BeritaAcaraVnvController();
     private Soal soal;
     private List<Dosen> dosenList;
+    private Event event;
 
     /**
      * Creates new form BeritaAcara
@@ -32,9 +35,10 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
     public BeritaAcaraVnv() {
         initComponents();
     }
-    
-    public void preparation(){
+
+    public void preparation() {
         clear();
+        event = LoginPanel.getEvent();
     }
 
     /**
@@ -465,10 +469,9 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         SearchDialog searchDialog = new SearchDialog(null, true, soal, EnumPanel.SEARCH_SOALMATKUL);
         searchDialog.show();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
-        
+
         //System.out.println(soal.getSoalKode());
         //System.out.println(soal.getSoalSifat());
-        
         txtSoal.setText(soal.getSoalKode());
         txtSifatUjian.setText(soal.getSoalSifat());
         txtMatkul.setText(soal.getMataKuliah().getMatkulNama());
@@ -478,7 +481,15 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         txtBentukUjian.setText(soal.getMataKuliah().getMatkulTipe());
         txtTglUjian.setText(sdf.format(soal.getUjian().getUjianMulai()));
         txtWaktuUjian.setText(String.valueOf(soal.getUjian().getUjianMenit()));
+        char[] a = event.getKode().toCharArray();
 
+        txtTahunAk.setText("20" + a[0] + a[1]);
+
+        if (a[2] == '1') {
+            txtSemester.setText("Genap");
+        } else {
+            txtSemester.setText("Genap");
+        }
     }//GEN-LAST:event_btnChooseActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
@@ -487,17 +498,18 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Harap pilih List Tim Vnv", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (txtSoal.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Harap pilih Soal yang di Vnv", "Perhatian", JOptionPane.WARNING_MESSAGE);
-        }
-        if(beritaAcaraVnvController.submitVnv(dosenList, soal, txtRelevansi.getText(), txtDerajatSulit.getText(),
-                txtKelayakanBobot.getText(), txtKelayakanWaktuKM.getText(), txtLain.getText(), radLulus.isSelected())){
-            JOptionPane.showMessageDialog(null, "Berhasil Input Vnv", "Informasi", JOptionPane.INFORMATION_MESSAGE);
-            clear();
-            
-            Reminder5Controller reminder5Controller = new Reminder5Controller();
-            reminder5Controller.preparation();
+        } else {
+            if (beritaAcaraVnvController.submitVnv(dosenList, soal, txtRelevansi.getText(), txtDerajatSulit.getText(),
+                    txtKelayakanBobot.getText(), txtKelayakanWaktuKM.getText(), txtLain.getText(), radLulus.isSelected())) {
+                JOptionPane.showMessageDialog(null, "Berhasil Input Vnv", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+                clear();
+
+                Reminder5Controller reminder5Controller = new Reminder5Controller();
+                reminder5Controller.preparation();
+            }
         }
 
-       
+
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnTimVnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimVnvActionPerformed
@@ -514,7 +526,7 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         txtTimVnv.setText(text);
     }//GEN-LAST:event_btnTimVnvActionPerformed
 
-    private void clear(){
+    private void clear() {
         txtBentukUjian.setText("");
         txtDerajatSulit.setText("");
         txtKdDosen.setText("");
@@ -534,7 +546,7 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         txtTglUjian.setText("");
         txtTimVnv.setText("");
         txtWaktuUjian.setText("");
-        dosenList =new ArrayList<>();
+        dosenList = new ArrayList<>();
         soal = new Soal();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
