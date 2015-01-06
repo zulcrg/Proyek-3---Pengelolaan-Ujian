@@ -11,6 +11,7 @@ import com.jtk.pengelolaanujian.entity.Ruangan;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.EnumPanel;
+import com.jtk.pengelolaanujian.util.SendEmailModel;
 import com.jtk.pengelolaanujian.view.util.SearchDialog;
 import javax.swing.JOptionPane;
 
