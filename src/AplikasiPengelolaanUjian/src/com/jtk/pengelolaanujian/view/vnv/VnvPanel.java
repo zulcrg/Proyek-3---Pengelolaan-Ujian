@@ -41,7 +41,7 @@ public class VnvPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(818, 625));
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Berita Acara VNV", beritaAcaraVnvScroll1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
