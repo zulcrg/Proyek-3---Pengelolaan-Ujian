@@ -430,4 +430,13 @@ public class SoalFacade {
 
         preparedStatement.executeUpdate();
     }
+    
+    public void updateSoalVnved(String kodeSoal, boolean vnved) throws SQLException {
+        String query = "UPDATE soal SET SOAL_VNVED = ? WHERE SOAL_KODE = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setBoolean(1, vnved);
+        preparedStatement.setString(2, kodeSoal);
+
+        preparedStatement.executeUpdate();
+    }
 }
