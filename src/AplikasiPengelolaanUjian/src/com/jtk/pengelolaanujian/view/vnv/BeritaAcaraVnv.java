@@ -461,6 +461,9 @@ public class BeritaAcaraVnv extends javax.swing.JPanel {
         searchDialog.show();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
         
+        System.out.println(soal.getSoalKode());
+        System.out.println(soal.getSoalSifat());
+        
         txtSoal.setText(soal.getSoalKode());
         txtSifatUjian.setText(soal.getSoalSifat());
         txtMatkul.setText(soal.getMataKuliah().getMatkulNama());

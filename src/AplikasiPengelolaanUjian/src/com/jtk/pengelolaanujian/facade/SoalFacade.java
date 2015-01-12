@@ -331,16 +331,17 @@ public class SoalFacade {
                         + "FROM soal, mata_kuliah, ujian, event, staf, dosen, kelas, mata_kuliah_to_dosen, ruangan_ujian "
                         + "WHERE (soal.SOAL_KODE like '%" + text + "%' OR mata_kuliah.MATKUL_NAMA like '%" + text + "%' ) "
                         + "AND mata_kuliah.MATKUL_KODE = soal.MATKUL_KODE AND "
+                        + "mata_kuliah.MATKUL_TIPE = soal.MATKUL_TIPE AND "
                         + "ujian.SOAL_KODE = soal.SOAL_KODE AND "
                         + "event.EVENT_KODE = ujian.EVENT_KODE AND "
                         + "mata_kuliah_to_dosen.MATKUL_KODE = mata_kuliah.MATKUL_KODE AND "
+                        + "mata_kuliah_to_dosen.MATKUL_TIPE = mata_kuliah.MATKUL_TIPE AND "
                         + "dosen.DOSEN_KODE = mata_kuliah_to_dosen.DOSEN_KODE AND "
                         + "staf.STAF_NIP = dosen.STAF_NIP AND "
                         + "ruangan_ujian.UJIAN_KODE = ujian.UJIAN_KODE AND "
                         + "kelas.KELAS_KODE = ruangan_ujian.KELAS_KODE AND "
                         + "dosen.KBK_KODE = '" + kbkKode + "' AND "
-                        + "soal.SOAL_VNVED = 0";
-                System.out.println(query);
+                        + "soal.SOAL_VNVED = 0";                
                 // alokasi resultset sebagai penampung hasil dari query yang di eksekusi
 
                 System.out.println(query);
@@ -383,9 +384,9 @@ public class SoalFacade {
                     ruanganUjian.setKelas(kelas);
 
                     ruanganUjian.setUjian(ujian);
-
                     ujian.setSoal(soal);
-
+                    ujian.setRuanganUjian(ruanganUjian);                    
+                    soal.setUjian(ujian);
                     soalList.add(soal);
                     //gelo asli
 

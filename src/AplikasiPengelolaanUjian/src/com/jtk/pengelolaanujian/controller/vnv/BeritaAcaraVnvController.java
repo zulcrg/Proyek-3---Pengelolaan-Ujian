@@ -49,7 +49,7 @@ public class BeritaAcaraVnvController {
         SoalFacade soalFacade = new SoalFacade();
         List<Soal> soalList = soalFacade.searchSoalInKbk(text);
 
-        Object[] columnsName = {"Kode Soal", "Mata Kuliah", "Mata Kuliah Tipe"};
+        Object[] columnsName = {"Kode Soal", "Mata Kuliah", "Mata Kuliah Tipe","Kelas"};
 
         DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
             @Override
@@ -58,10 +58,11 @@ public class BeritaAcaraVnvController {
             }
         };
         for (Soal soal : soalList) {
-            Object[] o = new Object[3];
+            Object[] o = new Object[4];
             o[0] = soal.getSoalKode();
             o[1] = soal.getMataKuliah().getMatkulNama();
             o[2] = soal.getMataKuliah().getMatkulTipe();
+            o[3] = soal.getUjian().getRuanganUjian().getKelas().getKelasNama();
 
             dtm.addRow(o);
         }

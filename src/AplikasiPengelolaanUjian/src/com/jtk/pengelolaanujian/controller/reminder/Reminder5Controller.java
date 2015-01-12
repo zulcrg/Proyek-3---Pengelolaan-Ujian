@@ -35,7 +35,7 @@ public class Reminder5Controller {
     }
 
     public Reminder5Controller() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
     
     public void preparation(){
