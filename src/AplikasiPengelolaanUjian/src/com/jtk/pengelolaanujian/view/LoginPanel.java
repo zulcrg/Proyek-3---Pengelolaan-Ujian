@@ -228,7 +228,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("Pengolahan Ujian");
+        jLabel6.setText("Pengelolaan Ujian");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/pengelolaanujian/view/images/opl1.png"))); // NOI18N
@@ -247,7 +247,7 @@ public class LoginPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(122, Short.MAX_VALUE)
+                .addContainerGap(115, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)

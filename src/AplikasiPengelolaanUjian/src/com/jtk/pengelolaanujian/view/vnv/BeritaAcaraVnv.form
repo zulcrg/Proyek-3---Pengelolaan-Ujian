@@ -152,6 +152,8 @@
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
+          <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
+          <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -161,76 +163,80 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTimVnv" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtTimVnv" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTimVnv" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="btnChoose" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtSoal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtSoal" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel1" alignment="0" min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtMatkul" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMatkul" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtKdMatkul" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtKdMatkul" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPerkuliahan" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPerkuliahan" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBentukUjian" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBentukUjian" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtTglUjian" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTglUjian" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtSifatUjian" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSifatUjian" linkSize="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtWaktuUjian" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="txtWaktuUjian" linkSize="2" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtTahunAk" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTahunAk" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtNmDosen" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="txtNmDosen" linkSize="2" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtSemester" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSemester" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtKelas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtKelas" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtKdDosen" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtKdDosen" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-              <Component id="txtRelevansi" min="-2" max="-2" attributes="0"/>
+              <Component id="txtRelevansi" linkSize="2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtDerajatSulit" min="-2" max="-2" attributes="0"/>
+              <Component id="txtDerajatSulit" linkSize="2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtKelayakanBobot" min="-2" max="-2" attributes="0"/>
+              <Component id="txtKelayakanBobot" linkSize="2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtKelayakanWaktuKM" min="-2" max="-2" attributes="0"/>
+              <Component id="txtKelayakanWaktuKM" linkSize="2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -562,6 +568,10 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Tidak lulus VNV"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator2">
     </Component>
   </SubComponents>
 </Form>
