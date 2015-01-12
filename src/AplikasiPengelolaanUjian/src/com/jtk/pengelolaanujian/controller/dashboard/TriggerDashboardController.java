@@ -5,22 +5,30 @@
  */
 package com.jtk.pengelolaanujian.controller.dashboard;
 
+import com.jtk.pengelolaanujian.controller.panitiaController.EventController;
 import com.jtk.pengelolaanujian.entity.Dosen;
 import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.entity.Kbk;
+import com.jtk.pengelolaanujian.entity.Nilai;
 import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Staf;
+import com.jtk.pengelolaanujian.entity.StorageSoal;
 import com.jtk.pengelolaanujian.entity.User;
+import com.jtk.pengelolaanujian.entity.Vnv;
 import com.jtk.pengelolaanujian.facade.DashboardFacade;
 import com.jtk.pengelolaanujian.facade.DosenFacade;
 import com.jtk.pengelolaanujian.facade.EventFacade;
 import com.jtk.pengelolaanujian.facade.KbkFacade;
+import com.jtk.pengelolaanujian.facade.NilaiFacade;
 import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
 import com.jtk.pengelolaanujian.facade.SoalFacade;
 import com.jtk.pengelolaanujian.facade.StafFacade;
+import com.jtk.pengelolaanujian.facade.StorageSoalFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
+import com.jtk.pengelolaanujian.facade.VnvFacade;
 import com.jtk.pengelolaanujian.util.CommonHelper;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -150,6 +158,24 @@ public class TriggerDashboardController {
     public void viewTableUjian(JTable tableUjian, String toString) {
         DashboardFacade dashboardFacade = new DashboardFacade();
         dashboardFacade.findTableUjianWherePengawasLike(tableUjian,toString);    
+    }
+
+    public void setJumlahStatus(JLabel LnilaiCountF, JLabel LnilaiCountT, JLabel LsoalCountF, JLabel LsoalCountT, JLabel LvnvCountF, JLabel LvnvCountT) {        
+        EventController eventController = new EventController();
+        Event event = null;
+        event = eventController.getListEvent();
+        
+        StorageSoalFacade storageSoalFacade  = new StorageSoalFacade();        
+        VnvFacade vnvFacade = new VnvFacade();
+        NilaiFacade nilaiFacade = new NilaiFacade();
+        
+        LsoalCountT.setText(String.valueOf(storageSoalFacade.findSoalTepatWaktCount(event)));        
+        LsoalCountF.setText(String.valueOf(storageSoalFacade.findSoalTerlambatCount(event)));
+        LvnvCountT.setText(String.valueOf(vnvFacade.findVnvTepatWaktuCount(event)));
+        LvnvCountF.setText(String.valueOf(vnvFacade.findVnvTerlambatCount(event)));
+        LnilaiCountT.setText(String.valueOf(nilaiFacade.findTepatWaktuCount(event)));
+        LnilaiCountF.setText(String.valueOf(nilaiFacade.findTerlambatCount(event)));
+        
     }
 
 }

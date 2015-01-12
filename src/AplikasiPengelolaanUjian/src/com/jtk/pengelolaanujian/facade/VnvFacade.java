@@ -6,7 +6,9 @@
 package com.jtk.pengelolaanujian.facade;
 
 import com.jtk.pengelolaanujian.entity.Dosen;
+import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.entity.Soal;
+import com.jtk.pengelolaanujian.entity.StorageSoal;
 import com.jtk.pengelolaanujian.entity.Vnv;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
 import java.sql.Connection;
@@ -137,5 +139,53 @@ public class VnvFacade {
             }
         }
         return false;
+    }
+
+    public int findVnvTepatWaktuCount(Event event) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM vnv";
+            ResultSet rs = stmt.executeQuery(query);            
+            List<Vnv> vnvList = new ArrayList<>();            
+            while (rs.next()) {
+                Vnv vnv = new Vnv();
+                vnv.setVnvTgl(rs.getDate(4));
+                vnvList.add(vnv);
+            }       
+            int counter =0;
+            for(Vnv vnv: vnvList){
+                if(vnv.getVnvTgl().after(event.getVnvSelesai())){
+                    counter++;
+                }
+            }
+            return counter;                        
+        } catch (SQLException ex) {
+            Logger.getLogger(StorageSoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;        
+    }
+
+    public int findVnvTerlambatCount(Event event) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM vnv";
+            ResultSet rs = stmt.executeQuery(query);            
+            List<Vnv> vnvList = new ArrayList<>();            
+            while (rs.next()) {
+                Vnv vnv = new Vnv();
+                vnv.setVnvTgl(rs.getDate(4));
+                vnvList.add(vnv);
+            }       
+            int counter =0;
+            for(Vnv vnv: vnvList){
+                if(vnv.getVnvTgl().before(event.getVnvSelesai())){
+                    counter++;
+                }
+            }
+            return counter;                        
+        } catch (SQLException ex) {
+            Logger.getLogger(StorageSoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 }

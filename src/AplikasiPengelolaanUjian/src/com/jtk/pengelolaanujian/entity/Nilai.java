@@ -8,6 +8,7 @@ package com.jtk.pengelolaanujian.entity;
 
 import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
 import java.io.InputStream;
+import java.util.Date;
 
 /**
  *
@@ -21,6 +22,15 @@ public class Nilai {
     private String namaFile;
     private String tipeFile;
     private String kelasKode;
+    private Date nilaiTanggal;
+
+    public Date getNilaiTanggal() {
+        return nilaiTanggal;
+    }
+
+    public void setNilaiTanggal(Date nilaiTanggal) {
+        this.nilaiTanggal = nilaiTanggal;
+    }
     
     public Nilai() {
     }

@@ -42,6 +42,7 @@ public class DashboardPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        generateLaporan2 = new com.jtk.pengelolaanujian.view.panitia.GenerateLaporan();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         statusEvent1 = new com.jtk.pengelolaanujian.view.dashboard.StatusEvent();
         statusUser1 = new com.jtk.pengelolaanujian.view.dashboard.StatusUser();
@@ -72,6 +73,7 @@ public class DashboardPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.jtk.pengelolaanujian.view.panitia.GenerateLaporan generateLaporan2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private com.jtk.pengelolaanujian.view.dashboard.StatusAplikasi statusAplikasi1;
     private com.jtk.pengelolaanujian.view.dashboard.StatusEvent statusEvent1;

@@ -5,6 +5,7 @@
  */
 package com.jtk.pengelolaanujian.facade;
 
+import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.entity.StorageSoal;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -128,6 +130,62 @@ public class StorageSoalFacade {
         preparedStatement.setString(7, storageSoal.getTipeFile());
 
         preparedStatement.execute();
+    }
+
+    public int findSoalTerlambatCount(Event event) {        
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM storage_soal";
+            ResultSet rs = stmt.executeQuery(query);            
+            List<StorageSoal> storageSoalList = new ArrayList<>();            
+            while (rs.next()) {
+                StorageSoal storageSoal = new StorageSoal();
+                storageSoal.setSoalKode(rs.getString(1));
+                storageSoal.setStsoalNoUrut(rs.getInt(2));
+                storageSoal.setStafNip(rs.getString(3));
+                storageSoal.setStsoalTglUpload(rs.getDate(4));
+                storageSoal.setStsoalFile(rs.getBinaryStream(5));
+                storageSoalList.add(storageSoal);
+            }       
+            int counter =0;
+            for(StorageSoal storageSoal : storageSoalList){
+                if(storageSoal.getStsoalTglUpload().before(event.getUploadNilaiSelesai())){
+                    counter++;
+                }
+            }
+            return counter;                        
+        } catch (SQLException ex) {
+            Logger.getLogger(StorageSoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }    
+
+    public int findSoalTepatWaktCount(Event event) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM storage_soal";
+            ResultSet rs = stmt.executeQuery(query);            
+            List<StorageSoal> storageSoalList = new ArrayList<>();            
+            while (rs.next()) {
+                StorageSoal storageSoal = new StorageSoal();
+                storageSoal.setSoalKode(rs.getString(1));
+                storageSoal.setStsoalNoUrut(rs.getInt(2));
+                storageSoal.setStafNip(rs.getString(3));
+                storageSoal.setStsoalTglUpload(rs.getDate(4));
+                storageSoal.setStsoalFile(rs.getBinaryStream(5));
+                storageSoalList.add(storageSoal);
+            }       
+            int counter =0;
+            for(StorageSoal storageSoal : storageSoalList){
+                if(storageSoal.getStsoalTglUpload().after(event.getUploadNilaiSelesai())){
+                    counter++;
+                }
+            }
+            return counter;                        
+        } catch (SQLException ex) {
+            Logger.getLogger(StorageSoalFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+        return 0;
     }
 
 }
