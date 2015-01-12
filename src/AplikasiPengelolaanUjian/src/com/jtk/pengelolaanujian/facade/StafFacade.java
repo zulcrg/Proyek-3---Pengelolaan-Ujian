@@ -102,7 +102,6 @@ public class StafFacade {
         }
         return false;
     }
-
     public List<Staf> searchNameNIP(String keyword) {
         try {
             Statement stmt = connection.createStatement();

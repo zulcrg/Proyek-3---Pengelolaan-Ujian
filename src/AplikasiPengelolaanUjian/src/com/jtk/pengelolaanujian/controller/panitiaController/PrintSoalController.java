@@ -97,4 +97,32 @@ public class PrintSoalController extends AbstractController {
         }
     }
 
+    public void viewTableListPrintSoalSeluruh(JTable tableViewListPrintSoal) {
+        List<Soal> soalList = null;
+        SoalFacade soalFacade = new SoalFacade();
+
+        soalList = soalFacade.findAllWhereVNVtrue();
+
+        Object[] columnsName = {"Kode Soal", "Kode MatKul", "MatKul", "Dosen Pengampu"};
+
+        DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        for (Soal soal : soalList) {
+            Object[] o = new Object[4];
+            o[0] = soal.getSoalKode();
+            o[1] = soal.getMataKuliah().getMatkulKode();
+            o[2] = soal.getMataKuliah().getMatkulNama();
+            o[3] = soal.getMataKuliah().getDosen().getStafNama();
+
+            dtm.addRow(o);
+        }
+        tableViewListPrintSoal.setModel(dtm);
+
+    }
+
 }

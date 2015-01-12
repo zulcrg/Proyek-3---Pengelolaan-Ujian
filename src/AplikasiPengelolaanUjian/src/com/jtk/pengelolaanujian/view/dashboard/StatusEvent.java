@@ -23,6 +23,7 @@ public class StatusEvent extends javax.swing.JPanel {
      */
     public StatusEvent() {
         initComponents();
+        //progresEvent.setValue();
     }
 
     public void preparation() {

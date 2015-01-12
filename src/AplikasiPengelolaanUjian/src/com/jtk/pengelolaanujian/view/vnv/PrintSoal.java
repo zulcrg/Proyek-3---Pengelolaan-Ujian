@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jtk.pengelolaanujian.view.panitia;
+package com.jtk.pengelolaanujian.view.vnv;
 
+import com.jtk.pengelolaanujian.view.panitia.*;
 import com.jtk.pengelolaanujian.controller.panitiaController.PrintSoalController;
 import com.jtk.pengelolaanujian.view.panitia.PrintSoalDialog;
 
@@ -24,7 +25,7 @@ public class PrintSoal extends javax.swing.JPanel {
     }
 
     public void preparation() {
-        printSoalController.viewTableListPrintSoal(tableViewListPrintSoal);
+        printSoalController.viewTableListPrintSoalSeluruh(tableViewListPrintSoal);
     }
 
     /**

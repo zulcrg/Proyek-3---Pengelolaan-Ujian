@@ -18,6 +18,7 @@ public class BeritaAcara {
     private int beritaSoalSisa;
     private int beritaJawabSisa;
     private boolean beritaStatus;
+    
 
     public BeritaAcara() {
     }
