@@ -24,6 +24,6 @@ public class MainTimer {
  
         //Third Parameter is the specified the Period between consecutive
         //calling for the method. 
-        timer.schedule(actionControl, 0, 100000);            
+        timer.schedule(actionControl, 0, 1000000000);            
     }
 }
