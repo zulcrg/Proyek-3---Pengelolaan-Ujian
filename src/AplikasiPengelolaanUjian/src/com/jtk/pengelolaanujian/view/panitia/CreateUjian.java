@@ -185,6 +185,7 @@ public class CreateUjian extends javax.swing.JPanel {
         SearchDialog searchDialog = new SearchDialog(null, true, mataKuliah, EnumPanel.SEARCH_SOAL);
         searchDialog.show();
         textMatkul.setText(mataKuliah.getMatkulNama());
+        textNamaUjian.setText(mataKuliah.getMatkulNama());
     }//GEN-LAST:event_btnBrowseActionPerformed
 
     private void btnCreateUjianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUjianActionPerformed

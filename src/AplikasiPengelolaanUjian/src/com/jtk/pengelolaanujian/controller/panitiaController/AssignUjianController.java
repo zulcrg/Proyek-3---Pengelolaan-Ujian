@@ -25,6 +25,7 @@ import com.jtk.pengelolaanujian.util.SendingEmailControlProcess;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +38,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Zulkhair Abdullah D
  */
 public class AssignUjianController extends AbstractController {
-
+    
+    public boolean cekInRangeTanggal(Date sesudah, Date sebelum,Date rekamMedik){        
+        if(sesudah.after(rekamMedik) && sebelum.before(rekamMedik)){
+            return true;
+        }else{
+            return false;
+        }        
+    }        
+    
     public List<Ujian> searchUjian(String text, JTable table) {
         UjianFacade ujianFacade = new UjianFacade();
         List<Ujian> ujianList = ujianFacade.findUjianLike(text);
