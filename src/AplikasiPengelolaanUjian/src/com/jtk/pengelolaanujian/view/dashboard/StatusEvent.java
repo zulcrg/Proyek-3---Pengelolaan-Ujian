@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.jtk.pengelolaanujian.view.dashboard;
 
 import com.jtk.pengelolaanujian.controller.dashboard.TriggerDashboardController;
@@ -17,34 +18,34 @@ public class StatusEvent extends javax.swing.JPanel {
 
     TriggerDashboardController triggerDashboardController = new TriggerDashboardController();
     Event event;
-
+    
     /**
      * Creates new form StatusEvent
      */
     public StatusEvent() {
-        initComponents();
-        //progresEvent.setValue();
+        initComponents();        
     }
-
-    public void preparation() {
-        event = triggerDashboardController.getListEvent();
+    
+    public void preparation(){
+        event=triggerDashboardController.getListEvent();
         String ujian = "Ujian ";
         char[] a;
-        a = event.getKode().toCharArray();
-
-        if (a[3] == 'T') {
+        a = new char[5];
+        a=event.getKode().toCharArray();                
+               
+        if(a[3]=='T'){
             ujian = ujian + "Tengah semester ";
-        } else {
+        }else{
             ujian = ujian + "Akhir semester ";
         }
-
-        if (a[2] == '1') {
+        
+        if(a[2]=='1'){
             ujian = ujian + "Genap ";
-        } else {
+        }else{
             ujian = ujian + "Ganjil ";
         }
-        ujian = ujian + "Tahun 20" + a[0] + a[1];
-
+        ujian = ujian+"Tahun 20"+a[0]+a[1];
+        
         textUjian.setText(ujian);
         textEventMulai.setText(event.getTanggalMulai().toString());
         textEventAkhir.setText(event.getTanggalSelesai().toString());
@@ -53,7 +54,7 @@ public class StatusEvent extends javax.swing.JPanel {
         textSoalAkhir.setText(event.getUploadSelesai().toString());
         textVnvMulai.setText(event.getVnvMulai().toString());
         textVnvAkhir.setText(event.getVnvSelesai().toString());
-
+        
         triggerDashboardController.viewTableUjian(tableUjian);
         progresEvent.setValue(20);
         piePanelUjian1.preparation();
@@ -115,7 +116,7 @@ public class StatusEvent extends javax.swing.JPanel {
                 textUjianActionPerformed(evt);
             }
         });
-        add(textUjian, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 260, -1));
+        add(textUjian, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 51, 230, -1));
 
         textEventMulai.setEditable(false);
         textEventMulai.addActionListener(new java.awt.event.ActionListener() {
@@ -334,7 +335,7 @@ public class StatusEvent extends javax.swing.JPanel {
 
     private void textSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textSearchKeyReleased
         // TODO add your handling code here:
-        triggerDashboardController.viewTableUjian(tableUjian, textSearch.getText());
+        triggerDashboardController.viewTableUjian(tableUjian,textSearch.getText());
     }//GEN-LAST:event_textSearchKeyReleased
 
 

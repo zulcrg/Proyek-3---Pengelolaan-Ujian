@@ -23,6 +23,7 @@ public class AdminPanel extends javax.swing.JPanel {
     public void preparation() {
         registrasiUser1.preparation();
         assignRole1.preparation();
+        createUndangan1.preparation();
         editUser1.preparation();
         this.setBackground(Color.darkGray);
     }
@@ -40,38 +41,43 @@ public class AdminPanel extends javax.swing.JPanel {
         registrasiUser1 = new com.jtk.pengelolaanujian.view.admin.RegistrasiUser();
         editUser1 = new com.jtk.pengelolaanujian.view.admin.EditUser();
         assignRole1 = new com.jtk.pengelolaanujian.view.admin.AssignRole();
+        createUndangan1 = new com.jtk.pengelolaanujian.view.admin.CreateUndangan();
 
-        setMinimumSize(new java.awt.Dimension(818, 625));
-        setPreferredSize(new java.awt.Dimension(818, 625));
-
-        jTabbedPane1.setBackground(new java.awt.Color(0, 153, 153));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTabbedPane1.setMinimumSize(new java.awt.Dimension(665, 217));
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Registrasi User", registrasiUser1);
-
-        editUser1.setMinimumSize(new java.awt.Dimension(573, 212));
-        editUser1.setPreferredSize(new java.awt.Dimension(701, 462));
         jTabbedPane1.addTab("Edit User", editUser1);
         jTabbedPane1.addTab("Assign Role", assignRole1);
+
+        javax.swing.GroupLayout createUndangan1Layout = new javax.swing.GroupLayout(createUndangan1);
+        createUndangan1.setLayout(createUndangan1Layout);
+        createUndangan1Layout.setHorizontalGroup(
+            createUndangan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 602, Short.MAX_VALUE)
+        );
+        createUndangan1Layout.setVerticalGroup(
+            createUndangan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 462, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Buat Undangan", createUndangan1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
-
-        jTabbedPane1.getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.jtk.pengelolaanujian.view.admin.AssignRole assignRole1;
+    private com.jtk.pengelolaanujian.view.admin.CreateUndangan createUndangan1;
     private com.jtk.pengelolaanujian.view.admin.EditUser editUser1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private com.jtk.pengelolaanujian.view.admin.RegistrasiUser registrasiUser1;

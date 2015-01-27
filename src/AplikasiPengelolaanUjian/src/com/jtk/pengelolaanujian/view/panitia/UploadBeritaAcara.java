@@ -66,16 +66,12 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
             }
         });
 
-        labelUjian.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         labelUjian.setText("Ujian");
 
-        labelKeterangan.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         labelKeterangan.setText("keterangan");
 
-        labelJumlahHadir.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         labelJumlahHadir.setText("Jml Hadir");
 
-        labelJumlahTidakHadir.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         labelJumlahTidakHadir.setText("Jml Tidak Hadir");
 
         textJumlahTidakHadir.addActionListener(new java.awt.event.ActionListener() {
@@ -84,10 +80,8 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
             }
         });
 
-        labelSoalSisa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         labelSoalSisa.setText("Jml Soal Sisa");
 
-        labelJawabanSisa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         labelJawabanSisa.setText("Jml Jawaban Sisa");
 
         textSoalSisa.addActionListener(new java.awt.event.ActionListener() {
@@ -112,11 +106,11 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelKeterangan)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 475, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -135,19 +129,20 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
                                     .addComponent(textJawabanSisa, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textJumlahTidakHadir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textJumlahHadir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(335, 335, 335))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(cboUjian, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(100, 100, 100))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnSimpan)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(35, 35, 35))
+                                .addGap(128, 128, 128))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnSimpan)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(39, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboUjian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelUjian))
@@ -173,7 +168,7 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnSimpan)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

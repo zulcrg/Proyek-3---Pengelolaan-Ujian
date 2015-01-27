@@ -58,25 +58,19 @@ public class AssignRole extends javax.swing.JPanel {
         chkPanitia = new javax.swing.JCheckBox();
         btnAssign = new javax.swing.JButton();
 
-        setMinimumSize(new java.awt.Dimension(640, 625));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Username");
 
         textUsername.setEditable(false);
 
-        btnBrowse.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        btnBrowse.setText("Cari");
+        btnBrowse.setText("Browse");
         btnBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBrowseActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Role");
 
-        chkAdmin.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         chkAdmin.setText("Admin");
         chkAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +78,6 @@ public class AssignRole extends javax.swing.JPanel {
             }
         });
 
-        chkDosen.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         chkDosen.setText("Dosen Pengampu");
         chkDosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +85,6 @@ public class AssignRole extends javax.swing.JPanel {
             }
         });
 
-        chkVnv.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         chkVnv.setText("VnV");
         chkVnv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +92,6 @@ public class AssignRole extends javax.swing.JPanel {
             }
         });
 
-        chkPanitia.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         chkPanitia.setText("Panitia Ujian");
         chkPanitia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +99,6 @@ public class AssignRole extends javax.swing.JPanel {
             }
         });
 
-        btnAssign.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         btnAssign.setText("Assign Role");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +111,7 @@ public class AssignRole extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(169, 169, 169)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -136,12 +126,12 @@ public class AssignRole extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBrowse))
                     .addComponent(chkAdmin))
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +148,7 @@ public class AssignRole extends javax.swing.JPanel {
                 .addComponent(chkPanitia)
                 .addGap(18, 18, 18)
                 .addComponent(btnAssign)
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

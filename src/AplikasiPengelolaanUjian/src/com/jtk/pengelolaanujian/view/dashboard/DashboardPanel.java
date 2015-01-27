@@ -42,18 +42,14 @@ public class DashboardPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        generateLaporan2 = new com.jtk.pengelolaanujian.view.panitia.GenerateLaporan();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         statusEvent1 = new com.jtk.pengelolaanujian.view.dashboard.StatusEvent();
         statusUser1 = new com.jtk.pengelolaanujian.view.dashboard.StatusUser();
         statusAplikasi1 = new com.jtk.pengelolaanujian.view.dashboard.StatusAplikasi();
         statusTransaksi1 = new com.jtk.pengelolaanujian.view.dashboard.StatusTransaksi();
 
-        setMinimumSize(new java.awt.Dimension(818, 625));
-        setPreferredSize(new java.awt.Dimension(818, 625));
-
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Status Event", statusEvent1);
         jTabbedPane1.addTab("Status User", statusUser1);
         jTabbedPane1.addTab("Status Aplikasi", statusAplikasi1);
@@ -67,13 +63,12 @@ public class DashboardPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.jtk.pengelolaanujian.view.panitia.GenerateLaporan generateLaporan2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private com.jtk.pengelolaanujian.view.dashboard.StatusAplikasi statusAplikasi1;
     private com.jtk.pengelolaanujian.view.dashboard.StatusEvent statusEvent1;

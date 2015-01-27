@@ -5,10 +5,7 @@
  */
 package com.jtk.pengelolaanujian.view.dashboard;
 
-import com.jtk.pengelolaanujian.controller.dashboard.TriggerDashboardController;
 import com.jtk.pengelolaanujian.view.MainFrame;
-import com.sun.org.apache.xalan.internal.lib.ExsltDatetime;
-import java.util.Date;
 
 /**
  *
@@ -17,8 +14,7 @@ import java.util.Date;
 public class StatusTransaksi extends javax.swing.JPanel {
 
     //MainFrame mainFrame = null;
-    TriggerDashboardController triggerDashboardController = new TriggerDashboardController();
-    
+
     /**
      * Creates new form DashboardPanel2
      */
@@ -28,14 +24,10 @@ public class StatusTransaksi extends javax.swing.JPanel {
     }
 
     public void preparation() {
-        Date date = new Date();
         piePanelNilai.preparation();
         piePanelSoal.preparation();
         piePanelVnv.preparation();
         piePanelVnv1.preparation();
-        lableDate.setText(date.toLocaleString());   
-        
-        triggerDashboardController.setJumlahStatus(LnilaiCountF,LnilaiCountT1,LsoalCountF,LsoalCountT2,LvnvCountF,LvnvCountT1);
     }
 
     /**
@@ -51,114 +43,73 @@ public class StatusTransaksi extends javax.swing.JPanel {
         piePanelNilai = new com.jtk.pengelolaanujian.view.dashboard.PiePanelNilai();
         piePanelVnv = new com.jtk.pengelolaanujian.view.dashboard.PiePanelVnv();
         piePanelSoal = new com.jtk.pengelolaanujian.view.dashboard.PiePanelSoal();
-        labelDate2 = new javax.swing.JLabel();
+        labelDate = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         labelDate1 = new javax.swing.JLabel();
-        lableDate = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        tepatwaktu = new javax.swing.JLabel();
-        terlambat = new javax.swing.JLabel();
-        LvnvCountF = new javax.swing.JLabel();
-        LsoalCountF = new javax.swing.JLabel();
-        LnilaiCountF = new javax.swing.JLabel();
-        LnilaiCountT1 = new javax.swing.JLabel();
-        LvnvCountT1 = new javax.swing.JLabel();
-        LsoalCountT2 = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(piePanelNilai, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 70, 204, 175));
-        add(piePanelVnv, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 70, 213, 175));
-        add(piePanelSoal, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 70, 216, 175));
+        labelDate.setText("Date :");
 
-        labelDate2.setText("Date :");
-        add(labelDate2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 38, -1, -1));
+        jLabel1.setText("Time :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Grafik Monotoring Status Transaksi Soal & Nilai");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 11, -1, -1));
 
         labelDate1.setText("Detail Informasi Transaksi dalam simple grafik");
-        add(labelDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, -1, -1));
 
-        lableDate.setText("-");
-        add(lableDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 38, -1, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 263, 653, 10));
-
-        jLabel1.setText("Upload Soal :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 291, -1, -1));
-
-        jLabel3.setText("Upload Nilai :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 402, -1, -1));
-
-        jLabel4.setText("Upload VNV :");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 346, -1, -1));
-
-        tepatwaktu.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        tepatwaktu.setForeground(new java.awt.Color(0, 204, 0));
-        tepatwaktu.setText("Tepat Waktu");
-        add(tepatwaktu, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, -1));
-
-        terlambat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        terlambat.setForeground(new java.awt.Color(204, 0, 0));
-        terlambat.setText("Terlambat");
-        add(terlambat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, -1, -1));
-
-        LvnvCountF.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        LvnvCountF.setForeground(new java.awt.Color(255, 0, 0));
-        LvnvCountF.setText("0");
-        add(LvnvCountF, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
-
-        LsoalCountF.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        LsoalCountF.setForeground(new java.awt.Color(255, 0, 0));
-        LsoalCountF.setText("0");
-        add(LsoalCountF, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, -1, -1));
-
-        LnilaiCountF.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        LnilaiCountF.setForeground(new java.awt.Color(255, 0, 0));
-        LnilaiCountF.setText("0");
-        add(LnilaiCountF, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, -1));
-
-        LnilaiCountT1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        LnilaiCountT1.setForeground(new java.awt.Color(51, 255, 51));
-        LnilaiCountT1.setText("0");
-        add(LnilaiCountT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, -1));
-
-        LvnvCountT1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        LvnvCountT1.setForeground(new java.awt.Color(51, 255, 51));
-        LvnvCountT1.setText("0");
-        add(LvnvCountT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
-
-        LsoalCountT2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        LsoalCountT2.setForeground(new java.awt.Color(51, 255, 51));
-        LsoalCountT2.setText("0");
-        add(LsoalCountT2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 20, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(labelDate)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(piePanelSoal, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(piePanelVnv, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(piePanelNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(labelDate1)))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(10, 10, 10)
+                .addComponent(labelDate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(piePanelVnv, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(piePanelSoal, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(piePanelNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+                .addComponent(labelDate1)
+                .addGap(31, 31, 31))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LnilaiCountF;
-    private javax.swing.JLabel LnilaiCountT1;
-    private javax.swing.JLabel LsoalCountF;
-    private javax.swing.JLabel LsoalCountT2;
-    private javax.swing.JLabel LvnvCountF;
-    private javax.swing.JLabel LvnvCountT1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelDate;
     private javax.swing.JLabel labelDate1;
-    private javax.swing.JLabel labelDate2;
-    private javax.swing.JLabel lableDate;
     private com.jtk.pengelolaanujian.view.dashboard.PiePanelNilai piePanelNilai;
     private com.jtk.pengelolaanujian.view.dashboard.PiePanelSoal piePanelSoal;
     private com.jtk.pengelolaanujian.view.dashboard.PiePanelVnv piePanelVnv;
     private com.jtk.pengelolaanujian.view.dashboard.PiePanelVnv piePanelVnv1;
-    private javax.swing.JLabel tepatwaktu;
-    private javax.swing.JLabel terlambat;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -11,7 +11,6 @@ import com.jtk.pengelolaanujian.entity.Ruangan;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.EnumPanel;
-import com.jtk.pengelolaanujian.util.SendEmailModel;
 import com.jtk.pengelolaanujian.view.util.SearchDialog;
 import javax.swing.JOptionPane;
 
@@ -63,7 +62,6 @@ public class AssignUjian extends javax.swing.JPanel {
         textKelas = new javax.swing.JTextField();
         btnBrowseKelas = new javax.swing.JButton();
 
-        labelUjian.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelUjian.setText("Ujian");
 
         textUjian.setEditable(false);
@@ -75,7 +73,6 @@ public class AssignUjian extends javax.swing.JPanel {
             }
         });
 
-        labelPengawas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelPengawas.setText("Pengawas");
 
         textPengawas.setEditable(false);
@@ -94,7 +91,6 @@ public class AssignUjian extends javax.swing.JPanel {
             }
         });
 
-        labelRuangan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelRuangan.setText("Ruangan");
 
         textRuangan.setEditable(false);
@@ -106,7 +102,6 @@ public class AssignUjian extends javax.swing.JPanel {
             }
         });
 
-        labelRuangan1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelRuangan1.setText("Kelas");
 
         textKelas.setEditable(false);
@@ -123,7 +118,7 @@ public class AssignUjian extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelUjian)
                     .addComponent(labelPengawas)
@@ -132,9 +127,9 @@ public class AssignUjian extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(textKelas)
-                    .addComponent(textUjian, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textUjian, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                     .addComponent(textPengawas, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textRuangan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textRuangan, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -144,12 +139,12 @@ public class AssignUjian extends javax.swing.JPanel {
                             .addComponent(btnBrowseUjian)
                             .addComponent(btwBrowsePengawas)))
                     .addComponent(btnBrowseKelas))
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelUjian)
                     .addComponent(textUjian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,7 +167,7 @@ public class AssignUjian extends javax.swing.JPanel {
                     .addComponent(btnBrowseKelas))
                 .addGap(17, 17, 17)
                 .addComponent(btnSimpan)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.jtk.pengelolaanujian.view.panitia;
 
+import com.jtk.pengelolaanujian.controller.panitiaController.PanitiaController;
 import com.jtk.pengelolaanujian.controller.panitiaController.PrintSoalController;
-import com.jtk.pengelolaanujian.view.panitia.PrintSoalDialog;
 
 /**
  *
  * @author pahlevi
  */
 public class PrintSoal extends javax.swing.JPanel {
-
     PrintSoalController printSoalController = new PrintSoalController();
-
+    
     /**
      * Creates new form PrintSola
      */
@@ -23,10 +23,9 @@ public class PrintSoal extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void preparation() {
+    public void preparation(){        
         printSoalController.viewTableListPrintSoal(tableViewListPrintSoal);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,7 +39,7 @@ public class PrintSoal extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableViewListPrintSoal = new javax.swing.JTable();
 
-        labelListSoalSiapPrint.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelListSoalSiapPrint.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labelListSoalSiapPrint.setText("List Soal Siap Print");
 
         tableViewListPrintSoal.setModel(new javax.swing.table.DefaultTableModel(
@@ -80,27 +79,38 @@ public class PrintSoal extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelListSoalSiapPrint))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(labelListSoalSiapPrint)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(labelListSoalSiapPrint)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void tableViewListPrintSoalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableViewListPrintSoalMouseClicked
-        String kodeSoal = tableViewListPrintSoal.getValueAt(tableViewListPrintSoal.getSelectedRow(), 0).toString();
-        PrintSoalDialog printSoalDialog = new PrintSoalDialog(null, true, kodeSoal);
-        printSoalDialog.show();
+        // TODO add your handling code here:
+        String namaStaf;
+        String kodeSoal;
+        String matkulKode;
+        String matkulNama;
+        System.out.println("data");
+
+        kodeSoal=tableViewListPrintSoal.getValueAt(tableViewListPrintSoal.getSelectedRow(), 0).toString();
+        matkulKode=tableViewListPrintSoal.getValueAt(tableViewListPrintSoal.getSelectedRow(), 1).toString();
+        matkulNama=tableViewListPrintSoal.getValueAt(tableViewListPrintSoal.getSelectedRow(), 2).toString();
+        namaStaf=tableViewListPrintSoal.getValueAt(tableViewListPrintSoal.getSelectedRow(), 3).toString();
+        PrintSoalDialog printSoalDialog = new PrintSoalDialog(null, true,kodeSoal,matkulKode,matkulNama,namaStaf);
+        printSoalDialog.show();        
+        
     }//GEN-LAST:event_tableViewListPrintSoalMouseClicked
 
 

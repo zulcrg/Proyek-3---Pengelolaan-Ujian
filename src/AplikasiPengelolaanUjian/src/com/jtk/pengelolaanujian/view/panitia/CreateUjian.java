@@ -63,22 +63,18 @@ public class CreateUjian extends javax.swing.JPanel {
         labelArsipSoal1 = new javax.swing.JLabel();
         textKodeSoal = new javax.swing.JTextField();
 
-        labelNamaUjian.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelNamaUjian.setText("Nama Ujian");
 
-        labelEventUjian.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelEventUjian.setText("Event Ujian");
 
         dateUjianMulai.setPreferredSize(new java.awt.Dimension(90, 20));
 
-        labelTanggal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelTanggal.setText("Tanggal");
 
         labelPukul.setText("Pukul");
 
         labelPukul1.setText(":");
 
-        labelArsipSoal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelArsipSoal.setText("Mata Kuliah");
 
         textMatkul.setEditable(false);
@@ -104,7 +100,6 @@ public class CreateUjian extends javax.swing.JPanel {
             }
         });
 
-        labelArsipSoal1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelArsipSoal1.setText("Kode Soal");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -112,7 +107,7 @@ public class CreateUjian extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelEventUjian)
                     .addComponent(labelTanggal)
@@ -127,7 +122,7 @@ public class CreateUjian extends javax.swing.JPanel {
                     .addComponent(textMatkul, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textEvent, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(dateUjianMulai, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dateUjianMulai, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelPukul)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -138,12 +133,12 @@ public class CreateUjian extends javax.swing.JPanel {
                         .addComponent(textMenit, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBrowse)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelEventUjian)
                     .addComponent(textEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -172,7 +167,7 @@ public class CreateUjian extends javax.swing.JPanel {
                         .addComponent(labelTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
                 .addComponent(btnCreateUjian)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -185,28 +180,27 @@ public class CreateUjian extends javax.swing.JPanel {
         SearchDialog searchDialog = new SearchDialog(null, true, mataKuliah, EnumPanel.SEARCH_SOAL);
         searchDialog.show();
         textMatkul.setText(mataKuliah.getMatkulNama());
-        textNamaUjian.setText(mataKuliah.getMatkulNama());
     }//GEN-LAST:event_btnBrowseActionPerformed
 
     private void btnCreateUjianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUjianActionPerformed
         if (textNamaUjian.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Harap isi nama ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Harap isi nama ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (mataKuliah == null) {
-            JOptionPane.showMessageDialog(null, "Harap pilih mata kuliah", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Harap pilih mata kuliah", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (textKodeSoal.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Harap isi kode soal", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Harap isi kode soal", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (textKodeSoal.getText().length() > 5) {
-            JOptionPane.showMessageDialog(null, "Kode soal tidak boleh melebihi 5 karakter", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Kode soal tidak boleh melebihi 5 karakter", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (dateUjianMulai.getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Harap isi tanggal mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Harap isi tanggal mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (textJam.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Harap isi jam mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Harap isi jam mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (!CommonHelper.isStringNumberMaxMin(textJam.getText(), 23, 0)) {
-            JOptionPane.showMessageDialog(null, "Harap isi format jam dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Harap isi format jam dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (textMenit.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Harap isi menit mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Harap isi menit mulai ujian", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else if (!CommonHelper.isStringNumberMaxMin(textMenit.getText(), 59, 0)) {
-            JOptionPane.showMessageDialog(null, "Harap isi format menit dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Harap isi format menit dengan benar", "Perhatian", JOptionPane.WARNING_MESSAGE);
         } else {
             CreateUjianController controller = new CreateUjianController();
             Date date = new Date();
