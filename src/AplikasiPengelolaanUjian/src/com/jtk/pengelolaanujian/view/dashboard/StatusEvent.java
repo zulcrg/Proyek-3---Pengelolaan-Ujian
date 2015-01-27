@@ -99,9 +99,11 @@ public class StatusEvent extends javax.swing.JPanel {
         textSearch = new javax.swing.JTextField();
         labelUploadSoal5 = new javax.swing.JLabel();
 
+        setForeground(new java.awt.Color(0, 153, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelHeader1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelHeader1.setForeground(new java.awt.Color(0, 153, 153));
         labelHeader1.setText("Ujian yang akan diselenggarakan");
         add(labelHeader1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 77, -1, -1));
@@ -201,6 +203,7 @@ public class StatusEvent extends javax.swing.JPanel {
         add(labelUploadSoal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, -1, -1));
 
         labelHeader2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelHeader2.setForeground(new java.awt.Color(0, 153, 153));
         labelHeader2.setText("Keberlangsungan Event");
         add(labelHeader2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, 20));
 
@@ -236,6 +239,7 @@ public class StatusEvent extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 670, 230));
 
         labelHeader3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelHeader3.setForeground(new java.awt.Color(0, 153, 153));
         labelHeader3.setText("Beranda Informasi Event Ujian Terkini");
         add(labelHeader3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 11, -1, -1));
 
@@ -257,6 +261,7 @@ public class StatusEvent extends javax.swing.JPanel {
         add(progresEvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 230, -1));
 
         labelHeader4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelHeader4.setForeground(new java.awt.Color(0, 153, 153));
         labelHeader4.setText("Ujian Status");
         add(labelHeader4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, 20));
 

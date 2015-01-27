@@ -111,6 +111,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnDashBoard" min="-2" pref="151" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnAdmin" min="-2" pref="158" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDosen" min="-2" pref="158" max="-2" attributes="0"/>
@@ -118,20 +121,18 @@
                   <Component id="btnVnv" min="-2" pref="161" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnPanitia" min="-2" pref="144" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnDashBoard" min="-2" pref="151" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="btnDashBoard" alignment="0" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnDosen" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnVnv" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnPanitia" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnDashBoard" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

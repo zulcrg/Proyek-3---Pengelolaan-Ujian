@@ -36,12 +36,9 @@ public class PrintSoal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelListSoalSiapPrint = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableViewListPrintSoal = new javax.swing.JTable();
-
-        labelListSoalSiapPrint.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelListSoalSiapPrint.setText("List Soal Siap Print");
+        jLabel22 = new javax.swing.JLabel();
 
         tableViewListPrintSoal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,25 +72,32 @@ public class PrintSoal extends javax.swing.JPanel {
             tableViewListPrintSoal.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        jLabel22.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel22.setText("List Soal Siap Print");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelListSoalSiapPrint))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel22)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(labelListSoalSiapPrint)
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel22)
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -105,8 +109,8 @@ public class PrintSoal extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelListSoalSiapPrint;
     private javax.swing.JTable tableViewListPrintSoal;
     // End of variables declaration//GEN-END:variables
 }

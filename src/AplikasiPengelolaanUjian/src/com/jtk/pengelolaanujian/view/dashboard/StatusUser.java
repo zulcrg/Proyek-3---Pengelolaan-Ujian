@@ -50,6 +50,7 @@ public class StatusUser extends javax.swing.JPanel {
         jTabbedPane1.addTab("VNV", tabeStatusVNV1);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setText("Tabel Monitoring Status Staff dalam Ujian");
 
         labelUploadSoal4.setText("Detail Informasi Umum mengenai User yang terlibat dalam Event Ujian yang Aktif");

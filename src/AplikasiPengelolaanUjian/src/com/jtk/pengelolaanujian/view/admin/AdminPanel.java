@@ -38,8 +38,8 @@ public class AdminPanel extends javax.swing.JPanel {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         registrasiUser1 = new com.jtk.pengelolaanujian.view.admin.RegistrasiUser();
-        editUser1 = new com.jtk.pengelolaanujian.view.admin.EditUser();
         assignRole1 = new com.jtk.pengelolaanujian.view.admin.AssignRole();
+        editUser1 = new com.jtk.pengelolaanujian.view.admin.EditUser();
 
         setMinimumSize(new java.awt.Dimension(818, 625));
         setPreferredSize(new java.awt.Dimension(818, 625));
@@ -49,11 +49,11 @@ public class AdminPanel extends javax.swing.JPanel {
         jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(665, 217));
         jTabbedPane1.addTab("Registrasi User", registrasiUser1);
+        jTabbedPane1.addTab("Assign Role", assignRole1);
 
         editUser1.setMinimumSize(new java.awt.Dimension(573, 212));
         editUser1.setPreferredSize(new java.awt.Dimension(701, 462));
         jTabbedPane1.addTab("Edit User", editUser1);
-        jTabbedPane1.addTab("Assign Role", assignRole1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

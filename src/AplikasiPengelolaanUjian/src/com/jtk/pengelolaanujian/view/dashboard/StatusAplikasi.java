@@ -46,6 +46,7 @@ public class StatusAplikasi extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelReminderStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelReminderStatus.setForeground(new java.awt.Color(0, 153, 153));
         labelReminderStatus.setText("Reminder Status");
         add(labelReminderStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 20, -1, -1));
 
