@@ -6,6 +6,7 @@
 package com.jtk.pengelolaanujian.view.dosenpengampu;
 
 import com.jtk.pengelolaanujian.controller.dosenPengampu.UploadSoalController;
+import com.jtk.pengelolaanujian.controller.reminder.Reminder3Controller;
 import com.jtk.pengelolaanujian.entity.Soal;
 import com.jtk.pengelolaanujian.entity.Ujian;
 import com.jtk.pengelolaanujian.util.CommonHelper;
@@ -41,10 +42,19 @@ public class UploadSoal extends javax.swing.JPanel {
 
     public void preparation() {
         ujianList = uploadSoalController.searchMatkul(cboMatkul);
+        clear();
+    }
+
+    public void clear() {
         url = "";
         soal = new Soal();
         soal.setSoalSifat("TUTUP BUKU");
         spinDurasi.setModel(CommonHelper.createDurasiSpinnerModel());
+        textUrl.setText("");
+        if (ujianList != null && !ujianList.isEmpty()) {
+            cboMatkul.setSelectedIndex(0);
+        }
+        radTutupBuku.setSelected(true);
     }
 
     /**
@@ -208,8 +218,12 @@ public class UploadSoal extends javax.swing.JPanel {
                 InputStream is = new FileInputStream(new File(url));
                 int durasi = Integer.parseInt(spinDurasi.getValue().toString());
                 String tipeFile = FilenameUtils.getExtension(url);
-                if (uploadSoalController.uploadSoal(is, ujianList.get(cboMatkul.getSelectedIndex()).getUjianKode(), soal.getSoalSifat(), durasi, tipeFile)) {
-                    JOptionPane.showMessageDialog(this, "File berhasil di upload", "Perhatian", JOptionPane.INFORMATION_MESSAGE);
+                String namaFile = FilenameUtils.getBaseName(url);
+                if (uploadSoalController.uploadSoal(is, ujianList.get(cboMatkul.getSelectedIndex()).getUjianKode(), soal.getSoalSifat(), durasi, tipeFile, namaFile)) {
+                    JOptionPane.showMessageDialog(null, "File berhasil di upload", "Perhatian", JOptionPane.INFORMATION_MESSAGE);
+                    Reminder3Controller reminder3Controller = new Reminder3Controller();
+                    reminder3Controller.preparation();
+                    clear();
                 }
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(UploadSoal.class.getName()).log(Level.SEVERE, null, ex);
@@ -219,7 +233,7 @@ public class UploadSoal extends javax.swing.JPanel {
 
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        int result = fileChooser.showOpenDialog(this);
+        int result = fileChooser.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
             url = fileChooser.getSelectedFile().getAbsolutePath();
             textUrl.setText(url);
