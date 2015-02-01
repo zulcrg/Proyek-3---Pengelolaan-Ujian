@@ -46,7 +46,7 @@ public class AboutAppsInformation extends javax.swing.JPanel {
         jLabel4.setText("Settings Path :");
 
         jTextField1.setEditable(false);
-        jTextField1.setText("3.0");
+        jTextField1.setText("3.1 Beta");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -60,7 +60,12 @@ public class AboutAppsInformation extends javax.swing.JPanel {
         jTextField3.setText("Location this program installed");
 
         jTextField4.setEditable(false);
-        jTextField4.setText("1.8.0. // cocokkan");
+        jTextField4.setText("1.7.0 JDK");
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -108,6 +113,10 @@ public class AboutAppsInformation extends javax.swing.JPanel {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -125,7 +125,9 @@ public class MataKuliahFacade {
                 }
             }
             sb.append(")");
-
+            
+            System.out.println(sb);
+            
             Statement stmt = connection.createStatement();
             String query = "SELECT * FROM mata_kuliah where mata_kuliah.MATKUL_KODE IN " + sb.toString() + "";
             ResultSet rs = stmt.executeQuery(query);

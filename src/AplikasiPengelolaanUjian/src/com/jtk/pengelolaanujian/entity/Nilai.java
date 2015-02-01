@@ -7,7 +7,8 @@
 package com.jtk.pengelolaanujian.entity;
 
 import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
-import java.sql.Blob;
+import java.io.InputStream;
+import java.util.Date;
 
 /**
  *
@@ -15,28 +16,28 @@ import java.sql.Blob;
  */
 public class Nilai {
 
-    private String ruanganKode;
     private String ujianKode;
-    private Blob nilaiFile;
+    private InputStream nilaiFile;
     private RuanganUjian ruanganUjian;
     private String namaFile;
     private String tipeFile;
+    private String kelasKode;
+    private Date nilaiTanggal;
+
+    public Date getNilaiTanggal() {
+        return nilaiTanggal;
+    }
+
+    public void setNilaiTanggal(Date nilaiTanggal) {
+        this.nilaiTanggal = nilaiTanggal;
+    }
     
     public Nilai() {
     }
     
-    public Nilai(String ruanganKode, String ujianKode, Blob nilaiFile) {
-        this.ruanganKode = ruanganKode;
+    public Nilai(String ujianKode, InputStream nilaiFile) {
         this.ujianKode = ujianKode;
         this.nilaiFile = nilaiFile;
-    }
-    
-    public String getRuanganKode() {
-        return ruanganKode;
-    }
-    
-    public void setRuanganKode(String ruanganKode) {
-        this.ruanganKode = ruanganKode;
     }
     
     public String getUjianKode() {
@@ -47,17 +48,17 @@ public class Nilai {
         this.ujianKode = ujianKode;
     }
     
-    public Blob getNilaiFile() {
+    public InputStream getNilaiFile() {
         return nilaiFile;
     }
     
-    public void setNilaiFile(Blob nilaiFile) {
+    public void setNilaiFile(InputStream nilaiFile) {
         this.nilaiFile = nilaiFile;
     }
     
     public RuanganUjian getRuanganUjian() {
         RuanganUjianFacade ruanganUjianFacade = new RuanganUjianFacade();
-        ruanganUjian = ruanganUjianFacade.findByRuanganKodeUjianKodeStafNip(ruanganKode, ujianKode, null).get(0);
+        ruanganUjian = ruanganUjianFacade.findByUjianKodeKelasKode(ujianKode, kelasKode);
         return ruanganUjian;
     }
     
@@ -79,6 +80,14 @@ public class Nilai {
 
     public void setTipeFile(String tipeFile) {
         this.tipeFile = tipeFile;
+    }
+
+    public String getKelasKode() {
+        return kelasKode;
+    }
+
+    public void setKelasKode(String kelasKode) {
+        this.kelasKode = kelasKode;
     }
     
 }

@@ -19,8 +19,17 @@ import com.jtk.pengelolaanujian.facade.RuanganUjianFacade;
 import com.jtk.pengelolaanujian.facade.UjianFacade;
 import com.jtk.pengelolaanujian.facade.UserFacade;
 import com.jtk.pengelolaanujian.util.CommonHelper;
+import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.util.SendEmailModel;
+import com.jtk.pengelolaanujian.util.SendingEmailControlProcess;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,7 +38,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Zulkhair Abdullah D
  */
 public class AssignUjianController extends AbstractController {
-
+    
+    public boolean cekInRangeTanggal(Date sesudah, Date sebelum,Date rekamMedik){        
+        if(sesudah.after(rekamMedik) && sebelum.before(rekamMedik)){
+            return true;
+        }else{
+            return false;
+        }        
+    }        
+    
     public List<Ujian> searchUjian(String text, JTable table) {
         UjianFacade ujianFacade = new UjianFacade();
         List<Ujian> ujianList = ujianFacade.findUjianLike(text);
@@ -100,7 +117,7 @@ public class AssignUjianController extends AbstractController {
         table.setModel(dtm);
         return kelasList;
     }
-    
+
     public List<Staf> searchPengawas(String text, JTable tableStaf) {
         List<Staf> stafList;
 
@@ -109,7 +126,7 @@ public class AssignUjianController extends AbstractController {
 
         Object[] columnsName = {"NIP", "Nama"};
 
-        DefaultTableModel dtm = new DefaultTableModel(null, columnsName){
+        DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -130,7 +147,7 @@ public class AssignUjianController extends AbstractController {
     public boolean createRuanganUjian(String kodeUjian, String kodeRuangan, String stafNip, String kelasKode) {
         RuanganUjianFacade ruanganFacade = new RuanganUjianFacade();
 
-        if (!ruanganFacade.findByUjianKodeStafNipKelasKode(kodeUjian, kelasKode).isEmpty()) {
+        if (ruanganFacade.findByUjianKodeKelasKode(kodeUjian, kelasKode) != null) {
             addWarnMessage("Ujian sudah di assign", "Perhatian");
         } else {
             BeritaAcara beritaAcara = new BeritaAcara();
@@ -142,7 +159,6 @@ public class AssignUjianController extends AbstractController {
             beritaAcara.setBeritaStatus(false);
 
             BeritaAcaraFacade beritaAcaraFacade = new BeritaAcaraFacade();
-            beritaAcaraFacade.createBeritaAcara(beritaAcara);
 
             RuanganUjian ruanganUjian = new RuanganUjian();
             ruanganUjian.setBeritaKode(beritaAcara.getBeritaKode());
@@ -152,10 +168,93 @@ public class AssignUjianController extends AbstractController {
             ruanganUjian.setStafNip(stafNip);
             ruanganUjian.setUjianKode(kodeUjian);
 
-            ruanganFacade.createRuanganUjian(ruanganUjian);
+            try {
+                ConnectionHelper.getConnection().setAutoCommit(false);
+                beritaAcaraFacade.createBeritaAcara(beritaAcara);
+                ruanganFacade.createRuanganUjian(ruanganUjian);
+                addInfoMessage("Berhasil menambahkat data", "Perhatian");
+                ConnectionHelper.getConnection().commit();
+                ConnectionHelper.getConnection().setAutoCommit(true);
 
-            addInfoMessage("Berhasil menambahkat data", "Perhatian");
-            return true;
+                Staf staf = ruanganUjian.getStafQuery();
+                Ruangan ruangan = ruanganUjian.getRuanganQuery();
+                Ujian ujian = ruanganUjian.getUjianQuery();
+                Kelas kelas = ruanganUjian.getKelasQuery();
+                SendEmailModel sendEmailModel = new SendEmailModel();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm:ss");
+
+                List<String> reciever = new ArrayList<>();
+                reciever.add(staf.getStafEmail());
+
+                sendEmailModel.setReciever(reciever);
+                sendEmailModel.setSubject("Pemberitahuan Pengawas Ujian");
+
+                String messageBody = "<table>\n"
+                        + "	<tr>\n"
+                        + "		<td style=\"width:150px;\">Ujian</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td style=\"width:300px;\">" + ujian.getUjianNama() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>NIP</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + staf.getStafNIP() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Nama</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + staf.getStafNama() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Kelas</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + kelas.getKelasNama() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Kode Ruangan</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + ruangan.getRuanganKode() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Nama Ruangan</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + ruangan.getRuanganNama() + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Tanggal</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + sdf.format(ujian.getUjianMulai()) + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Waktu</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + sdf2.format(ujian.getUjianMenit()) + "</td>\n"
+                        + "	</tr>\n"
+                        + "	<tr>\n"
+                        + "		<td>Durasi</td>\n"
+                        + "             <td>:</td>"
+                        + "		<td>" + ujian.getUjianMenit() + " Menit</td>\n"
+                        + "	</tr>\n"
+                        + "</table>";
+                sendEmailModel.setMessageBody(messageBody);
+                SendingEmailControlProcess secp = new SendingEmailControlProcess();
+                secp.SendEmail(sendEmailModel);
+                return true;
+            } catch (SQLException ex) {
+                Logger.getLogger(AssignUjianController.class.getName()).log(Level.SEVERE, null, ex);
+                addErrorMessage(ex.getMessage(), "Error");
+                try {
+                    ConnectionHelper.getConnection().rollback();
+                    ConnectionHelper.getConnection().setAutoCommit(true);
+                } catch (SQLException ex1) {
+                    Logger.getLogger(AssignUjianController.class.getName()).log(Level.SEVERE, null, ex1);
+                    addErrorMessage(ex1.getMessage(), "Error");
+                }
+            } catch (MessagingException ex) {
+                Logger.getLogger(AssignUjianController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
         return false;
     }

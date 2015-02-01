@@ -10,6 +10,7 @@ import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -69,6 +70,27 @@ public class StafFacade {
         return null;
     }
 
+    public Staf findByUsername(String username) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT staf.* FROM staf INNER JOIN user ON (user.STAF_NIP = staf.STAF_NIP) "
+                    + "WHERE user.USER_USERNAME = '" + username + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                Staf staf = new Staf();
+                staf.setStafNIP(rs.getString(1));
+                staf.setStafNama(rs.getString(2));
+                staf.setStafEmail(rs.getString(3));
+                staf.setStafKontak(rs.getString(4));
+
+                return staf;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public boolean registrasiStaf() {
         try {
             Statement stmt;
@@ -80,7 +102,6 @@ public class StafFacade {
         }
         return false;
     }
-
     public List<Staf> searchNameNIP(String keyword) {
         try {
             Statement stmt = connection.createStatement();
@@ -131,7 +152,7 @@ public class StafFacade {
             sb.append("(");
 
             for (int i = 0; i < listDosen.size(); i++) {
-                sb.append("'").append(listDosen.get(i).getDosenKode()).append("'");
+                sb.append("'").append(listDosen.get(i).getStafNIP()).append("'");
                 if (i < listDosen.size() - 1) {
                     sb.append(",");
                 }

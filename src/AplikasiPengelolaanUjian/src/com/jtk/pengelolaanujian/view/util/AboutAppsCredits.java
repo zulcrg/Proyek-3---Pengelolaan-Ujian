@@ -30,8 +30,8 @@ public class AboutAppsCredits extends javax.swing.JPanel {
     
     public void loadImage(){
         try {
-            Image img = ImageIO.read(new File("src/com/jtk/pengelolaanujian/image/AppsLogo.jpg"));
-            Image newimg = img.getScaledInstance( 600, 168,  java.awt.Image.SCALE_SMOOTH ) ;
+            Image img = ImageIO.read(new File("src/com/jtk/pengelolaanujian/view/images/User-Files-icon.png"));
+            Image newimg = img.getScaledInstance( 120, 120,  java.awt.Image.SCALE_SMOOTH ) ;
             ImageIcon icon = new ImageIcon(newimg);
             jLabel2.setIcon(icon);
         } catch (IOException ex) {
@@ -176,7 +176,7 @@ public class AboutAppsCredits extends javax.swing.JPanel {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

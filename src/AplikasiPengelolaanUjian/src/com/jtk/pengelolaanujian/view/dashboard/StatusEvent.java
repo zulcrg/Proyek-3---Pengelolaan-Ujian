@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.view.dashboard;
 
 import com.jtk.pengelolaanujian.controller.dashboard.TriggerDashboardController;
@@ -18,34 +17,34 @@ public class StatusEvent extends javax.swing.JPanel {
 
     TriggerDashboardController triggerDashboardController = new TriggerDashboardController();
     Event event;
-    
+
     /**
      * Creates new form StatusEvent
      */
     public StatusEvent() {
-        initComponents();        
+        initComponents();
+        //progresEvent.setValue();
     }
-    
-    public void preparation(){
-        event=triggerDashboardController.getListEvent();
+
+    public void preparation() {
+        event = triggerDashboardController.getListEvent();
         String ujian = "Ujian ";
         char[] a;
-        a = new char[5];
-        a=event.getKode().toCharArray();                
-               
-        if(a[3]=='T'){
+        a = event.getKode().toCharArray();
+
+        if (a[3] == 'T') {
             ujian = ujian + "Tengah semester ";
-        }else{
+        } else {
             ujian = ujian + "Akhir semester ";
         }
-        
-        if(a[2]=='1'){
+
+        if (a[2] == '1') {
             ujian = ujian + "Genap ";
-        }else{
+        } else {
             ujian = ujian + "Ganjil ";
         }
-        ujian = ujian+"Tahun 20"+a[0]+a[1];
-        
+        ujian = ujian + "Tahun 20" + a[0] + a[1];
+
         textUjian.setText(ujian);
         textEventMulai.setText(event.getTanggalMulai().toString());
         textEventAkhir.setText(event.getTanggalSelesai().toString());
@@ -54,7 +53,7 @@ public class StatusEvent extends javax.swing.JPanel {
         textSoalAkhir.setText(event.getUploadSelesai().toString());
         textVnvMulai.setText(event.getVnvMulai().toString());
         textVnvAkhir.setText(event.getVnvSelesai().toString());
-        
+
         triggerDashboardController.viewTableUjian(tableUjian);
         progresEvent.setValue(20);
         piePanelUjian1.preparation();
@@ -100,9 +99,11 @@ public class StatusEvent extends javax.swing.JPanel {
         textSearch = new javax.swing.JTextField();
         labelUploadSoal5 = new javax.swing.JLabel();
 
+        setForeground(new java.awt.Color(0, 153, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelHeader1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelHeader1.setForeground(new java.awt.Color(0, 153, 153));
         labelHeader1.setText("Ujian yang akan diselenggarakan");
         add(labelHeader1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 77, -1, -1));
@@ -116,7 +117,7 @@ public class StatusEvent extends javax.swing.JPanel {
                 textUjianActionPerformed(evt);
             }
         });
-        add(textUjian, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 51, 230, -1));
+        add(textUjian, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 260, -1));
 
         textEventMulai.setEditable(false);
         textEventMulai.addActionListener(new java.awt.event.ActionListener() {
@@ -202,6 +203,7 @@ public class StatusEvent extends javax.swing.JPanel {
         add(labelUploadSoal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, -1, -1));
 
         labelHeader2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelHeader2.setForeground(new java.awt.Color(0, 153, 153));
         labelHeader2.setText("Keberlangsungan Event");
         add(labelHeader2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, 20));
 
@@ -237,6 +239,7 @@ public class StatusEvent extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 670, 230));
 
         labelHeader3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelHeader3.setForeground(new java.awt.Color(0, 153, 153));
         labelHeader3.setText("Beranda Informasi Event Ujian Terkini");
         add(labelHeader3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 11, -1, -1));
 
@@ -258,6 +261,7 @@ public class StatusEvent extends javax.swing.JPanel {
         add(progresEvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 230, -1));
 
         labelHeader4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelHeader4.setForeground(new java.awt.Color(0, 153, 153));
         labelHeader4.setText("Ujian Status");
         add(labelHeader4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, 20));
 
@@ -335,7 +339,7 @@ public class StatusEvent extends javax.swing.JPanel {
 
     private void textSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textSearchKeyReleased
         // TODO add your handling code here:
-        triggerDashboardController.viewTableUjian(tableUjian,textSearch.getText());
+        triggerDashboardController.viewTableUjian(tableUjian, textSearch.getText());
     }//GEN-LAST:event_textSearchKeyReleased
 
 

@@ -18,27 +18,38 @@ import java.util.List;
  */
 public class ReminderDayMonit7Controller extends Reminder {
 
-    private final Date date;
+    private Date date;
 
-    public ReminderDayMonit7Controller(Date date) {
-        this.date = date;
+    public ReminderDayMonit7Controller() {
+        this.date = new Date();
+    }
+    
+    public void preparation(){
+        this.checkRule();
     }
 
-    public void checkRule() throws SQLException {
+    public void checkRule(){
+        boolean stat = false;
         List<Ujian> listUjianReminder = new ArrayList<>();
         event = eventFacade.findLast();
-
+        listUjian = new ArrayList<>();
+        
         listUjian = ujianFacade.findByKodeEvent(event.getKode());
 
         for (Ujian ujian : listUjian) {
-            if (date.getDate() + event.getDelayPengawas() == ujian.getUjianMulai().getDate()) {
+            if (date.getDate() + event.getDelayPengawas()== ujian.getUjianMulai().getDate()) {
                 listUjianReminder.add(ujian);
+                stat = true;
+            } else {
+                
             }
         }
-
-        if (listUjianReminder != null) {
+        if(stat==true){            
             listRuanganUjian = ruanganUjianFacade.findAllWhereInsertedIn(listUjianReminder);
-            gammuFacade.sendPengawasSMS(listRuanganUjian, event);
-        }
+            //System.out.println(listRuanganUjian.get(0).getUjianKode());
+            //System.out.println(listRuanganUjian.get(1).getUjianKode());
+            //System.out.println(listRuanganUjian.get(0).getUjian().getUjianNama());
+            gammuFacade.sendPengawasSMS(listRuanganUjian, event);        
+        }            
     }
 }

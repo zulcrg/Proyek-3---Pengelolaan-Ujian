@@ -9,6 +9,7 @@ import com.jtk.pengelolaanujian.entity.Dosen;
 import com.jtk.pengelolaanujian.entity.MataKuliahToDosen;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,6 +47,32 @@ public class DosenFacade {
             return dosenList;
         } catch (SQLException ex) {
             Logger.getLogger(DosenFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Dosen> findAllDosenNotMe() {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT staf.*, dosen.* FROM staf INNER JOIN user ON(staf.STAF_NIP = user.STAF_NIP) "
+                    + "INNER JOIN dosen ON (dosen.STAF_NIP = staf.STAF_NIP) "
+                    + "WHERE user.USER_USERNAME <> '" + LoginPanel.getUsername() + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            List<Dosen> stafList = new ArrayList<>();
+            while (rs.next()) {
+                Dosen dosen = new Dosen();
+                dosen.setStafNIP(rs.getString(1));
+                dosen.setStafNama(rs.getString(2));
+                dosen.setStafEmail(rs.getString(3));
+                dosen.setStafKontak(rs.getString(4));
+                dosen.setDosenKode(rs.getString(5));
+                dosen.setKbkKode(rs.getString(6));
+
+                stafList.add(dosen);
+            }
+            return stafList;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -103,7 +130,7 @@ public class DosenFacade {
             sb.append("(");
 
             for (int i = 0; i < listMataKuliahToDosen.size(); i++) {
-                sb.append("'").append(listMataKuliahToDosen.get(i).getMatkulKode()).append("'");
+                sb.append("'").append(listMataKuliahToDosen.get(i).getDosenKode()).append("'");
                 if (i < listMataKuliahToDosen.size() - 1) {
                     sb.append(",");
                 }
@@ -120,9 +147,6 @@ public class DosenFacade {
                 dosen.setDosenKode(rs.getString(1));
                 dosen.setKbkKode(rs.getString(2));
                 dosen.setStafNIP(rs.getString(3));
-                dosen.setStafNama(rs.getString(4));
-                dosen.setStafEmail(rs.getString(5));
-                dosen.setStafKontak(rs.getString(6));
 
                 dosenList.add(dosen);
             }
@@ -146,7 +170,7 @@ public class DosenFacade {
                 if (i < stafs.size() - 1) {
                     sb.append(",");
                 }
-            }            
+            }
             sb.append(")");
 
             Statement stmt = connection.createStatement();
@@ -158,7 +182,7 @@ public class DosenFacade {
                 dosen.setDosenKode(rs.getString(1));
                 dosen.setKbkKode(rs.getString(2));
                 dosen.setStafNIP(rs.getString(3));
-                
+
                 dosenList.add(dosen);
             }
             return dosenList;
@@ -169,4 +193,5 @@ public class DosenFacade {
         }
         return null;
     }
+    
 }

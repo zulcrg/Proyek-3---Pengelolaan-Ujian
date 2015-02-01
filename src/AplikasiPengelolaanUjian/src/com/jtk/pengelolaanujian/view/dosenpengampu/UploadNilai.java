@@ -10,10 +10,17 @@ import com.jtk.pengelolaanujian.entity.Nilai;
 import com.jtk.pengelolaanujian.entity.Ruangan;
 import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Ujian;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  *
@@ -37,12 +44,17 @@ public class UploadNilai extends javax.swing.JPanel {
 
     public void preparation() {
         ruanganUjianList = uploadNilaiController.searchUjianByUsername(cboUjian);
+        clear();
+    }
+
+    private void clear() {
         url = "";
-        nilai = new Nilai();        
+        textUrl.setText("");
+        nilai = new Nilai();
     }
 
     public void searchRuangan() {
-        
+
     }
 
     /**
@@ -54,24 +66,36 @@ public class UploadNilai extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         textUrl = new javax.swing.JTextField();
         btnBrowse = new javax.swing.JButton();
         btnUpload = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cboUjian = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel5.setText("Registrasi User");
+
+        setMinimumSize(new java.awt.Dimension(640, 625));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Pilih File");
 
         textUrl.setEditable(false);
 
-        btnBrowse.setText("Browse");
+        btnBrowse.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        btnBrowse.setText("Cari");
         btnBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBrowseActionPerformed(evt);
             }
         });
 
+        btnUpload.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         btnUpload.setText("Upload");
         btnUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +103,8 @@ public class UploadNilai extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Pelaksanaan Ujian");
 
         cboUjian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -88,43 +114,56 @@ public class UploadNilai extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel6.setText("Upload Nilai");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(60, 60, 60)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(170, 170, 170)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(395, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboUjian, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                                .addComponent(textUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBrowse))
+                        .addGap(117, 117, 117))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textUrl)
-                            .addComponent(cboUjian, 0, 329, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBrowse)
-                        .addGap(0, 53, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel6)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
                     .addComponent(textUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBrowse))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cboUjian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                    .addComponent(btnBrowse)
+                    .addComponent(jLabel1))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(cboUjian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(btnUpload)
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addGap(173, 173, 173))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -137,12 +176,28 @@ public class UploadNilai extends javax.swing.JPanel {
     }
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
+        if (url != null && !url.isEmpty()) {
+            if (new File(url).exists()) {
+                try {
+                    nilai.setNamaFile(FilenameUtils.getBaseName(url));
+                    nilai.setNilaiFile(new FileInputStream(new File(url)));
+                    nilai.setKelasKode(ruanganUjianList.get(cboUjian.getSelectedIndex()).getKelasKode());
+                    nilai.setTipeFile(FilenameUtils.getExtension(url));
+                    nilai.setUjianKode(ruanganUjianList.get(cboUjian.getSelectedIndex()).getUjianKode());
 
+                    if (uploadNilaiController.uploadNilai(nilai)) {
+                        JOptionPane.showMessageDialog(null, "Upload nilai berhasil");
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(UploadNilai.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        int result = fileChooser.showOpenDialog(this);
+        int result = fileChooser.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
             url = fileChooser.getSelectedFile().getAbsolutePath();
             textUrl.setText(url);
@@ -160,6 +215,8 @@ public class UploadNilai extends javax.swing.JPanel {
     private javax.swing.JComboBox cboUjian;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField textUrl;
     // End of variables declaration//GEN-END:variables
 }

@@ -45,4 +45,23 @@ public class KelasFacade {
         }
         return null;
     }
+
+    public Kelas findByKelasKode(String kelasKode) {
+        try {
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * FROM kelas where KELAS_KODE = '" + kelasKode + "'";
+            ResultSet rs = stmt.executeQuery(query);
+
+            if (rs.next()) {
+                Kelas kelas = new Kelas();
+                kelas.setKelasKode(rs.getString(1));
+                kelas.setKelasNama(rs.getString(2));
+
+                return kelas;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RuanganFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.pengelolaanujian.view.panitia;
 
-import com.jtk.pengelolaanujian.controller.panitiaController.PanitiaController;
 import com.jtk.pengelolaanujian.controller.panitiaController.PrintSoalController;
+import com.jtk.pengelolaanujian.view.panitia.PrintSoalDialog;
 
 /**
  *
  * @author pahlevi
  */
 public class PrintSoal extends javax.swing.JPanel {
+
     PrintSoalController printSoalController = new PrintSoalController();
-    
+
     /**
      * Creates new form PrintSola
      */
@@ -23,9 +23,10 @@ public class PrintSoal extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void preparation(){        
+    public void preparation() {
         printSoalController.viewTableListPrintSoal(tableViewListPrintSoal);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,12 +36,9 @@ public class PrintSoal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelListSoalSiapPrint = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableViewListPrintSoal = new javax.swing.JTable();
-
-        labelListSoalSiapPrint.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labelListSoalSiapPrint.setText("List Soal Siap Print");
+        jLabel22 = new javax.swing.JLabel();
 
         tableViewListPrintSoal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,49 +72,45 @@ public class PrintSoal extends javax.swing.JPanel {
             tableViewListPrintSoal.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        jLabel22.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel22.setText("List Soal Siap Print");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelListSoalSiapPrint)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel22)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelListSoalSiapPrint)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel22)
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void tableViewListPrintSoalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableViewListPrintSoalMouseClicked
-        // TODO add your handling code here:
-        String namaStaf;
-        String kodeSoal;
-        String matkulKode;
-        String matkulNama;
-        System.out.println("data");
-
-        kodeSoal=tableViewListPrintSoal.getValueAt(tableViewListPrintSoal.getSelectedRow(), 0).toString();
-        matkulKode=tableViewListPrintSoal.getValueAt(tableViewListPrintSoal.getSelectedRow(), 1).toString();
-        matkulNama=tableViewListPrintSoal.getValueAt(tableViewListPrintSoal.getSelectedRow(), 2).toString();
-        namaStaf=tableViewListPrintSoal.getValueAt(tableViewListPrintSoal.getSelectedRow(), 3).toString();
-        PrintSoalDialog printSoalDialog = new PrintSoalDialog(null, true,kodeSoal,matkulKode,matkulNama,namaStaf);
-        printSoalDialog.show();        
-        
+        String kodeSoal = tableViewListPrintSoal.getValueAt(tableViewListPrintSoal.getSelectedRow(), 0).toString();
+        PrintSoalDialog printSoalDialog = new PrintSoalDialog(null, true, kodeSoal);
+        printSoalDialog.show();
     }//GEN-LAST:event_tableViewListPrintSoalMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelListSoalSiapPrint;
     private javax.swing.JTable tableViewListPrintSoal;
     // End of variables declaration//GEN-END:variables
 }

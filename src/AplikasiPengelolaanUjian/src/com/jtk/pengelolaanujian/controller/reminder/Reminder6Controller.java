@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.jtk.pengelolaanujianserver.controller;
+package com.jtk.pengelolaanujian.controller.reminder;
 
 
 import com.jtk.pengelolaanujian.entity.Dosen;

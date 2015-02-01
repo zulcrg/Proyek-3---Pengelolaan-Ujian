@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.jtk.pengelolaanujianserver.controller;
+package com.jtk.pengelolaanujian.controller.reminder;
 
 import java.util.Date;
 
@@ -12,10 +12,10 @@ import java.util.Date;
  *
  * @author pahlevi
  */
-public class Reminder5Controller {
+public class Reminder4Controller {
     private Date date;
     
-    public Reminder5Controller(Date date) {
+    public Reminder4Controller(Date date) {
         this.date = date;
     }
     

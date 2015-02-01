@@ -23,6 +23,8 @@ public class VnvPanel extends javax.swing.JPanel {
     
     public void preparation(){
         this.setBackground(Color.darkGray);
+        beritaAcaraVnvScroll1.getBeritaAcaraVnv1().preparation();
+        printSoal1.preparation();
     }
 
     /**
@@ -35,27 +37,33 @@ public class VnvPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        beritaAcaraVnv1 = new com.jtk.pengelolaanujian.view.vnv.BeritaAcaraVnv();
+        beritaAcaraVnvScroll1 = new com.jtk.pengelolaanujian.view.vnv.BeritaAcaraVnvScroll();
+        printSoal1 = new com.jtk.pengelolaanujian.view.vnv.PrintSoal();
+
+        setMinimumSize(new java.awt.Dimension(818, 625));
+        setPreferredSize(new java.awt.Dimension(818, 625));
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTabbedPane1.addTab("Berita Acara Vnv", beritaAcaraVnv1);
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTabbedPane1.addTab("Berita Acara VNV", beritaAcaraVnvScroll1);
+        jTabbedPane1.addTab("Print Soal", printSoal1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.jtk.pengelolaanujian.view.vnv.BeritaAcaraVnv beritaAcaraVnv1;
+    private com.jtk.pengelolaanujian.view.vnv.BeritaAcaraVnvScroll beritaAcaraVnvScroll1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private com.jtk.pengelolaanujian.view.vnv.PrintSoal printSoal1;
     // End of variables declaration//GEN-END:variables
 }

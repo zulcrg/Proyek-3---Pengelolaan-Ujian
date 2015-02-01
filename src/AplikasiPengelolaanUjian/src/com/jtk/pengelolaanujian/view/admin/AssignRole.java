@@ -57,20 +57,29 @@ public class AssignRole extends javax.swing.JPanel {
         chkVnv = new javax.swing.JCheckBox();
         chkPanitia = new javax.swing.JCheckBox();
         btnAssign = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(640, 625));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Username");
 
         textUsername.setEditable(false);
 
-        btnBrowse.setText("Browse");
+        btnBrowse.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        btnBrowse.setText("Cari");
         btnBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBrowseActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Role");
 
+        chkAdmin.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         chkAdmin.setText("Admin");
         chkAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +87,7 @@ public class AssignRole extends javax.swing.JPanel {
             }
         });
 
+        chkDosen.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         chkDosen.setText("Dosen Pengampu");
         chkDosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +95,7 @@ public class AssignRole extends javax.swing.JPanel {
             }
         });
 
+        chkVnv.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         chkVnv.setText("VnV");
         chkVnv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +103,7 @@ public class AssignRole extends javax.swing.JPanel {
             }
         });
 
+        chkPanitia.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         chkPanitia.setText("Panitia Ujian");
         chkPanitia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +111,7 @@ public class AssignRole extends javax.swing.JPanel {
             }
         });
 
+        btnAssign.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         btnAssign.setText("Assign Role");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,49 +119,65 @@ public class AssignRole extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel3.setText("Assign Role");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAssign)
+                .addGap(121, 121, 121))
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAssign)
-                    .addComponent(chkPanitia)
-                    .addComponent(chkVnv)
-                    .addComponent(chkDosen)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBrowse))
-                    .addComponent(chkAdmin))
-                .addContainerGap(301, Short.MAX_VALUE))
+                        .addGap(208, 208, 208)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkPanitia)
+                            .addComponent(chkVnv)
+                            .addComponent(chkDosen)
+                            .addComponent(chkAdmin)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBrowse))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel3)))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBrowse))
+                .addGap(51, 51, 51)
+                .addComponent(jLabel3)
+                .addGap(71, 71, 71)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(chkAdmin))
+                    .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBrowse))
+                .addGap(12, 12, 12)
+                .addComponent(jLabel2)
+                .addGap(7, 7, 7)
+                .addComponent(chkAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chkDosen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chkVnv)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chkPanitia)
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addComponent(btnAssign)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -250,6 +279,7 @@ public class AssignRole extends javax.swing.JPanel {
     private javax.swing.JCheckBox chkVnv;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField textUsername;
     // End of variables declaration//GEN-END:variables
 }

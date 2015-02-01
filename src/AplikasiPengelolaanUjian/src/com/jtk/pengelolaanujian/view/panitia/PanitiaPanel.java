@@ -45,20 +45,25 @@ public class PanitiaPanel extends javax.swing.JPanel {
         assignUjian1 = new com.jtk.pengelolaanujian.view.panitia.AssignUjian();
         printSoal1 = new com.jtk.pengelolaanujian.view.panitia.PrintSoal();
         uploadBeritaAcara1 = new com.jtk.pengelolaanujian.view.panitia.UploadBeritaAcara();
+        generateLaporan1 = new com.jtk.pengelolaanujian.view.panitia.GenerateLaporan();
+
+        setMinimumSize(new java.awt.Dimension(818, 625));
+        setPreferredSize(new java.awt.Dimension(818, 625));
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTabbedPane1.addTab("Create Event", createEvent1);
         jTabbedPane1.addTab("Create Ujian", createUjian2);
         jTabbedPane1.addTab("Assign Ujian", assignUjian1);
         jTabbedPane1.addTab("Print Soal", printSoal1);
         jTabbedPane1.addTab("Assign Berita Acara", uploadBeritaAcara1);
+        jTabbedPane1.addTab("Generate Laporan", generateLaporan1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,6 +76,7 @@ public class PanitiaPanel extends javax.swing.JPanel {
     private com.jtk.pengelolaanujian.view.panitia.AssignUjian assignUjian1;
     private com.jtk.pengelolaanujian.view.panitia.CreateEvent createEvent1;
     private com.jtk.pengelolaanujian.view.panitia.CreateUjian createUjian2;
+    private com.jtk.pengelolaanujian.view.panitia.GenerateLaporan generateLaporan1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private com.jtk.pengelolaanujian.view.panitia.PrintSoal printSoal1;
     private com.jtk.pengelolaanujian.view.panitia.UploadBeritaAcara uploadBeritaAcara1;

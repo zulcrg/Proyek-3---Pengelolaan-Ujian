@@ -44,12 +44,13 @@ public class SoalFacade {
             List<Soal> soalList = new ArrayList<>();
             while (rs.next()) {
                 Soal soal = new Soal();
-                soal.setMatkulKode(rs.getString(1));
-                soal.setSoalKode(rs.getString(2));
-                soal.setSoalPrinted(rs.getBoolean(3));
-                soal.setSoalVnved(rs.getBoolean(4));
-                soal.setSoalUploaded(rs.getBoolean(5));
-                soal.setSoalSifat(rs.getString(6));
+                soal.setMatkulKode(rs.getString("MATKUL_KODE"));
+                soal.setSoalKode(rs.getString("SOAL_KODE"));
+                soal.setSoalPrinted(rs.getBoolean("SOAL_PRINTED"));
+                soal.setSoalVnved(rs.getBoolean("SOAL_VNVED"));
+                soal.setSoalUploaded(rs.getBoolean("SOAL_UPLOADED"));
+                soal.setSoalSifat(rs.getString("SOAL_SIFAT"));
+                soal.setMatkulTipe(rs.getString("MATKUL_TIPE"));
 
                 soalList.add(soal);
             }
@@ -68,12 +69,13 @@ public class SoalFacade {
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
                 Soal soal = new Soal();
-                soal.setMatkulKode(rs.getString(1));
-                soal.setSoalKode(rs.getString(2));
-                soal.setSoalPrinted(rs.getBoolean(3));
-                soal.setSoalVnved(rs.getBoolean(4));
-                soal.setSoalUploaded(rs.getBoolean(5));
-                soal.setSoalSifat(rs.getString(6));
+                soal.setMatkulKode(rs.getString("MATKUL_KODE"));
+                soal.setSoalKode(rs.getString("SOAL_KODE"));
+                soal.setSoalPrinted(rs.getBoolean("SOAL_PRINTED"));
+                soal.setSoalVnved(rs.getBoolean("SOAL_VNVED"));
+                soal.setSoalUploaded(rs.getBoolean("SOAL_UPLOADED"));
+                soal.setSoalSifat(rs.getString("SOAL_SIFAT"));
+                soal.setMatkulTipe(rs.getString("MATKUL_TIPE"));
                 return soal;
             }
 
@@ -92,12 +94,13 @@ public class SoalFacade {
             List<Soal> soalList = new ArrayList<>();
             while (rs.next()) {
                 Soal soal = new Soal();
-                soal.setMatkulKode(rs.getString(1));
-                soal.setSoalKode(rs.getString(2));
-                soal.setSoalPrinted(rs.getBoolean(3));
-                soal.setSoalVnved(rs.getBoolean(4));
-                soal.setSoalUploaded(rs.getBoolean(5));
-                soal.setSoalSifat(rs.getString(6));
+                soal.setMatkulKode(rs.getString("MATKUL_KODE"));
+                soal.setSoalKode(rs.getString("SOAL_KODE"));
+                soal.setSoalPrinted(rs.getBoolean("SOAL_PRINTED"));
+                soal.setSoalVnved(rs.getBoolean("SOAL_VNVED"));
+                soal.setSoalUploaded(rs.getBoolean("SOAL_UPLOADED"));
+                soal.setSoalSifat(rs.getString("SOAL_SIFAT"));
+                soal.setMatkulTipe(rs.getString("MATKUL_TIPE"));
 
                 soalList.add(soal);
             }
@@ -117,13 +120,15 @@ public class SoalFacade {
             ResultSet rs = stmt.executeQuery(query);
             List<Soal> soalList = new ArrayList<>();
             while (rs.next()) {
+
                 Soal soal = new Soal();
-                soal.setMatkulKode(rs.getString(1));
-                soal.setSoalKode(rs.getString(2));
-                soal.setSoalPrinted(rs.getBoolean(3));
-                soal.setSoalVnved(rs.getBoolean(4));
-                soal.setSoalUploaded(rs.getBoolean(5));
-                soal.setSoalSifat(rs.getString(6));
+                soal.setMatkulKode(rs.getString("MATKUL_KODE"));
+                soal.setSoalKode(rs.getString("SOAL_KODE"));
+                soal.setSoalPrinted(rs.getBoolean("SOAL_PRINTED"));
+                soal.setSoalVnved(rs.getBoolean("SOAL_VNVED"));
+                soal.setSoalUploaded(rs.getBoolean("SOAL_UPLOADED"));
+                soal.setSoalSifat(rs.getString("SOAL_SIFAT"));
+                soal.setMatkulTipe(rs.getString("MATKUL_TIPE"));
 
                 soalList.add(soal);
             }
@@ -155,12 +160,13 @@ public class SoalFacade {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Soal soal = new Soal();
-                soal.setSoalKode(rs.getString(1));
-                soal.setMatkulKode(rs.getString(2));
-                soal.setSoalUploaded(rs.getBoolean(3));
-                soal.setSoalVnved(rs.getBoolean(4));
-                soal.setSoalPrinted(rs.getBoolean(5));
-                soal.setSoalSifat(rs.getString(6));
+                soal.setMatkulKode(rs.getString("MATKUL_KODE"));
+                soal.setSoalKode(rs.getString("SOAL_KODE"));
+                soal.setSoalPrinted(rs.getBoolean("SOAL_PRINTED"));
+                soal.setSoalVnved(rs.getBoolean("SOAL_VNVED"));
+                soal.setSoalUploaded(rs.getBoolean("SOAL_UPLOADED"));
+                soal.setSoalSifat(rs.getString("SOAL_SIFAT"));
+                soal.setMatkulTipe(rs.getString("MATKUL_TIPE"));
 
                 listSoal.add(soal);
             }
@@ -171,23 +177,18 @@ public class SoalFacade {
         return null;
     }
 
-    public void createSoal(Soal soal) {
-        try {
-            String query = "INSERT INTO soal(SOAL_KODE, MATKUL_KODE, SOAL_UPLOADED, SOAL_VNVED, SOAL_PRINTED, SOAL_SIFAT, MATKUL_TIPE) values(?,?,?,?,?,?,?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, soal.getSoalKode());
-            preparedStatement.setString(2, soal.getMatkulKode());
-            preparedStatement.setBoolean(3, soal.isSoalUploaded());
-            preparedStatement.setBoolean(4, soal.isSoalVnved());
-            preparedStatement.setBoolean(5, soal.isSoalPrinted());
-            preparedStatement.setString(6, soal.getSoalSifat());
-            preparedStatement.setString(7, soal.getMatkulTipe());
+    public void createSoal(Soal soal) throws SQLException {
+        String query = "INSERT INTO soal(SOAL_KODE, MATKUL_KODE, SOAL_UPLOADED, SOAL_VNVED, SOAL_PRINTED, SOAL_SIFAT, MATKUL_TIPE) values(?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, soal.getSoalKode());
+        preparedStatement.setString(2, soal.getMatkulKode());
+        preparedStatement.setBoolean(3, soal.isSoalUploaded());
+        preparedStatement.setBoolean(4, soal.isSoalVnved());
+        preparedStatement.setBoolean(5, soal.isSoalPrinted());
+        preparedStatement.setString(6, soal.getSoalSifat());
+        preparedStatement.setString(7, soal.getMatkulTipe());
 
-            preparedStatement.execute();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Gagal menambahkan data", "Q1", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(UjianFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        preparedStatement.execute();
     }
 
     public int checkUploadedSoalFacade() {
@@ -330,22 +331,28 @@ public class SoalFacade {
                         + "FROM soal, mata_kuliah, ujian, event, staf, dosen, kelas, mata_kuliah_to_dosen, ruangan_ujian "
                         + "WHERE (soal.SOAL_KODE like '%" + text + "%' OR mata_kuliah.MATKUL_NAMA like '%" + text + "%' ) "
                         + "AND mata_kuliah.MATKUL_KODE = soal.MATKUL_KODE AND "
+                        + "mata_kuliah.MATKUL_TIPE = soal.MATKUL_TIPE AND "
                         + "ujian.SOAL_KODE = soal.SOAL_KODE AND "
                         + "event.EVENT_KODE = ujian.EVENT_KODE AND "
                         + "mata_kuliah_to_dosen.MATKUL_KODE = mata_kuliah.MATKUL_KODE AND "
+                        + "mata_kuliah_to_dosen.MATKUL_TIPE = mata_kuliah.MATKUL_TIPE AND "
                         + "dosen.DOSEN_KODE = mata_kuliah_to_dosen.DOSEN_KODE AND "
                         + "staf.STAF_NIP = dosen.STAF_NIP AND "
                         + "ruangan_ujian.UJIAN_KODE = ujian.UJIAN_KODE AND "
-                        + "kelas.KELAS_KODE = ruangan_ujian.KELAS_KODE AND"
-                        + "dosen.KBK_KODE = '" + kbkKode + "' AND"
-                        + "soal.SOAL_VNVED = 0";
+                        + "kelas.KELAS_KODE = ruangan_ujian.KELAS_KODE AND "
+                        + "dosen.KBK_KODE = '" + kbkKode + "' AND "
+                        + "soal.SOAL_VNVED = 0";                
                 // alokasi resultset sebagai penampung hasil dari query yang di eksekusi
+
+                System.out.println("wasfa = "+query);
                 ResultSet rs = stmt.executeQuery(query);
                 List<Soal> soalList = new ArrayList<>();
                 while (rs.next()) {
                     Soal soal = new Soal();
                     soal.setSoalKode(rs.getString(1));
                     soal.setSoalSifat(rs.getString(2));
+                    
+                    System.out.println(soal.getSoalSifat());
 
                     MataKuliah mataKuliah = new MataKuliah();
                     mataKuliah.setMatkulKode(rs.getString(3));
@@ -379,20 +386,20 @@ public class SoalFacade {
                     ruanganUjian.setKelas(kelas);
 
                     ruanganUjian.setUjian(ujian);
-
                     ujian.setSoal(soal);
-
+                    ujian.setRuanganUjian(ruanganUjian);                    
+                    soal.setUjian(ujian);
                     soalList.add(soal);
-               //gelo asli
+                    //gelo asli
 
                 }
                 return soalList;
+            } else {
+                return new ArrayList<>();
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(SoalFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return null;
     }
 
@@ -416,11 +423,6 @@ public class SoalFacade {
         return null;
     }
 
-    public boolean submitVnv(List<Dosen> dosen, Soal soal, String relevansi, String kesulitan, String bobotNilai, String bobotWaktu, String lain) {
-        
-        return false;
-    }
-
     public void updateSoalSifatUploaded(Soal soal) throws SQLException {
         String query = "UPDATE soal SET SOAL_SIFAT = ?, SOAL_UPLOADED = ? WHERE SOAL_KODE = ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -429,5 +431,14 @@ public class SoalFacade {
         preparedStatement.setString(3, soal.getSoalKode());
 
         preparedStatement.executeUpdate();
-	}
+    }
+    
+    public void updateSoalVnved(String kodeSoal, boolean vnved) throws SQLException {
+        String query = "UPDATE soal SET SOAL_VNVED = ? WHERE SOAL_KODE = ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setBoolean(1, vnved);
+        preparedStatement.setString(2, kodeSoal);
+
+        preparedStatement.executeUpdate();
+    }
 }

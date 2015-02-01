@@ -58,6 +58,7 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         textKeterangan = new javax.swing.JTextArea();
         btnSimpan = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
 
         cboUjian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboUjian.addActionListener(new java.awt.event.ActionListener() {
@@ -66,12 +67,20 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
             }
         });
 
+        labelUjian.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        labelUjian.setForeground(new java.awt.Color(51, 51, 51));
         labelUjian.setText("Ujian");
 
+        labelKeterangan.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        labelKeterangan.setForeground(new java.awt.Color(51, 51, 51));
         labelKeterangan.setText("keterangan");
 
+        labelJumlahHadir.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        labelJumlahHadir.setForeground(new java.awt.Color(51, 51, 51));
         labelJumlahHadir.setText("Jml Hadir");
 
+        labelJumlahTidakHadir.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        labelJumlahTidakHadir.setForeground(new java.awt.Color(51, 51, 51));
         labelJumlahTidakHadir.setText("Jml Tidak Hadir");
 
         textJumlahTidakHadir.addActionListener(new java.awt.event.ActionListener() {
@@ -80,8 +89,12 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
             }
         });
 
+        labelSoalSisa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        labelSoalSisa.setForeground(new java.awt.Color(51, 51, 51));
         labelSoalSisa.setText("Jml Soal Sisa");
 
+        labelJawabanSisa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        labelJawabanSisa.setForeground(new java.awt.Color(51, 51, 51));
         labelJawabanSisa.setText("Jml Jawaban Sisa");
 
         textSoalSisa.addActionListener(new java.awt.event.ActionListener() {
@@ -101,16 +114,20 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
             }
         });
 
+        jLabel22.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel22.setText("Print Soal");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelKeterangan)
-                        .addContainerGap())
+                        .addGap(510, 510, 510))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -119,30 +136,37 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
                                     .addComponent(labelJumlahTidakHadir)
                                     .addComponent(labelJumlahHadir)
                                     .addComponent(labelSoalSisa))
-                                .addGap(12, 12, 12))
-                            .addComponent(labelJawabanSisa, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(labelJawabanSisa)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(cboUjian, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(173, 173, 173))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(textSoalSisa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textJawabanSisa, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textJumlahTidakHadir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textJumlahHadir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(cboUjian, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(128, 128, 128))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnSimpan)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(39, Short.MAX_VALUE))))))
+                                    .addComponent(textJumlahHadir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(81, 81, 81))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jLabel22)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSimpan)
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(47, 47, 47)
+                .addComponent(jLabel22)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboUjian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelUjian))
@@ -165,10 +189,10 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelKeterangan)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(btnSimpan)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -203,6 +227,7 @@ public class UploadBeritaAcara extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSimpan;
     private javax.swing.JComboBox cboUjian;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelJawabanSisa;
     private javax.swing.JLabel labelJumlahHadir;

@@ -23,6 +23,15 @@ public class Ujian {
     private Event event;
     private Soal soal;
     private String ujianNama;
+    private RuanganUjian ruanganUjian;
+
+    public RuanganUjian getRuanganUjian() {
+        return ruanganUjian;
+    }
+
+    public void setRuanganUjian(RuanganUjian ruanganUjian) {
+        this.ruanganUjian = ruanganUjian;
+    }
 
     public String getUjianNama() {
         return ujianNama;

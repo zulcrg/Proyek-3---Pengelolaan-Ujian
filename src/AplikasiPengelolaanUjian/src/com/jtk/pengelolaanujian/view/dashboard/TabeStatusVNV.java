@@ -14,7 +14,7 @@ import com.jtk.pengelolaanujian.entity.Soal;
  * @author pahlevi
  */
 public class TabeStatusVNV extends javax.swing.JPanel {
-    TriggerDashboardController triggerDashboardController = new TriggerDashboardController();
+    TriggerDashboardController triggerDashboardController = new TriggerDashboardController();    
     
     /**
      * Creates new form TabeStatusAdmin
@@ -25,7 +25,7 @@ public class TabeStatusVNV extends javax.swing.JPanel {
     }
 
      public void preparation() {
-        triggerDashboardController.viewTableVnv(tabelStatusVNV);
+        triggerDashboardController.viewTableVnv(tabelStatusVNV);        
     }
     /**
      * This method is called from within the constructor to initialize the form.

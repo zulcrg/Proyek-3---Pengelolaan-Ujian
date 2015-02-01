@@ -9,7 +9,9 @@ import com.jtk.pengelolaanujian.entity.Event;
 import com.jtk.pengelolaanujian.entity.RuanganUjian;
 import com.jtk.pengelolaanujian.entity.Staf;
 import com.jtk.pengelolaanujian.entity.Ujian;
+import com.jtk.pengelolaanujian.entity.User;
 import com.jtk.pengelolaanujian.util.ConnectionHelper;
+import com.jtk.pengelolaanujian.view.LoginPanel;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sun.security.krb5.internal.LoginOptions;
 
 /**
  *
@@ -29,13 +32,17 @@ public class GammuFacade {
 
     public boolean sendRemainderUploadSoalSMS(List<Staf> listStaf, String text) {
         Statement statmentDB = null;
-        StringBuilder sb = null;
+        StringBuilder sb = new StringBuilder();;        
+        
         try {
+            Staf stafData;
             for (int i = 0; i < listStaf.size(); i++) {
-                Staf staf = listStaf.get(i);
+                stafData = new Staf();
+                stafData.setStafNIP(listStaf.get(i).getStafNIP());
+                stafData.setStafKontak(listStaf.get(i).getStafKontak());                
                 sb.append("(");
                 sb.append("'");
-                sb.append(staf.getStafKontak());
+                sb.append(stafData.getStafKontak());
                 sb.append("'");
                 sb.append(",'");
                 sb.append(text);
@@ -75,9 +82,20 @@ public class GammuFacade {
     public void sendPengawasSMS(List<RuanganUjian> listRuanganUjian, Event event) {
         String smsString;
         StringBuilder sb = new StringBuilder();
-
+        RuanganUjian ruanganUjian; 
+        Ujian ujian;
+        
         for (int i = 0; i < listRuanganUjian.size(); i++) {
-            RuanganUjian ruanganUjian = listRuanganUjian.get(i);
+            ruanganUjian = new RuanganUjian();
+            ujian = new Ujian();
+            
+            ujian = listRuanganUjian.get(i).getUjian();            
+            ruanganUjian.setUjian(ujian);
+            
+            //System.out.println(ruanganUjian.getUjian().getUjianNama());
+            ruanganUjian.setStaf(listRuanganUjian.get(i).getStaf());
+            ruanganUjian.setRuanganKode(listRuanganUjian.get(i).getRuanganKode());
+                                    
             sb.append("(");
             sb.append("'").append(ruanganUjian.getStaf().getStafKontak()).append("'");
             sb.append(",");
@@ -115,7 +133,7 @@ public class GammuFacade {
     
     public boolean sendRemainderUploadNilaiSMS(List<Staf> listStaf, String text) {
         Statement statmentDB = null;
-        StringBuilder sb = null;
+        StringBuilder sb = new StringBuilder();
         try {
             for (int i = 0; i < listStaf.size(); i++) {
                 Staf staf = listStaf.get(i);
@@ -141,6 +159,56 @@ public class GammuFacade {
         } catch (SQLException ex) {
             Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
             return false;
+        }
+    }
+
+    public void sendKonfiramsiUploadSoal(String textSMS) {        
+        Statement statementDB;
+        try {
+            UserFacade userFacade = new UserFacade();
+            StafFacade stafFacade = new StafFacade();
+            User user = userFacade.findByUsername(LoginPanel.getUsername());
+            Staf staf = new Staf();            
+            staf = stafFacade.findByStafNip(user.getStafNIP());            
+            
+            statementDB = connection.createStatement();
+            statementDB.execute("INSERT INTO outbox(DestinationNumber, TextDecoded, creatorID) VALUES('" + staf.getStafKontak() + "','" + textSMS + "','Gammu')");
+        } catch (SQLException ex) {
+            Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void sendKonfiramsiUploadVnv(String textSMS) {
+        Statement statementDB;
+        try {
+            UserFacade userFacade = new UserFacade();
+            StafFacade stafFacade = new StafFacade();
+            User user = userFacade.findByUsername(LoginPanel.getUsername());
+            Staf staf = new Staf();            
+            staf = stafFacade.findByStafNip(user.getStafNIP());            
+            
+            statementDB = connection.createStatement();
+            statementDB.execute("INSERT INTO outbox(DestinationNumber, TextDecoded, creatorID) VALUES('" + staf.getStafKontak() + "','" + textSMS + "','Gammu')");
+        } catch (SQLException ex) {
+            Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void sendKonfiramsiUploadVnvTrue(String textSMS) {
+        Statement statementDB;
+        try {
+            UserFacade userFacade = new UserFacade();
+            StafFacade stafFacade = new StafFacade();            
+            DosenFacade dosenFacade = new DosenFacade();
+            User user = userFacade.findByUsername(LoginPanel.getUsername());
+            Staf staf = new Staf();            
+            staf = stafFacade.findByStafNip(user.getStafNIP());            
+            
+            statementDB = connection.createStatement();
+            statementDB.execute("INSERT INTO outbox(DestinationNumber, TextDecoded, creatorID) VALUES('" + staf.getStafKontak() + "','" + textSMS + "','Gammu')");
+                                    
+        } catch (SQLException ex) {
+            Logger.getLogger(GammuFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
